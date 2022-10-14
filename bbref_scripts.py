@@ -71,14 +71,81 @@ def get_leaderboards(stat, season):
     return(leaderboard_df)
     
 
-if __name__ == "__main__":
-    # Loop over all teams and get rosters
-    for team in constants.team_codes:
-        roster = get_team_roster(team, 2023)
-        roster.to_csv(f"data\\rosters\\{team}_2023.csv")
+# Function to scrape season schedule
+#    - Returns a dataframe with the following contents:
+#        - game_code: follows the syntax {Home Code}-{Away Code}-{MonthDayYear} ex: "HOU-LAC-11062000"
+#        - game_date: date of game in the format Month-Day-Year ex: "11-06-2000"
+#        - game_time  time of game in the format "10:30p"
+#        - home_code: three character team code
+#        - home_name: string containing official team name
+#        - home_link: url to basketball-ref home team page
+#        - away_code: three character team code
+#        - away_name: string containing official team name
+#        - away_link: url to basketball-ref away team page
+#        - arena:     name of home team's arena
+def get_schedule(season):
     
-    # Get leaderboards for all stats
-    for stat in constants.leaderboard_names:
-        leaderboard = get_leaderboards(stat, 2022)
-        stat_name = stat.replace('leaders_', '')
-        leaderboard.to_csv(f"data\\leaderboards\\{stat_name}_2022.csv")
+    schedule = []
+    for month in ['october','november','december','january','february','march','april']:
+        url = f"https://www.basketball-reference.com/leagues/NBA_{season}_games-{month}.html"
+        soup = BeautifulSoup(requests.get(url).content, 'html5lib')
+        
+        schedule_html = soup.find_all("table", {"id":"schedule"})[0].contents[7].contents
+        for game in schedule_html:
+            if isinstance(game, str):
+                continue
+            
+            game_data = []
+            
+            away_url = game.contents[2].contents[0].attrs['href']
+            away_code = away_url.split('/')[2]
+            
+            home_url = game.contents[4].contents[0].attrs['href']
+            home_code = home_url.split('/')[2]
+            
+            date = game.contents[0].contents[0].attrs['href'].split('&')
+            date_code = ""
+            date_str = ""
+            for idx, i in enumerate(date):
+                if idx != 2:
+                    date_code += i[-2:]
+                    date_str += f"{i[-2:]}-"
+                else:
+                    date_code += i[-4:]
+                    date_str += i[-4:]
+            
+            game_code = f"{home_code}-{away_code}-{date_code}"
+            
+            game_data.append(game_code)
+            game_data.append(date_str),
+            game_data.append(game.contents[1].contents[0])
+            game_data.append(home_code)
+            game_data.append(game.contents[4].contents[0].contents[0])
+            game_data.append(home_url)
+            game_data.append(away_code)
+            game_data.append(game.contents[2].contents[0].contents[0])
+            game_data.append(away_url)            
+            game_data.append(game.contents[9].contents[0])
+            
+            schedule.append(game_data)
+            
+    cols = ['game_code','game_date','game_time','home_code','home_name','home_link','away_code','away_name','away_link','arena']
+    schedule_df = pd.DataFrame(schedule, columns=cols)
+    schedule_df.set_index('game_code', inplace=True)
+    return(schedule_df)
+
+
+if __name__ == "__main__":
+    # # Loop over all teams and get rosters
+    # for team in constants.team_codes:
+    #     roster = get_team_roster(team, 2023)
+    #     roster.to_csv(f"data\\rosters\\{team}_2023.csv")
+    
+    # # Get leaderboards for all stats
+    # for stat in constants.leaderboard_names:
+    #     leaderboard = get_leaderboards(stat, 2022)
+    #     stat_name = stat.replace('leaders_', '')
+    #     leaderboard.to_csv(f"data\\leaderboards\\{stat_name}_2022.csv")
+
+    schedule = get_schedule(2023)
+    schedule.to_csv(f"data\\schedule\\2023_schedule.csv")
