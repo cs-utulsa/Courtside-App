@@ -1,0 +1,1231 @@
+game_code,game_date,game_time,home_code,home_name,home_link,away_code,away_name,away_link,arena
+BOS-PHI-10182022,10-18-2022,7:30p,BOS,Boston Celtics,/teams/BOS/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,TD Garden
+GSW-LAL-10182022,10-18-2022,10:00p,GSW,Golden State Warriors,/teams/GSW/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,Chase Center
+DET-ORL-10192022,10-19-2022,7:00p,DET,Detroit Pistons,/teams/DET/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,Little Caesars Arena
+IND-WAS-10192022,10-19-2022,7:00p,IND,Indiana Pacers,/teams/IND/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,Gainbridge Fieldhouse
+ATL-HOU-10192022,10-19-2022,7:30p,ATL,Atlanta Hawks,/teams/ATL/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,State Farm Arena
+BRK-NOP-10192022,10-19-2022,7:30p,BRK,Brooklyn Nets,/teams/BRK/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,Barclays Center
+MEM-NYK-10192022,10-19-2022,7:30p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,FedEx Forum
+MIA-CHI-10192022,10-19-2022,7:30p,MIA,Miami Heat,/teams/MIA/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,FTX Arena
+TOR-CLE-10192022,10-19-2022,7:30p,TOR,Toronto Raptors,/teams/TOR/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,Scotiabank Arena
+MIN-OKC-10192022,10-19-2022,8:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,Target Center
+SAS-CHO-10192022,10-19-2022,8:00p,SAS,San Antonio Spurs,/teams/SAS/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,AT&T Center
+UTA-DEN-10192022,10-19-2022,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,Vivint Arena
+PHO-DAL-10192022,10-19-2022,10:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,Footprint Center
+SAC-POR-10192022,10-19-2022,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,Golden 1 Center
+PHI-MIL-10202022,10-20-2022,7:30p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,Wells Fargo Center
+LAL-LAC-10202022,10-20-2022,10:00p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,Crypto.com Arena
+CHO-NOP-10212022,10-21-2022,7:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,Spectrum Center
+IND-SAS-10212022,10-21-2022,7:00p,IND,Indiana Pacers,/teams/IND/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,Gainbridge Fieldhouse
+WAS-CHI-10212022,10-21-2022,7:00p,WAS,Washington Wizards,/teams/WAS/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,Capital One Arena
+ATL-ORL-10212022,10-21-2022,7:30p,ATL,Atlanta Hawks,/teams/ATL/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,State Farm Arena
+BRK-TOR-10212022,10-21-2022,7:30p,BRK,Brooklyn Nets,/teams/BRK/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,Barclays Center
+MIA-BOS-10212022,10-21-2022,7:30p,MIA,Miami Heat,/teams/MIA/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,FTX Arena
+NYK-DET-10212022,10-21-2022,7:30p,NYK,New York Knicks,/teams/NYK/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,Madison Square Garden (IV)
+HOU-MEM-10212022,10-21-2022,8:00p,HOU,Houston Rockets,/teams/HOU/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,Toyota Center
+MIN-UTA-10212022,10-21-2022,8:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,Target Center
+GSW-DEN-10212022,10-21-2022,10:00p,GSW,Golden State Warriors,/teams/GSW/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,Chase Center
+POR-PHO-10212022,10-21-2022,10:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,Moda Center
+PHI-SAS-10222022,10-22-2022,6:00p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,Wells Fargo Center
+IND-DET-10222022,10-22-2022,7:00p,IND,Indiana Pacers,/teams/IND/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,Gainbridge Fieldhouse
+ORL-BOS-10222022,10-22-2022,7:00p,ORL,Orlando Magic,/teams/ORL/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,Amway Center
+CHI-CLE-10222022,10-22-2022,8:00p,CHI,Chicago Bulls,/teams/CHI/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,United Center
+MIA-TOR-10222022,10-22-2022,8:00p,MIA,Miami Heat,/teams/MIA/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,FTX Arena
+MIL-HOU-10222022,10-22-2022,8:00p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,Fiserv Forum
+DAL-MEM-10222022,10-22-2022,8:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,American Airlines Center
+DEN-OKC-10222022,10-22-2022,9:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,Ball Arena
+SAC-LAC-10222022,10-22-2022,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,Golden 1 Center
+LAL-POR-10232022,10-23-2022,3:30p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,Crypto.com Arena
+ATL-CHO-10232022,10-23-2022,5:00p,ATL,Atlanta Hawks,/teams/ATL/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,State Farm Arena
+CLE-WAS-10232022,10-23-2022,7:00p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,Rocket Mortgage Fieldhouse
+NOP-UTA-10232022,10-23-2022,7:00p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,Smoothie King Center
+OKC-MIN-10232022,10-23-2022,8:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,Paycom Center
+GSW-SAC-10232022,10-23-2022,8:30p,GSW,Golden State Warriors,/teams/GSW/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,Chase Center
+LAC-PHO-10232022,10-23-2022,10:00p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,Crypto.com Arena
+PHI-IND-10242022,10-24-2022,7:00p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,Wells Fargo Center
+MIA-TOR-10242022,10-24-2022,7:30p,MIA,Miami Heat,/teams/MIA/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,FTX Arena
+NYK-ORL-10242022,10-24-2022,7:30p,NYK,New York Knicks,/teams/NYK/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,Madison Square Garden (IV)
+CHI-BOS-10242022,10-24-2022,8:00p,CHI,Chicago Bulls,/teams/CHI/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,United Center
+HOU-UTA-10242022,10-24-2022,8:00p,HOU,Houston Rockets,/teams/HOU/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,Toyota Center
+MEM-BRK-10242022,10-24-2022,8:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,FedEx Forum
+MIN-SAS-10242022,10-24-2022,8:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,Target Center
+POR-DEN-10242022,10-24-2022,10:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,Moda Center
+WAS-DET-10252022,10-25-2022,7:00p,WAS,Washington Wizards,/teams/WAS/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,Capital One Arena
+NOP-DAL-10252022,10-25-2022,7:30p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,Smoothie King Center
+OKC-LAC-10252022,10-25-2022,8:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,Paycom Center
+PHO-GSW-10252022,10-25-2022,10:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,Footprint Center
+CLE-ORL-10262022,10-26-2022,7:00p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,Rocket Mortgage Fieldhouse
+DET-ATL-10262022,10-26-2022,7:00p,DET,Detroit Pistons,/teams/DET/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,Little Caesars Arena
+MIL-BRK-10262022,10-26-2022,7:30p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,Fiserv Forum
+NYK-CHO-10262022,10-26-2022,7:30p,NYK,New York Knicks,/teams/NYK/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,Madison Square Garden (IV)
+TOR-PHI-10262022,10-26-2022,7:30p,TOR,Toronto Raptors,/teams/TOR/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,Scotiabank Arena
+CHI-IND-10262022,10-26-2022,8:00p,CHI,Chicago Bulls,/teams/CHI/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,United Center
+MIN-SAS-10262022,10-26-2022,8:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,Target Center
+UTA-HOU-10262022,10-26-2022,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,Vivint Arena
+DEN-LAL-10262022,10-26-2022,10:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,Ball Arena
+POR-MIA-10262022,10-26-2022,10:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,Moda Center
+BRK-DAL-10272022,10-27-2022,7:30p,BRK,Brooklyn Nets,/teams/BRK/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,Barclays Center
+OKC-LAC-10272022,10-27-2022,8:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,Paycom Center
+GSW-MIA-10272022,10-27-2022,10:00p,GSW,Golden State Warriors,/teams/GSW/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,Chase Center
+SAC-MEM-10272022,10-27-2022,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,Golden 1 Center
+DET-ATL-10282022,10-28-2022,7:00p,DET,Detroit Pistons,/teams/DET/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,Little Caesars Arena
+ORL-CHO-10282022,10-28-2022,7:00p,ORL,Orlando Magic,/teams/ORL/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,Amway Center
+BOS-CLE-10282022,10-28-2022,7:30p,BOS,Boston Celtics,/teams/BOS/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,TD Garden
+TOR-PHI-10282022,10-28-2022,7:30p,TOR,Toronto Raptors,/teams/TOR/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,Scotiabank Arena
+WAS-IND-10282022,10-28-2022,7:30p,WAS,Washington Wizards,/teams/WAS/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,Capital One Arena
+MIL-NYK-10282022,10-28-2022,8:00p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,Fiserv Forum
+MIN-LAL-10282022,10-28-2022,8:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,Target Center
+SAS-CHI-10282022,10-28-2022,8:30p,SAS,San Antonio Spurs,/teams/SAS/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,AT&T Center
+DEN-UTA-10282022,10-28-2022,9:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,Ball Arena
+PHO-NOP-10282022,10-28-2022,10:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,Footprint Center
+POR-HOU-10282022,10-28-2022,10:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,Moda Center
+SAC-MIA-10292022,10-29-2022,6:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,Golden 1 Center
+CHO-GSW-10292022,10-29-2022,7:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,Spectrum Center
+BRK-IND-10292022,10-29-2022,7:30p,BRK,Brooklyn Nets,/teams/BRK/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,Barclays Center
+CHI-PHI-10292022,10-29-2022,8:00p,CHI,Chicago Bulls,/teams/CHI/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,United Center
+MIL-ATL-10292022,10-29-2022,8:00p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,Fiserv Forum
+DAL-OKC-10292022,10-29-2022,9:00p,DAL,Dallas Mavericks,/teams/DAL/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,American Airlines Center
+UTA-MEM-10292022,10-29-2022,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,Vivint Arena
+LAC-NOP-10302022,10-30-2022,3:00p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,Crypto.com Arena
+BOS-WAS-10302022,10-30-2022,6:00p,BOS,Boston Celtics,/teams/BOS/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,TD Garden
+CLE-NYK-10302022,10-30-2022,6:00p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,Rocket Mortgage Fieldhouse
+DET-GSW-10302022,10-30-2022,6:00p,DET,Detroit Pistons,/teams/DET/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,Little Caesars Arena
+SAS-MIN-10302022,10-30-2022,7:00p,SAS,San Antonio Spurs,/teams/SAS/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,AT&T Center
+DAL-ORL-10302022,10-30-2022,7:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,American Airlines Center
+PHO-HOU-10302022,10-30-2022,9:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,Footprint Center
+LAL-DEN-10302022,10-30-2022,9:30p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,Crypto.com Arena
+CHO-SAC-10312022,10-31-2022,7:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,Spectrum Center
+WAS-PHI-10312022,10-31-2022,7:00p,WAS,Washington Wizards,/teams/WAS/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,Capital One Arena
+BRK-IND-10312022,10-31-2022,7:30p,BRK,Brooklyn Nets,/teams/BRK/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,Barclays Center
+TOR-ATL-10312022,10-31-2022,7:30p,TOR,Toronto Raptors,/teams/TOR/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,Scotiabank Arena
+MIL-DET-10312022,10-31-2022,8:00p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,Fiserv Forum
+UTA-MEM-10312022,10-31-2022,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,Vivint Arena
+LAC-HOU-10312022,10-31-2022,10:30p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,Crypto.com Arena
+BRK-CHI-11=12022,11-=1-2022,7:30p,BRK,Brooklyn Nets,/teams/BRK/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,Barclays Center
+MIA-GSW-11=12022,11-=1-2022,7:30p,MIA,Miami Heat,/teams/MIA/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,FTX Arena
+OKC-ORL-11=12022,11-=1-2022,7:30p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,Paycom Center
+PHO-MIN-11=12022,11-=1-2022,10:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,Footprint Center
+CLE-BOS-11=22022,11-=2-2022,7:00p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,Rocket Mortgage Fieldhouse
+PHI-WAS-11=22022,11-=2-2022,7:00p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,Wells Fargo Center
+CHI-CHO-11=22022,11-=2-2022,7:30p,CHI,Chicago Bulls,/teams/CHI/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,United Center
+MIA-SAC-11=22022,11-=2-2022,7:30p,MIA,Miami Heat,/teams/MIA/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,FTX Arena
+NYK-ATL-11=22022,11-=2-2022,7:30p,NYK,New York Knicks,/teams/NYK/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,Madison Square Garden (IV)
+HOU-LAC-11=22022,11-=2-2022,8:00p,HOU,Houston Rockets,/teams/HOU/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,Toyota Center
+MIL-DET-11=22022,11-=2-2022,8:00p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,Fiserv Forum
+SAS-TOR-11=22022,11-=2-2022,8:00p,SAS,San Antonio Spurs,/teams/SAS/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,AT&T Center
+DAL-UTA-11=22022,11-=2-2022,8:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,American Airlines Center
+POR-MEM-11=22022,11-=2-2022,10:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,Moda Center
+LAL-NOP-11=22022,11-=2-2022,10:30p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,Crypto.com Arena
+ORL-GSW-11=32022,11-=3-2022,7:00p,ORL,Orlando Magic,/teams/ORL/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,Amway Center
+OKC-DEN-11=32022,11-=3-2022,8:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,Paycom Center
+DET-CLE-11=42022,11-=4-2022,7:00p,DET,Detroit Pistons,/teams/DET/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,Little Caesars Arena
+IND-MIA-11=42022,11-=4-2022,7:00p,IND,Indiana Pacers,/teams/IND/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,Gainbridge Fieldhouse
+PHI-NYK-11=42022,11-=4-2022,7:00p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,Wells Fargo Center
+WAS-BRK-11=42022,11-=4-2022,7:00p,WAS,Washington Wizards,/teams/WAS/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,Capital One Arena
+BOS-CHI-11=42022,11-=4-2022,7:30p,BOS,Boston Celtics,/teams/BOS/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,TD Garden
+MEM-CHO-11=42022,11-=4-2022,8:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,FedEx Forum
+SAS-LAC-11=42022,11-=4-2022,8:00p,SAS,San Antonio Spurs,/teams/SAS/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,AT&T Center
+DAL-TOR-11=42022,11-=4-2022,8:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,American Airlines Center
+NOP-GSW-11=42022,11-=4-2022,8:30p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,Smoothie King Center
+MIN-MIL-11=42022,11-=4-2022,10:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,Target Center
+PHO-POR-11=42022,11-=4-2022,10:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,Footprint Center
+LAL-UTA-11=42022,11-=4-2022,10:30p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,Crypto.com Arena
+ORL-SAC-11=52022,11-=5-2022,5:00p,ORL,Orlando Magic,/teams/ORL/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,Amway Center
+CHO-BRK-11=52022,11-=5-2022,7:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,Spectrum Center
+ATL-NOP-11=52022,11-=5-2022,7:30p,ATL,Atlanta Hawks,/teams/ATL/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,State Farm Arena
+NYK-BOS-11=52022,11-=5-2022,7:30p,NYK,New York Knicks,/teams/NYK/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,Madison Square Garden (IV)
+MIL-OKC-11=52022,11-=5-2022,8:00p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,Fiserv Forum
+MIN-HOU-11=52022,11-=5-2022,8:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,Target Center
+DEN-SAS-11=52022,11-=5-2022,9:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,Ball Arena
+PHO-POR-11=52022,11-=5-2022,10:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,Footprint Center
+LAL-CLE-11=62022,11-=6-2022,3:30p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,Crypto.com Arena
+MEM-WAS-11=62022,11-=6-2022,6:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,FedEx Forum
+TOR-CHI-11=62022,11-=6-2022,6:00p,TOR,Toronto Raptors,/teams/TOR/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,Scotiabank Arena
+LAC-UTA-11=62022,11-=6-2022,10:00p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,Crypto.com Arena
+CHO-WAS-11=72022,11-=7-2022,7:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,Spectrum Center
+ORL-HOU-11=72022,11-=7-2022,7:15p,ORL,Orlando Magic,/teams/ORL/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,Amway Center
+DET-OKC-11=72022,11-=7-2022,7:30p,DET,Detroit Pistons,/teams/DET/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,Little Caesars Arena
+IND-NOP-11=72022,11-=7-2022,7:45p,IND,Indiana Pacers,/teams/IND/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,Gainbridge Fieldhouse
+PHI-PHO-11=72022,11-=7-2022,8:00p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,Wells Fargo Center
+ATL-MIL-11=72022,11-=7-2022,8:15p,ATL,Atlanta Hawks,/teams/ATL/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,State Farm Arena
+MIA-POR-11=72022,11-=7-2022,8:30p,MIA,Miami Heat,/teams/MIA/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,FTX Arena
+CHI-TOR-11=72022,11-=7-2022,8:45p,CHI,Chicago Bulls,/teams/CHI/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,United Center
+MEM-BOS-11=72022,11-=7-2022,9:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,FedEx Forum
+MIN-NYK-11=72022,11-=7-2022,9:15p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,Target Center
+SAS-DEN-11=72022,11-=7-2022,9:30p,SAS,San Antonio Spurs,/teams/SAS/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,AT&T Center
+DAL-BRK-11=72022,11-=7-2022,9:45p,DAL,Dallas Mavericks,/teams/DAL/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,American Airlines Center
+GSW-SAC-11=72022,11-=7-2022,10:00p,GSW,Golden State Warriors,/teams/GSW/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,Chase Center
+UTA-LAL-11=72022,11-=7-2022,10:15p,UTA,Utah Jazz,/teams/UTA/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,Vivint Arena
+LAC-CLE-11=72022,11-=7-2022,10:30p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,Crypto.com Arena
+CHO-POR-11=92022,11-=9-2022,7:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,Spectrum Center
+IND-DEN-11=92022,11-=9-2022,7:00p,IND,Indiana Pacers,/teams/IND/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,Gainbridge Fieldhouse
+ORL-DAL-11=92022,11-=9-2022,7:00p,ORL,Orlando Magic,/teams/ORL/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,Amway Center
+ATL-UTA-11=92022,11-=9-2022,7:30p,ATL,Atlanta Hawks,/teams/ATL/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,State Farm Arena
+BOS-DET-11=92022,11-=9-2022,7:30p,BOS,Boston Celtics,/teams/BOS/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,TD Garden
+BRK-NYK-11=92022,11-=9-2022,7:30p,BRK,Brooklyn Nets,/teams/BRK/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,Barclays Center
+TOR-HOU-11=92022,11-=9-2022,7:30p,TOR,Toronto Raptors,/teams/TOR/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,Scotiabank Arena
+CHI-NOP-11=92022,11-=9-2022,8:00p,CHI,Chicago Bulls,/teams/CHI/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,United Center
+MIN-PHO-11=92022,11-=9-2022,8:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,Target Center
+OKC-MIL-11=92022,11-=9-2022,8:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,Paycom Center
+SAS-MEM-11=92022,11-=9-2022,8:00p,SAS,San Antonio Spurs,/teams/SAS/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,AT&T Center
+LAC-LAL-11=92022,11-=9-2022,10:00p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,Crypto.com Arena
+SAC-CLE-11=92022,11-=9-2022,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,Golden 1 Center
+WAS-DAL-11102022,11-10-2022,7:00p,WAS,Washington Wizards,/teams/WAS/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,Capital One Arena
+ATL-PHI-11102022,11-10-2022,7:30p,ATL,Atlanta Hawks,/teams/ATL/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,State Farm Arena
+MIA-CHO-11102022,11-10-2022,7:30p,MIA,Miami Heat,/teams/MIA/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,FTX Arena
+NOP-POR-11102022,11-10-2022,8:00p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,Smoothie King Center
+BOS-DEN-11112022,11-11-2022,7:00p,BOS,Boston Celtics,/teams/BOS/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,TD Garden
+ORL-PHO-11112022,11-11-2022,7:00p,ORL,Orlando Magic,/teams/ORL/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,Amway Center
+NYK-DET-11112022,11-11-2022,7:30p,NYK,New York Knicks,/teams/NYK/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,Madison Square Garden (IV)
+OKC-TOR-11112022,11-11-2022,8:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,Paycom Center
+SAS-MIL-11112022,11-11-2022,8:00p,SAS,San Antonio Spurs,/teams/SAS/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,AT&T Center
+MEM-MIN-11112022,11-11-2022,9:30p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,FedEx Forum
+GSW-CLE-11112022,11-11-2022,10:00p,GSW,Golden State Warriors,/teams/GSW/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,Chase Center
+LAL-SAC-11112022,11-11-2022,10:30p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,Crypto.com Arena
+LAC-BRK-11122022,11-12-2022,4:00p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,Crypto.com Arena
+WAS-UTA-11122022,11-12-2022,6:00p,WAS,Washington Wizards,/teams/WAS/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,Capital One Arena
+DET-BOS-11122022,11-12-2022,7:00p,DET,Detroit Pistons,/teams/DET/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,Little Caesars Arena
+IND-TOR-11122022,11-12-2022,7:00p,IND,Indiana Pacers,/teams/IND/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,Gainbridge Fieldhouse
+PHI-ATL-11122022,11-12-2022,7:30p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,Wells Fargo Center
+MIA-CHO-11122022,11-12-2022,8:00p,MIA,Miami Heat,/teams/MIA/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,FTX Arena
+DAL-POR-11122022,11-12-2022,8:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,American Airlines Center
+NOP-HOU-11122022,11-12-2022,8:30p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,Smoothie King Center
+NYK-OKC-11132022,11-13-2022,12:00p,NYK,New York Knicks,/teams/NYK/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,Madison Square Garden (IV)
+CLE-MIN-11132022,11-13-2022,6:00p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,Rocket Mortgage Fieldhouse
+WAS-MEM-11132022,11-13-2022,6:00p,WAS,Washington Wizards,/teams/WAS/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,Capital One Arena
+PHI-UTA-11132022,11-13-2022,7:30p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,Wells Fargo Center
+CHI-DEN-11132022,11-13-2022,8:00p,CHI,Chicago Bulls,/teams/CHI/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,United Center
+SAC-GSW-11132022,11-13-2022,9:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,Golden 1 Center
+LAL-BRK-11132022,11-13-2022,9:30p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,Crypto.com Arena
+DET-TOR-11142022,11-14-2022,7:00p,DET,Detroit Pistons,/teams/DET/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,Little Caesars Arena
+ORL-CHO-11142022,11-14-2022,7:00p,ORL,Orlando Magic,/teams/ORL/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,Amway Center
+BOS-OKC-11142022,11-14-2022,7:30p,BOS,Boston Celtics,/teams/BOS/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,TD Garden
+MIA-PHO-11142022,11-14-2022,7:30p,MIA,Miami Heat,/teams/MIA/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,FTX Arena
+HOU-LAC-11142022,11-14-2022,8:00p,HOU,Houston Rockets,/teams/HOU/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,Toyota Center
+MIL-ATL-11142022,11-14-2022,8:00p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,Fiserv Forum
+GSW-SAS-11142022,11-14-2022,10:00p,GSW,Golden State Warriors,/teams/GSW/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,Chase Center
+NOP-MEM-11152022,11-15-2022,7:30p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,Smoothie King Center
+DAL-LAC-11152022,11-15-2022,8:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,American Airlines Center
+POR-SAS-11152022,11-15-2022,10:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,Moda Center
+SAC-BRK-11152022,11-15-2022,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,Golden 1 Center
+UTA-NYK-11152022,11-15-2022,10:00p,UTA,Utah Jazz,/teams/UTA/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,Vivint Arena
+CHO-IND-11162022,11-16-2022,7:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,Spectrum Center
+ORL-MIN-11162022,11-16-2022,7:00p,ORL,Orlando Magic,/teams/ORL/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,Amway Center
+WAS-OKC-11162022,11-16-2022,7:00p,WAS,Washington Wizards,/teams/WAS/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,Capital One Arena
+ATL-BOS-11162022,11-16-2022,7:30p,ATL,Atlanta Hawks,/teams/ATL/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,State Farm Arena
+TOR-MIA-11162022,11-16-2022,7:30p,TOR,Toronto Raptors,/teams/TOR/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,Scotiabank Arena
+MIL-CLE-11162022,11-16-2022,8:00p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,Fiserv Forum
+NOP-CHI-11162022,11-16-2022,8:00p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,Smoothie King Center
+DAL-HOU-11162022,11-16-2022,8:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,American Airlines Center
+DEN-NYK-11162022,11-16-2022,10:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,Ball Arena
+PHO-GSW-11162022,11-16-2022,10:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,Footprint Center
+POR-BRK-11172022,11-17-2022,10:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,Moda Center
+SAC-SAS-11172022,11-17-2022,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,Golden 1 Center
+LAC-DET-11172022,11-17-2022,10:30p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,Crypto.com Arena
+WAS-MIA-11182022,11-18-2022,7:00p,WAS,Washington Wizards,/teams/WAS/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,Capital One Arena
+CLE-CHO-11182022,11-18-2022,7:30p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,Rocket Mortgage Fieldhouse
+PHI-MIL-11182022,11-18-2022,7:30p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,Wells Fargo Center
+CHI-ORL-11182022,11-18-2022,8:00p,CHI,Chicago Bulls,/teams/CHI/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,United Center
+HOU-IND-11182022,11-18-2022,8:00p,HOU,Houston Rockets,/teams/HOU/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,Toyota Center
+MEM-OKC-11182022,11-18-2022,8:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,FedEx Forum
+DAL-DEN-11182022,11-18-2022,8:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,American Airlines Center
+NOP-BOS-11182022,11-18-2022,8:30p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,Smoothie King Center
+UTA-PHO-11182022,11-18-2022,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,Vivint Arena
+GSW-NYK-11182022,11-18-2022,10:00p,GSW,Golden State Warriors,/teams/GSW/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,Chase Center
+LAL-DET-11182022,11-18-2022,10:30p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,Crypto.com Arena
+ATL-TOR-11192022,11-19-2022,6:00p,ATL,Atlanta Hawks,/teams/ATL/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,State Farm Arena
+IND-ORL-11192022,11-19-2022,7:00p,IND,Indiana Pacers,/teams/IND/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,Gainbridge Fieldhouse
+PHI-MIN-11192022,11-19-2022,7:30p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,Wells Fargo Center
+POR-UTA-11192022,11-19-2022,10:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,Moda Center
+LAC-SAS-11192022,11-19-2022,10:30p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,Crypto.com Arena
+PHO-NYK-11202022,11-20-2022,3:30p,PHO,Phoenix Suns,/teams/PHO/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,Footprint Center
+SAC-DET-11202022,11-20-2022,6:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,Golden 1 Center
+WAS-CHO-11202022,11-20-2022,6:00p,WAS,Washington Wizards,/teams/WAS/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,Capital One Arena
+BRK-MEM-11202022,11-20-2022,7:00p,BRK,Brooklyn Nets,/teams/BRK/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,Barclays Center
+CLE-MIA-11202022,11-20-2022,7:00p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,Rocket Mortgage Fieldhouse
+HOU-GSW-11202022,11-20-2022,7:00p,HOU,Houston Rockets,/teams/HOU/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,Toyota Center
+DAL-DEN-11202022,11-20-2022,7:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,American Airlines Center
+LAL-SAS-11202022,11-20-2022,9:30p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,Crypto.com Arena
+CLE-ATL-11212022,11-21-2022,7:00p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,Rocket Mortgage Fieldhouse
+IND-ORL-11212022,11-21-2022,7:00p,IND,Indiana Pacers,/teams/IND/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,Gainbridge Fieldhouse
+CHI-BOS-11212022,11-21-2022,8:00p,CHI,Chicago Bulls,/teams/CHI/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,United Center
+MIL-POR-11212022,11-21-2022,8:00p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,Fiserv Forum
+MIN-MIA-11212022,11-21-2022,8:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,Target Center
+NOP-GSW-11212022,11-21-2022,8:00p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,Smoothie King Center
+OKC-NYK-11212022,11-21-2022,8:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,Paycom Center
+LAC-UTA-11212022,11-21-2022,10:30p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,Crypto.com Arena
+PHI-BRK-11222022,11-22-2022,7:30p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,Wells Fargo Center
+MEM-SAC-11222022,11-22-2022,8:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,FedEx Forum
+DEN-DET-11222022,11-22-2022,9:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,Ball Arena
+PHO-LAL-11222022,11-22-2022,10:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,Footprint Center
+CHO-PHI-11232022,11-23-2022,7:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,Spectrum Center
+CLE-POR-11232022,11-23-2022,7:00p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,Rocket Mortgage Fieldhouse
+IND-MIN-11232022,11-23-2022,7:00p,IND,Indiana Pacers,/teams/IND/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,Gainbridge Fieldhouse
+ATL-SAC-11232022,11-23-2022,7:30p,ATL,Atlanta Hawks,/teams/ATL/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,State Farm Arena
+BOS-DAL-11232022,11-23-2022,7:30p,BOS,Boston Celtics,/teams/BOS/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,TD Garden
+MIA-WAS-11232022,11-23-2022,7:30p,MIA,Miami Heat,/teams/MIA/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,FTX Arena
+TOR-BRK-11232022,11-23-2022,7:30p,TOR,Toronto Raptors,/teams/TOR/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,Scotiabank Arena
+MIL-CHI-11232022,11-23-2022,8:00p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,Fiserv Forum
+OKC-DEN-11232022,11-23-2022,8:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,Paycom Center
+SAS-NOP-11232022,11-23-2022,8:00p,SAS,San Antonio Spurs,/teams/SAS/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,AT&T Center
+UTA-DET-11232022,11-23-2022,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,Vivint Arena
+GSW-LAC-11232022,11-23-2022,10:00p,GSW,Golden State Warriors,/teams/GSW/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,Chase Center
+CHO-MIN-11252022,11-25-2022,5:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,Spectrum Center
+ORL-PHI-11252022,11-25-2022,7:00p,ORL,Orlando Magic,/teams/ORL/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,Amway Center
+NYK-POR-11252022,11-25-2022,7:30p,NYK,New York Knicks,/teams/NYK/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,Madison Square Garden (IV)
+BOS-SAC-11252022,11-25-2022,8:00p,BOS,Boston Celtics,/teams/BOS/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,TD Garden
+HOU-ATL-11252022,11-25-2022,8:00p,HOU,Houston Rockets,/teams/HOU/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,Toyota Center
+IND-BRK-11252022,11-25-2022,8:00p,IND,Indiana Pacers,/teams/IND/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,Gainbridge Fieldhouse
+MEM-NOP-11252022,11-25-2022,8:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,FedEx Forum
+MIA-WAS-11252022,11-25-2022,8:00p,MIA,Miami Heat,/teams/MIA/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,FTX Arena
+MIL-CLE-11252022,11-25-2022,8:00p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,Fiserv Forum
+OKC-CHI-11252022,11-25-2022,8:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,Paycom Center
+SAS-LAL-11252022,11-25-2022,8:00p,SAS,San Antonio Spurs,/teams/SAS/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,AT&T Center
+PHO-DET-11252022,11-25-2022,9:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,Footprint Center
+GSW-UTA-11252022,11-25-2022,10:00p,GSW,Golden State Warriors,/teams/GSW/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,Chase Center
+LAC-DEN-11252022,11-25-2022,10:30p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,Crypto.com Arena
+TOR-DAL-11262022,11-26-2022,5:00p,TOR,Toronto Raptors,/teams/TOR/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,Scotiabank Arena
+HOU-OKC-11262022,11-26-2022,8:00p,HOU,Houston Rockets,/teams/HOU/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,Toyota Center
+SAS-LAL-11262022,11-26-2022,8:00p,SAS,San Antonio Spurs,/teams/SAS/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,AT&T Center
+PHO-UTA-11262022,11-26-2022,9:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,Footprint Center
+BRK-POR-11272022,11-27-2022,3:00p,BRK,Brooklyn Nets,/teams/BRK/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,Barclays Center
+MIN-GSW-11272022,11-27-2022,3:30p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,Target Center
+LAC-IND-11272022,11-27-2022,4:00p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,Crypto.com Arena
+ATL-MIA-11272022,11-27-2022,5:00p,ATL,Atlanta Hawks,/teams/ATL/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,State Farm Arena
+BOS-WAS-11272022,11-27-2022,6:00p,BOS,Boston Celtics,/teams/BOS/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,TD Garden
+DET-CLE-11272022,11-27-2022,6:00p,DET,Detroit Pistons,/teams/DET/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,Little Caesars Arena
+NYK-MEM-11272022,11-27-2022,6:00p,NYK,New York Knicks,/teams/NYK/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,Madison Square Garden (IV)
+ORL-PHI-11272022,11-27-2022,6:00p,ORL,Orlando Magic,/teams/ORL/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,Amway Center
+MIL-DAL-11272022,11-27-2022,8:00p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,Fiserv Forum
+PHI-ATL-11282022,11-28-2022,7:00p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,Wells Fargo Center
+WAS-MIN-11282022,11-28-2022,7:00p,WAS,Washington Wizards,/teams/WAS/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,Capital One Arena
+BOS-CHO-11282022,11-28-2022,7:30p,BOS,Boston Celtics,/teams/BOS/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,TD Garden
+BRK-ORL-11282022,11-28-2022,7:30p,BRK,Brooklyn Nets,/teams/BRK/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,Barclays Center
+TOR-CLE-11282022,11-28-2022,7:30p,TOR,Toronto Raptors,/teams/TOR/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,Scotiabank Arena
+NOP-OKC-11282022,11-28-2022,8:00p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,Smoothie King Center
+DEN-HOU-11282022,11-28-2022,9:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,Ball Arena
+UTA-CHI-11282022,11-28-2022,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,Vivint Arena
+SAC-PHO-11282022,11-28-2022,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,Golden 1 Center
+LAL-IND-11282022,11-28-2022,10:30p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,Crypto.com Arena
+DET-NYK-11292022,11-29-2022,7:00p,DET,Detroit Pistons,/teams/DET/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,Little Caesars Arena
+DAL-GSW-11292022,11-29-2022,7:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,American Airlines Center
+POR-LAC-11292022,11-29-2022,10:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,Moda Center
+CLE-PHI-11302022,11-30-2022,7:00p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,Rocket Mortgage Fieldhouse
+ORL-ATL-11302022,11-30-2022,7:00p,ORL,Orlando Magic,/teams/ORL/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,Amway Center
+BOS-MIA-11302022,11-30-2022,7:30p,BOS,Boston Celtics,/teams/BOS/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,TD Garden
+BRK-WAS-11302022,11-30-2022,7:30p,BRK,Brooklyn Nets,/teams/BRK/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,Barclays Center
+NYK-MIL-11302022,11-30-2022,7:30p,NYK,New York Knicks,/teams/NYK/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,Madison Square Garden (IV)
+MIN-MEM-11302022,11-30-2022,8:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,Target Center
+NOP-TOR-11302022,11-30-2022,8:00p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,Smoothie King Center
+OKC-SAS-11302022,11-30-2022,8:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,Paycom Center
+DEN-HOU-11302022,11-30-2022,9:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,Ball Arena
+PHO-CHI-11302022,11-30-2022,9:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,Footprint Center
+UTA-LAC-11302022,11-30-2022,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,Vivint Arena
+SAC-IND-11302022,11-30-2022,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,Golden 1 Center
+LAL-POR-11302022,11-30-2022,10:30p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,Crypto.com Arena
+DET-DAL-12=12022,12-=1-2022,7:00p,DET,Detroit Pistons,/teams/DET/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,Little Caesars Arena
+CHO-WAS-12=22022,12-=2-2022,7:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,Spectrum Center
+ATL-DEN-12=22022,12-=2-2022,7:30p,ATL,Atlanta Hawks,/teams/ATL/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,State Farm Arena
+BOS-MIA-12=22022,12-=2-2022,7:30p,BOS,Boston Celtics,/teams/BOS/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,TD Garden
+BRK-TOR-12=22022,12-=2-2022,7:30p,BRK,Brooklyn Nets,/teams/BRK/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,Barclays Center
+CLE-ORL-12=22022,12-=2-2022,7:30p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,Rocket Mortgage Fieldhouse
+MIL-LAL-12=22022,12-=2-2022,7:30p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,Fiserv Forum
+MEM-PHI-12=22022,12-=2-2022,8:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,FedEx Forum
+SAS-NOP-12=22022,12-=2-2022,8:00p,SAS,San Antonio Spurs,/teams/SAS/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,AT&T Center
+PHO-HOU-12=22022,12-=2-2022,9:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,Footprint Center
+UTA-IND-12=22022,12-=2-2022,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,Vivint Arena
+GSW-CHI-12=22022,12-=2-2022,10:00p,GSW,Golden State Warriors,/teams/GSW/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,Chase Center
+NYK-DAL-12=32022,12-=3-2022,12:30p,NYK,New York Knicks,/teams/NYK/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,Madison Square Garden (IV)
+LAC-SAC-12=32022,12-=3-2022,4:00p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,Crypto.com Arena
+CHO-MIL-12=32022,12-=3-2022,6:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,Spectrum Center
+MIN-OKC-12=32022,12-=3-2022,8:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,Target Center
+TOR-ORL-12=32022,12-=3-2022,8:00p,TOR,Toronto Raptors,/teams/TOR/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,Scotiabank Arena
+GSW-HOU-12=32022,12-=3-2022,8:30p,GSW,Golden State Warriors,/teams/GSW/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,Chase Center
+UTA-POR-12=32022,12-=3-2022,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,Vivint Arena
+NOP-DEN-12=42022,12-=4-2022,3:30p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,Smoothie King Center
+SAS-PHO-12=42022,12-=4-2022,4:00p,SAS,San Antonio Spurs,/teams/SAS/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,AT&T Center
+BRK-BOS-12=42022,12-=4-2022,6:00p,BRK,Brooklyn Nets,/teams/BRK/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,Barclays Center
+DET-MEM-12=42022,12-=4-2022,6:00p,DET,Detroit Pistons,/teams/DET/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,Little Caesars Arena
+NYK-CLE-12=42022,12-=4-2022,6:00p,NYK,New York Knicks,/teams/NYK/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,Madison Square Garden (IV)
+SAC-CHI-12=42022,12-=4-2022,6:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,Golden 1 Center
+WAS-LAL-12=42022,12-=4-2022,6:00p,WAS,Washington Wizards,/teams/WAS/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,Capital One Arena
+POR-IND-12=42022,12-=4-2022,9:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,Moda Center
+CHO-LAC-12=52022,12-=5-2022,7:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,Spectrum Center
+ORL-MIL-12=52022,12-=5-2022,7:00p,ORL,Orlando Magic,/teams/ORL/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,Amway Center
+ATL-OKC-12=52022,12-=5-2022,7:30p,ATL,Atlanta Hawks,/teams/ATL/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,State Farm Arena
+TOR-BOS-12=52022,12-=5-2022,7:30p,TOR,Toronto Raptors,/teams/TOR/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,Scotiabank Arena
+HOU-PHI-12=52022,12-=5-2022,8:00p,HOU,Houston Rockets,/teams/HOU/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,Toyota Center
+MEM-MIA-12=52022,12-=5-2022,8:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,FedEx Forum
+DAL-PHO-12=52022,12-=5-2022,8:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,American Airlines Center
+GSW-IND-12=52022,12-=5-2022,10:00p,GSW,Golden State Warriors,/teams/GSW/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,Chase Center
+CLE-LAL-12=62022,12-=6-2022,7:30p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,Rocket Mortgage Fieldhouse
+MIA-DET-12=62022,12-=6-2022,7:30p,MIA,Miami Heat,/teams/MIA/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,FTX Arena
+DEN-DAL-12=62022,12-=6-2022,10:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,Ball Arena
+ORL-LAC-12=72022,12-=7-2022,7:00p,ORL,Orlando Magic,/teams/ORL/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,Amway Center
+BRK-CHO-12=72022,12-=7-2022,7:30p,BRK,Brooklyn Nets,/teams/BRK/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,Barclays Center
+NYK-ATL-12=72022,12-=7-2022,7:30p,NYK,New York Knicks,/teams/NYK/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,Madison Square Garden (IV)
+TOR-LAL-12=72022,12-=7-2022,7:30p,TOR,Toronto Raptors,/teams/TOR/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,Scotiabank Arena
+CHI-WAS-12=72022,12-=7-2022,8:00p,CHI,Chicago Bulls,/teams/CHI/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,United Center
+MEM-OKC-12=72022,12-=7-2022,8:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,FedEx Forum
+MIL-SAC-12=72022,12-=7-2022,8:00p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,Fiserv Forum
+MIN-IND-12=72022,12-=7-2022,8:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,Target Center
+NOP-DET-12=72022,12-=7-2022,8:00p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,Smoothie King Center
+UTA-GSW-12=72022,12-=7-2022,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,Vivint Arena
+PHO-BOS-12=72022,12-=7-2022,10:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,Footprint Center
+MIA-LAC-12=82022,12-=8-2022,7:30p,MIA,Miami Heat,/teams/MIA/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,FTX Arena
+SAS-HOU-12=82022,12-=8-2022,8:30p,SAS,San Antonio Spurs,/teams/SAS/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,AT&T Center
+POR-DEN-12=82022,12-=8-2022,10:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,Moda Center
+CHO-NYK-12=92022,12-=9-2022,7:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,Spectrum Center
+IND-WAS-12=92022,12-=9-2022,7:00p,IND,Indiana Pacers,/teams/IND/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,Gainbridge Fieldhouse
+ORL-TOR-12=92022,12-=9-2022,7:00p,ORL,Orlando Magic,/teams/ORL/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,Amway Center
+BRK-ATL-12=92022,12-=9-2022,7:30p,BRK,Brooklyn Nets,/teams/BRK/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,Barclays Center
+CLE-SAC-12=92022,12-=9-2022,7:30p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,Rocket Mortgage Fieldhouse
+PHI-LAL-12=92022,12-=9-2022,7:30p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,Wells Fargo Center
+MEM-DET-12=92022,12-=9-2022,8:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,FedEx Forum
+NOP-PHO-12=92022,12-=9-2022,8:30p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,Smoothie King Center
+UTA-MIN-12=92022,12-=9-2022,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,Vivint Arena
+DAL-MIL-12=92022,12-=9-2022,10:00p,DAL,Dallas Mavericks,/teams/DAL/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,American Airlines Center
+MIA-SAS-12102022,12-10-2022,5:00p,MIA,Miami Heat,/teams/MIA/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,FTX Arena
+IND-BRK-12102022,12-10-2022,7:00p,IND,Indiana Pacers,/teams/IND/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,Gainbridge Fieldhouse
+WAS-LAC-12102022,12-10-2022,7:00p,WAS,Washington Wizards,/teams/WAS/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,Capital One Arena
+CLE-OKC-12102022,12-10-2022,7:30p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,Rocket Mortgage Fieldhouse
+CHI-DAL-12102022,12-10-2022,8:00p,CHI,Chicago Bulls,/teams/CHI/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,United Center
+GSW-BOS-12102022,12-10-2022,8:30p,GSW,Golden State Warriors,/teams/GSW/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,Chase Center
+DEN-UTA-12102022,12-10-2022,9:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,Ball Arena
+POR-MIN-12102022,12-10-2022,10:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,Moda Center
+NOP-PHO-12112022,12-11-2022,3:30p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,Smoothie King Center
+DET-LAL-12112022,12-11-2022,6:00p,DET,Detroit Pistons,/teams/DET/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,Little Caesars Arena
+NYK-SAC-12112022,12-11-2022,6:00p,NYK,New York Knicks,/teams/NYK/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,Madison Square Garden (IV)
+ORL-TOR-12112022,12-11-2022,6:00p,ORL,Orlando Magic,/teams/ORL/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,Amway Center
+PHI-CHO-12112022,12-11-2022,6:00p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,Wells Fargo Center
+ATL-CHI-12112022,12-11-2022,6:30p,ATL,Atlanta Hawks,/teams/ATL/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,State Farm Arena
+HOU-MIL-12112022,12-11-2022,7:00p,HOU,Houston Rockets,/teams/HOU/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,Toyota Center
+IND-MIA-12122022,12-12-2022,7:00p,IND,Indiana Pacers,/teams/IND/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,Gainbridge Fieldhouse
+WAS-BRK-12122022,12-12-2022,7:00p,WAS,Washington Wizards,/teams/WAS/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,Capital One Arena
+MEM-ATL-12122022,12-12-2022,8:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,FedEx Forum
+DAL-OKC-12122022,12-12-2022,8:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,American Airlines Center
+SAS-CLE-12122022,12-12-2022,8:30p,SAS,San Antonio Spurs,/teams/SAS/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,AT&T Center
+POR-MIN-12122022,12-12-2022,10:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,Moda Center
+LAC-BOS-12122022,12-12-2022,10:30p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,Crypto.com Arena
+PHI-SAC-12132022,12-13-2022,7:00p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,Wells Fargo Center
+MIL-GSW-12132022,12-13-2022,7:30p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,Fiserv Forum
+HOU-PHO-12132022,12-13-2022,8:00p,HOU,Houston Rockets,/teams/HOU/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,Toyota Center
+UTA-NOP-12132022,12-13-2022,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,Vivint Arena
+LAL-BOS-12132022,12-13-2022,10:00p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,Crypto.com Arena
+CHO-DET-12142022,12-14-2022,7:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,Spectrum Center
+IND-GSW-12142022,12-14-2022,7:00p,IND,Indiana Pacers,/teams/IND/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,Gainbridge Fieldhouse
+ORL-ATL-12142022,12-14-2022,7:00p,ORL,Orlando Magic,/teams/ORL/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,Amway Center
+CHI-NYK-12142022,12-14-2022,7:30p,CHI,Chicago Bulls,/teams/CHI/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,United Center
+TOR-SAC-12142022,12-14-2022,7:30p,TOR,Toronto Raptors,/teams/TOR/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,Scotiabank Arena
+OKC-MIA-12142022,12-14-2022,8:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,Paycom Center
+SAS-POR-12142022,12-14-2022,8:00p,SAS,San Antonio Spurs,/teams/SAS/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,AT&T Center
+DAL-CLE-12142022,12-14-2022,9:00p,DAL,Dallas Mavericks,/teams/DAL/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,American Airlines Center
+DEN-WAS-12142022,12-14-2022,9:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,Ball Arena
+LAC-MIN-12142022,12-14-2022,10:00p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,Crypto.com Arena
+HOU-MIA-12152022,12-15-2022,8:00p,HOU,Houston Rockets,/teams/HOU/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,Toyota Center
+MEM-MIL-12152022,12-15-2022,8:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,FedEx Forum
+UTA-NOP-12152022,12-15-2022,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,Vivint Arena
+LAC-PHO-12152022,12-15-2022,10:30p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,Crypto.com Arena
+CHO-ATL-12162022,12-16-2022,7:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,Spectrum Center
+DET-SAC-12162022,12-16-2022,7:00p,DET,Detroit Pistons,/teams/DET/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,Little Caesars Arena
+BOS-ORL-12162022,12-16-2022,7:30p,BOS,Boston Celtics,/teams/BOS/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,TD Garden
+CLE-IND-12162022,12-16-2022,7:30p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,Rocket Mortgage Fieldhouse
+PHI-GSW-12162022,12-16-2022,7:30p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,Wells Fargo Center
+TOR-BRK-12162022,12-16-2022,7:30p,TOR,Toronto Raptors,/teams/TOR/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,Scotiabank Arena
+CHI-NYK-12162022,12-16-2022,8:00p,CHI,Chicago Bulls,/teams/CHI/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,United Center
+OKC-MIN-12162022,12-16-2022,8:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,Paycom Center
+DAL-POR-12162022,12-16-2022,8:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,American Airlines Center
+LAL-DEN-12162022,12-16-2022,10:00p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,Crypto.com Arena
+LAC-WAS-12172022,12-17-2022,4:00p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,Crypto.com Arena
+SAS-MIA-12172022,12-17-2022,5:00p,SAS,San Antonio Spurs,/teams/SAS/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,Mexico City Arena
+CLE-DAL-12172022,12-17-2022,8:00p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,Rocket Mortgage Fieldhouse
+HOU-POR-12172022,12-17-2022,8:00p,HOU,Houston Rockets,/teams/HOU/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,Toyota Center
+MIL-UTA-12172022,12-17-2022,8:00p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,Fiserv Forum
+OKC-MEM-12172022,12-17-2022,8:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,Paycom Center
+PHO-NOP-12172022,12-17-2022,9:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,Footprint Center
+BOS-ORL-12182022,12-18-2022,3:00p,BOS,Boston Celtics,/teams/BOS/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,TD Garden
+IND-NYK-12182022,12-18-2022,5:00p,IND,Indiana Pacers,/teams/IND/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,Gainbridge Fieldhouse
+DET-BRK-12182022,12-18-2022,6:00p,DET,Detroit Pistons,/teams/DET/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,Little Caesars Arena
+TOR-GSW-12182022,12-18-2022,6:00p,TOR,Toronto Raptors,/teams/TOR/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,Scotiabank Arena
+MIN-CHI-12182022,12-18-2022,7:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,Target Center
+DEN-CHO-12182022,12-18-2022,8:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,Ball Arena
+LAL-WAS-12182022,12-18-2022,9:30p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,Crypto.com Arena
+CLE-UTA-12192022,12-19-2022,7:00p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,Rocket Mortgage Fieldhouse
+PHI-TOR-12192022,12-19-2022,7:00p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,Wells Fargo Center
+ATL-ORL-12192022,12-19-2022,7:30p,ATL,Atlanta Hawks,/teams/ATL/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,State Farm Arena
+HOU-SAS-12192022,12-19-2022,8:00p,HOU,Houston Rockets,/teams/HOU/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,Toyota Center
+MIN-DAL-12192022,12-19-2022,8:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,Target Center
+NOP-MIL-12192022,12-19-2022,8:00p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,Smoothie King Center
+OKC-POR-12192022,12-19-2022,8:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,Paycom Center
+PHO-LAL-12192022,12-19-2022,9:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,Footprint Center
+SAC-CHO-12192022,12-19-2022,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,Golden 1 Center
+DET-UTA-12202022,12-20-2022,7:00p,DET,Detroit Pistons,/teams/DET/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,Little Caesars Arena
+MIA-CHI-12202022,12-20-2022,7:30p,MIA,Miami Heat,/teams/MIA/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,FTX Arena
+NYK-GSW-12202022,12-20-2022,7:30p,NYK,New York Knicks,/teams/NYK/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,Madison Square Garden (IV)
+PHO-WAS-12202022,12-20-2022,9:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,Footprint Center
+DEN-MEM-12202022,12-20-2022,10:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,Ball Arena
+CLE-MIL-12212022,12-21-2022,7:00p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,Rocket Mortgage Fieldhouse
+PHI-DET-12212022,12-21-2022,7:00p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,Wells Fargo Center
+ATL-CHI-12212022,12-21-2022,7:30p,ATL,Atlanta Hawks,/teams/ATL/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,State Farm Arena
+BOS-IND-12212022,12-21-2022,7:30p,BOS,Boston Celtics,/teams/BOS/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,TD Garden
+BRK-GSW-12212022,12-21-2022,7:30p,BRK,Brooklyn Nets,/teams/BRK/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,Barclays Center
+NYK-TOR-12212022,12-21-2022,7:30p,NYK,New York Knicks,/teams/NYK/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,Madison Square Garden (IV)
+HOU-ORL-12212022,12-21-2022,8:00p,HOU,Houston Rockets,/teams/HOU/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,Toyota Center
+MIN-DAL-12212022,12-21-2022,8:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,Target Center
+OKC-POR-12212022,12-21-2022,8:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,Paycom Center
+SAC-LAL-12212022,12-21-2022,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,Golden 1 Center
+LAC-CHO-12212022,12-21-2022,10:30p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,Crypto.com Arena
+NOP-SAS-12222022,12-22-2022,8:00p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,Smoothie King Center
+UTA-WAS-12222022,12-22-2022,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,Vivint Arena
+ORL-SAS-12232022,12-23-2022,7:00p,ORL,Orlando Magic,/teams/ORL/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,Amway Center
+PHI-LAC-12232022,12-23-2022,7:00p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,Wells Fargo Center
+ATL-DET-12232022,12-23-2022,7:30p,ATL,Atlanta Hawks,/teams/ATL/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,State Farm Arena
+BOS-MIN-12232022,12-23-2022,7:30p,BOS,Boston Celtics,/teams/BOS/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,TD Garden
+BRK-MIL-12232022,12-23-2022,7:30p,BRK,Brooklyn Nets,/teams/BRK/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,Barclays Center
+CLE-TOR-12232022,12-23-2022,7:30p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,Rocket Mortgage Fieldhouse
+NYK-CHI-12232022,12-23-2022,7:30p,NYK,New York Knicks,/teams/NYK/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,Madison Square Garden (IV)
+HOU-DAL-12232022,12-23-2022,8:00p,HOU,Houston Rockets,/teams/HOU/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,Toyota Center
+MIA-IND-12232022,12-23-2022,8:00p,MIA,Miami Heat,/teams/MIA/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,FTX Arena
+OKC-NOP-12232022,12-23-2022,8:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,Paycom Center
+DEN-POR-12232022,12-23-2022,9:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,Ball Arena
+PHO-MEM-12232022,12-23-2022,10:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,Footprint Center
+SAC-WAS-12232022,12-23-2022,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,Golden 1 Center
+LAL-CHO-12232022,12-23-2022,10:30p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,Crypto.com Arena
+NYK-PHI-12252022,12-25-2022,12:00p,NYK,New York Knicks,/teams/NYK/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,Madison Square Garden (IV)
+DAL-LAL-12252022,12-25-2022,2:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,American Airlines Center
+BOS-MIL-12252022,12-25-2022,5:00p,BOS,Boston Celtics,/teams/BOS/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,TD Garden
+GSW-MEM-12252022,12-25-2022,8:00p,GSW,Golden State Warriors,/teams/GSW/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,Chase Center
+DEN-PHO-12252022,12-25-2022,10:30p,DEN,Denver Nuggets,/teams/DEN/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,Ball Arena
+CLE-BRK-12262022,12-26-2022,7:00p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,Rocket Mortgage Fieldhouse
+DET-LAC-12262022,12-26-2022,7:00p,DET,Detroit Pistons,/teams/DET/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,Little Caesars Arena
+MIA-MIN-12262022,12-26-2022,7:30p,MIA,Miami Heat,/teams/MIA/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,FTX Arena
+CHI-HOU-12262022,12-26-2022,8:00p,CHI,Chicago Bulls,/teams/CHI/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,United Center
+NOP-IND-12262022,12-26-2022,8:00p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,Smoothie King Center
+SAS-UTA-12262022,12-26-2022,8:00p,SAS,San Antonio Spurs,/teams/SAS/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,AT&T Center
+POR-CHO-12262022,12-26-2022,10:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,Moda Center
+ORL-LAL-12272022,12-27-2022,7:00p,ORL,Orlando Magic,/teams/ORL/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,Amway Center
+WAS-PHI-12272022,12-27-2022,7:00p,WAS,Washington Wizards,/teams/WAS/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,Capital One Arena
+BOS-HOU-12272022,12-27-2022,7:30p,BOS,Boston Celtics,/teams/BOS/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,TD Garden
+IND-ATL-12272022,12-27-2022,7:30p,IND,Indiana Pacers,/teams/IND/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,Gainbridge Fieldhouse
+TOR-LAC-12272022,12-27-2022,7:30p,TOR,Toronto Raptors,/teams/TOR/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,Scotiabank Arena
+MEM-PHO-12272022,12-27-2022,8:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,FedEx Forum
+OKC-SAS-12272022,12-27-2022,8:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,Paycom Center
+DAL-NYK-12272022,12-27-2022,8:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,American Airlines Center
+GSW-CHO-12272022,12-27-2022,10:00p,GSW,Golden State Warriors,/teams/GSW/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,Chase Center
+SAC-DEN-12272022,12-27-2022,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,Golden 1 Center
+DET-ORL-12282022,12-28-2022,7:00p,DET,Detroit Pistons,/teams/DET/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,Little Caesars Arena
+WAS-PHO-12282022,12-28-2022,7:00p,WAS,Washington Wizards,/teams/WAS/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,Capital One Arena
+ATL-BRK-12282022,12-28-2022,7:30p,ATL,Atlanta Hawks,/teams/ATL/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,State Farm Arena
+MIA-LAL-12282022,12-28-2022,7:30p,MIA,Miami Heat,/teams/MIA/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,FTX Arena
+CHI-MIL-12282022,12-28-2022,8:00p,CHI,Chicago Bulls,/teams/CHI/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,United Center
+NOP-MIN-12282022,12-28-2022,8:00p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,Smoothie King Center
+GSW-UTA-12282022,12-28-2022,10:00p,GSW,Golden State Warriors,/teams/GSW/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,Chase Center
+SAC-DEN-12282022,12-28-2022,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,Golden 1 Center
+CHO-OKC-12292022,12-29-2022,7:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,Spectrum Center
+IND-CLE-12292022,12-29-2022,7:00p,IND,Indiana Pacers,/teams/IND/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,Gainbridge Fieldhouse
+BOS-LAC-12292022,12-29-2022,7:30p,BOS,Boston Celtics,/teams/BOS/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,TD Garden
+TOR-MEM-12292022,12-29-2022,7:30p,TOR,Toronto Raptors,/teams/TOR/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,Scotiabank Arena
+SAS-NYK-12292022,12-29-2022,8:00p,SAS,San Antonio Spurs,/teams/SAS/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,AT&T Center
+DAL-HOU-12292022,12-29-2022,8:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,American Airlines Center
+ORL-WAS-12302022,12-30-2022,7:00p,ORL,Orlando Magic,/teams/ORL/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,Amway Center
+ATL-LAL-12302022,12-30-2022,7:30p,ATL,Atlanta Hawks,/teams/ATL/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,State Farm Arena
+TOR-PHO-12302022,12-30-2022,7:30p,TOR,Toronto Raptors,/teams/TOR/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,Scotiabank Arena
+CHI-DET-12302022,12-30-2022,8:00p,CHI,Chicago Bulls,/teams/CHI/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,United Center
+MIL-MIN-12302022,12-30-2022,8:00p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,Fiserv Forum
+NOP-PHI-12302022,12-30-2022,8:30p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,Smoothie King Center
+DEN-MIA-12302022,12-30-2022,9:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,Ball Arena
+GSW-POR-12302022,12-30-2022,10:00p,GSW,Golden State Warriors,/teams/GSW/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,Chase Center
+SAC-UTA-12302022,12-30-2022,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,Golden 1 Center
+IND-LAC-12312022,12-31-2022,3:00p,IND,Indiana Pacers,/teams/IND/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,Gainbridge Fieldhouse
+CHI-CLE-12312022,12-31-2022,7:00p,CHI,Chicago Bulls,/teams/CHI/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,United Center
+CHO-BRK-12312022,12-31-2022,7:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,Spectrum Center
+HOU-NYK-12312022,12-31-2022,7:00p,HOU,Houston Rockets,/teams/HOU/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,Toyota Center
+SAS-DAL-12312022,12-31-2022,7:00p,SAS,San Antonio Spurs,/teams/SAS/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,AT&T Center
+MEM-NOP-12312022,12-31-2022,8:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,FedEx Forum
+MIN-DET-12312022,12-31-2022,8:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,Target Center
+OKC-PHI-12312022,12-31-2022,8:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,Paycom Center
+UTA-MIA-12312022,12-31-2022,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,Vivint Arena
+DEN-BOS-=1=12023,=1-=1-2023,8:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,Ball Arena
+MEM-SAC-=1=12023,=1-=1-2023,8:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,FedEx Forum
+MIL-WAS-=1=12023,=1-=1-2023,8:00p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,Fiserv Forum
+NYK-PHO-=1=22023,=1-=2-2023,3:00p,NYK,New York Knicks,/teams/NYK/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,Madison Square Garden (IV)
+CHO-LAL-=1=22023,=1-=2-2023,7:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,Spectrum Center
+CLE-CHI-=1=22023,=1-=2-2023,7:00p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,Rocket Mortgage Fieldhouse
+IND-TOR-=1=22023,=1-=2-2023,7:00p,IND,Indiana Pacers,/teams/IND/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,Gainbridge Fieldhouse
+PHI-NOP-=1=22023,=1-=2-2023,7:00p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,Wells Fargo Center
+BRK-SAS-=1=22023,=1-=2-2023,7:30p,BRK,Brooklyn Nets,/teams/BRK/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,Barclays Center
+HOU-DAL-=1=22023,=1-=2-2023,8:00p,HOU,Houston Rockets,/teams/HOU/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,Toyota Center
+MIN-DEN-=1=22023,=1-=2-2023,8:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,Target Center
+GSW-ATL-=1=22023,=1-=2-2023,10:00p,GSW,Golden State Warriors,/teams/GSW/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,Chase Center
+POR-DET-=1=22023,=1-=2-2023,10:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,Moda Center
+LAC-MIA-=1=22023,=1-=2-2023,10:30p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,Crypto.com Arena
+MIL-WAS-=1=32023,=1-=3-2023,8:00p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,Fiserv Forum
+OKC-BOS-=1=32023,=1-=3-2023,8:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,Paycom Center
+UTA-SAC-=1=32023,=1-=3-2023,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,Vivint Arena
+CHO-MEM-=1=42023,=1-=4-2023,7:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,Spectrum Center
+CLE-PHO-=1=42023,=1-=4-2023,7:00p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,Rocket Mortgage Fieldhouse
+ORL-OKC-=1=42023,=1-=4-2023,7:00p,ORL,Orlando Magic,/teams/ORL/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,Amway Center
+PHI-IND-=1=42023,=1-=4-2023,7:00p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,Wells Fargo Center
+NYK-SAS-=1=42023,=1-=4-2023,7:30p,NYK,New York Knicks,/teams/NYK/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,Madison Square Garden (IV)
+TOR-MIL-=1=42023,=1-=4-2023,7:30p,TOR,Toronto Raptors,/teams/TOR/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,Scotiabank Arena
+CHI-BRK-=1=42023,=1-=4-2023,8:00p,CHI,Chicago Bulls,/teams/CHI/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,United Center
+MIN-POR-=1=42023,=1-=4-2023,8:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,Target Center
+NOP-HOU-=1=42023,=1-=4-2023,8:00p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,Smoothie King Center
+GSW-DET-=1=42023,=1-=4-2023,10:00p,GSW,Golden State Warriors,/teams/GSW/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,Chase Center
+LAL-MIA-=1=42023,=1-=4-2023,10:00p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,Crypto.com Arena
+SAC-ATL-=1=42023,=1-=4-2023,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,Golden 1 Center
+ORL-MEM-=1=52023,=1-=5-2023,7:00p,ORL,Orlando Magic,/teams/ORL/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,Amway Center
+DAL-BOS-=1=52023,=1-=5-2023,7:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,American Airlines Center
+HOU-UTA-=1=52023,=1-=5-2023,8:00p,HOU,Houston Rockets,/teams/HOU/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,Toyota Center
+DEN-LAC-=1=52023,=1-=5-2023,10:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,Ball Arena
+IND-POR-=1=62023,=1-=6-2023,7:00p,IND,Indiana Pacers,/teams/IND/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,Gainbridge Fieldhouse
+PHI-CHI-=1=62023,=1-=6-2023,7:30p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,Wells Fargo Center
+TOR-NYK-=1=62023,=1-=6-2023,7:30p,TOR,Toronto Raptors,/teams/TOR/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,Scotiabank Arena
+MIL-CHO-=1=62023,=1-=6-2023,8:00p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,Fiserv Forum
+OKC-WAS-=1=62023,=1-=6-2023,8:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,Paycom Center
+SAS-DET-=1=62023,=1-=6-2023,8:00p,SAS,San Antonio Spurs,/teams/SAS/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,AT&T Center
+NOP-BRK-=1=62023,=1-=6-2023,8:30p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,Smoothie King Center
+DEN-CLE-=1=62023,=1-=6-2023,9:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,Ball Arena
+MIN-LAC-=1=62023,=1-=6-2023,9:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,Target Center
+PHO-MIA-=1=62023,=1-=6-2023,10:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,Footprint Center
+LAL-ATL-=1=62023,=1-=6-2023,10:30p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,Crypto.com Arena
+SAS-BOS-=1=72023,=1-=7-2023,6:00p,SAS,San Antonio Spurs,/teams/SAS/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,AT&T Center
+CHI-UTA-=1=72023,=1-=7-2023,8:00p,CHI,Chicago Bulls,/teams/CHI/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,United Center
+DAL-NOP-=1=72023,=1-=7-2023,8:00p,DAL,Dallas Mavericks,/teams/DAL/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,American Airlines Center
+GSW-ORL-=1=72023,=1-=7-2023,8:30p,GSW,Golden State Warriors,/teams/GSW/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,Chase Center
+SAC-LAL-=1=72023,=1-=7-2023,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,Golden 1 Center
+DET-PHI-=1=82023,=1-=8-2023,3:00p,DET,Detroit Pistons,/teams/DET/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,Little Caesars Arena
+TOR-POR-=1=82023,=1-=8-2023,3:30p,TOR,Toronto Raptors,/teams/TOR/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,Scotiabank Arena
+IND-CHO-=1=82023,=1-=8-2023,5:00p,IND,Indiana Pacers,/teams/IND/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,Gainbridge Fieldhouse
+MEM-UTA-=1=82023,=1-=8-2023,6:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,FedEx Forum
+MIA-BRK-=1=82023,=1-=8-2023,6:00p,MIA,Miami Heat,/teams/MIA/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,FTX Arena
+HOU-MIN-=1=82023,=1-=8-2023,7:00p,HOU,Houston Rockets,/teams/HOU/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,Toyota Center
+OKC-DAL-=1=82023,=1-=8-2023,7:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,Paycom Center
+PHO-CLE-=1=82023,=1-=8-2023,8:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,Footprint Center
+LAC-ATL-=1=82023,=1-=8-2023,9:00p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,Crypto.com Arena
+WAS-NOP-=1=92023,=1-=9-2023,7:00p,WAS,Washington Wizards,/teams/WAS/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,Capital One Arena
+BOS-CHI-=1=92023,=1-=9-2023,7:30p,BOS,Boston Celtics,/teams/BOS/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,TD Garden
+NYK-MIL-=1=92023,=1-=9-2023,7:30p,NYK,New York Knicks,/teams/NYK/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,Madison Square Garden (IV)
+MEM-SAS-=1=92023,=1-=9-2023,8:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,FedEx Forum
+DEN-LAL-=1=92023,=1-=9-2023,9:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,Ball Arena
+SAC-ORL-=1=92023,=1-=9-2023,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,Golden 1 Center
+MIA-OKC-=1102023,=1-10-2023,7:30p,MIA,Miami Heat,/teams/MIA/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,FTX Arena
+PHI-DET-=1102023,=1-10-2023,7:30p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,Wells Fargo Center
+TOR-CHO-=1102023,=1-10-2023,7:30p,TOR,Toronto Raptors,/teams/TOR/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,Scotiabank Arena
+UTA-CLE-=1102023,=1-10-2023,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,Vivint Arena
+GSW-PHO-=1102023,=1-10-2023,10:00p,GSW,Golden State Warriors,/teams/GSW/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,Chase Center
+POR-ORL-=1102023,=1-10-2023,10:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,Moda Center
+LAC-DAL-=1102023,=1-10-2023,10:30p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,Crypto.com Arena
+DET-MIN-=1112023,=1-11-2023,7:00p,DET,Detroit Pistons,/teams/DET/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,Little Caesars Arena
+WAS-CHI-=1112023,=1-11-2023,7:00p,WAS,Washington Wizards,/teams/WAS/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,Capital One Arena
+ATL-MIL-=1112023,=1-11-2023,7:30p,ATL,Atlanta Hawks,/teams/ATL/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,State Farm Arena
+BOS-NOP-=1112023,=1-11-2023,7:30p,BOS,Boston Celtics,/teams/BOS/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,TD Garden
+NYK-IND-=1112023,=1-11-2023,7:30p,NYK,New York Knicks,/teams/NYK/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,Madison Square Garden (IV)
+MEM-SAS-=1112023,=1-11-2023,8:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,FedEx Forum
+DEN-PHO-=1112023,=1-11-2023,9:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,Ball Arena
+SAC-HOU-=1112023,=1-11-2023,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,Golden 1 Center
+PHI-OKC-=1122023,=1-12-2023,7:00p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,Wells Fargo Center
+BRK-BOS-=1122023,=1-12-2023,7:30p,BRK,Brooklyn Nets,/teams/BRK/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,Barclays Center
+MIA-MIL-=1122023,=1-12-2023,7:30p,MIA,Miami Heat,/teams/MIA/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,FTX Arena
+TOR-CHO-=1122023,=1-12-2023,7:30p,TOR,Toronto Raptors,/teams/TOR/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,Scotiabank Arena
+LAL-DAL-=1122023,=1-12-2023,10:00p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,Crypto.com Arena
+POR-CLE-=1122023,=1-12-2023,10:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,Moda Center
+DET-NOP-=1132023,=1-13-2023,7:00p,DET,Detroit Pistons,/teams/DET/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,Little Caesars Arena
+IND-ATL-=1132023,=1-13-2023,7:00p,IND,Indiana Pacers,/teams/IND/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,Gainbridge Fieldhouse
+WAS-NYK-=1132023,=1-13-2023,7:00p,WAS,Washington Wizards,/teams/WAS/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,Capital One Arena
+SAS-GSW-=1132023,=1-13-2023,7:30p,SAS,San Antonio Spurs,/teams/SAS/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,AT&T Center
+CHI-OKC-=1132023,=1-13-2023,8:00p,CHI,Chicago Bulls,/teams/CHI/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,United Center
+MIN-PHO-=1132023,=1-13-2023,8:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,Target Center
+UTA-ORL-=1132023,=1-13-2023,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,Vivint Arena
+LAC-DEN-=1132023,=1-13-2023,10:00p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,Crypto.com Arena
+SAC-HOU-=1132023,=1-13-2023,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,Golden 1 Center
+MIA-MIL-=1142023,=1-14-2023,1:00p,MIA,Miami Heat,/teams/MIA/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,FTX Arena
+CHO-BOS-=1142023,=1-14-2023,7:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,Spectrum Center
+IND-MEM-=1142023,=1-14-2023,7:00p,IND,Indiana Pacers,/teams/IND/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,Gainbridge Fieldhouse
+TOR-ATL-=1142023,=1-14-2023,7:30p,TOR,Toronto Raptors,/teams/TOR/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,Scotiabank Arena
+MIN-CLE-=1142023,=1-14-2023,8:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,Target Center
+UTA-PHI-=1142023,=1-14-2023,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,Vivint Arena
+POR-DAL-=1142023,=1-14-2023,10:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,Moda Center
+DET-NYK-=1152023,=1-15-2023,1:00p,DET,Detroit Pistons,/teams/DET/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,Little Caesars Arena
+LAC-HOU-=1152023,=1-15-2023,3:00p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,Crypto.com Arena
+CHI-GSW-=1152023,=1-15-2023,3:30p,CHI,Chicago Bulls,/teams/CHI/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,United Center
+BRK-OKC-=1152023,=1-15-2023,6:00p,BRK,Brooklyn Nets,/teams/BRK/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,Barclays Center
+SAS-SAC-=1152023,=1-15-2023,7:00p,SAS,San Antonio Spurs,/teams/SAS/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,AT&T Center
+DEN-ORL-=1152023,=1-15-2023,8:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,Ball Arena
+POR-DAL-=1152023,=1-15-2023,9:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,Moda Center
+LAL-PHI-=1152023,=1-15-2023,9:30p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,Crypto.com Arena
+CHO-BOS-=1162023,=1-16-2023,1:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,Spectrum Center
+MIL-IND-=1162023,=1-16-2023,2:30p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,Fiserv Forum
+CLE-NOP-=1162023,=1-16-2023,3:00p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,Rocket Mortgage Fieldhouse
+NYK-TOR-=1162023,=1-16-2023,3:00p,NYK,New York Knicks,/teams/NYK/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,Madison Square Garden (IV)
+WAS-GSW-=1162023,=1-16-2023,3:00p,WAS,Washington Wizards,/teams/WAS/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,Capital One Arena
+ATL-MIA-=1162023,=1-16-2023,3:30p,ATL,Atlanta Hawks,/teams/ATL/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,State Farm Arena
+MIN-UTA-=1162023,=1-16-2023,4:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,Target Center
+MEM-PHO-=1162023,=1-16-2023,6:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,FedEx Forum
+LAL-HOU-=1162023,=1-16-2023,10:30p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,Crypto.com Arena
+MIL-TOR-=1172023,=1-17-2023,7:30p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,Fiserv Forum
+SAS-BRK-=1172023,=1-17-2023,8:00p,SAS,San Antonio Spurs,/teams/SAS/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,AT&T Center
+DEN-POR-=1172023,=1-17-2023,9:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,Ball Arena
+LAC-PHI-=1172023,=1-17-2023,10:00p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,Crypto.com Arena
+DAL-ATL-=1182023,=1-18-2023,7:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,American Airlines Center
+NYK-WAS-=1182023,=1-18-2023,7:30p,NYK,New York Knicks,/teams/NYK/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,Madison Square Garden (IV)
+HOU-CHO-=1182023,=1-18-2023,8:00p,HOU,Houston Rockets,/teams/HOU/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,Toyota Center
+MEM-CLE-=1182023,=1-18-2023,8:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,FedEx Forum
+NOP-MIA-=1182023,=1-18-2023,8:00p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,Smoothie King Center
+OKC-IND-=1182023,=1-18-2023,8:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,Paycom Center
+UTA-LAC-=1182023,=1-18-2023,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,Vivint Arena
+DEN-MIN-=1182023,=1-18-2023,10:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,Ball Arena
+LAL-SAC-=1182023,=1-18-2023,10:30p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,Crypto.com Arena
+DET-CHI-=1192023,=1-19-2023,3:00p,DET,Detroit Pistons,/teams/DET/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,AccorHotels Arena
+BOS-GSW-=1192023,=1-19-2023,7:30p,BOS,Boston Celtics,/teams/BOS/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,TD Garden
+MIN-TOR-=1192023,=1-19-2023,8:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,Target Center
+PHO-BRK-=1192023,=1-19-2023,10:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,Footprint Center
+POR-PHI-=1192023,=1-19-2023,10:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,Moda Center
+ORL-NOP-=1202023,=1-20-2023,7:00p,ORL,Orlando Magic,/teams/ORL/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,Amway Center
+ATL-NYK-=1202023,=1-20-2023,7:30p,ATL,Atlanta Hawks,/teams/ATL/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,State Farm Arena
+CLE-GSW-=1202023,=1-20-2023,7:30p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,Rocket Mortgage Fieldhouse
+DAL-MIA-=1202023,=1-20-2023,7:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,American Airlines Center
+SAS-LAC-=1202023,=1-20-2023,8:00p,SAS,San Antonio Spurs,/teams/SAS/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,AT&T Center
+DEN-IND-=1202023,=1-20-2023,9:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,Ball Arena
+UTA-BRK-=1202023,=1-20-2023,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,Vivint Arena
+LAL-MEM-=1202023,=1-20-2023,10:00p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,Crypto.com Arena
+SAC-OKC-=1202023,=1-20-2023,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,Golden 1 Center
+TOR-BOS-=1212023,=1-21-2023,5:00p,TOR,Toronto Raptors,/teams/TOR/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,Scotiabank Arena
+WAS-ORL-=1212023,=1-21-2023,7:00p,WAS,Washington Wizards,/teams/WAS/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,Capital One Arena
+ATL-CHO-=1212023,=1-21-2023,7:30p,ATL,Atlanta Hawks,/teams/ATL/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,State Farm Arena
+CLE-MIL-=1212023,=1-21-2023,7:30p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,Rocket Mortgage Fieldhouse
+MIN-HOU-=1212023,=1-21-2023,8:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,Target Center
+PHO-IND-=1212023,=1-21-2023,9:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,Footprint Center
+SAC-PHI-=1212023,=1-21-2023,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,Golden 1 Center
+MIA-NOP-=1222023,=1-22-2023,3:30p,MIA,Miami Heat,/teams/MIA/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,FTX Arena
+TOR-NYK-=1222023,=1-22-2023,6:00p,TOR,Toronto Raptors,/teams/TOR/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,Scotiabank Arena
+DAL-LAC-=1222023,=1-22-2023,7:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,American Airlines Center
+DEN-OKC-=1222023,=1-22-2023,8:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,Ball Arena
+PHO-MEM-=1222023,=1-22-2023,8:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,Footprint Center
+GSW-BRK-=1222023,=1-22-2023,8:30p,GSW,Golden State Warriors,/teams/GSW/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,Chase Center
+POR-LAL-=1222023,=1-22-2023,9:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,Moda Center
+DET-MIL-=1232023,=1-23-2023,7:00p,DET,Detroit Pistons,/teams/DET/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,Little Caesars Arena
+ORL-BOS-=1232023,=1-23-2023,7:00p,ORL,Orlando Magic,/teams/ORL/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,Amway Center
+CHI-ATL-=1232023,=1-23-2023,8:00p,CHI,Chicago Bulls,/teams/CHI/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,United Center
+HOU-MIN-=1232023,=1-23-2023,8:00p,HOU,Houston Rockets,/teams/HOU/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,Toyota Center
+UTA-CHO-=1232023,=1-23-2023,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,Vivint Arena
+POR-SAS-=1232023,=1-23-2023,10:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,Moda Center
+SAC-MEM-=1232023,=1-23-2023,10:30p,SAC,Sacramento Kings,/teams/SAC/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,Golden 1 Center
+IND-CHI-=1242023,=1-24-2023,7:00p,IND,Indiana Pacers,/teams/IND/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,Gainbridge Fieldhouse
+MIA-BOS-=1242023,=1-24-2023,7:30p,MIA,Miami Heat,/teams/MIA/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,FTX Arena
+NYK-CLE-=1242023,=1-24-2023,7:30p,NYK,New York Knicks,/teams/NYK/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,Madison Square Garden (IV)
+NOP-DEN-=1242023,=1-24-2023,8:00p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,Smoothie King Center
+DAL-WAS-=1242023,=1-24-2023,8:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,American Airlines Center
+PHO-CHO-=1242023,=1-24-2023,9:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,Footprint Center
+LAL-LAC-=1242023,=1-24-2023,10:00p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,Crypto.com Arena
+ORL-IND-=1252023,=1-25-2023,7:00p,ORL,Orlando Magic,/teams/ORL/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,Amway Center
+PHI-BRK-=1252023,=1-25-2023,7:30p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,Wells Fargo Center
+HOU-WAS-=1252023,=1-25-2023,8:00p,HOU,Houston Rockets,/teams/HOU/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,Toyota Center
+MIL-DEN-=1252023,=1-25-2023,8:00p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,Fiserv Forum
+NOP-MIN-=1252023,=1-25-2023,8:00p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,Smoothie King Center
+OKC-ATL-=1252023,=1-25-2023,8:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,Paycom Center
+GSW-MEM-=1252023,=1-25-2023,10:00p,GSW,Golden State Warriors,/teams/GSW/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,Chase Center
+POR-UTA-=1252023,=1-25-2023,10:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,Moda Center
+SAC-TOR-=1252023,=1-25-2023,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,Golden 1 Center
+LAL-SAS-=1252023,=1-25-2023,10:30p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,Crypto.com Arena
+BOS-NYK-=1262023,=1-26-2023,7:30p,BOS,Boston Celtics,/teams/BOS/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,TD Garden
+BRK-DET-=1262023,=1-26-2023,7:30p,BRK,Brooklyn Nets,/teams/BRK/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,Barclays Center
+CHO-CHI-=1262023,=1-26-2023,7:30p,CHO,Charlotte Hornets,/teams/CHO/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,Spectrum Center
+HOU-CLE-=1262023,=1-26-2023,8:00p,HOU,Houston Rockets,/teams/HOU/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,Toyota Center
+PHO-DAL-=1262023,=1-26-2023,10:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,Footprint Center
+LAC-SAS-=1262023,=1-26-2023,10:30p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,Crypto.com Arena
+IND-MIL-=1272023,=1-27-2023,7:00p,IND,Indiana Pacers,/teams/IND/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,Gainbridge Fieldhouse
+MIN-MEM-=1272023,=1-27-2023,7:30p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,Target Center
+MIA-ORL-=1272023,=1-27-2023,8:00p,MIA,Miami Heat,/teams/MIA/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,FTX Arena
+OKC-CLE-=1272023,=1-27-2023,8:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,Paycom Center
+GSW-TOR-=1272023,=1-27-2023,10:00p,GSW,Golden State Warriors,/teams/GSW/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,Chase Center
+PHI-DEN-=1282023,=1-28-2023,3:00p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,Wells Fargo Center
+BRK-NYK-=1282023,=1-28-2023,5:30p,BRK,Brooklyn Nets,/teams/BRK/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,Barclays Center
+DET-HOU-=1282023,=1-28-2023,7:00p,DET,Detroit Pistons,/teams/DET/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,Little Caesars Arena
+ORL-CHI-=1282023,=1-28-2023,7:00p,ORL,Orlando Magic,/teams/ORL/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,Amway Center
+ATL-LAC-=1282023,=1-28-2023,7:30p,ATL,Atlanta Hawks,/teams/ATL/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,State Farm Arena
+MIN-SAC-=1282023,=1-28-2023,8:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,Target Center
+NOP-WAS-=1282023,=1-28-2023,8:00p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,Smoothie King Center
+SAS-PHO-=1282023,=1-28-2023,8:00p,SAS,San Antonio Spurs,/teams/SAS/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,AT&T Center
+BOS-LAL-=1282023,=1-28-2023,8:30p,BOS,Boston Celtics,/teams/BOS/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,TD Garden
+UTA-DAL-=1282023,=1-28-2023,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,Vivint Arena
+POR-TOR-=1282023,=1-28-2023,10:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,Moda Center
+CHO-MIA-=1292023,=1-29-2023,1:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,Spectrum Center
+MEM-IND-=1292023,=1-29-2023,6:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,FedEx Forum
+CLE-LAC-=1292023,=1-29-2023,7:00p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,Rocket Mortgage Fieldhouse
+MIL-NOP-=1292023,=1-29-2023,8:00p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,Fiserv Forum
+PHI-ORL-=1302023,=1-30-2023,7:00p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,Wells Fargo Center
+BRK-LAL-=1302023,=1-30-2023,7:30p,BRK,Brooklyn Nets,/teams/BRK/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,Barclays Center
+MIN-SAC-=1302023,=1-30-2023,8:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,Target Center
+OKC-GSW-=1302023,=1-30-2023,8:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,Paycom Center
+SAS-WAS-=1302023,=1-30-2023,8:00p,SAS,San Antonio Spurs,/teams/SAS/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,AT&T Center
+DAL-DET-=1302023,=1-30-2023,8:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,American Airlines Center
+PHO-TOR-=1302023,=1-30-2023,9:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,Footprint Center
+POR-ATL-=1302023,=1-30-2023,10:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,Moda Center
+CLE-MIA-=1312023,=1-31-2023,7:00p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,Rocket Mortgage Fieldhouse
+NYK-LAL-=1312023,=1-31-2023,7:30p,NYK,New York Knicks,/teams/NYK/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,Madison Square Garden (IV)
+CHI-LAC-=1312023,=1-31-2023,8:00p,CHI,Chicago Bulls,/teams/CHI/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,United Center
+MIL-CHO-=1312023,=1-31-2023,8:00p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,Fiserv Forum
+DEN-NOP-=1312023,=1-31-2023,10:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,Ball Arena
+DET-WAS-=2=12023,=2-=1-2023,7:00p,DET,Detroit Pistons,/teams/DET/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,Little Caesars Arena
+MEM-POR-=2=12023,=2-=1-2023,7:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,FedEx Forum
+PHI-ORL-=2=12023,=2-=1-2023,7:00p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,Wells Fargo Center
+BOS-BRK-=2=12023,=2-=1-2023,7:30p,BOS,Boston Celtics,/teams/BOS/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,TD Garden
+HOU-OKC-=2=12023,=2-=1-2023,8:00p,HOU,Houston Rockets,/teams/HOU/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,Toyota Center
+MIN-GSW-=2=12023,=2-=1-2023,8:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,Target Center
+SAS-SAC-=2=12023,=2-=1-2023,8:00p,SAS,San Antonio Spurs,/teams/SAS/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,AT&T Center
+UTA-TOR-=2=12023,=2-=1-2023,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,Vivint Arena
+PHO-ATL-=2=12023,=2-=1-2023,10:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,Footprint Center
+IND-LAL-=2=22023,=2-=2-2023,7:00p,IND,Indiana Pacers,/teams/IND/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,Gainbridge Fieldhouse
+CLE-MEM-=2=22023,=2-=2-2023,7:30p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,Rocket Mortgage Fieldhouse
+NYK-MIA-=2=22023,=2-=2-2023,7:30p,NYK,New York Knicks,/teams/NYK/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,Madison Square Garden (IV)
+CHI-CHO-=2=22023,=2-=2-2023,8:00p,CHI,Chicago Bulls,/teams/CHI/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,United Center
+DAL-NOP-=2=22023,=2-=2-2023,8:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,American Airlines Center
+DEN-GSW-=2=22023,=2-=2-2023,9:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,Ball Arena
+MIL-LAC-=2=22023,=2-=2-2023,10:00p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,Fiserv Forum
+DET-CHO-=2=32023,=2-=3-2023,7:00p,DET,Detroit Pistons,/teams/DET/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,Little Caesars Arena
+IND-SAC-=2=32023,=2-=3-2023,7:00p,IND,Indiana Pacers,/teams/IND/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,Gainbridge Fieldhouse
+WAS-POR-=2=32023,=2-=3-2023,7:00p,WAS,Washington Wizards,/teams/WAS/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,Capital One Arena
+BOS-PHO-=2=32023,=2-=3-2023,7:30p,BOS,Boston Celtics,/teams/BOS/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,TD Garden
+HOU-TOR-=2=32023,=2-=3-2023,8:00p,HOU,Houston Rockets,/teams/HOU/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,Toyota Center
+MIN-ORL-=2=32023,=2-=3-2023,8:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,Target Center
+SAS-PHI-=2=32023,=2-=3-2023,8:00p,SAS,San Antonio Spurs,/teams/SAS/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,AT&T Center
+UTA-ATL-=2=32023,=2-=3-2023,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,Vivint Arena
+BRK-WAS-=2=42023,=2-=4-2023,6:00p,BRK,Brooklyn Nets,/teams/BRK/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,Barclays Center
+DET-PHO-=2=42023,=2-=4-2023,7:00p,DET,Detroit Pistons,/teams/DET/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,Little Caesars Arena
+NYK-LAC-=2=42023,=2-=4-2023,7:00p,NYK,New York Knicks,/teams/NYK/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,Madison Square Garden (IV)
+CHI-POR-=2=42023,=2-=4-2023,8:00p,CHI,Chicago Bulls,/teams/CHI/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,United Center
+MIL-MIA-=2=42023,=2-=4-2023,8:00p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,Fiserv Forum
+NOP-LAL-=2=42023,=2-=4-2023,8:00p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,Smoothie King Center
+OKC-HOU-=2=42023,=2-=4-2023,8:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,Paycom Center
+GSW-DAL-=2=42023,=2-=4-2023,8:30p,GSW,Golden State Warriors,/teams/GSW/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,Chase Center
+DEN-ATL-=2=42023,=2-=4-2023,9:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,Ball Arena
+CHO-ORL-=2=52023,=2-=5-2023,1:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,Spectrum Center
+IND-CLE-=2=52023,=2-=5-2023,5:00p,IND,Indiana Pacers,/teams/IND/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,Gainbridge Fieldhouse
+MEM-TOR-=2=52023,=2-=5-2023,6:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,FedEx Forum
+NYK-PHI-=2=52023,=2-=5-2023,6:00p,NYK,New York Knicks,/teams/NYK/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,Madison Square Garden (IV)
+MIN-DEN-=2=52023,=2-=5-2023,7:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,Target Center
+NOP-SAC-=2=52023,=2-=5-2023,7:00p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,Smoothie King Center
+DET-BOS-=2=62023,=2-=6-2023,7:00p,DET,Detroit Pistons,/teams/DET/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,Little Caesars Arena
+WAS-CLE-=2=62023,=2-=6-2023,7:00p,WAS,Washington Wizards,/teams/WAS/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,Capital One Arena
+BRK-LAC-=2=62023,=2-=6-2023,7:30p,BRK,Brooklyn Nets,/teams/BRK/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,Barclays Center
+CHI-SAS-=2=62023,=2-=6-2023,8:00p,CHI,Chicago Bulls,/teams/CHI/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,United Center
+HOU-SAC-=2=62023,=2-=6-2023,8:00p,HOU,Houston Rockets,/teams/HOU/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,Toyota Center
+UTA-DAL-=2=62023,=2-=6-2023,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,Vivint Arena
+GSW-OKC-=2=62023,=2-=6-2023,10:00p,GSW,Golden State Warriors,/teams/GSW/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,Chase Center
+POR-MIL-=2=62023,=2-=6-2023,10:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,Moda Center
+ORL-NYK-=2=72023,=2-=7-2023,7:00p,ORL,Orlando Magic,/teams/ORL/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,Amway Center
+BRK-PHO-=2=72023,=2-=7-2023,7:30p,BRK,Brooklyn Nets,/teams/BRK/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,Barclays Center
+NOP-ATL-=2=72023,=2-=7-2023,7:30p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,Smoothie King Center
+MEM-CHI-=2=72023,=2-=7-2023,8:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,FedEx Forum
+DEN-MIN-=2=72023,=2-=7-2023,10:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,Ball Arena
+LAL-OKC-=2=72023,=2-=7-2023,10:30p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,Crypto.com Arena
+CLE-DET-=2=82023,=2-=8-2023,7:00p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,Rocket Mortgage Fieldhouse
+WAS-CHO-=2=82023,=2-=8-2023,7:00p,WAS,Washington Wizards,/teams/WAS/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,Capital One Arena
+BOS-PHI-=2=82023,=2-=8-2023,7:30p,BOS,Boston Celtics,/teams/BOS/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,TD Garden
+MIA-IND-=2=82023,=2-=8-2023,7:30p,MIA,Miami Heat,/teams/MIA/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,FTX Arena
+TOR-SAS-=2=82023,=2-=8-2023,7:30p,TOR,Toronto Raptors,/teams/TOR/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,Scotiabank Arena
+HOU-SAC-=2=82023,=2-=8-2023,8:00p,HOU,Houston Rockets,/teams/HOU/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,Toyota Center
+UTA-MIN-=2=82023,=2-=8-2023,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,Vivint Arena
+LAC-DAL-=2=82023,=2-=8-2023,10:00p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,Crypto.com Arena
+POR-GSW-=2=82023,=2-=8-2023,10:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,Moda Center
+ORL-DEN-=2=92023,=2-=9-2023,7:00p,ORL,Orlando Magic,/teams/ORL/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,Amway Center
+ATL-PHO-=2=92023,=2-=9-2023,7:30p,ATL,Atlanta Hawks,/teams/ATL/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,State Farm Arena
+BRK-CHI-=2=92023,=2-=9-2023,7:30p,BRK,Brooklyn Nets,/teams/BRK/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,Barclays Center
+LAL-MIL-=2=92023,=2-=9-2023,10:00p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,Crypto.com Arena
+DET-SAS-=2102023,=2-10-2023,7:00p,DET,Detroit Pistons,/teams/DET/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,Little Caesars Arena
+IND-PHO-=2102023,=2-10-2023,7:00p,IND,Indiana Pacers,/teams/IND/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,Gainbridge Fieldhouse
+PHI-NYK-=2102023,=2-10-2023,7:00p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,Wells Fargo Center
+BOS-CHO-=2102023,=2-10-2023,7:30p,BOS,Boston Celtics,/teams/BOS/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,TD Garden
+TOR-UTA-=2102023,=2-10-2023,7:30p,TOR,Toronto Raptors,/teams/TOR/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,Scotiabank Arena
+MEM-MIN-=2102023,=2-10-2023,8:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,FedEx Forum
+MIA-HOU-=2102023,=2-10-2023,8:00p,MIA,Miami Heat,/teams/MIA/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,FTX Arena
+NOP-CLE-=2102023,=2-10-2023,10:00p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,Smoothie King Center
+POR-OKC-=2102023,=2-10-2023,10:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,Moda Center
+SAC-DAL-=2102023,=2-10-2023,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,Golden 1 Center
+LAC-MIL-=2102023,=2-10-2023,10:30p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,Crypto.com Arena
+BRK-PHI-=2112023,=2-11-2023,6:00p,BRK,Brooklyn Nets,/teams/BRK/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,Barclays Center
+CHO-DEN-=2112023,=2-11-2023,7:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,Spectrum Center
+ORL-MIA-=2112023,=2-11-2023,7:00p,ORL,Orlando Magic,/teams/ORL/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,Amway Center
+WAS-IND-=2112023,=2-11-2023,7:00p,WAS,Washington Wizards,/teams/WAS/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,Capital One Arena
+ATL-SAS-=2112023,=2-11-2023,7:30p,ATL,Atlanta Hawks,/teams/ATL/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,State Farm Arena
+NYK-UTA-=2112023,=2-11-2023,7:30p,NYK,New York Knicks,/teams/NYK/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,Madison Square Garden (IV)
+CLE-CHI-=2112023,=2-11-2023,8:00p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,Rocket Mortgage Fieldhouse
+GSW-LAL-=2112023,=2-11-2023,8:30p,GSW,Golden State Warriors,/teams/GSW/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,Chase Center
+SAC-DAL-=2112023,=2-11-2023,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,Golden 1 Center
+BOS-MEM-=2122023,=2-12-2023,2:00p,BOS,Boston Celtics,/teams/BOS/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,TD Garden
+TOR-DET-=2122023,=2-12-2023,3:00p,TOR,Toronto Raptors,/teams/TOR/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,Scotiabank Arena
+CHO-ATL-=2132023,=2-13-2023,7:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,Spectrum Center
+CLE-SAS-=2132023,=2-13-2023,7:00p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,Rocket Mortgage Fieldhouse
+IND-UTA-=2132023,=2-13-2023,7:00p,IND,Indiana Pacers,/teams/IND/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,Gainbridge Fieldhouse
+PHI-HOU-=2132023,=2-13-2023,7:00p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,Wells Fargo Center
+MIA-DEN-=2132023,=2-13-2023,7:30p,MIA,Miami Heat,/teams/MIA/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,FTX Arena
+NYK-BRK-=2132023,=2-13-2023,7:30p,NYK,New York Knicks,/teams/NYK/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,Madison Square Garden (IV)
+CHI-ORL-=2132023,=2-13-2023,8:00p,CHI,Chicago Bulls,/teams/CHI/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,United Center
+OKC-NOP-=2132023,=2-13-2023,8:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,Paycom Center
+DAL-MIN-=2132023,=2-13-2023,8:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,American Airlines Center
+GSW-WAS-=2132023,=2-13-2023,10:00p,GSW,Golden State Warriors,/teams/GSW/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,Chase Center
+POR-LAL-=2132023,=2-13-2023,10:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,Moda Center
+MIL-BOS-=2142023,=2-14-2023,7:30p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,Fiserv Forum
+TOR-ORL-=2142023,=2-14-2023,7:30p,TOR,Toronto Raptors,/teams/TOR/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,Scotiabank Arena
+PHO-SAC-=2142023,=2-14-2023,9:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,Footprint Center
+LAC-GSW-=2142023,=2-14-2023,10:00p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,Crypto.com Arena
+POR-WAS-=2142023,=2-14-2023,10:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,Moda Center
+CHO-SAS-=2152023,=2-15-2023,7:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,Spectrum Center
+IND-CHI-=2152023,=2-15-2023,7:00p,IND,Indiana Pacers,/teams/IND/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,Gainbridge Fieldhouse
+PHI-CLE-=2152023,=2-15-2023,7:00p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,Wells Fargo Center
+ATL-NYK-=2152023,=2-15-2023,7:30p,ATL,Atlanta Hawks,/teams/ATL/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,State Farm Arena
+BOS-DET-=2152023,=2-15-2023,7:30p,BOS,Boston Celtics,/teams/BOS/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,TD Garden
+BRK-MIA-=2152023,=2-15-2023,7:30p,BRK,Brooklyn Nets,/teams/BRK/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,Barclays Center
+MEM-UTA-=2152023,=2-15-2023,8:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,FedEx Forum
+OKC-HOU-=2152023,=2-15-2023,8:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,Paycom Center
+DEN-DAL-=2152023,=2-15-2023,9:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,Ball Arena
+LAL-NOP-=2152023,=2-15-2023,10:00p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,Crypto.com Arena
+CHI-MIL-=2162023,=2-16-2023,7:30p,CHI,Chicago Bulls,/teams/CHI/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,United Center
+MIN-WAS-=2162023,=2-16-2023,8:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,Target Center
+PHO-LAC-=2162023,=2-16-2023,10:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,Footprint Center
+CLE-DEN-=2232023,=2-23-2023,7:00p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,Rocket Mortgage Fieldhouse
+IND-BOS-=2232023,=2-23-2023,7:00p,IND,Indiana Pacers,/teams/IND/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,Gainbridge Fieldhouse
+ORL-DET-=2232023,=2-23-2023,7:00p,ORL,Orlando Magic,/teams/ORL/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,Amway Center
+PHI-MEM-=2232023,=2-23-2023,7:30p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,Wells Fargo Center
+TOR-NOP-=2232023,=2-23-2023,7:30p,TOR,Toronto Raptors,/teams/TOR/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,Scotiabank Arena
+DAL-SAS-=2232023,=2-23-2023,8:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,American Airlines Center
+UTA-OKC-=2232023,=2-23-2023,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,Vivint Arena
+LAL-GSW-=2232023,=2-23-2023,10:00p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,Crypto.com Arena
+SAC-POR-=2232023,=2-23-2023,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,Golden 1 Center
+WAS-NYK-=2242023,=2-24-2023,7:00p,WAS,Washington Wizards,/teams/WAS/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,Capital One Arena
+ATL-CLE-=2242023,=2-24-2023,7:30p,ATL,Atlanta Hawks,/teams/ATL/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,State Farm Arena
+MIL-MIA-=2242023,=2-24-2023,7:30p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,Fiserv Forum
+MIN-CHO-=2242023,=2-24-2023,8:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,Target Center
+PHO-OKC-=2242023,=2-24-2023,9:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,Footprint Center
+CHI-BRK-=2242023,=2-24-2023,10:00p,CHI,Chicago Bulls,/teams/CHI/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,United Center
+GSW-HOU-=2242023,=2-24-2023,10:00p,GSW,Golden State Warriors,/teams/GSW/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,Chase Center
+LAC-SAC-=2242023,=2-24-2023,10:30p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,Crypto.com Arena
+DET-TOR-=2252023,=2-25-2023,12:00p,DET,Detroit Pistons,/teams/DET/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,Little Caesars Arena
+CHO-MIA-=2252023,=2-25-2023,7:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,Spectrum Center
+ORL-IND-=2252023,=2-25-2023,7:00p,ORL,Orlando Magic,/teams/ORL/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,Amway Center
+NYK-NOP-=2252023,=2-25-2023,7:30p,NYK,New York Knicks,/teams/NYK/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,Madison Square Garden (IV)
+MEM-DEN-=2252023,=2-25-2023,8:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,FedEx Forum
+PHI-BOS-=2252023,=2-25-2023,8:30p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,Wells Fargo Center
+UTA-SAS-=2252023,=2-25-2023,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,Vivint Arena
+MIL-PHO-=2262023,=2-26-2023,1:00p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,Fiserv Forum
+ATL-BRK-=2262023,=2-26-2023,3:00p,ATL,Atlanta Hawks,/teams/ATL/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,State Farm Arena
+CHI-WAS-=2262023,=2-26-2023,3:30p,CHI,Chicago Bulls,/teams/CHI/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,United Center
+DAL-LAL-=2262023,=2-26-2023,3:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,American Airlines Center
+CLE-TOR-=2262023,=2-26-2023,6:00p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,Rocket Mortgage Fieldhouse
+OKC-SAC-=2262023,=2-26-2023,7:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,Paycom Center
+GSW-MIN-=2262023,=2-26-2023,7:30p,GSW,Golden State Warriors,/teams/GSW/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,Chase Center
+POR-HOU-=2262023,=2-26-2023,9:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,Moda Center
+DEN-LAC-=2262023,=2-26-2023,10:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,Ball Arena
+CHO-DET-=2272023,=2-27-2023,7:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,Spectrum Center
+PHI-MIA-=2272023,=2-27-2023,7:00p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,Wells Fargo Center
+NYK-BOS-=2272023,=2-27-2023,7:30p,NYK,New York Knicks,/teams/NYK/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,Madison Square Garden (IV)
+NOP-ORL-=2272023,=2-27-2023,8:00p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,Smoothie King Center
+ATL-WAS-=2282023,=2-28-2023,7:30p,ATL,Atlanta Hawks,/teams/ATL/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,State Farm Arena
+BRK-MIL-=2282023,=2-28-2023,7:30p,BRK,Brooklyn Nets,/teams/BRK/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,Barclays Center
+TOR-CHI-=2282023,=2-28-2023,7:30p,TOR,Toronto Raptors,/teams/TOR/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,Scotiabank Arena
+HOU-DEN-=2282023,=2-28-2023,8:00p,HOU,Houston Rockets,/teams/HOU/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,Toyota Center
+MEM-LAL-=2282023,=2-28-2023,8:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,FedEx Forum
+OKC-SAC-=2282023,=2-28-2023,8:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,Paycom Center
+DAL-IND-=2282023,=2-28-2023,8:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,American Airlines Center
+UTA-SAS-=2282023,=2-28-2023,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,Vivint Arena
+GSW-POR-=2282023,=2-28-2023,10:00p,GSW,Golden State Warriors,/teams/GSW/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,Chase Center
+LAC-MIN-=2282023,=2-28-2023,10:00p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,Crypto.com Arena
+CHO-PHO-=3=12023,=3-=1-2023,7:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,Spectrum Center
+DET-CHI-=3=12023,=3-=1-2023,7:00p,DET,Detroit Pistons,/teams/DET/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,Little Caesars Arena
+BOS-CLE-=3=12023,=3-=1-2023,7:30p,BOS,Boston Celtics,/teams/BOS/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,TD Garden
+MIA-PHI-=3=12023,=3-=1-2023,7:30p,MIA,Miami Heat,/teams/MIA/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,FTX Arena
+NYK-BRK-=3=12023,=3-=1-2023,7:30p,NYK,New York Knicks,/teams/NYK/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,Madison Square Garden (IV)
+HOU-MEM-=3=12023,=3-=1-2023,8:00p,HOU,Houston Rockets,/teams/HOU/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,Toyota Center
+MIL-ORL-=3=12023,=3-=1-2023,8:00p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,Fiserv Forum
+OKC-LAL-=3=12023,=3-=1-2023,8:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,Paycom Center
+POR-NOP-=3=12023,=3-=1-2023,10:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,Moda Center
+WAS-TOR-=3=22023,=3-=2-2023,7:00p,WAS,Washington Wizards,/teams/WAS/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,Capital One Arena
+DAL-PHI-=3=22023,=3-=2-2023,7:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,American Airlines Center
+SAS-IND-=3=22023,=3-=2-2023,8:30p,SAS,San Antonio Spurs,/teams/SAS/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,AT&T Center
+GSW-LAC-=3=22023,=3-=2-2023,10:00p,GSW,Golden State Warriors,/teams/GSW/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,Chase Center
+CHO-ORL-=3=32023,=3-=3-2023,7:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,Spectrum Center
+ATL-POR-=3=32023,=3-=3-2023,7:30p,ATL,Atlanta Hawks,/teams/ATL/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,State Farm Arena
+BOS-BRK-=3=32023,=3-=3-2023,7:30p,BOS,Boston Celtics,/teams/BOS/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,TD Garden
+CHI-PHO-=3=32023,=3-=3-2023,8:00p,CHI,Chicago Bulls,/teams/CHI/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,United Center
+MIA-NYK-=3=32023,=3-=3-2023,8:00p,MIA,Miami Heat,/teams/MIA/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,FTX Arena
+OKC-UTA-=3=32023,=3-=3-2023,8:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,Paycom Center
+DEN-MEM-=3=32023,=3-=3-2023,10:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,Ball Arena
+GSW-NOP-=3=32023,=3-=3-2023,10:00p,GSW,Golden State Warriors,/teams/GSW/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,Chase Center
+SAC-LAC-=3=32023,=3-=3-2023,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,Golden 1 Center
+LAL-MIN-=3=32023,=3-=3-2023,10:30p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,Crypto.com Arena
+WAS-TOR-=3=42023,=3-=4-2023,5:00p,WAS,Washington Wizards,/teams/WAS/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,Capital One Arena
+CLE-DET-=3=42023,=3-=4-2023,8:00p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,Rocket Mortgage Fieldhouse
+MIA-ATL-=3=42023,=3-=4-2023,8:00p,MIA,Miami Heat,/teams/MIA/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,FTX Arena
+SAS-HOU-=3=42023,=3-=4-2023,8:00p,SAS,San Antonio Spurs,/teams/SAS/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,AT&T Center
+MIL-PHI-=3=42023,=3-=4-2023,8:30p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,Fiserv Forum
+SAC-MIN-=3=42023,=3-=4-2023,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,Golden 1 Center
+DAL-PHO-=3=52023,=3-=5-2023,1:00p,DAL,Dallas Mavericks,/teams/DAL/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,American Airlines Center
+CHI-IND-=3=52023,=3-=5-2023,3:30p,CHI,Chicago Bulls,/teams/CHI/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,United Center
+LAL-GSW-=3=52023,=3-=5-2023,3:30p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,Crypto.com Arena
+BRK-CHO-=3=52023,=3-=5-2023,6:00p,BRK,Brooklyn Nets,/teams/BRK/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,Barclays Center
+ORL-POR-=3=52023,=3-=5-2023,6:00p,ORL,Orlando Magic,/teams/ORL/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,Amway Center
+HOU-SAS-=3=52023,=3-=5-2023,7:00p,HOU,Houston Rockets,/teams/HOU/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,Toyota Center
+OKC-UTA-=3=52023,=3-=5-2023,7:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,Paycom Center
+BOS-NYK-=3=52023,=3-=5-2023,7:30p,BOS,Boston Celtics,/teams/BOS/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,TD Garden
+LAC-MEM-=3=52023,=3-=5-2023,10:00p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,Crypto.com Arena
+CLE-BOS-=3=62023,=3-=6-2023,7:00p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,Rocket Mortgage Fieldhouse
+IND-PHI-=3=62023,=3-=6-2023,7:00p,IND,Indiana Pacers,/teams/IND/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,Gainbridge Fieldhouse
+WAS-MIL-=3=62023,=3-=6-2023,7:00p,WAS,Washington Wizards,/teams/WAS/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,Capital One Arena
+MIA-ATL-=3=62023,=3-=6-2023,7:30p,MIA,Miami Heat,/teams/MIA/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,FTX Arena
+DEN-TOR-=3=62023,=3-=6-2023,9:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,Ball Arena
+SAC-NOP-=3=62023,=3-=6-2023,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,Golden 1 Center
+DET-POR-=3=72023,=3-=7-2023,7:00p,DET,Detroit Pistons,/teams/DET/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,Little Caesars Arena
+ORL-MIL-=3=72023,=3-=7-2023,7:00p,ORL,Orlando Magic,/teams/ORL/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,Amway Center
+MIN-PHI-=3=72023,=3-=7-2023,7:30p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,Target Center
+NYK-CHO-=3=72023,=3-=7-2023,7:30p,NYK,New York Knicks,/teams/NYK/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,Madison Square Garden (IV)
+HOU-BRK-=3=72023,=3-=7-2023,8:00p,HOU,Houston Rockets,/teams/HOU/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,Toyota Center
+OKC-GSW-=3=72023,=3-=7-2023,8:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,Paycom Center
+DAL-UTA-=3=72023,=3-=7-2023,8:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,American Airlines Center
+LAL-MEM-=3=72023,=3-=7-2023,10:00p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,Crypto.com Arena
+WAS-ATL-=3=82023,=3-=8-2023,7:00p,WAS,Washington Wizards,/teams/WAS/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,Capital One Arena
+BOS-POR-=3=82023,=3-=8-2023,7:30p,BOS,Boston Celtics,/teams/BOS/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,TD Garden
+MIA-CLE-=3=82023,=3-=8-2023,7:30p,MIA,Miami Heat,/teams/MIA/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,FTX Arena
+NOP-DAL-=3=82023,=3-=8-2023,7:30p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,Smoothie King Center
+DEN-CHI-=3=82023,=3-=8-2023,9:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,Ball Arena
+PHO-OKC-=3=82023,=3-=8-2023,9:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,Footprint Center
+LAC-TOR-=3=82023,=3-=8-2023,10:00p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,Crypto.com Arena
+DET-CHO-=3=92023,=3-=9-2023,7:00p,DET,Detroit Pistons,/teams/DET/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,Little Caesars Arena
+IND-HOU-=3=92023,=3-=9-2023,7:00p,IND,Indiana Pacers,/teams/IND/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,Gainbridge Fieldhouse
+ORL-UTA-=3=92023,=3-=9-2023,7:00p,ORL,Orlando Magic,/teams/ORL/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,Amway Center
+MIL-BRK-=3=92023,=3-=9-2023,7:30p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,Fiserv Forum
+MEM-GSW-=3=92023,=3-=9-2023,10:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,FedEx Forum
+SAC-NYK-=3=92023,=3-=9-2023,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,Golden 1 Center
+PHI-POR-=3102023,=3-10-2023,7:00p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,Wells Fargo Center
+WAS-ATL-=3102023,=3-10-2023,7:00p,WAS,Washington Wizards,/teams/WAS/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,Capital One Arena
+MIA-CLE-=3102023,=3-10-2023,8:00p,MIA,Miami Heat,/teams/MIA/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,FTX Arena
+MIN-BRK-=3102023,=3-10-2023,8:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,Target Center
+SAS-DEN-=3102023,=3-10-2023,8:00p,SAS,San Antonio Spurs,/teams/SAS/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,AT&T Center
+LAL-TOR-=3102023,=3-10-2023,10:30p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,Crypto.com Arena
+LAC-NYK-=3112023,=3-11-2023,4:00p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,Crypto.com Arena
+CHO-UTA-=3112023,=3-11-2023,7:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,Spectrum Center
+DET-IND-=3112023,=3-11-2023,7:00p,DET,Detroit Pistons,/teams/DET/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,Little Caesars Arena
+ORL-MIA-=3112023,=3-11-2023,7:00p,ORL,Orlando Magic,/teams/ORL/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,Amway Center
+ATL-BOS-=3112023,=3-11-2023,7:30p,ATL,Atlanta Hawks,/teams/ATL/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,State Farm Arena
+HOU-CHI-=3112023,=3-11-2023,8:00p,HOU,Houston Rockets,/teams/HOU/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,Toyota Center
+MEM-DAL-=3112023,=3-11-2023,8:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,FedEx Forum
+GSW-MIL-=3112023,=3-11-2023,8:30p,GSW,Golden State Warriors,/teams/GSW/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,Chase Center
+NOP-OKC-=3112023,=3-11-2023,8:30p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,Smoothie King Center
+PHO-SAC-=3112023,=3-11-2023,10:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,Footprint Center
+DEN-BRK-=3122023,=3-12-2023,3:30p,DEN,Denver Nuggets,/teams/DEN/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,Ball Arena
+CHO-CLE-=3122023,=3-12-2023,5:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,Spectrum Center
+PHI-WAS-=3122023,=3-12-2023,6:00p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,Wells Fargo Center
+NOP-POR-=3122023,=3-12-2023,7:00p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,Smoothie King Center
+SAS-OKC-=3122023,=3-12-2023,7:00p,SAS,San Antonio Spurs,/teams/SAS/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,AT&T Center
+LAL-NYK-=3122023,=3-12-2023,9:00p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,Crypto.com Arena
+DET-IND-=3132023,=3-13-2023,7:00p,DET,Detroit Pistons,/teams/DET/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,Little Caesars Arena
+ATL-MIN-=3132023,=3-13-2023,7:30p,ATL,Atlanta Hawks,/teams/ATL/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,State Farm Arena
+DAL-MEM-=3132023,=3-13-2023,7:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,American Airlines Center
+MIA-UTA-=3132023,=3-13-2023,7:30p,MIA,Miami Heat,/teams/MIA/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,FTX Arena
+HOU-BOS-=3132023,=3-13-2023,8:00p,HOU,Houston Rockets,/teams/HOU/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,Toyota Center
+GSW-PHO-=3132023,=3-13-2023,10:00p,GSW,Golden State Warriors,/teams/GSW/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,Chase Center
+SAC-MIL-=3132023,=3-13-2023,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,Golden 1 Center
+CHO-CLE-=3142023,=3-14-2023,7:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,Spectrum Center
+WAS-DET-=3142023,=3-14-2023,7:00p,WAS,Washington Wizards,/teams/WAS/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,Capital One Arena
+TOR-DEN-=3142023,=3-14-2023,7:30p,TOR,Toronto Raptors,/teams/TOR/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,Scotiabank Arena
+NOP-LAL-=3142023,=3-14-2023,8:00p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,Smoothie King Center
+OKC-BRK-=3142023,=3-14-2023,8:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,Paycom Center
+SAS-ORL-=3142023,=3-14-2023,8:00p,SAS,San Antonio Spurs,/teams/SAS/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,AT&T Center
+PHO-MIL-=3142023,=3-14-2023,10:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,Footprint Center
+POR-NYK-=3142023,=3-14-2023,10:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,Moda Center
+CLE-PHI-=3152023,=3-15-2023,7:30p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,Rocket Mortgage Fieldhouse
+MIA-MEM-=3152023,=3-15-2023,7:30p,MIA,Miami Heat,/teams/MIA/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,FTX Arena
+CHI-SAC-=3152023,=3-15-2023,8:00p,CHI,Chicago Bulls,/teams/CHI/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,United Center
+HOU-LAL-=3152023,=3-15-2023,8:00p,HOU,Houston Rockets,/teams/HOU/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,Toyota Center
+MIN-BOS-=3152023,=3-15-2023,8:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,Target Center
+SAS-DAL-=3152023,=3-15-2023,8:30p,SAS,San Antonio Spurs,/teams/SAS/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,AT&T Center
+LAC-GSW-=3152023,=3-15-2023,10:00p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,Crypto.com Arena
+DET-DEN-=3162023,=3-16-2023,7:00p,DET,Detroit Pistons,/teams/DET/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,Little Caesars Arena
+BRK-SAC-=3162023,=3-16-2023,7:30p,BRK,Brooklyn Nets,/teams/BRK/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,Barclays Center
+TOR-OKC-=3162023,=3-16-2023,7:30p,TOR,Toronto Raptors,/teams/TOR/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,Scotiabank Arena
+MIL-IND-=3162023,=3-16-2023,8:00p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,Fiserv Forum
+PHO-ORL-=3162023,=3-16-2023,10:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,Footprint Center
+CHO-PHI-=3172023,=3-17-2023,7:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,Spectrum Center
+ATL-GSW-=3172023,=3-17-2023,7:30p,ATL,Atlanta Hawks,/teams/ATL/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,State Farm Arena
+CLE-WAS-=3172023,=3-17-2023,7:30p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,Rocket Mortgage Fieldhouse
+CHI-MIN-=3172023,=3-17-2023,8:00p,CHI,Chicago Bulls,/teams/CHI/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,United Center
+HOU-NOP-=3172023,=3-17-2023,8:00p,HOU,Houston Rockets,/teams/HOU/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,Toyota Center
+SAS-MEM-=3172023,=3-17-2023,8:00p,SAS,San Antonio Spurs,/teams/SAS/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,AT&T Center
+POR-BOS-=3172023,=3-17-2023,10:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,Moda Center
+LAL-DAL-=3172023,=3-17-2023,10:30p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,Crypto.com Arena
+NYK-DEN-=3182023,=3-18-2023,1:00p,NYK,New York Knicks,/teams/NYK/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,Madison Square Garden (IV)
+LAC-ORL-=3182023,=3-18-2023,3:00p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,Crypto.com Arena
+IND-PHI-=3182023,=3-18-2023,7:00p,IND,Indiana Pacers,/teams/IND/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,Gainbridge Fieldhouse
+TOR-MIN-=3182023,=3-18-2023,7:00p,TOR,Toronto Raptors,/teams/TOR/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,Scotiabank Arena
+CHI-MIA-=3182023,=3-18-2023,8:00p,CHI,Chicago Bulls,/teams/CHI/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,United Center
+MEM-GSW-=3182023,=3-18-2023,8:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,FedEx Forum
+WAS-SAC-=3182023,=3-18-2023,8:00p,WAS,Washington Wizards,/teams/WAS/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,Capital One Arena
+UTA-BOS-=3182023,=3-18-2023,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,Vivint Arena
+BRK-DEN-=3192023,=3-19-2023,3:30p,BRK,Brooklyn Nets,/teams/BRK/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,Barclays Center
+OKC-PHO-=3192023,=3-19-2023,3:30p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,Paycom Center
+SAS-ATL-=3192023,=3-19-2023,4:00p,SAS,San Antonio Spurs,/teams/SAS/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,AT&T Center
+DET-MIA-=3192023,=3-19-2023,6:00p,DET,Detroit Pistons,/teams/DET/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,Little Caesars Arena
+HOU-NOP-=3192023,=3-19-2023,7:00p,HOU,Houston Rockets,/teams/HOU/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,Toyota Center
+MIL-TOR-=3192023,=3-19-2023,8:00p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,Fiserv Forum
+POR-LAC-=3192023,=3-19-2023,9:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,Moda Center
+LAL-ORL-=3192023,=3-19-2023,9:30p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,Crypto.com Arena
+CHO-IND-=3202023,=3-20-2023,7:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,Spectrum Center
+PHI-CHI-=3202023,=3-20-2023,7:00p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,Wells Fargo Center
+NYK-MIN-=3202023,=3-20-2023,7:30p,NYK,New York Knicks,/teams/NYK/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,Madison Square Garden (IV)
+HOU-GSW-=3202023,=3-20-2023,8:00p,HOU,Houston Rockets,/teams/HOU/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,Toyota Center
+MEM-DAL-=3202023,=3-20-2023,8:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,FedEx Forum
+UTA-SAC-=3202023,=3-20-2023,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,Vivint Arena
+ORL-WAS-=3212023,=3-21-2023,7:00p,ORL,Orlando Magic,/teams/ORL/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,Amway Center
+ATL-DET-=3212023,=3-21-2023,7:30p,ATL,Atlanta Hawks,/teams/ATL/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,State Farm Arena
+BRK-CLE-=3212023,=3-21-2023,7:30p,BRK,Brooklyn Nets,/teams/BRK/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,Barclays Center
+NOP-SAS-=3212023,=3-21-2023,8:00p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,Smoothie King Center
+SAC-BOS-=3212023,=3-21-2023,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,Golden 1 Center
+LAC-OKC-=3212023,=3-21-2023,10:30p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,Crypto.com Arena
+WAS-DEN-=3222023,=3-22-2023,7:00p,WAS,Washington Wizards,/teams/WAS/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,Capital One Arena
+DAL-GSW-=3222023,=3-22-2023,7:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,American Airlines Center
+MIA-NYK-=3222023,=3-22-2023,7:30p,MIA,Miami Heat,/teams/MIA/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,FTX Arena
+TOR-IND-=3222023,=3-22-2023,7:30p,TOR,Toronto Raptors,/teams/TOR/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,Scotiabank Arena
+CHI-PHI-=3222023,=3-22-2023,8:00p,CHI,Chicago Bulls,/teams/CHI/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,United Center
+MEM-HOU-=3222023,=3-22-2023,8:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,FedEx Forum
+MIL-SAS-=3222023,=3-22-2023,8:00p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,Fiserv Forum
+MIN-ATL-=3222023,=3-22-2023,8:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,Target Center
+UTA-POR-=3222023,=3-22-2023,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,Vivint Arena
+LAL-PHO-=3222023,=3-22-2023,10:00p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,Crypto.com Arena
+ORL-NYK-=3232023,=3-23-2023,7:00p,ORL,Orlando Magic,/teams/ORL/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,Amway Center
+BRK-CLE-=3232023,=3-23-2023,7:30p,BRK,Brooklyn Nets,/teams/BRK/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,Barclays Center
+NOP-CHO-=3232023,=3-23-2023,8:00p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,Smoothie King Center
+LAC-OKC-=3232023,=3-23-2023,10:30p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,Crypto.com Arena
+BOS-IND-=3242023,=3-24-2023,7:00p,BOS,Boston Celtics,/teams/BOS/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,TD Garden
+WAS-SAS-=3242023,=3-24-2023,7:00p,WAS,Washington Wizards,/teams/WAS/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,Capital One Arena
+TOR-DET-=3242023,=3-24-2023,7:30p,TOR,Toronto Raptors,/teams/TOR/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,Scotiabank Arena
+MEM-HOU-=3242023,=3-24-2023,8:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,FedEx Forum
+DAL-CHO-=3242023,=3-24-2023,8:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,American Airlines Center
+UTA-MIL-=3242023,=3-24-2023,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,Vivint Arena
+GSW-PHI-=3242023,=3-24-2023,10:00p,GSW,Golden State Warriors,/teams/GSW/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,Chase Center
+POR-CHI-=3242023,=3-24-2023,10:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,Moda Center
+SAC-PHO-=3242023,=3-24-2023,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,Golden 1 Center
+LAL-OKC-=3242023,=3-24-2023,10:30p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,Crypto.com Arena
+ATL-IND-=3252023,=3-25-2023,5:00p,ATL,Atlanta Hawks,/teams/ATL/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,State Farm Arena
+MIA-BRK-=3252023,=3-25-2023,8:00p,MIA,Miami Heat,/teams/MIA/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,FTX Arena
+DEN-MIL-=3252023,=3-25-2023,9:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,Ball Arena
+PHO-PHI-=3252023,=3-25-2023,10:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,Footprint Center
+SAC-UTA-=3252023,=3-25-2023,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,Golden 1 Center
+LAC-NOP-=3252023,=3-25-2023,10:30p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,Crypto.com Arena
+CHO-DAL-=3262023,=3-26-2023,1:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,Spectrum Center
+LAL-CHI-=3262023,=3-26-2023,3:30p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,Crypto.com Arena
+ATL-MEM-=3262023,=3-26-2023,6:00p,ATL,Atlanta Hawks,/teams/ATL/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,State Farm Arena
+BOS-SAS-=3262023,=3-26-2023,6:00p,BOS,Boston Celtics,/teams/BOS/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,TD Garden
+CLE-HOU-=3262023,=3-26-2023,6:00p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,Rocket Mortgage Fieldhouse
+ORL-BRK-=3262023,=3-26-2023,6:00p,ORL,Orlando Magic,/teams/ORL/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,Amway Center
+TOR-WAS-=3262023,=3-26-2023,6:00p,TOR,Toronto Raptors,/teams/TOR/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,Scotiabank Arena
+POR-OKC-=3262023,=3-26-2023,7:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,Moda Center
+GSW-MIN-=3262023,=3-26-2023,8:30p,GSW,Golden State Warriors,/teams/GSW/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,Chase Center
+DET-MIL-=3272023,=3-27-2023,7:00p,DET,Detroit Pistons,/teams/DET/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,Little Caesars Arena
+IND-DAL-=3272023,=3-27-2023,7:00p,IND,Indiana Pacers,/teams/IND/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,Gainbridge Fieldhouse
+NYK-HOU-=3272023,=3-27-2023,7:30p,NYK,New York Knicks,/teams/NYK/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,Madison Square Garden (IV)
+UTA-PHO-=3272023,=3-27-2023,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,Vivint Arena
+DEN-PHI-=3272023,=3-27-2023,9:30p,DEN,Denver Nuggets,/teams/DEN/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,Ball Arena
+POR-NOP-=3272023,=3-27-2023,10:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,Moda Center
+SAC-MIN-=3272023,=3-27-2023,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,Golden 1 Center
+LAC-CHI-=3272023,=3-27-2023,10:30p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,Crypto.com Arena
+WAS-BOS-=3282023,=3-28-2023,7:00p,WAS,Washington Wizards,/teams/WAS/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,Capital One Arena
+ATL-CLE-=3282023,=3-28-2023,7:30p,ATL,Atlanta Hawks,/teams/ATL/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,State Farm Arena
+TOR-MIA-=3282023,=3-28-2023,7:30p,TOR,Toronto Raptors,/teams/TOR/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,Scotiabank Arena
+MEM-ORL-=3282023,=3-28-2023,8:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,FedEx Forum
+OKC-CHO-=3282023,=3-28-2023,8:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,Paycom Center
+GSW-NOP-=3282023,=3-28-2023,10:00p,GSW,Golden State Warriors,/teams/GSW/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,Chase Center
+IND-MIL-=3292023,=3-29-2023,7:00p,IND,Indiana Pacers,/teams/IND/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,Gainbridge Fieldhouse
+BRK-HOU-=3292023,=3-29-2023,7:30p,BRK,Brooklyn Nets,/teams/BRK/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,Barclays Center
+NYK-MIA-=3292023,=3-29-2023,7:30p,NYK,New York Knicks,/teams/NYK/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,Madison Square Garden (IV)
+PHI-DAL-=3292023,=3-29-2023,7:30p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,Wells Fargo Center
+CHI-LAL-=3292023,=3-29-2023,8:00p,CHI,Chicago Bulls,/teams/CHI/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,United Center
+MEM-LAC-=3292023,=3-29-2023,8:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,FedEx Forum
+OKC-DET-=3292023,=3-29-2023,8:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,Paycom Center
+SAS-UTA-=3292023,=3-29-2023,8:00p,SAS,San Antonio Spurs,/teams/SAS/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,AT&T Center
+PHO-MIN-=3292023,=3-29-2023,10:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,Footprint Center
+POR-SAC-=3292023,=3-29-2023,10:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,Moda Center
+MIL-BOS-=3302023,=3-30-2023,7:30p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,Fiserv Forum
+DEN-NOP-=3302023,=3-30-2023,10:00p,DEN,Denver Nuggets,/teams/DEN/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,Ball Arena
+CHO-CHI-=3312023,=3-31-2023,7:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,Spectrum Center
+IND-OKC-=3312023,=3-31-2023,7:00p,IND,Indiana Pacers,/teams/IND/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,Gainbridge Fieldhouse
+PHI-TOR-=3312023,=3-31-2023,7:00p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,Wells Fargo Center
+WAS-ORL-=3312023,=3-31-2023,7:00p,WAS,Washington Wizards,/teams/WAS/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,Capital One Arena
+BOS-UTA-=3312023,=3-31-2023,7:30p,BOS,Boston Celtics,/teams/BOS/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,TD Garden
+BRK-ATL-=3312023,=3-31-2023,7:30p,BRK,Brooklyn Nets,/teams/BRK/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,Barclays Center
+CLE-NYK-=3312023,=3-31-2023,7:30p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,Rocket Mortgage Fieldhouse
+HOU-DET-=3312023,=3-31-2023,8:00p,HOU,Houston Rockets,/teams/HOU/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,Toyota Center
+MEM-LAC-=3312023,=3-31-2023,8:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,FedEx Forum
+MIN-LAL-=3312023,=3-31-2023,8:00p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,Target Center
+GSW-SAS-=3312023,=3-31-2023,10:00p,GSW,Golden State Warriors,/teams/GSW/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,Chase Center
+POR-SAC-=3312023,=3-31-2023,10:00p,POR,Portland Trail Blazers,/teams/POR/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,Moda Center
+PHO-DEN-=3312023,=3-31-2023,10:30p,PHO,Phoenix Suns,/teams/PHO/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,Footprint Center
+MIA-DAL-=4=12023,=4-=1-2023,7:30p,MIA,Miami Heat,/teams/MIA/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,FTX Arena
+NOP-LAC-=4=12023,=4-=1-2023,8:30p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,Smoothie King Center
+CHO-TOR-=4=22023,=4-=2-2023,1:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,Spectrum Center
+BRK-UTA-=4=22023,=4-=2-2023,3:30p,BRK,Brooklyn Nets,/teams/BRK/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,Barclays Center
+CHI-MEM-=4=22023,=4-=2-2023,3:30p,CHI,Chicago Bulls,/teams/CHI/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,United Center
+MIN-POR-=4=22023,=4-=2-2023,3:30p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,Target Center
+ATL-DAL-=4=22023,=4-=2-2023,6:00p,ATL,Atlanta Hawks,/teams/ATL/2023.html,DAL,Dallas Mavericks,/teams/DAL/2023.html,State Farm Arena
+SAC-SAS-=4=22023,=4-=2-2023,6:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,Golden 1 Center
+ORL-DET-=4=22023,=4-=2-2023,6:00p,ORL,Orlando Magic,/teams/ORL/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,Amway Center
+NYK-WAS-=4=22023,=4-=2-2023,6:00p,NYK,New York Knicks,/teams/NYK/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,Madison Square Garden (IV)
+HOU-LAL-=4=22023,=4-=2-2023,7:00p,HOU,Houston Rockets,/teams/HOU/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,Toyota Center
+OKC-PHO-=4=22023,=4-=2-2023,7:00p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,Paycom Center
+MIL-PHI-=4=22023,=4-=2-2023,8:00p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,Fiserv Forum
+CLE-IND-=4=22023,=4-=2-2023,8:00p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,Rocket Mortgage Fieldhouse
+DEN-GSW-=4=22023,=4-=2-2023,8:30p,DEN,Denver Nuggets,/teams/DEN/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,Ball Arena
+CHO-TOR-=4=42023,=4-=4-2023,7:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,Spectrum Center
+WAS-MIL-=4=42023,=4-=4-2023,7:00p,WAS,Washington Wizards,/teams/WAS/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,Capital One Arena
+ORL-CLE-=4=42023,=4-=4-2023,7:00p,ORL,Orlando Magic,/teams/ORL/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,Amway Center
+DET-MIA-=4=42023,=4-=4-2023,7:00p,DET,Detroit Pistons,/teams/DET/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,Little Caesars Arena
+BRK-MIN-=4=42023,=4-=4-2023,7:30p,BRK,Brooklyn Nets,/teams/BRK/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,Barclays Center
+HOU-DEN-=4=42023,=4-=4-2023,8:00p,HOU,Houston Rockets,/teams/HOU/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,Toyota Center
+MEM-POR-=4=42023,=4-=4-2023,8:00p,MEM,Memphis Grizzlies,/teams/MEM/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,FedEx Forum
+NOP-SAC-=4=42023,=4-=4-2023,8:00p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,Smoothie King Center
+PHI-BOS-=4=42023,=4-=4-2023,8:00p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,BOS,Boston Celtics,/teams/BOS/2023.html,Wells Fargo Center
+CHI-ATL-=4=42023,=4-=4-2023,8:00p,CHI,Chicago Bulls,/teams/CHI/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,United Center
+UTA-LAL-=4=42023,=4-=4-2023,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,Vivint Arena
+GSW-OKC-=4=42023,=4-=4-2023,10:00p,GSW,Golden State Warriors,/teams/GSW/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,Chase Center
+PHO-SAS-=4=42023,=4-=4-2023,10:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,Footprint Center
+DET-BRK-=4=52023,=4-=5-2023,7:00p,DET,Detroit Pistons,/teams/DET/2023.html,BRK,Brooklyn Nets,/teams/BRK/2023.html,Little Caesars Arena
+IND-NYK-=4=52023,=4-=5-2023,7:00p,IND,Indiana Pacers,/teams/IND/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,Gainbridge Fieldhouse
+ATL-WAS-=4=52023,=4-=5-2023,7:30p,ATL,Atlanta Hawks,/teams/ATL/2023.html,WAS,Washington Wizards,/teams/WAS/2023.html,State Farm Arena
+BOS-TOR-=4=52023,=4-=5-2023,7:30p,BOS,Boston Celtics,/teams/BOS/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,TD Garden
+MIL-CHI-=4=52023,=4-=5-2023,7:30p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,Fiserv Forum
+NOP-MEM-=4=52023,=4-=5-2023,8:00p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,Smoothie King Center
+DAL-SAC-=4=52023,=4-=5-2023,8:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,American Airlines Center
+LAC-LAL-=4=52023,=4-=5-2023,10:00p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,LAL,Los Angeles Lakers,/teams/LAL/2023.html,Crypto.com Arena
+ORL-CLE-=4=62023,=4-=6-2023,7:00p,ORL,Orlando Magic,/teams/ORL/2023.html,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,Amway Center
+PHI-MIA-=4=62023,=4-=6-2023,7:30p,PHI,Philadelphia 76ers,/teams/PHI/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,Wells Fargo Center
+SAS-POR-=4=62023,=4-=6-2023,8:00p,SAS,San Antonio Spurs,/teams/SAS/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,Moody Center
+UTA-OKC-=4=62023,=4-=6-2023,9:00p,UTA,Utah Jazz,/teams/UTA/2023.html,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,Vivint Arena
+PHO-DEN-=4=62023,=4-=6-2023,10:00p,PHO,Phoenix Suns,/teams/PHO/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,Footprint Center
+CHO-HOU-=4=72023,=4-=7-2023,7:00p,CHO,Charlotte Hornets,/teams/CHO/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,Spectrum Center
+WAS-MIA-=4=72023,=4-=7-2023,7:00p,WAS,Washington Wizards,/teams/WAS/2023.html,MIA,Miami Heat,/teams/MIA/2023.html,Capital One Arena
+IND-DET-=4=72023,=4-=7-2023,7:00p,IND,Indiana Pacers,/teams/IND/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,Gainbridge Fieldhouse
+BRK-ORL-=4=72023,=4-=7-2023,7:30p,BRK,Brooklyn Nets,/teams/BRK/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,Barclays Center
+BOS-TOR-=4=72023,=4-=7-2023,7:30p,BOS,Boston Celtics,/teams/BOS/2023.html,TOR,Toronto Raptors,/teams/TOR/2023.html,TD Garden
+ATL-PHI-=4=72023,=4-=7-2023,7:30p,ATL,Atlanta Hawks,/teams/ATL/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,State Farm Arena
+MIL-MEM-=4=72023,=4-=7-2023,8:00p,MIL,Milwaukee Bucks,/teams/MIL/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,Fiserv Forum
+NOP-NYK-=4=72023,=4-=7-2023,8:00p,NOP,New Orleans Pelicans,/teams/NOP/2023.html,NYK,New York Knicks,/teams/NYK/2023.html,Smoothie King Center
+DAL-CHI-=4=72023,=4-=7-2023,8:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,CHI,Chicago Bulls,/teams/CHI/2023.html,American Airlines Center
+SAC-GSW-=4=72023,=4-=7-2023,10:00p,SAC,Sacramento Kings,/teams/SAC/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,Golden 1 Center
+LAL-PHO-=4=72023,=4-=7-2023,10:30p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,PHO,Phoenix Suns,/teams/PHO/2023.html,Crypto.com Arena
+UTA-DEN-=4=82023,=4-=8-2023,3:30p,UTA,Utah Jazz,/teams/UTA/2023.html,DEN,Denver Nuggets,/teams/DEN/2023.html,Vivint Arena
+LAC-POR-=4=82023,=4-=8-2023,4:00p,LAC,Los Angeles Clippers,/teams/LAC/2023.html,POR,Portland Trail Blazers,/teams/POR/2023.html,Crypto.com Arena
+SAS-MIN-=4=82023,=4-=8-2023,4:00p,SAS,San Antonio Spurs,/teams/SAS/2023.html,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,Moody Center
+BOS-ATL-=4=92023,=4-=9-2023,1:00p,BOS,Boston Celtics,/teams/BOS/2023.html,ATL,Atlanta Hawks,/teams/ATL/2023.html,TD Garden
+BRK-PHI-=4=92023,=4-=9-2023,1:00p,BRK,Brooklyn Nets,/teams/BRK/2023.html,PHI,Philadelphia 76ers,/teams/PHI/2023.html,Barclays Center
+CHI-DET-=4=92023,=4-=9-2023,1:00p,CHI,Chicago Bulls,/teams/CHI/2023.html,DET,Detroit Pistons,/teams/DET/2023.html,United Center
+CLE-CHO-=4=92023,=4-=9-2023,1:00p,CLE,Cleveland Cavaliers,/teams/CLE/2023.html,CHO,Charlotte Hornets,/teams/CHO/2023.html,Rocket Mortgage Fieldhouse
+MIA-ORL-=4=92023,=4-=9-2023,1:00p,MIA,Miami Heat,/teams/MIA/2023.html,ORL,Orlando Magic,/teams/ORL/2023.html,FTX Arena
+NYK-IND-=4=92023,=4-=9-2023,1:00p,NYK,New York Knicks,/teams/NYK/2023.html,IND,Indiana Pacers,/teams/IND/2023.html,Madison Square Garden (IV)
+TOR-MIL-=4=92023,=4-=9-2023,1:00p,TOR,Toronto Raptors,/teams/TOR/2023.html,MIL,Milwaukee Bucks,/teams/MIL/2023.html,Scotiabank Arena
+WAS-HOU-=4=92023,=4-=9-2023,1:00p,WAS,Washington Wizards,/teams/WAS/2023.html,HOU,Houston Rockets,/teams/HOU/2023.html,Capital One Arena
+DAL-SAS-=4=92023,=4-=9-2023,3:30p,DAL,Dallas Mavericks,/teams/DAL/2023.html,SAS,San Antonio Spurs,/teams/SAS/2023.html,American Airlines Center
+DEN-SAC-=4=92023,=4-=9-2023,3:30p,DEN,Denver Nuggets,/teams/DEN/2023.html,SAC,Sacramento Kings,/teams/SAC/2023.html,Ball Arena
+LAL-UTA-=4=92023,=4-=9-2023,3:30p,LAL,Los Angeles Lakers,/teams/LAL/2023.html,UTA,Utah Jazz,/teams/UTA/2023.html,Crypto.com Arena
+MIN-NOP-=4=92023,=4-=9-2023,3:30p,MIN,Minnesota Timberwolves,/teams/MIN/2023.html,NOP,New Orleans Pelicans,/teams/NOP/2023.html,Target Center
+OKC-MEM-=4=92023,=4-=9-2023,3:30p,OKC,Oklahoma City Thunder,/teams/OKC/2023.html,MEM,Memphis Grizzlies,/teams/MEM/2023.html,Paycom Center
+PHO-LAC-=4=92023,=4-=9-2023,3:30p,PHO,Phoenix Suns,/teams/PHO/2023.html,LAC,Los Angeles Clippers,/teams/LAC/2023.html,Footprint Center
+POR-GSW-=4=92023,=4-=9-2023,3:30p,POR,Portland Trail Blazers,/teams/POR/2023.html,GSW,Golden State Warriors,/teams/GSW/2023.html,Moda Center
