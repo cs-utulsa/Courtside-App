@@ -1,0 +1,17 @@
+{
+    "extends": "expo/tsconfig.base",
+    "compilerOptions": {
+        "strict": true,
+        "module": "es6",
+        "paths": {
+            "@assets/*": ["./src/assets/*"],
+            "@atoms/*": ["./src/components/atoms/*"],
+            "@molecules/*": ["./src/components/molecules/*"],
+            "@organisms/*": ["./src/components/organisms/*"],
+            "@contexts/*": ["./src/contexts/*"],
+            "@hooks/*": ["./src/hooks/*"],
+            "@navigation/*": ["./src/navigation/*"],
+            "@pages/*": ["./src/pages/*"]
+        }
+    }
+}
