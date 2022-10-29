@@ -9,12 +9,10 @@ type LeftButtonProps = {
 
 export const LeftButton: FC<LeftButtonProps> = ({ text, onPress }) => {
     return (
-        <View style={styles.container}>
-            <Pressable style={styles.button} onPress={onPress}>
-                <MaterialIcons name="chevron-left" color="#60DDF7" size={35} />
-                <Text style={styles.text}>{text}</Text>
-            </Pressable>
-        </View>
+        <Pressable style={styles.button} onPress={onPress}>
+            <MaterialIcons name="chevron-left" color="#60DDF7" size={35} />
+            <Text style={styles.text}>{text}</Text>
+        </Pressable>
     );
 };
 
@@ -24,13 +22,11 @@ const styles = StyleSheet.create({
         fontSize: 25,
         marginStart: -5,
     },
-    container: {
-        alignSelf: 'flex-start',
-        marginStart: 5,
-    },
     button: {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
+        marginLeft: 15,
+        marginBottom: 10,
     },
 });
