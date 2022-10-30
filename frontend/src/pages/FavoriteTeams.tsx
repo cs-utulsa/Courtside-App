@@ -42,7 +42,7 @@ export const FavoriteTeams = () => {
                 ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
                 ListHeaderComponent={() => (
                     <>
-                        <Text style={styles.heading}>
+                        <Text style={styles.header}>
                             Select Your Favorite Teams
                         </Text>
                         <SearchBox placeholder="Search for Your Team" />
@@ -71,10 +71,13 @@ const styles = StyleSheet.create({
         marginHorizontal: 10,
         flex: 1,
     },
-    heading: {
+    header: {
         fontWeight: 'bold',
         fontSize: 22,
         marginBottom: 20,
+    },
+    list: {
+        flex: 0.9,
     },
     footer: {
         flex: 0.1,
@@ -82,8 +85,5 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         marginHorizontal: -10,
         backgroundColor: 'white',
-    },
-    list: {
-        flex: 0.9,
     },
 });

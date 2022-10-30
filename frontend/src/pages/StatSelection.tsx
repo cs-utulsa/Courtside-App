@@ -59,7 +59,7 @@ export const StatSelection = () => {
                 )}
                 ListHeaderComponent={() => (
                     <View style={styles.headerContainer}>
-                        <Text style={styles.heading}>Customize Your Stats Dashboard</Text>
+                        <Text style={styles.header}>Customize Your Stats Dashboard</Text>
                     </View>
                 )}
             />
@@ -70,7 +70,7 @@ export const StatSelection = () => {
                 />
                 <RightButton
                     text='Next'
-                    onPress={() => navigate('StatSelection')}
+                    onPress={() => navigate('Schedule')}
                 />
             </View>
         </View>
@@ -107,14 +107,16 @@ const styles = StyleSheet.create({
         marginTop: 60,
         flex: 1,
     },
-    heading: {
-        fontWeight: 'bold',
-        fontSize: 22,
-        marginBottom: 10,
-    },
     headerContainer: {
         alignItems: 'center',
-        justifyContent: 'center',
+    },
+    header: {
+        fontWeight: 'bold',
+        fontSize: 22,
+        marginBottom: 20,
+    },
+    list: {
+        flex: 0.9,
     },
     footer: {
         flex: 0.1,
@@ -123,7 +125,4 @@ const styles = StyleSheet.create({
         marginHorizontal: -10,
         backgroundColor: 'white',
     },
-    list: {
-        flex: 0.9,
-    }
 });

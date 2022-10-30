@@ -5,3 +5,5 @@ export { RightButton } from './RightButton';
 export { SearchBox } from './SearchBox';
 export { CheckboxText } from './CheckboxText';
 export { ToggleButton } from './ToggleButton';
+export { NavButton } from './NavButton';
+export { Game } from './Game';
