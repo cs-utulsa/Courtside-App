@@ -3,7 +3,7 @@ import { View, Text, FlatList, StyleSheet } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 import { OnboardingNavigationProp } from '../navigation/types';
-import { Game, NavButton } from '../components/atoms';
+import { Game, NavBar } from '../components/atoms';
 
 const DATA = [
     {
@@ -48,7 +48,6 @@ export const Schedule = () => {
     return (
         <View style={styles.container}>
             <FlatList 
-                style={styles.list}
                 data={DATA}
                 renderItem={({ item, index }) => (
                     <Game
@@ -67,24 +66,7 @@ export const Schedule = () => {
                     </View>
                 )}
             />
-            <View style={styles.navBar}>                
-                <NavButton
-                    type='schedule'
-                    onPress={() => navigate('Schedule')}
-                />
-                <NavButton 
-                    type='teams'
-                    onPress={() => navigate('Rosters')}
-                />            
-                <NavButton 
-                    type='stats'
-                    onPress={() => navigate('StatDashboard')}
-                />             
-                <NavButton 
-                    type='settings'
-                    onPress={() => navigate('FavoriteTeams')}
-                />                    
-            </View>
+            <NavBar />
 
             {/* {(data.roster.length === 0) ? (
                 <Text>Loading...</Text>
@@ -111,19 +93,5 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 22,
         marginBottom: 20,
-    },
-    list: {
-        flex: 0.85,
-    },
-    navBar: {
-        flex: 0.15,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        backgroundColor: '#BFF3FF',
-        alignItems: 'center',
-        paddingHorizontal: 30,
-        paddingBottom: 10,
-        borderTopColor: '#DEDEDE',
-        borderTopWidth: 2,
     },
 });

@@ -1,36 +1,47 @@
 import React from 'react';
 import { View, StyleSheet, Text, FlatList } from 'react-native';
+import { Leaderboard, NavBar } from '../components/atoms';
 
-import { useNavigation } from '@react-navigation/native';
-import { OnboardingNavigationProp } from '../navigation/types';
-import { NavButton } from '../components/atoms';
+const DATA = [
+    {
+        title: 'VORP',
+        data: {
+            rank: [1, 2, 3, 4, 5],
+            player_id: ['jokicni01', 'antetgi01', 'embiijo01', 'doncilu01', 'jamesle01'],
+            value: [9.8, 7.4, 6.5, 5.9, 5.1],
+        }
+    },
+    {
+        title: 'eFG%',
+        data: {
+            rank: [1, 2, 3, 4, 5],
+            player_id: ['goberru01', 'allenja01', 'harremo01', 'aytonde01', 'zubaciv01'],
+            value: [0.713, 0.678, 0.649, 0.639, 0.626],
+        }
+    }
+]
 
 export const StatDashboard = () => {
-    const { navigate } = useNavigation<OnboardingNavigationProp>();
-
     return (
         <View style={styles.container}>
-            <View style={styles.headerContainer}>
-                <Text style={styles.header}>Stat Dashboard</Text>
-            </View>
-            <View style={styles.navBar}>                
-                <NavButton
-                    type='schedule'
-                    onPress={() => navigate('Schedule')}
-                />
-                <NavButton 
-                    type='teams'
-                    onPress={() => navigate('Rosters')}
-                />            
-                <NavButton 
-                    type='stats'
-                    onPress={() => navigate('StatDashboard')}
-                />             
-                <NavButton 
-                    type='settings'
-                    onPress={() => navigate('FavoriteTeams')}
-                />                    
-            </View>
+            <FlatList 
+                data={DATA}
+                renderItem={({ item, index }) => (
+                    <Leaderboard
+                        title={item.title}
+                        data={item.data}
+                        key={`leaderboard-${index}`}
+                    />
+                )}
+                numColumns={1}
+                ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
+                ListHeaderComponent={() => (
+                    <View style={styles.headerContainer}>
+                        <Text style={styles.header}>Stat Dashboard</Text>
+                    </View>
+                )}
+            />
+            <NavBar />
         </View>
     );
 };
@@ -41,23 +52,11 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     headerContainer: {
-        flex: 0.85,
         alignItems: 'center',
     },
     header: {
         fontWeight: 'bold',
         fontSize: 22,
         marginBottom: 20,
-    },
-    navBar: {
-        flex: 0.15,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        backgroundColor: '#BFF3FF',
-        alignItems: 'center',
-        paddingHorizontal: 30,
-        paddingBottom: 10,
-        borderTopColor: '#DEDEDE',
-        borderTopWidth: 2,
     },
 });
