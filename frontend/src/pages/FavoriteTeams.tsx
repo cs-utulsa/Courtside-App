@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import { View, StyleSheet, FlatList, Dimensions, Text } from 'react-native';
-import { RightButton, SelectCircle, SearchBox } from '../components/atoms';
+import { RightButton, SelectCircle, SearchBox, LeftButton } from '../components/atoms';
 import { ICONS } from '../constants';
 import { OnboardingNavigationProp } from '../navigation/types';
 
@@ -42,8 +42,8 @@ export const FavoriteTeams = () => {
                 ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
                 ListHeaderComponent={() => (
                     <>
-                        <Text style={styles.heading}>
-                            Select Your Favorite Teams!
+                        <Text style={styles.header}>
+                            Select Your Favorite Teams
                         </Text>
                         <SearchBox placeholder="Search for Your Team" />
                     </>
@@ -52,9 +52,13 @@ export const FavoriteTeams = () => {
                 ListFooterComponent={() => <View style={{ height: 30 }} />}
             />
             <View style={[styles.footer]}>
+                <LeftButton
+                    onPress={() => navigate('GetStarted')}
+                    text="Back"
+                />
                 <RightButton
                     text={selectedTeams.length < 1 ? 'Skip' : 'Next'}
-                    onPress={() => navigate('StatSelection')}
+                    onPress={() => navigate('FavoritePlayers')}
                 />
             </View>
         </View>
@@ -63,26 +67,23 @@ export const FavoriteTeams = () => {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 40,
+        marginTop: 60,
         marginHorizontal: 10,
         flex: 1,
     },
-    heading: {
+    header: {
         fontWeight: 'bold',
         fontSize: 22,
         marginBottom: 20,
     },
-    center: {
-        marginVertical: 15,
-        alignItems: 'center',
-    },
-    footer: {
-        marginHorizontal: -10,
-        flex: 0.1,
-        justifyContent: 'center',
-        backgroundColor: 'white',
-    },
     list: {
         flex: 0.9,
+    },
+    footer: {
+        flex: 0.1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginHorizontal: -10,
+        backgroundColor: 'white',
     },
 });

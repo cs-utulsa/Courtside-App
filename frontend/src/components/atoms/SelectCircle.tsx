@@ -3,7 +3,7 @@ import { View, Image, StyleSheet, Pressable } from 'react-native';
 
 type SelectCircleProps = {
     disabled?: boolean;
-    url: string;
+    url?: string;
     size: number;
     onSelectChanged?: (newStatus: boolean) => void;
 };

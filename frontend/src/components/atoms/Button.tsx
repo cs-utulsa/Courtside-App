@@ -24,7 +24,7 @@ export const Button: FC<ButtonProps> = ({
 
 const styles = StyleSheet.create({
     button: {
-        borderRadius: 20,
+        borderRadius: 30,
         paddingHorizontal: 20,
         paddingVertical: 10,
         backgroundColor: '#60DDF7',

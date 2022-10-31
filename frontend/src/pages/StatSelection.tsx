@@ -1,9 +1,11 @@
+import { useNavigation } from '@react-navigation/native';
 import { FC, useState } from 'react';
 import AntIcon from '@expo/vector-icons/AntDesign';
 import { Text, StyleSheet, FlatList, View, Pressable } from 'react-native';
 
+import { OnboardingNavigationProp } from '../navigation/types';
 import { STATS } from './../constants';
-import { ToggleButton } from '../components/atoms';
+import { ToggleButton, LeftButton, RightButton } from '../components/atoms';
 
 type StatSectionProps = {
     title: string;
@@ -41,23 +43,37 @@ const StatSection: FC<StatSectionProps> = ({ title, data }) => {
 };
 
 export const StatSelection = () => {
+    const { navigate } = useNavigation<OnboardingNavigationProp>();
+    
     return (
-        <FlatList
-            style={styles.container}
-            data={STATS}
-            renderItem={({ item, index }) => (
-                <StatSection
-                    title={item.title}
-                    data={item.data}
-                    key={`stat-section-${index}`}
+        <View style={[styles.container]}>
+            <FlatList
+                style={styles.list}
+                data={STATS}
+                renderItem={({ item, index }) => (
+                    <StatSection
+                        title={item.title}
+                        data={item.data}
+                        key={`stat-section-${index}`}
+                    />
+                )}
+                ListHeaderComponent={() => (
+                    <View style={styles.headerContainer}>
+                        <Text style={styles.header}>Customize Your Stats Dashboard</Text>
+                    </View>
+                )}
+            />
+            <View style={[styles.footer]}>
+                <LeftButton
+                    onPress={() => navigate('FavoritePlayers')}
+                    text="Back"
                 />
-            )}
-            ListHeaderComponent={() => (
-                <View style={styles.headerContainer}>
-                    <Text style={styles.heading}>Follow Stats</Text>
-                </View>
-            )}
-        />
+                <RightButton
+                    text='Next'
+                    onPress={() => navigate('Schedule')}
+                />
+            </View>
+        </View>
     );
 };
 
@@ -88,15 +104,25 @@ export const sectionStyles = StyleSheet.create({
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 40,
-    },
-    heading: {
-        fontWeight: 'bold',
-        fontSize: 22,
-        marginBottom: 5,
+        marginTop: 60,
+        flex: 1,
     },
     headerContainer: {
         alignItems: 'center',
-        justifyContent: 'center',
+    },
+    header: {
+        fontWeight: 'bold',
+        fontSize: 22,
+        marginBottom: 20,
+    },
+    list: {
+        flex: 0.9,
+    },
+    footer: {
+        flex: 0.1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginHorizontal: -10,
+        backgroundColor: 'white',
     },
 });
