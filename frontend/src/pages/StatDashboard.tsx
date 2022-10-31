@@ -1,6 +1,7 @@
+import { Seperator } from '@atoms/Seperator';
 import React from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
-import { StatLeaderboard } from '../components/atoms';
+import { StatLeaderboard } from '../components/molecules';
 
 const DATA = [
     {
@@ -38,7 +39,7 @@ export const StatDashboard = () => {
                     />
                 )}
                 numColumns={1}
-                ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
+                ItemSeparatorComponent={Seperator}
             />
         </View>
     );

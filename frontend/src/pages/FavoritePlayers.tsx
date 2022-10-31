@@ -1,28 +1,29 @@
+import React from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
-import { RightButton, LeftButton } from '../components/atoms';
+import { RightButton, LeftButton, Seperator } from '../components/atoms';
 import { useNavigation } from '@react-navigation/native';
 import { OnboardingNavigationProp } from '../navigation/types';
 
 export const FavoritePlayers = () => {
     const { navigate } = useNavigation<OnboardingNavigationProp>();
-    
+
     return (
         <View style={styles.container}>
-            <FlatList 
+            <FlatList
                 style={styles.list}
                 data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
                 renderItem={({ item }) => <Text>{item}</Text>}
                 numColumns={3}
-                ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
-                ListHeaderComponent={() => (
-                    <>
-                        <Text style={styles.header}>
-                            Follow Your Favorite Players
-                        </Text>
-                    </>
-                )}
-                ListHeaderComponentStyle={{ alignItems: 'center' }}
-                ListFooterComponent={() => <View style={{ height: 30 }} />}
+                ItemSeparatorComponent={Seperator}
+                // ListHeaderComponent={() => (
+                //     <>
+                //         <Text style={styles.header}>
+                //             Follow Your Favorite Players
+                //         </Text>
+                //     </>
+                // )}
+                // ListHeaderComponentStyle={{ alignItems: 'center' }}
+                // ListFooterComponent={() => <View style={{ height: 30 }} />}
             />
             <View style={[styles.footer]}>
                 <LeftButton
@@ -30,7 +31,7 @@ export const FavoritePlayers = () => {
                     text="Back"
                 />
                 <RightButton
-                    text='Next'
+                    text="Next"
                     onPress={() => navigate('StatSelection')}
                 />
             </View>

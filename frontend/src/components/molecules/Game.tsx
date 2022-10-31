@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native';
 import React, { FC } from 'react';
 
-import { SelectCircle } from './';
+import { SelectCircle } from '../atoms';
 import { ICONS } from '../../constants';
 
 type GameProps = {

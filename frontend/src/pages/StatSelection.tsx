@@ -1,11 +1,11 @@
 import { useNavigation } from '@react-navigation/native';
-import { FC, useState } from 'react';
+import React, { FC, useState } from 'react';
 import AntIcon from '@expo/vector-icons/AntDesign';
 import { Text, StyleSheet, FlatList, View, Pressable } from 'react-native';
 
 import { OnboardingNavigationProp } from '../navigation/types';
 import { STATS } from './../constants';
-import { ToggleButton, LeftButton, RightButton } from '../components/atoms';
+import { ToggleButton, LeftButton } from '../components/atoms';
 
 type StatSectionProps = {
     title: string;
@@ -44,7 +44,7 @@ const StatSection: FC<StatSectionProps> = ({ title, data }) => {
 
 export const StatSelection = () => {
     const { navigate } = useNavigation<OnboardingNavigationProp>();
-    
+
     return (
         <View style={[styles.container]}>
             <FlatList
@@ -59,7 +59,9 @@ export const StatSelection = () => {
                 )}
                 ListHeaderComponent={() => (
                     <View style={styles.headerContainer}>
-                        <Text style={styles.header}>Customize Your Stats Dashboard</Text>
+                        <Text style={styles.header}>
+                            Customize Your Stats Dashboard
+                        </Text>
                     </View>
                 )}
             />
@@ -67,10 +69,6 @@ export const StatSelection = () => {
                 <LeftButton
                     onPress={() => navigate('FavoritePlayers')}
                     text="Back"
-                />
-                <RightButton
-                    text='Next'
-                    onPress={() => navigate('Schedule')}
                 />
             </View>
         </View>

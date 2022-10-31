@@ -1,6 +1,7 @@
+import { Seperator } from '@atoms/Seperator';
 import React from 'react';
 import { View, FlatList, StyleSheet } from 'react-native';
-import { Game } from '../components/atoms';
+import { Game } from '../components/molecules';
 
 const DATA = [
     {
@@ -54,7 +55,7 @@ export const Schedule = () => {
                     />
                 )}
                 numColumns={1}
-                ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
+                ItemSeparatorComponent={Seperator}
             />
 
             {/* {(data.roster.length === 0) ? (

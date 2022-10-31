@@ -1,7 +1,13 @@
 import { useNavigation } from '@react-navigation/native';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet, FlatList, Dimensions, Text } from 'react-native';
-import { RightButton, SelectCircle, SearchBox, LeftButton } from '../components/atoms';
+import {
+    RightButton,
+    SelectCircle,
+    SearchBox,
+    LeftButton,
+    Seperator,
+} from '../components/atoms';
 import { ICONS } from '../constants';
 import { OnboardingNavigationProp } from '../navigation/types';
 
@@ -39,7 +45,7 @@ export const FavoriteTeams = () => {
                 data={ICONS}
                 renderItem={renderItem}
                 numColumns={3}
-                ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
+                ItemSeparatorComponent={Seperator}
                 ListHeaderComponent={() => (
                     <>
                         <Text style={styles.header}>
