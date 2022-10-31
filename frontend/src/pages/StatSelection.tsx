@@ -5,7 +5,7 @@ import { Text, StyleSheet, FlatList, View, Pressable } from 'react-native';
 
 import { OnboardingNavigationProp } from '../navigation/types';
 import { STATS } from './../constants';
-import { ToggleButton, LeftButton } from '../components/atoms';
+import { ToggleButton, LeftButton, RightButton } from '../components/atoms';
 
 type StatSectionProps = {
     title: string;
@@ -69,6 +69,10 @@ export const StatSelection = () => {
                 <LeftButton
                     onPress={() => navigate('FavoritePlayers')}
                     text="Back"
+                />
+                <RightButton
+                    onPress={() => navigate('MainNavigation')}
+                    text="Finish"
                 />
             </View>
         </View>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 //import { OnboardingNavigator } from './OnboardingStack';
-import { MainNavigation } from './MainNavigation';
+import { OnboardingNavigator } from './OnboardingStack';
 
 const Theme = {
     ...DefaultTheme,
@@ -13,8 +13,7 @@ const Theme = {
 const RootNavigator = () => {
     return (
         <NavigationContainer theme={Theme}>
-            {/* <OnboardingNavigator /> */}
-            <MainNavigation />
+            <OnboardingNavigator />
         </NavigationContainer>
     );
 };

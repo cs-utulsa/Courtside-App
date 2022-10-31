@@ -64,7 +64,7 @@ export const FavoriteTeams = () => {
                 />
                 <RightButton
                     text={selectedTeams.length < 1 ? 'Skip' : 'Next'}
-                    onPress={() => navigate('FavoritePlayers')}
+                    onPress={() => navigate('StatSelection')}
                 />
             </View>
         </View>
