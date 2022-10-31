@@ -9,23 +9,23 @@ type GameProps = {
     time: string;
     away: string;
     home: string;
-}
+};
 
 export const Game: FC<GameProps> = ({ date, time, away, home }) => {
     return (
         <View style={styles.gameBlock}>
-            <SelectCircle 
+            <SelectCircle
                 url={ICONS.find((icon) => icon.code === away)?.logo}
                 size={100}
                 disabled={true}
             />
-            <View style={styles.gameData}> 
+            <View style={styles.gameData}>
                 <Text>{date}</Text>
                 <Text>{time}</Text>
                 <Text>{away}</Text>
                 <Text>{home}</Text>
             </View>
-            <SelectCircle 
+            <SelectCircle
                 url={ICONS.find((icon) => icon.code === home)?.logo}
                 size={100}
                 disabled={true}

@@ -46,15 +46,7 @@ export const StatDashboard = () => {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 60,
+        marginTop: 10,
         flex: 1,
-    },
-    headerContainer: {
-        alignItems: 'center',
-    },
-    header: {
-        fontWeight: 'bold',
-        fontSize: 22,
-        marginBottom: 20,
     },
 });

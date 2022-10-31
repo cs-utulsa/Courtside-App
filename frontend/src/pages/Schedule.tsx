@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, FlatList, StyleSheet } from 'react-native';
+import { View, FlatList, StyleSheet } from 'react-native';
 import { Game } from '../components/atoms';
 
 const DATA = [
@@ -55,11 +55,6 @@ export const Schedule = () => {
                 )}
                 numColumns={1}
                 ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
-                ListHeaderComponent={() => (
-                    <View style={styles.headerContainer}>
-                        <Text style={styles.header}>Schedule</Text>
-                    </View>
-                )}
             />
 
             {/* {(data.roster.length === 0) ? (
@@ -77,15 +72,7 @@ export const Schedule = () => {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 60,
         flex: 1,
-    },
-    headerContainer: {
-        alignItems: 'center',
-    },
-    header: {
-        fontWeight: 'bold',
-        fontSize: 22,
-        marginBottom: 20,
+        marginTop: 10,
     },
 });
