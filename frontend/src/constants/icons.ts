@@ -1,4 +1,4 @@
-export const ICONS: { name: string; logo: string; code: string; }[] = [
+export const ICONS: { name: string; logo: string; code: string }[] = [
     {
         logo: 'https://content.sportslogos.net/logos/6/220/full/8190_atlanta_hawks-primary-2021.png',
         name: 'Atlanta Hawks',
@@ -18,7 +18,6 @@ export const ICONS: { name: string; logo: string; code: string; }[] = [
         logo: 'https://content.sportslogos.net/logos/6/5120/full/1926_charlotte__hornets_-primary-2015.png',
         name: 'Charlotte Hornets',
         code: 'CHO',
-
     },
     {
         name: 'Chicago Bulls',

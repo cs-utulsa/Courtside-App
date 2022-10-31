@@ -1,9 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
-
-import { useNavigation } from '@react-navigation/native';
-import { OnboardingNavigationProp } from '../navigation/types';
-import { Game, NavBar } from '../components/atoms';
+import { Game } from '../components/atoms';
 
 const DATA = [
     {
@@ -27,8 +24,6 @@ const DATA = [
 ];
 
 export const Schedule = () => {
-    const { navigate } = useNavigation<OnboardingNavigationProp>();
-
     // const [data, setData] = useState({
     //     roster: [],
     // });
@@ -47,7 +42,7 @@ export const Schedule = () => {
 
     return (
         <View style={styles.container}>
-            <FlatList 
+            <FlatList
                 data={DATA}
                 renderItem={({ item, index }) => (
                     <Game
@@ -66,7 +61,6 @@ export const Schedule = () => {
                     </View>
                 )}
             />
-            <NavBar />
 
             {/* {(data.roster.length === 0) ? (
                 <Text>Loading...</Text>

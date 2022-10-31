@@ -1,14 +1,15 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { GetStarted, StatSelection } from './../pages';
+import { Schedule, StatDashboard, Rosters } from './../pages';
 
 const Tab = createBottomTabNavigator();
 
 export const MainNavigation = () => {
     return (
         <Tab.Navigator>
-            <Tab.Screen name="Home" component={GetStarted} />
-            <Tab.Screen name="Another" component={StatSelection} />
+            <Tab.Screen name="Stats Dashboard" component={StatDashboard} />
+            <Tab.Screen name="Schedule" component={Schedule} />
+            <Tab.Screen name="Rosters" component={Rosters} />
         </Tab.Navigator>
     );
 };

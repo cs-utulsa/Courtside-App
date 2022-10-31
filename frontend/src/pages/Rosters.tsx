@@ -1,19 +1,12 @@
 import React from 'react';
-import { View, StyleSheet, Text, FlatList } from 'react-native';
-
-import { useNavigation } from '@react-navigation/native';
-import { OnboardingNavigationProp } from '../navigation/types';
-import { NavBar } from '../components/atoms';
+import { View, StyleSheet, Text } from 'react-native';
 
 export const Rosters = () => {
-    const { navigate } = useNavigation<OnboardingNavigationProp>();
-
     return (
         <View style={styles.container}>
             <View style={styles.headerContainer}>
                 <Text style={styles.header}>Rosters</Text>
             </View>
-            <NavBar />
         </View>
     );
 };

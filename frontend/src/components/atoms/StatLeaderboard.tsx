@@ -3,8 +3,8 @@ import { View, Text, StyleSheet } from 'react-native';
 
 type LeaderboardProps = {
     name: string;
-    data:{rank:number, player_id:string, value:number}[]
-}
+    data: { rank: number; player_id: string; value: number }[];
+};
 
 export const StatLeaderboard: FC<LeaderboardProps> = ({ name, data }) => {
     return (
@@ -19,13 +19,19 @@ export const StatLeaderboard: FC<LeaderboardProps> = ({ name, data }) => {
             </View>
             <View style={styles.leaderboardList}>
                 <View style={styles.statCol}>
-                    {data.map((item:any) => <Text>{item.rank}</Text>)}  
+                    {data.map((item: any) => (
+                        <Text>{item.rank}</Text>
+                    ))}
                 </View>
                 <View style={styles.statCol}>
-                    {data.map((item:any) => <Text>{item.player_id}</Text>)}  
+                    {data.map((item: any) => (
+                        <Text>{item.player_id}</Text>
+                    ))}
                 </View>
                 <View style={styles.statCol}>
-                    {data.map((item:any) =>  <Text>{item.value}</Text>)}  
+                    {data.map((item: any) => (
+                        <Text>{item.value}</Text>
+                    ))}
                 </View>
             </View>
         </View>

@@ -5,9 +5,6 @@ export type OnboardingNavigatorParamList = {
     FavoritePlayers: undefined;
     FavoriteTeams: undefined;
     StatSelection: undefined;
-    Schedule: undefined;
-    Rosters: undefined;
-    StatDashboard: undefined;
 };
 
 export type OnboardingNavigationProp =
