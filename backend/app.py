@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 import pandas as pd
+import json
 
 app = Flask(__name__)
 
@@ -24,7 +25,7 @@ def get_schedule(month, day):
     else:
         day_schedule = schedule[schedule['game_date'] == f"{month}-{day}-2023"]
     return day_schedule.to_json(orient="index")
-        
+            
 # Main method
 if __name__ == "__main__":
     app.run(debug=True)
