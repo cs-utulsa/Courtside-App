@@ -12,8 +12,8 @@ def get_roster(team_code):
 # Return leaderboard for specified stat/season
 @app.route('/leaderboard/<stat>', methods=['GET'])
 def get_leaderboard(stat):
-    leaderboard = pd.read_csv(f"..\\data\\leaderboards\\{stat}_2023.csv", index_col=0)
-    return leaderboard.to_json(orient="index")
+    leaderboard = pd.read_csv(f"..\\data\\leaderboards\\{stat}_2022.csv")
+    return leaderboard.to_json(orient="records")
 
 # Return schedule for a requested day
 @app.route('/schedule/<int:month>/<int:day>', methods=['GET'])

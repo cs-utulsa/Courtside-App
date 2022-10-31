@@ -7,4 +7,4 @@ export { CheckboxText } from './CheckboxText';
 export { ToggleButton } from './ToggleButton';
 export { NavBar } from './NavBar';
 export { Game } from './Game';
-export { Leaderboard } from './Leaderboard';
+export { StatLeaderboard } from './StatLeaderboard';
