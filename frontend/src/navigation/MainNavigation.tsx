@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Schedule, StatDashboard, Rosters } from './../pages';
+import { Schedule, StatDashboard, Rosters, Settings } from './../pages';
 import { Ionicons, FontAwesome, FontAwesome5 } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
@@ -37,6 +37,14 @@ export const MainNavigation = () => {
                                 size={size}
                             />
                         );
+                    } else if (route.name === 'Settings') {
+                        return (
+                            <Ionicons
+                                name="settings-sharp"
+                                color={color}
+                                size={size}
+                            />
+                        );
                     }
                 },
             })}
@@ -44,6 +52,7 @@ export const MainNavigation = () => {
             <Tab.Screen name="Stats Dashboard" component={StatDashboard} />
             <Tab.Screen name="Schedule" component={Schedule} />
             <Tab.Screen name="Rosters" component={Rosters} />
+            <Tab.Screen name="Settings" component={Settings} />
         </Tab.Navigator>
     );
 };
