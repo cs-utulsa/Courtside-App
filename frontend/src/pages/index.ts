@@ -6,3 +6,4 @@ export { Schedule } from './Schedule';
 export { Rosters } from './Rosters';
 export { StatDashboard } from './StatDashboard';
 export { Settings } from './Settings';
+export { Auth } from './Auth';

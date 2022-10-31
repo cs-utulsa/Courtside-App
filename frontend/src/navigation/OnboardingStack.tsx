@@ -6,6 +6,7 @@ import {
     FavoritePlayers,
     FavoriteTeams,
     StatSelection,
+    Auth,
 } from './../pages';
 import { OnboardingNavigatorParamList } from './types';
 import { MainNavigation } from './MainNavigation';
@@ -35,6 +36,7 @@ export const OnboardingNavigator = () => {
                 name="StatSelection"
                 component={StatSelection}
             />
+            <OnboardingStack.Screen name="Auth" component={Auth} />
             <OnboardingStack.Screen
                 name="MainNavigation"
                 component={MainNavigation}

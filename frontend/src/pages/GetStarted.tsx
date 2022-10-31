@@ -14,6 +14,7 @@ export const GetStarted = () => {
                 text="Get Started"
                 onPress={() => navigate('FavoriteTeams')}
             />
+            <Text style={styles.subtext}>Already a user?</Text>
         </View>
     );
 };
@@ -28,5 +29,9 @@ const styles = StyleSheet.create({
     header: {
         fontSize: 30,
         textAlign: 'center',
+    },
+    subtext: {
+        fontSize: 18,
+        textDecorationLine: 'underline',
     },
 });

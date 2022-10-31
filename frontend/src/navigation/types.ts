@@ -6,6 +6,7 @@ export type OnboardingNavigatorParamList = {
     FavoriteTeams: undefined;
     StatSelection: undefined;
     MainNavigation: undefined;
+    Auth: { register: boolean };
 };
 
 export type OnboardingNavigationProp =
