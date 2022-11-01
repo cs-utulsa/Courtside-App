@@ -1,3 +1,4 @@
+import { RouteProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 export type OnboardingNavigatorParamList = {
@@ -11,3 +12,8 @@ export type OnboardingNavigatorParamList = {
 
 export type OnboardingNavigationProp =
     NativeStackNavigationProp<OnboardingNavigatorParamList>;
+
+export type AuthScreenRouteProp = RouteProp<
+    OnboardingNavigatorParamList,
+    'Auth'
+>;

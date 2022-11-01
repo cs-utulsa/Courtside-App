@@ -36,7 +36,11 @@ export const OnboardingNavigator = () => {
                 name="StatSelection"
                 component={StatSelection}
             />
-            <OnboardingStack.Screen name="Auth" component={Auth} />
+            <OnboardingStack.Screen
+                name="Auth"
+                component={Auth}
+                initialParams={{ register: true }}
+            />
             <OnboardingStack.Screen
                 name="MainNavigation"
                 component={MainNavigation}

@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, Pressable } from 'react-native';
 import { OnboardingNavigationProp } from '../navigation/types';
 import { Button } from './../components/atoms';
 
@@ -14,7 +14,9 @@ export const GetStarted = () => {
                 text="Get Started"
                 onPress={() => navigate('FavoriteTeams')}
             />
-            <Text style={styles.subtext}>Already a user?</Text>
+            <Pressable onPress={() => navigate('Auth', { register: false })}>
+                <Text style={styles.subtext}>Already a user?</Text>
+            </Pressable>
         </View>
     );
 };

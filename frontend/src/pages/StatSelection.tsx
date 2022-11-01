@@ -71,7 +71,7 @@ export const StatSelection = () => {
                     text="Back"
                 />
                 <RightButton
-                    onPress={() => navigate('MainNavigation')}
+                    onPress={() => navigate('Auth', { register: true })}
                     text="Finish"
                 />
             </View>
