@@ -1,11 +1,12 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { FC, useState } from 'react';
+import React, { FC, useContext, useState } from 'react';
 import AntIcon from '@expo/vector-icons/AntDesign';
 import { Text, StyleSheet, FlatList, View, Pressable } from 'react-native';
 
 import { OnboardingNavigationProp } from '../navigation/types';
 import { STATS } from './../constants';
-import { ToggleButton, LeftButton, RightButton } from '../components/atoms';
+import { ToggleButton, RightButton } from '../components/atoms';
+import { UserContext } from '@contexts/UserContext';
 
 type StatSectionProps = {
     title: string;
@@ -14,6 +15,7 @@ type StatSectionProps = {
 
 const StatSection: FC<StatSectionProps> = ({ title, data }) => {
     const [open, setOpen] = useState<boolean>(false);
+    const { userStats, setUserStats } = useContext(UserContext);
 
     return (
         <View style={sectionStyles.section}>
@@ -32,8 +34,18 @@ const StatSection: FC<StatSectionProps> = ({ title, data }) => {
                 <View style={sectionStyles.stats}>
                     {data.map((stat, index) => (
                         <ToggleButton
+                            initial={userStats.includes(stat)}
                             text={stat}
                             key={`${title}-stat-${index}`}
+                            onToggle={(on: boolean) => {
+                                if (on) {
+                                    setUserStats((old: any) => [...old, stat]);
+                                } else {
+                                    setUserStats(
+                                        userStats.filter((s: any) => s !== stat)
+                                    );
+                                }
+                            }}
                         />
                     ))}
                 </View>
@@ -66,10 +78,6 @@ export const StatSelection = () => {
                 )}
             />
             <View style={[styles.footer]}>
-                <LeftButton
-                    onPress={() => navigate('FavoritePlayers')}
-                    text="Back"
-                />
                 <RightButton
                     onPress={() => navigate('Auth', { register: true })}
                     text="Finish"
@@ -123,7 +131,7 @@ const styles = StyleSheet.create({
     footer: {
         flex: 0.1,
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'flex-end',
         marginHorizontal: -10,
         backgroundColor: 'white',
     },

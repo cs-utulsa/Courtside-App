@@ -7,6 +7,7 @@ import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { ICONS } from './constants';
 import { registerRootComponent } from 'expo';
+import { UserContext } from '@contexts/UserContext';
 
 function cacheImages(images: string[]) {
     return images.map((image: string) => {
@@ -19,6 +20,9 @@ function cacheImages(images: string[]) {
 }
 
 export default function App() {
+    const [userTeams, setUserTeams] = useState<any>([]);
+    const [userStats, setUserStats] = useState<any>([]);
+
     const [assetsReady, setAssetsReady] = useState<boolean>(false);
 
     const [fontsReady] = useFonts({
@@ -52,7 +56,11 @@ export default function App() {
 
     return (
         <>
-            <RootNavigator />
+            <UserContext.Provider
+                value={{ userTeams, userStats, setUserStats, setUserTeams }}
+            >
+                <RootNavigator />
+            </UserContext.Provider>
             <StatusBar style="auto" />
         </>
     );

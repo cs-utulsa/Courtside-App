@@ -2,15 +2,28 @@ import React, { FC, useState } from 'react';
 import { Text, Pressable, StyleSheet } from 'react-native';
 
 type ToggleButtonProps = {
+    initial: boolean;
     text: string;
+    onToggle: (on: boolean) => void;
 };
 
-export const ToggleButton: FC<ToggleButtonProps> = ({ text }) => {
-    const [selected, setSelected] = useState<boolean>(false);
+export const ToggleButton: FC<ToggleButtonProps> = ({
+    initial,
+    text,
+    onToggle,
+}) => {
+    const [selected, setSelected] = useState<boolean>(initial);
+
+    const onPress = () => {
+        const newValue = !selected;
+
+        setSelected(newValue);
+        onToggle(newValue);
+    };
 
     return (
         <Pressable
-            onPress={() => setSelected(!selected)}
+            onPress={onPress}
             style={[
                 styles.button,
                 selected ? styles.btnSelected : styles.btnNotSelected,

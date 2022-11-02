@@ -1,11 +1,11 @@
+import { UserContext } from '@contexts/UserContext';
 import { useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { View, StyleSheet, FlatList, Dimensions, Text } from 'react-native';
 import {
     RightButton,
     SelectCircle,
     SearchBox,
-    LeftButton,
     Seperator,
 } from '../components/atoms';
 import { ICONS } from '../constants';
@@ -16,7 +16,9 @@ const numColumns = 3;
 const tile = screenWidth / numColumns;
 
 export const FavoriteTeams = () => {
-    const [selectedTeams, setSelectedTeams] = useState<string[]>([]);
+    const { userTeams, setUserTeams } = useContext(UserContext);
+
+    //const [selectedTeams, setSelectedTeams] = useState<string[]>([]);
 
     const { navigate } = useNavigation<OnboardingNavigationProp>();
 
@@ -27,10 +29,10 @@ export const FavoriteTeams = () => {
                 size={tile}
                 onSelectChanged={(newStatus: boolean) => {
                     if (newStatus) {
-                        setSelectedTeams((old) => [...old, item.name]);
+                        setUserTeams((old: any) => [...old, item.name]);
                     } else {
-                        setSelectedTeams(
-                            selectedTeams.filter((team) => team !== item.name)
+                        setUserTeams(
+                            userTeams.filter((team: any) => team !== item.name)
                         );
                     }
                 }}
@@ -58,12 +60,8 @@ export const FavoriteTeams = () => {
                 ListFooterComponent={() => <View style={{ height: 30 }} />}
             />
             <View style={[styles.footer]}>
-                <LeftButton
-                    onPress={() => navigate('GetStarted')}
-                    text="Back"
-                />
                 <RightButton
-                    text={selectedTeams.length < 1 ? 'Skip' : 'Next'}
+                    text={userTeams.length < 1 ? 'Skip' : 'Next'}
                     onPress={() => navigate('StatSelection')}
                 />
             </View>
@@ -88,7 +86,7 @@ const styles = StyleSheet.create({
     footer: {
         flex: 0.1,
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'flex-end',
         marginHorizontal: -10,
         backgroundColor: 'white',
     },
