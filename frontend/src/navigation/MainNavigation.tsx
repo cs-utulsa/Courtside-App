@@ -10,10 +10,20 @@ export const MainNavigation = () => {
     return (
         <Tab.Navigator
             screenOptions={({ route }) => ({
-                tabBarActiveTintColor: 'blue',
+                tabBarActiveTintColor: '#EE6730',
                 tabBarInactiveTintColor: 'gray',
+                tabBarIconStyle: {
+                    transform: [{ scale: 1.3 }],
+                },
+                tabBarStyle: {
+                    height: '9%',
+                    paddingBottom: 5,
+                },
+                tabBarLabelStyle: {
+                    transform: [{ scale: 1.1 }],
+                },
                 tabBarIcon: ({ color, size }) => {
-                    if (route.name === 'Stats Dashboard') {
+                    if (route.name === 'Stats') {
                         return (
                             <Ionicons
                                 name="stats-chart-sharp"
@@ -49,7 +59,7 @@ export const MainNavigation = () => {
                 },
             })}
         >
-            <Tab.Screen name="Stats Dashboard" component={StatDashboard} />
+            <Tab.Screen name="Stats" component={StatDashboard} />
             <Tab.Screen name="Schedule" component={Schedule} />
             <Tab.Screen name="Rosters" component={Rosters} />
             <Tab.Screen name="Settings" component={Settings} />
