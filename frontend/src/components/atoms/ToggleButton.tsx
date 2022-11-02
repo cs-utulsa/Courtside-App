@@ -36,14 +36,14 @@ const styles = StyleSheet.create({
         marginHorizontal: 5,
         marginVertical: 5,
         borderWidth: 2,
-        borderColor: '#23a9dc',
+        borderColor: '#EE6730',
     },
     buttonText: {
         fontSize: 14,
         fontWeight: '500',
     },
     btnSelected: {
-        backgroundColor: '#23a9dc',
+        backgroundColor: '#EE6730',
     },
     btnNotSelected: {
         backgroundColor: 'white',
@@ -52,6 +52,6 @@ const styles = StyleSheet.create({
         color: 'white',
     },
     unselectedText: {
-        color: '#23a9dc',
+        color: '#EE6730',
     },
 });

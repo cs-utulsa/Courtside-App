@@ -6,3 +6,4 @@ export { SearchBox } from './SearchBox';
 export { CheckboxText } from './CheckboxText';
 export { ToggleButton } from './ToggleButton';
 export { Seperator } from './Seperator';
+export { LogoHeader } from './LogoHeader';

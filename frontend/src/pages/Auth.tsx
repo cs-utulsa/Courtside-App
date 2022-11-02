@@ -5,6 +5,7 @@ import {
     AuthScreenRouteProp,
     OnboardingNavigationProp,
 } from '../navigation/types';
+import { LogoHeader } from '@atoms/index';
 
 export const Auth = () => {
     const route = useRoute<AuthScreenRouteProp>();
@@ -12,16 +13,18 @@ export const Auth = () => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.header}>Courtside</Text>
+            <LogoHeader />
             <TextInput
                 style={styles.input}
                 placeholder="Email"
                 keyboardType="email-address"
+                textContentType="emailAddress"
             />
             <TextInput
                 style={styles.input}
                 secureTextEntry={true}
                 placeholder="Password"
+                textContentType="password"
             />
             <Pressable
                 style={styles.submit}
@@ -40,12 +43,6 @@ const styles = StyleSheet.create({
         height: '100%',
         alignItems: 'center',
         justifyContent: 'center',
-    },
-    header: {
-        fontSize: 30,
-        marginBottom: 20,
-        fontStyle: 'italic',
-        color: '#EE6730',
     },
     input: {
         fontSize: 20,

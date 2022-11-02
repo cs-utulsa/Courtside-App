@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     },
 
     selected: {
-        borderColor: '#cac235',
+        borderColor: '#EE6730',
     },
 
     img: {
