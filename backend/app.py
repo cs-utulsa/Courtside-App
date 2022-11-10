@@ -1,8 +1,16 @@
 from flask import Flask, jsonify, request
+from pymongo import MongoClient
 import pandas as pd
 import json
+import os
+
+from dotenv import load_dotenv
 
 app = Flask(__name__)
+client = MongoClient(os.getenv("MONGO_URL"))
+db = client.courtside
+
+load_dotenv()
 
 # Return roster of player id's for specified team
 @app.route('/roster/<team_code>', methods=['GET'])
@@ -25,7 +33,17 @@ def get_schedule(month, day):
     else:
         day_schedule = schedule[schedule['game_date'] == f"{month}-{day}-2023"]
     return day_schedule.to_json(orient="index")
-            
+
+@app.route('/test', methods=['GET'])    
+def test():
+    try:
+        users = db.users
+        users.insert_one({'username': 'test', 'password': '1234', 'email': 'test@example.com'})
+    except BaseException as e:
+        print(e)
+        return 'an error occurred'
+    return 'worked'   
+
 # Main method
 if __name__ == "__main__":
     app.run(debug=True)
