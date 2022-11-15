@@ -7,15 +7,18 @@ from db import db
 
 auth = Blueprint('auth', __name__)
 
+NO_EMAIL_MESSAGE = "Email must be provided"
+NO_PASSWORD_MESSAGE = "Password must be provided"
+
 @auth.route('/users/signin', methods=["POST"])
 def create_user():
     email = request.form.get("email")
     password = request.form.get("password")
 
     if (not email):
-        return ("Email must be provided", 400)
+        return (NO_EMAIL_MESSAGE, 400)
     elif (not password):
-        return ("Password must be provided", 400)
+        return (NO_PASSWORD_MESSAGE, 400)
 
     if (db.users.find_one({ "email": email})):
         return ("Email already exists", 409)
@@ -50,9 +53,9 @@ def login_user():
     password = request.form.get("password")
 
     if (not email):
-        return ("Email must be provided", 400)
+        return (NO_EMAIL_MESSAGE, 400)
     elif (not password):
-        return ("Password must be provided", 400)
+        return (NO_PASSWORD_MESSAGE, 400)
 
     user = db.users.find_one(
         {"email": email},
