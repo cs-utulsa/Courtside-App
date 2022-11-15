@@ -1,2 +1,6 @@
+# Environment
 .venv/
 .env
+
+# Byte-complied / optimized / DLL fiels
+__pycache__/
