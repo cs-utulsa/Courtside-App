@@ -34,16 +34,6 @@ def get_schedule(month, day):
         day_schedule = schedule[schedule['game_date'] == f"{month}-{day}-2023"]
     return day_schedule.to_json(orient="index")
 
-@app.route('/test', methods=['GET'])    
-def test():
-    try:
-        users = db.users
-        users.insert_one({'username': 'test', 'password': '1234', 'email': 'test@example.com'})
-    except BaseException as e:
-        print(e)
-        return 'an error occurred'
-    return 'worked'   
-
 # Main method
 if __name__ == "__main__":
     app.run(debug=True)
