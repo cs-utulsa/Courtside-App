@@ -1,5 +1,8 @@
 from flask import Flask, jsonify, request
 from pymongo import MongoClient
+from pymongo.errors import OperationFailure
+from pymongo.collection import ReturnDocument
+from werkzeug.security import generate_password_hash, check_password_hash
 import pandas as pd
 import json
 import os
@@ -33,6 +36,83 @@ def get_schedule(month, day):
     else:
         day_schedule = schedule[schedule['game_date'] == f"{month}-{day}-2023"]
     return day_schedule.to_json(orient="index")
+
+@app.route('/users/signin', methods=["POST"])
+def create_user():
+    email = request.form.get("email")
+    password = request.form.get("password")
+
+    if (not email):
+        return ("Email must be provided", 400)
+    elif (not password):
+        return ("Password must be provided", 400)
+
+    if (db.users.find_one({ "email": email})):
+        return ("Email already exists", 409)
+    
+    user = None
+    hashed_password=generate_password_hash(password, method='sha256')
+    try: 
+        insert_obj = db.users.insert_one(
+            { 
+                "email": email,
+                "password": hashed_password
+            }
+        )
+
+        user = db.users.find_one(
+            {"_id": insert_obj.inserted_id},
+            projection={"_id": False}
+        )
+    except OperationFailure:
+        return ("Cannot complete request", 500)
+    
+    return app.response_class(
+        response=json.dumps(user),
+        status=200,
+        mimetype='application/json'
+    )
+
+@app.route('/users/login', methods=["POST"])
+def login_user():
+    email = request.form.get("email")
+    password = request.form.get("password")
+
+    if (not email):
+        return ("Email must be provided", 400)
+    elif (not password):
+        return ("Password must be provided", 400)
+
+    user = db.users.find_one(
+        {"email": email},
+        projection={"_id": False}
+    )
+    
+    if (not user or not check_password_hash(user["password"], password)):
+        return ("Email or password incorrect", 404)
+
+    return app.response_class(
+        response=json.dumps(user),
+        status=200,
+        mimetype='application/json'
+    )
+
+@app.route('/users', methods=["DELETE"])
+def delete_user():
+    email = request.get_json()["email"]
+
+    if (not email):
+        return ("Email must be provided", 400)
+
+    try:
+        result = db.users.find_one_and_delete({"email": email})
+        if (not result):
+            return ("User does not exist", 400)
+    except OperationFailure:
+        return ("Cannot delete user", 500)
+
+    return ("Deleted successfully", 200)
+
 
 # Main method
 if __name__ == "__main__":
