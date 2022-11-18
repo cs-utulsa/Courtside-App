@@ -6,3 +6,4 @@ requests
 html5lib
 python-dotenv
 pymongo
+pyjwt

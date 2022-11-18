@@ -10,18 +10,24 @@ auth = Blueprint('auth', __name__)
 NO_EMAIL_MESSAGE = "Email must be provided"
 NO_PASSWORD_MESSAGE = "Password must be provided"
 
-@auth.route('/users/signin', methods=["POST"])
+def error_response(code, message):
+    response = make_response()
+    response.data = message
+    response.status_code = code
+    return response
+
+@auth.route('/users/signup', methods=["POST"])
 def create_user():
     email = request.form.get("email")
     password = request.form.get("password")
 
     if (not email):
-        return (NO_EMAIL_MESSAGE, 400)
+        return error_response(NO_EMAIL_MESSAGE, 400)
     elif (not password):
-        return (NO_PASSWORD_MESSAGE, 400)
+        return error_response(NO_PASSWORD_MESSAGE, 400)
 
     if (db.users.find_one({ "email": email})):
-        return ("Email already exists", 409)
+        return error_response(409, "Email already exists")
     
     user = None
     hashed_password=generate_password_hash(password, method='sha256')
@@ -34,12 +40,13 @@ def create_user():
         )
 
         user = db.users.find_one(
-            {"_id": insert_obj.inserted_id},
-            projection={"_id": False}
+            {"_id": insert_obj.inserted_id}
         )
     except OperationFailure:
-        return ("Cannot complete request", 500)
+        return error_response(500, "Cannot complete request")
     
+    user["_id"] = str(user["_id"]);
+
     response = make_response()
     response.status_code = 200
     response.response = json.dumps(user)
@@ -53,17 +60,18 @@ def login_user():
     password = request.form.get("password")
 
     if (not email):
-        return (NO_EMAIL_MESSAGE, 400)
+        return error_response(NO_EMAIL_MESSAGE, 400)
     elif (not password):
-        return (NO_PASSWORD_MESSAGE, 400)
+        return error_response(NO_PASSWORD_MESSAGE, 400)
 
     user = db.users.find_one(
-        {"email": email},
-        projection={"_id": False}
+        {"email": email}
     )
     
     if (not user or not check_password_hash(user["password"], password)):
-        return ("Email or password incorrect", 404)
+        return error_response("Email or password is incorrect", 400)
+
+    user["_id"] = str(user["_id"]);
 
     response = make_response()
     response.status_code = 200
@@ -77,13 +85,13 @@ def delete_user():
     email = request.get_json()["email"]
 
     if (not email):
-        return ("Email must be provided", 400)
+        return error_response("Email must be provided", 400)
 
     try:
         result = db.users.find_one_and_delete({"email": email})
         if (not result):
-            return ("User does not exist", 400)
+            return error_response("User does not exist", 400)
     except OperationFailure:
-        return ("Cannot delete user", 500)
+        return error_response("Cannot delete user", 500)
 
-    return ("Deleted successfully", 200)
+    return error_response("Deleted successfully", 200)
