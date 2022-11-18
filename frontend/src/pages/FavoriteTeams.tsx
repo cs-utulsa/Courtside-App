@@ -1,6 +1,5 @@
-import { UserContext } from '@contexts/UserContext';
 import { useNavigation } from '@react-navigation/native';
-import React, { useContext } from 'react';
+import React from 'react';
 import { View, StyleSheet, FlatList, Dimensions, Text } from 'react-native';
 import {
     RightButton,
@@ -16,8 +15,6 @@ const numColumns = 3;
 const tile = screenWidth / numColumns;
 
 export const FavoriteTeams = () => {
-    const { userTeams, setUserTeams } = useContext(UserContext);
-
     //const [selectedTeams, setSelectedTeams] = useState<string[]>([]);
 
     const { navigate } = useNavigation<OnboardingNavigationProp>();
@@ -28,13 +25,7 @@ export const FavoriteTeams = () => {
                 url={item.logo}
                 size={tile}
                 onSelectChanged={(newStatus: boolean) => {
-                    if (newStatus) {
-                        setUserTeams((old: any) => [...old, item.name]);
-                    } else {
-                        setUserTeams(
-                            userTeams.filter((team: any) => team !== item.name)
-                        );
-                    }
+                    console.log(newStatus);
                 }}
             />
         );
@@ -61,7 +52,8 @@ export const FavoriteTeams = () => {
             />
             <View style={[styles.footer]}>
                 <RightButton
-                    text={userTeams.length < 1 ? 'Skip' : 'Next'}
+                    //text={userTeams.length < 1 ? 'Skip' : 'Next'}
+                    text="Next"
                     onPress={() => navigate('StatSelection')}
                 />
             </View>

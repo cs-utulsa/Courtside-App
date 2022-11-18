@@ -1,12 +1,11 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { FC, useContext, useState } from 'react';
+import React, { FC, useState } from 'react';
 import AntIcon from '@expo/vector-icons/AntDesign';
 import { Text, StyleSheet, FlatList, View, Pressable } from 'react-native';
 
 import { OnboardingNavigationProp } from '../navigation/types';
 import { STATS } from './../constants';
 import { ToggleButton, RightButton } from '../components/atoms';
-import { UserContext } from '@contexts/UserContext';
 
 type StatSectionProps = {
     title: string;
@@ -15,7 +14,6 @@ type StatSectionProps = {
 
 const StatSection: FC<StatSectionProps> = ({ title, data }) => {
     const [open, setOpen] = useState<boolean>(false);
-    const { userStats, setUserStats } = useContext(UserContext);
 
     return (
         <View style={sectionStyles.section}>
@@ -34,17 +32,11 @@ const StatSection: FC<StatSectionProps> = ({ title, data }) => {
                 <View style={sectionStyles.stats}>
                     {data.map((stat, index) => (
                         <ToggleButton
-                            initial={userStats.includes(stat)}
+                            initial={false}
                             text={stat}
                             key={`${title}-stat-${index}`}
                             onToggle={(on: boolean) => {
-                                if (on) {
-                                    setUserStats((old: any) => [...old, stat]);
-                                } else {
-                                    setUserStats(
-                                        userStats.filter((s: any) => s !== stat)
-                                    );
-                                }
+                                console.log(on);
                             }}
                         />
                     ))}
