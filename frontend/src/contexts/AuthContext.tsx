@@ -22,7 +22,7 @@ export const AuthContext = createContext<AuthContextData>(
 
 export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     const [authData, setAuthData] = useState<AuthData>();
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const signIn = async () => {
         setLoading(true);

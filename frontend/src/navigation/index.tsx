@@ -1,9 +1,9 @@
 import React from 'react';
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
-import { OnboardingNavigator } from './OnboardingStack';
-import { useAuth } from '@hooks/useAuth';
+import { useAuth } from './../hooks/useAuth';
 import { Text } from 'react-native';
 import { MainNavigation } from './MainNavigation';
+import { AuthStack } from './AuthStack';
 
 const Theme = {
     ...DefaultTheme,
@@ -29,7 +29,7 @@ const RootNavigator = () => {
 
     return (
         <NavigationContainer theme={Theme}>
-            <OnboardingNavigator />
+            <AuthStack />
         </NavigationContainer>
     );
 };

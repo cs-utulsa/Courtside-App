@@ -1,16 +1,16 @@
 import React from 'react';
 import { View, TextInput, Pressable, StyleSheet, Text } from 'react-native';
-import { useNavigation, useRoute } from '@react-navigation/native';
-import {
-    AuthScreenRouteProp,
-    OnboardingNavigationProp,
-} from '../navigation/types';
+// import { useRoute } from '@react-navigation/native';
+// import {
+//     AuthScreenRouteProp,
+// } from '../navigation/types';
 import { LogoHeader } from '@atoms/index';
+import { useAuth } from '@hooks/useAuth';
 
 export const Auth = () => {
-    const route = useRoute<AuthScreenRouteProp>();
-    const { navigate } = useNavigation<OnboardingNavigationProp>();
-
+    //const route = useRoute<AuthScreenRouteProp>();
+    // const { navigate } = useNavigation<OnboardingNavigationProp>();
+    const { signIn } = useAuth();
     return (
         <View style={styles.container}>
             <LogoHeader />
@@ -28,10 +28,12 @@ export const Auth = () => {
             />
             <Pressable
                 style={styles.submit}
-                onPress={() => navigate('MainNavigation')}
+                // onPress={() => navigate('MainNavigation')}
+                onPress={signIn}
             >
                 <Text style={styles.submitText}>
-                    {route.params.register ? 'Sign Up' : 'Sign In'}
+                    Sign In
+                    {/* {route.params.register ? 'Sign Up' : 'Sign In'} */}
                 </Text>
             </Pressable>
         </View>
