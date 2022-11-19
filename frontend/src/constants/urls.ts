@@ -1,1 +1,1 @@
-export const DEVELOPMENT_API = 'http://localhost:5000';
+export const DEVELOPMENT_API = 'https://benrieth.pythonanywhere.com/';
