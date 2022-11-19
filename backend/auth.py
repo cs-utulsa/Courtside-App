@@ -20,8 +20,8 @@ def string_response(message, code):
 
 @auth.route('/users/register', methods=["POST"])
 def create_user():
-    email = request.form.get("email")
-    password = request.form.get("password")
+    email = request.get_json()["email"]
+    password = request.get_json()["password"]
 
     if (not email):
         return string_response(NO_EMAIL_MESSAGE, 400)
@@ -59,8 +59,8 @@ def create_user():
 
 @auth.route('/users/login', methods=["POST"])
 def login_user():
-    email = request.form.get("email")
-    password = request.form.get("password")
+    email = request.get_json()["email"]
+    password = request.get_json()["password"]
 
     if (not email):
         return string_response(NO_EMAIL_MESSAGE, 400)
