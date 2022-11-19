@@ -8,7 +8,7 @@ interface AuthProviderProps {
 type AuthContextData = {
     authData?: AuthData;
     loading: boolean;
-    error: string | undefined;
+    authError: string | undefined;
     signIn(email: string, password: string): Promise<void>;
     signOut(): void;
 };
@@ -25,7 +25,7 @@ export const AuthContext = createContext<AuthContextData>(
 export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     const [authData, setAuthData] = useState<AuthData>();
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<string | undefined>(undefined);
+    const [authError, setAuthError] = useState<string | undefined>(undefined);
 
     const signIn = async (email: string, password: string) => {
         setLoading(true);
@@ -47,9 +47,9 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             if (axios.isAxiosError(err)) {
                 console.log(err);
                 console.log(err.status);
-                setError(err.response?.data);
+                setAuthError(err.response?.data);
             } else {
-                setError('Unknown Error Occurred. Try Again Later.');
+                setAuthError('Unknown Error Occurred. Try Again Later.');
             }
         }
 
@@ -62,7 +62,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 
     return (
         <AuthContext.Provider
-            value={{ authData, loading, error, signIn, signOut }}
+            value={{ authData, loading, authError, signIn, signOut }}
         >
             {children}
         </AuthContext.Provider>
