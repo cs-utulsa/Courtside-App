@@ -1,9 +1,11 @@
 from flask import Flask, jsonify
 import pandas as pd
+from flask_cors import CORS
 
 from auth import auth as auth_blueprint
 
 app = Flask(__name__)
+CORS(app)
 
 app.register_blueprint(auth_blueprint)
 

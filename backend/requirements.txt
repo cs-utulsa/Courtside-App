@@ -7,3 +7,4 @@ html5lib
 python-dotenv
 pymongo
 pyjwt
+flask-cors

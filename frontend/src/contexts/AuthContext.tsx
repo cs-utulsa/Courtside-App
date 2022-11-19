@@ -1,5 +1,6 @@
+import axios from 'axios';
 import React, { createContext, FC, ReactNode, useState } from 'react';
-
+import { DEVELOPMENT_API } from '../constants/urls';
 interface AuthProviderProps {
     children: ReactNode;
 }
@@ -7,7 +8,8 @@ interface AuthProviderProps {
 type AuthContextData = {
     authData?: AuthData;
     loading: boolean;
-    signIn(): Promise<void>;
+    error: string | undefined;
+    signIn(email: string, password: string): Promise<void>;
     signOut(): void;
 };
 
@@ -23,15 +25,34 @@ export const AuthContext = createContext<AuthContextData>(
 export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     const [authData, setAuthData] = useState<AuthData>();
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string | undefined>(undefined);
 
-    const signIn = async () => {
+    const signIn = async (email: string, password: string) => {
         setLoading(true);
-        const _authData = {
-            email: 'benreith3@gmail.com',
-            token: 'token',
-        };
+        try {
+            const response = await axios.post(
+                `${DEVELOPMENT_API}/users/login`,
+                {
+                    email,
+                    password,
+                },
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                }
+            );
 
-        setAuthData(_authData);
+            const _authData = response.data;
+            setAuthData(_authData);
+        } catch (err) {
+            if (axios.isAxiosError(err)) {
+                console.log(err);
+                console.log(err.status);
+                setError(err.response?.data);
+            } else {
+                setError('Unknown Error Occurred. Try Again Later.');
+            }
+        }
+
         setLoading(false);
     };
 
@@ -40,7 +61,9 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ authData, loading, signIn, signOut }}>
+        <AuthContext.Provider
+            value={{ authData, loading, error, signIn, signOut }}
+        >
             {children}
         </AuthContext.Provider>
     );

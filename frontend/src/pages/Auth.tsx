@@ -1,41 +1,56 @@
 import React from 'react';
-import { View, TextInput, Pressable, StyleSheet, Text } from 'react-native';
-// import { useRoute } from '@react-navigation/native';
-// import {
-//     AuthScreenRouteProp,
-// } from '../navigation/types';
+import {
+    View,
+    TextInput,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+} from 'react-native';
 import { LogoHeader } from '@atoms/index';
 import { useAuth } from '@hooks/useAuth';
+import { Formik } from 'formik';
 
 export const Auth = () => {
-    //const route = useRoute<AuthScreenRouteProp>();
-    // const { navigate } = useNavigation<OnboardingNavigationProp>();
-    const { signIn } = useAuth();
+    const { signIn, error } = useAuth();
     return (
         <View style={styles.container}>
             <LogoHeader />
-            <TextInput
-                style={styles.input}
-                placeholder="Email"
-                keyboardType="email-address"
-                textContentType="emailAddress"
-            />
-            <TextInput
-                style={styles.input}
-                secureTextEntry={true}
-                placeholder="Password"
-                textContentType="password"
-            />
-            <Pressable
-                style={styles.submit}
-                // onPress={() => navigate('MainNavigation')}
-                onPress={signIn}
+            {error && <Text>{error}</Text>}
+            <Formik
+                initialValues={{ email: '', password: '' }}
+                onSubmit={async (values) =>
+                    await signIn(values.email, values.password)
+                }
             >
-                <Text style={styles.submitText}>
-                    Sign In
-                    {/* {route.params.register ? 'Sign Up' : 'Sign In'} */}
-                </Text>
-            </Pressable>
+                {({ handleChange, handleBlur, handleSubmit, values }) => (
+                    <View style={styles.form}>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Email"
+                            keyboardType="email-address"
+                            textContentType="emailAddress"
+                            onChangeText={handleChange('email')}
+                            onBlur={handleBlur('email')}
+                            value={values.email}
+                        />
+                        <TextInput
+                            style={styles.input}
+                            secureTextEntry={true}
+                            placeholder="Password"
+                            textContentType="password"
+                            onChangeText={handleChange('password')}
+                            onBlur={handleBlur('password')}
+                            value={values.password}
+                        />
+                        <TouchableOpacity
+                            style={styles.submit}
+                            onPress={() => handleSubmit()}
+                        >
+                            <Text style={styles.submitText}>Sign In</Text>
+                        </TouchableOpacity>
+                    </View>
+                )}
+            </Formik>
         </View>
     );
 };
@@ -64,5 +79,9 @@ const styles = StyleSheet.create({
     submitText: {
         fontSize: 20,
         textAlign: 'center',
+    },
+    form: {
+        width: '100%',
+        alignItems: 'center',
     },
 });
