@@ -42,6 +42,10 @@ def get_schedule(month, day):
         day_schedule = schedule[schedule['game_date'] == f"{month}-{day}-2023"]
     return day_schedule.to_json(orient="index")
 
+@app.route("/")
+def test():
+    return "<h2>Test</h2>"
+
 # Main method
 if __name__ == "__main__":
     load_dotenv()
