@@ -2,6 +2,7 @@ from flask import Flask, jsonify
 import pandas as pd
 from flask_cors import CORS
 import os
+from dotenv import load_dotenv
 
 from auth import auth as auth_blueprint
 
@@ -15,7 +16,7 @@ app.register_blueprint(auth_blueprint)
 def get_roster(team_code):
     curr_dir = os.path.dirname(os.path.abspath(__file__))
     target_dir = os.path.join(curr_dir, "rosters", f"{team_code}_2023.csv")
-    
+
     roster = pd.read_csv(target_dir, index_col=0)
     return jsonify({"roster": roster['player_id'].tolist()})
 
@@ -43,4 +44,5 @@ def get_schedule(month, day):
 
 # Main method
 if __name__ == "__main__":
+    load_dotenv()
     app.run(debug=True)

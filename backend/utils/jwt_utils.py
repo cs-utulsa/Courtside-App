@@ -1,10 +1,7 @@
 from datetime import datetime, timedelta
 import jwt
 import os
-from dotenv import load_dotenv
 from db import db
-
-load_dotenv()
 
 def encode_auth_token(user_id):
     try:
