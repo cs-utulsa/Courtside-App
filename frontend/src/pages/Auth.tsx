@@ -5,6 +5,7 @@ import {
     StyleSheet,
     Text,
     TouchableOpacity,
+    ActivityIndicator,
 } from 'react-native';
 import { LogoHeader } from '@atoms/index';
 import { useAuth } from '@hooks/useAuth';
@@ -19,7 +20,7 @@ const authSchema = Yup.object().shape({
 });
 
 export const Auth = () => {
-    const { signIn, authError } = useAuth();
+    const { signIn, authError, loading } = useAuth();
 
     return (
         <View style={styles.container}>
@@ -87,7 +88,11 @@ export const Auth = () => {
                             style={styles.submit}
                             onPress={() => handleSubmit()}
                         >
-                            <Text style={styles.submitText}>Sign In</Text>
+                            {!loading ? (
+                                <Text style={styles.submitText}>Sign In</Text>
+                            ) : (
+                                <ActivityIndicator color="black" />
+                            )}
                         </TouchableOpacity>
                     </View>
                 )}

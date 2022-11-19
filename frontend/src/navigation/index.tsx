@@ -1,7 +1,6 @@
 import React from 'react';
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { useAuth } from './../hooks/useAuth';
-import { Text } from 'react-native';
 import { MainNavigation } from './MainNavigation';
 import { AuthStack } from './AuthStack';
 
@@ -13,11 +12,7 @@ const Theme = {
 };
 
 const RootNavigator = () => {
-    const { authData, loading } = useAuth();
-
-    if (loading) {
-        return <Text>Loading</Text>;
-    }
+    const { authData } = useAuth();
 
     if (authData?.token) {
         return (
