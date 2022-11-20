@@ -1,29 +1,16 @@
 from flask import Flask, jsonify
 from db import db
 import bbref_scripts as bbref
+import pandas as pd
 import constants
 import pickle
 import os
-import pandas as pd
 
 
 if __name__ == "__main__":
     test = db.basketball_stats.find()
     for x in test:
         print(x)
-    
-    test = db.users.find()
-    for x in test:
-        print(x)
-
-    from pymongo import MongoClient
-    import os
-    
-    client = MongoClient(os.getenv("MONGO_URL"), connectTimeoutMS=5000, socketTimeoutMS=None, connect=False, maxPoolsize=1)
-    db = client
-    print(db.list_database_names())
-    db.drop_database("courtside")
-    print(db.list_database_names())
 
 
     # Loop over all teams and get rosters
