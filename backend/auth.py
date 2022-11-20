@@ -5,7 +5,7 @@ import json
 from datetime import datetime
 
 from db import db
-from utils.jwt_utils import encode_auth_token, decode_auth_token
+from utils.jwt_utils import encode_auth_token, is_valid_jwt
 
 auth = Blueprint('auth', __name__)
 
@@ -86,19 +86,24 @@ def login_user():
 
 @auth.route('/users/logout', methods=["POST"])
 def logout_user():
-    auth_header = request.headers.get('Authorization')
+    # auth_header = request.headers.get('Authorization')
 
-    token = ''
-    if auth_header:
-        token = auth_header.split(" ")[1]
+    # token = ''
+    # if auth_header:
+    #     token = auth_header.split(" ")[1]
 
-    if not token:
-        return string_response("Provide a valid auth token", 403)
+    # if not token:
+    #     return string_response("Provide a valid auth token", 403)
 
-    resp = decode_auth_token(token)
+    # resp = decode_auth_token(token)
 
-    if isinstance(resp, str):
-        return string_response(resp, 401)
+    # if isinstance(resp, str):
+    #     return string_response(resp, 401)
+
+    token = is_valid_jwt(request)
+
+    if (not token): 
+        return string_response("Invalid token", 403)
 
     try:
         db.blacklisted_tokens.insert_one({
@@ -127,3 +132,59 @@ def delete_user():
         return string_response("Cannot delete user", 500)
 
     return string_response("Deleted successfully", 200)
+
+@auth.route('/users/teams', methods=["PATCH"])
+def change_teams():
+
+    token = is_valid_jwt(request)
+
+    if (not token): 
+        return string_response("Invalid token", 403)
+
+    email = request.get_json()["email"]
+    teams = request.get_json()["teams"]
+
+    if (not email):
+        return string_response(NO_EMAIL_MESSAGE, 400)
+
+    try:
+        db.users.update_one(
+            { 'email': email },
+            { '$set': { "teams": teams} }
+        )
+
+        return string_response("Update successful", 200)
+    except OperationFailure:
+        return string_response("Cannot add teams to user", 500)
+    
+
+
+@auth.route('/users/leaderboards', methods=["PATCH"])
+def change_stats():
+    token = is_valid_jwt(request)
+
+    if (not token): 
+        return string_response("Invalid token", 403)
+
+    print(token)
+
+    email = request.get_json()["email"]
+    stats = request.get_json()["stats"]
+
+    if (not email):
+        return string_response(NO_EMAIL_MESSAGE, 400)
+
+    try:
+        db.users.update_one(
+            { 'email': email },
+            { '$set': { "stats": stats } }
+        )
+
+        return string_response("Update successful", 200)
+    except OperationFailure:
+        return string_response("Cannot add stats to user", 500)
+
+@auth.route('/users/settings', methods=["PUT"])
+def change_settings():
+    # settings not implemented yet
+    pass

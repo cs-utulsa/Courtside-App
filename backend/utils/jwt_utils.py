@@ -40,3 +40,20 @@ def decode_auth_token(token):
         return 'Token blacklisted. Please log in again.'
 
     return payload
+
+def is_valid_jwt(request):
+    auth_header = request.headers.get('Authorization')
+
+    token = ''
+    if auth_header:
+        token = auth_header.split(" ")[1]
+
+    if not token:
+        return False
+
+    resp = decode_auth_token(token)
+
+    if isinstance(resp, str):
+        return False
+
+    return token
