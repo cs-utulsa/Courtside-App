@@ -10,7 +10,10 @@ import {
     EmailInput,
     PasswordInput,
     AuthSubmitButton,
+    SmallLink,
 } from '@atoms/index';
+import { useNavigation } from '@react-navigation/native';
+import { AuthNavigationProp } from './../navigation/types';
 
 const authSchema = Yup.object().shape({
     email: Yup.string()
@@ -28,6 +31,8 @@ const authSchema = Yup.object().shape({
 
 export const SignUp = () => {
     const { signUp, authError, loading } = useAuth();
+
+    const { navigate } = useNavigation<AuthNavigationProp>();
 
     return (
         <View style={styles.container}>
@@ -82,6 +87,10 @@ export const SignUp = () => {
                             submitFn={handleSubmit}
                             disabled={isSubmitting || !isValid}
                             text="Sign Up"
+                        />
+                        <SmallLink
+                            onPress={() => navigate('SignIn')}
+                            text="Already Have an Account?"
                         />
                     </View>
                 )}

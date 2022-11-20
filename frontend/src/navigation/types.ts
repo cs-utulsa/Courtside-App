@@ -17,3 +17,11 @@ export type AuthScreenRouteProp = RouteProp<
     OnboardingNavigatorParamList,
     'Auth'
 >;
+
+export type AuthNavigatorParamList = {
+    SignIn: undefined;
+    SignUp: undefined;
+};
+
+export type AuthNavigationProp =
+    NativeStackNavigationProp<AuthNavigatorParamList>;

@@ -11,3 +11,4 @@ export { AuthSubmitButton } from './AuthSubmitButton';
 export { EmailInput } from './EmailInput';
 export { PasswordInput } from './PasswordInput';
 export { ErrorBox } from './ErrorBox';
+export { SmallLink } from './SmallLink';

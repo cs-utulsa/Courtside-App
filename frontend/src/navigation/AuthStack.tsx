@@ -1,15 +1,19 @@
 import React from 'react';
 
-//import { SignIn } from '../pages/SignIn';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { SignUp } from '../pages/index';
+import { SignUp, SignIn } from '../pages/index';
+import { AuthNavigatorParamList } from './types';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<AuthNavigatorParamList>();
 
 export const AuthStack = () => {
     return (
-        <Stack.Navigator>
-            <Stack.Screen name="Auth" component={SignUp} />
+        <Stack.Navigator
+            initialRouteName="SignUp"
+            screenOptions={{ headerShown: false }}
+        >
+            <Stack.Screen name="SignIn" component={SignIn} />
+            <Stack.Screen name="SignUp" component={SignUp} />
         </Stack.Navigator>
     );
 };
