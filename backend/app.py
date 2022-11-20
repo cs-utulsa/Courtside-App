@@ -2,7 +2,7 @@ from auth import auth as auth_blueprint
 from flask import Flask, jsonify
 from dotenv import load_dotenv
 from flask_cors import CORS
-from db import db, db_test
+from db import db
 import pandas as pd
 import os
 

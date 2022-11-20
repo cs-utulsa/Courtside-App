@@ -147,5 +147,7 @@ if __name__ == "__main__":
     #     stat_name = stat.replace('leaders_', '')
     #     leaderboard.to_csv(f"data\\leaderboards\\{stat_name}_2022.csv")
 
-    schedule = get_schedule(2023)
-    schedule.to_csv(f"data\\schedule\\2023_schedule.csv")
+    # schedule = get_schedule(2023)
+    # schedule.to_csv(f"data\\schedule\\2023_schedule.csv")
+    
+    leaderboard = get_leaderboards('leaders_pf', 2022)
