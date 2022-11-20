@@ -6,4 +6,5 @@ export type InputProps = {
     error: string | undefined;
     touched: boolean | undefined;
     value: string;
+    disabled: boolean;
 };

@@ -10,6 +10,7 @@ export const EmailInput: FC<InputProps> = ({
     error,
     touched,
     value,
+    disabled,
 }) => {
     return (
         <View style={styles.container}>
@@ -24,6 +25,7 @@ export const EmailInput: FC<InputProps> = ({
                 onChangeText={changeFn}
                 onBlur={blurFn}
                 value={value}
+                editable={!disabled}
             />
             {error && touched && <Text style={styles.errorText}>{error}</Text>}
         </View>

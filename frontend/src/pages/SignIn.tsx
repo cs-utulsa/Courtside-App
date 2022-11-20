@@ -1,11 +1,15 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { EmailInput, ErrorBox, LogoHeader } from '@atoms/index';
 import { useAuth } from '@hooks/useAuth';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { AuthSubmitButton } from '@atoms/AuthSubmitButton';
-import { PasswordInput } from '@atoms/PasswordInput';
+import {
+    LogoHeader,
+    ErrorBox,
+    EmailInput,
+    PasswordInput,
+    AuthSubmitButton,
+} from '@atoms/index';
 
 const authSchema = Yup.object().shape({
     email: Yup.string()
@@ -34,6 +38,8 @@ export const SignIn = () => {
                     values,
                     errors,
                     touched,
+                    isSubmitting,
+                    isValid,
                 }) => (
                     <View style={styles.form}>
                         <ErrorBox error={authError} />
@@ -43,6 +49,7 @@ export const SignIn = () => {
                             error={errors.email}
                             touched={touched.email}
                             value={values.email}
+                            disabled={isSubmitting}
                         />
                         <PasswordInput
                             changeFn={handleChange('password')}
@@ -50,10 +57,14 @@ export const SignIn = () => {
                             error={errors.password}
                             touched={touched.password}
                             value={values.password}
+                            disabled={isSubmitting}
+                            placeholder="Password"
                         />
                         <AuthSubmitButton
                             loading={loading}
                             submitFn={handleSubmit}
+                            disabled={isSubmitting || !isValid}
+                            text="Sign In"
                         />
                     </View>
                 )}
