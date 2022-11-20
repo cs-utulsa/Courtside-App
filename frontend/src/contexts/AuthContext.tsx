@@ -10,6 +10,7 @@ type AuthContextData = {
     loading: boolean;
     authError: string | undefined;
     signIn(email: string, password: string): Promise<void>;
+    signUp(email: string, password: string): Promise<void>;
     signOut(): void;
 };
 
@@ -45,8 +46,31 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             setAuthData(_authData);
         } catch (err) {
             if (axios.isAxiosError(err)) {
-                console.log(err);
-                console.log(err.status);
+                setAuthError(err.response?.data);
+            } else {
+                setAuthError('Unknown Error Occurred. Try Again Later.');
+            }
+        }
+
+        setLoading(false);
+    };
+
+    const signUp = async (email: string, password: string) => {
+        setLoading(true);
+
+        try {
+            const response = await axios.post(
+                `${DEVELOPMENT_API}/users/register`,
+                {
+                    email,
+                    password,
+                }
+            );
+
+            const _authData = response.data;
+            setAuthData(_authData);
+        } catch (err) {
+            if (axios.isAxiosError(err)) {
                 setAuthError(err.response?.data);
             } else {
                 setAuthError('Unknown Error Occurred. Try Again Later.');
@@ -62,7 +86,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 
     return (
         <AuthContext.Provider
-            value={{ authData, loading, authError, signIn, signOut }}
+            value={{ authData, loading, authError, signIn, signUp, signOut }}
         >
             {children}
         </AuthContext.Provider>

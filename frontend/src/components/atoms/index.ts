@@ -7,3 +7,7 @@ export { CheckboxText } from './CheckboxText';
 export { ToggleButton } from './ToggleButton';
 export { Seperator } from './Seperator';
 export { LogoHeader } from './LogoHeader';
+export { AuthSubmitButton } from './AuthSubmitButton';
+export { EmailInput } from './EmailInput';
+export { PasswordInput } from './PasswordInput';
+export { ErrorBox } from './ErrorBox';
