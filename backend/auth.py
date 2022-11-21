@@ -49,6 +49,7 @@ def create_user():
     
     user["_id"] = str(user["_id"]) # turn objectid into string
     user["token"] = encode_auth_token(user["_id"]) # add jwt token to user
+    del user["password"]
 
     response = make_response()
     response.status_code = 200
@@ -75,7 +76,8 @@ def login_user():
         return string_response("Email or password is incorrect", 400)
 
     user["_id"] = str(user["_id"]);
-    user["token"] = encode_auth_token(user["_id"])
+    user["token"] = encode_auth_token(user["_id"]);
+    del user["password"]
 
     response = make_response()
     response.status_code = 200
@@ -86,19 +88,6 @@ def login_user():
 
 @auth.route('/users/logout', methods=["POST"])
 def logout_user():
-    # auth_header = request.headers.get('Authorization')
-
-    # token = ''
-    # if auth_header:
-    #     token = auth_header.split(" ")[1]
-
-    # if not token:
-    #     return string_response("Provide a valid auth token", 403)
-
-    # resp = decode_auth_token(token)
-
-    # if isinstance(resp, str):
-    #     return string_response(resp, 401)
 
     token = is_valid_jwt(request)
 

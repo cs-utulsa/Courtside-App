@@ -1,5 +1,12 @@
 import axios from 'axios';
-import React, { createContext, FC, ReactNode, useState } from 'react';
+import React, {
+    createContext,
+    FC,
+    ReactNode,
+    useEffect,
+    useState,
+} from 'react';
+import * as SecureStore from 'expo-secure-store';
 import { DEVELOPMENT_API } from '../constants/urls';
 interface AuthProviderProps {
     children: ReactNode;
@@ -17,6 +24,8 @@ type AuthContextData = {
 type AuthData = {
     token: string;
     email: string;
+    teams?: string[];
+    stats?: string[];
 };
 
 export const AuthContext = createContext<AuthContextData>(
@@ -25,8 +34,28 @@ export const AuthContext = createContext<AuthContextData>(
 
 export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     const [authData, setAuthData] = useState<AuthData>();
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [authError, setAuthError] = useState<string | undefined>(undefined);
+
+    useEffect(() => {
+        loadStorageData();
+    }, []);
+
+    const loadStorageData = async () => {
+        try {
+            const authDataSerialized = await SecureStore.getItemAsync(
+                'authData'
+            );
+
+            if (authDataSerialized) {
+                const _authData: AuthData = JSON.parse(authDataSerialized);
+                setAuthData(_authData);
+            }
+        } catch (err) {
+        } finally {
+            setLoading(false);
+        }
+    };
 
     const signIn = async (email: string, password: string) => {
         setLoading(true);
@@ -43,6 +72,8 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             );
 
             const _authData = response.data;
+            console.log(_authData);
+            SecureStore.setItemAsync('authData', JSON.stringify(_authData));
             setAuthData(_authData);
         } catch (err) {
             if (axios.isAxiosError(err)) {
@@ -68,6 +99,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             );
 
             const _authData = response.data;
+            SecureStore.setItemAsync('authData', JSON.stringify(_authData));
             setAuthData(_authData);
         } catch (err) {
             if (axios.isAxiosError(err)) {
@@ -82,6 +114,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 
     const signOut = async () => {
         setAuthData(undefined);
+        await SecureStore.deleteItemAsync('authData');
     };
 
     return (
