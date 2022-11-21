@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-// import { View, StyleSheet, FlatList, Text } from 'react-native';
-import { Text, StyleSheet } from 'react-native';
-//import { StatLeaderboard, LeaderboardProps } from '../components/molecules';
-import { LOCAL_API } from '../constants/urls';
-//import { Seperator } from '@atoms/Seperator';
+// import React, { useEffect, useState } from 'react';
+// import axios from 'axios';
+// // import { View, StyleSheet, FlatList, Text } from 'react-native';
+// import { Text, StyleSheet } from 'react-native';
+// //import { StatLeaderboard, LeaderboardProps } from '../components/molecules';
+// import { LOCAL_API } from '../constants/urls';
+// //import { Seperator } from '@atoms/Seperator';
 
 // const DATA = [
 //     {
@@ -29,59 +29,123 @@ import { LOCAL_API } from '../constants/urls';
 //     },
 // ];
 
-export const StatDashboard = () => {
-    // const [ leaderboard, setLeaderboard] = useState<LeaderboardProps>();
-    // useEffect(() => {
-    //     axios
-    //         .get<LeaderboardProps>(`${LOCAL_API}/leaderboard/pts`)
-    //         .then((response) => {
-    //             setLeaderboard(response.data);
-    //         })
-    //         .catch((error) => {
-    //             console.log(error);
-    //         });
-    // }, []);
+import { Modal, Pressable, StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { useAuth } from '@hooks/useAuth';
+import { StatSelection } from './StatSelection';
 
-    // const [apiData, setAPIData] = useState<string>();
-    // useEffect(() => {
-    //     axios
-    //         .get<string>(`${LOCAL_API}/test`)
-    //         .then((response) => {
-    //             setAPIData(response.data);
-    //         })
-    //         .catch((error) => {
-    //             console.log(error);
-    //         });
-    // }, []);
+export const StatDashboard = () => {
+    const { authData } = useAuth();
+
+    const [modalVisible, setModalVisible] = useState<boolean>(false);
+
+    const closeModal = () => {
+        setModalVisible(false);
+    };
 
     return (
-        <Text>Something</Text>
-        //<Text>Test test : {apiData}</Text>
-        // <View style={styles.container}>
-        //     <StatLeaderboard
-        //         _id={leaderboard?._id!}
-        //         player_id={leaderboard?.player_id!}
-        //         value={leaderboard?.value!}
-        //     />
-        //     <FlatList
-        //         data={DATA}
-        //         renderItem={({ item, index }) => (
-        //             <StatLeaderboard
-        //                 name={item.title}
-        //                 data={item.data}
-        //                 key={`leaderboard-${index}`}
-        //             />
-        //         )}
-        //         numColumns={1}
-        //         ItemSeparatorComponent={Seperator}
-        //     />
-        // </View>
+        <View style={styles.pageContainer}>
+            <Pressable
+                style={styles.followBtn}
+                onPress={() => setModalVisible(true)}
+            >
+                <Text style={styles.followBtnText}>Follow More Stats</Text>
+            </Pressable>
+            <Modal
+                animationType="slide"
+                visible={modalVisible}
+                onRequestClose={closeModal}
+            >
+                <View>
+                    <Text style={styles.modalHeader}>Customize Your Stats</Text>
+                    <StatSelection />
+                </View>
+            </Modal>
+            {authData?.stats?.map((stat) => (
+                <Text key={stat}>{stat}</Text>
+            ))}
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        marginTop: 10,
-        flex: 1,
+    modalHeader: {
+        fontWeight: 'bold',
+        fontSize: 24,
+        textAlign: 'center',
+        color: '#EE6730',
+        marginTop: 20,
+    },
+    followBtn: {
+        width: '90%',
+        paddingVertical: 15,
+        backgroundColor: 'white',
+        borderRadius: 10,
+    },
+    followBtnText: {
+        textAlign: 'center',
+        color: '#EE6730',
+        fontSize: 16,
+    },
+    pageContainer: {
+        alignItems: 'center',
+        marginVertical: 15,
     },
 });
+
+// export const StatDashboard = () => {
+// const [ leaderboard, setLeaderboard] = useState<LeaderboardProps>();
+// useEffect(() => {
+//     axios
+//         .get<LeaderboardProps>(`${LOCAL_API}/leaderboard/pts`)
+//         .then((response) => {
+//             setLeaderboard(response.data);
+//         })
+//         .catch((error) => {
+//             console.log(error);
+//         });
+// }, []);
+
+// const [apiData, setAPIData] = useState<string>();
+// useEffect(() => {
+//     axios
+//         .get<string>(`${LOCAL_API}/test`)
+//         .then((response) => {
+//             setAPIData(response.data);
+//         })
+//         .catch((error) => {
+//             console.log(error);
+//         });
+// }, []);
+
+// return (
+//     <Text>Something</Text>
+//<Text>Test test : {apiData}</Text>
+// <View style={styles.container}>
+//     <StatLeaderboard
+//         _id={leaderboard?._id!}
+//         player_id={leaderboard?.player_id!}
+//         value={leaderboard?.value!}
+//     />
+//     <FlatList
+//         data={DATA}
+//         renderItem={({ item, index }) => (
+//             <StatLeaderboard
+//                 name={item.title}
+//                 data={item.data}
+//                 key={`leaderboard-${index}`}
+//             />
+//         )}
+//         numColumns={1}
+//         ItemSeparatorComponent={Seperator}
+//     />
+// </View>
+//     );
+// };
+
+// const styles = StyleSheet.create({
+//     container: {
+//         marginTop: 10,
+//         flex: 1,
+//     },
+// });

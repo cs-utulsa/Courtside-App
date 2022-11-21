@@ -1,11 +1,10 @@
-import { useNavigation } from '@react-navigation/native';
 import React, { FC, useState } from 'react';
 import AntIcon from '@expo/vector-icons/AntDesign';
 import { Text, StyleSheet, FlatList, View, Pressable } from 'react-native';
 
-import { OnboardingNavigationProp } from '../navigation/types';
 import { STATS } from './../constants';
-import { ToggleButton, RightButton } from '../components/atoms';
+import { ToggleButton } from '../components/atoms';
+import { useAuth } from '@hooks/useAuth';
 
 type StatSectionProps = {
     title: string;
@@ -14,6 +13,7 @@ type StatSectionProps = {
 
 const StatSection: FC<StatSectionProps> = ({ title, data }) => {
     const [open, setOpen] = useState<boolean>(false);
+    const { authData } = useAuth();
 
     return (
         <View style={sectionStyles.section}>
@@ -32,11 +32,19 @@ const StatSection: FC<StatSectionProps> = ({ title, data }) => {
                 <View style={sectionStyles.stats}>
                     {data.map((stat, index) => (
                         <ToggleButton
-                            initial={false}
+                            initial={
+                                !!authData?.stats &&
+                                authData.stats.includes(stat)
+                            }
                             text={stat}
                             key={`${title}-stat-${index}`}
                             onToggle={(on: boolean) => {
-                                console.log(on);
+                                if (on) authData?.stats?.push(stat);
+                                else {
+                                    authData?.stats?.filter(
+                                        (item) => item !== stat
+                                    );
+                                }
                             }}
                         />
                     ))}
@@ -47,35 +55,17 @@ const StatSection: FC<StatSectionProps> = ({ title, data }) => {
 };
 
 export const StatSelection = () => {
-    const { navigate } = useNavigation<OnboardingNavigationProp>();
-
     return (
-        <View style={[styles.container]}>
-            <FlatList
-                style={styles.list}
-                data={STATS}
-                renderItem={({ item, index }) => (
-                    <StatSection
-                        title={item.title}
-                        data={item.data}
-                        key={`stat-section-${index}`}
-                    />
-                )}
-                ListHeaderComponent={() => (
-                    <View style={styles.headerContainer}>
-                        <Text style={styles.header}>
-                            Customize Your Stats Dashboard
-                        </Text>
-                    </View>
-                )}
-            />
-            <View style={[styles.footer]}>
-                <RightButton
-                    onPress={() => navigate('Auth', { register: true })}
-                    text="Finish"
+        <FlatList
+            data={STATS}
+            renderItem={({ item, index }) => (
+                <StatSection
+                    title={item.title}
+                    data={item.data}
+                    key={`stat-section-${index}`}
                 />
-            </View>
-        </View>
+            )}
+        />
     );
 };
 
@@ -101,30 +91,5 @@ export const sectionStyles = StyleSheet.create({
     statsClose: {
         height: 0,
         display: 'none',
-    },
-});
-
-const styles = StyleSheet.create({
-    container: {
-        marginTop: 60,
-        flex: 1,
-    },
-    headerContainer: {
-        alignItems: 'center',
-    },
-    header: {
-        fontWeight: 'bold',
-        fontSize: 22,
-        marginBottom: 20,
-    },
-    list: {
-        flex: 0.9,
-    },
-    footer: {
-        flex: 0.1,
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
-        marginHorizontal: -10,
-        backgroundColor: 'white',
     },
 });
