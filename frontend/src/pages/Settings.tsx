@@ -1,23 +1,34 @@
+import { useAuth } from '@hooks/index';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, View, Text } from 'react-native';
 
 export const Settings = () => {
+    const { signOut } = useAuth();
+
     return (
-        <View style={styles.center}>
-            <Text style={styles.header}>Settings</Text>
-            <Text>Coming Soon</Text>
+        <View style={styles.pageContainer}>
+            <Pressable onPress={signOut} style={styles.logOutButton}>
+                <Text style={styles.logOutText}>Log Out</Text>
+            </Pressable>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
-    center: {
-        justifyContent: 'center',
+    pageContainer: {
         alignItems: 'center',
-        flex: 1,
+        marginVertical: 10,
     },
-    header: {
-        fontSize: 22,
-        fontWeight: 'bold',
+    logOutButton: {
+        width: '85%',
+        backgroundColor: '#ffcfcd',
+        paddingVertical: 15,
+        borderRadius: 10,
+    },
+    logOutText: {
+        textAlign: 'center',
+        color: 'red',
+        fontSize: 16,
+        textTransform: 'uppercase',
     },
 });

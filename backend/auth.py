@@ -166,8 +166,6 @@ def change_stats():
     if (not token): 
         return string_response("Invalid token", 403)
 
-    print(token)
-
     email = request.get_json()["email"]
     stats = request.get_json()["stats"]
 
