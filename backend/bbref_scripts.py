@@ -115,6 +115,8 @@ def get_schedule(season):
                     date_str += i[-4:]
             
             game_code = f"{home_code}-{away_code}-{date_code}"
+            if '=' in game_code:
+                game_code = game_code.replace('=','0')
             
             game_data.append(game_code)
             game_data.append(date_str),
@@ -147,5 +149,7 @@ if __name__ == "__main__":
     #     stat_name = stat.replace('leaders_', '')
     #     leaderboard.to_csv(f"data\\leaderboards\\{stat_name}_2022.csv")
 
-    schedule = get_schedule(2023)
-    schedule.to_csv(f"data\\schedule\\2023_schedule.csv")
+    # schedule = get_schedule(2023)
+    # schedule.to_csv(f"data\\schedule\\2023_schedule.csv")
+    
+    leaderboard = get_schedule(2023)

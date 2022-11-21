@@ -1,39 +1,45 @@
 import React, { FC } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-type LeaderboardProps = {
-    name: string;
-    data: { rank: number; player_id: string; value: number }[];
-};
+// type LeaderboardProps = {
+//     name: string;
+//     data: { rank: number; player_id: string; value: number }[];
+// };
 
-export const StatLeaderboard: FC<LeaderboardProps> = ({ name, data }) => {
+export type LeaderboardProps = {
+    _id: string;
+    player_id: string[];
+    value: number[];
+}
+
+export const StatLeaderboard: FC<LeaderboardProps> = ({ _id, player_id, value }) => {
     return (
         <View style={styles.leaderboardBlock}>
             <View style={styles.titleBlock}>
-                <Text style={styles.statTitle}>{name}</Text>
+                <Text style={styles.statTitle}>{_id}</Text>
             </View>
             <View style={styles.statHeader}>
-                <Text>Rank</Text>
+                {/* <Text>Rank</Text> */}
                 <Text>Player</Text>
                 <Text>Value</Text>
             </View>
             <View style={styles.leaderboardList}>
-                <View style={styles.statCol}>
+                {/* <View style={styles.statCol}>
                     {data.map((item: any, index: number) => (
                         <Text key={`rank-${index}-${item.player_id}`}>
                             {item.rank}
                         </Text>
                     ))}
-                </View>
+                </View> */}
                 <View style={styles.statCol}>
-                    {data.map((item: any, index) => (
+                    {player_id.map((item: any, index) => (
                         <Text key={`id-${index}-${item.player_id}`}>
                             {item.player_id}
                         </Text>
                     ))}
                 </View>
                 <View style={styles.statCol}>
-                    {data.map((item: any, index) => (
+                    {value.map((item: any, index) => (
                         <Text key={`val-${index}-${item.player_id}`}>
                             {item.value}
                         </Text>
