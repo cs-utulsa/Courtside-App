@@ -50,6 +50,7 @@ def create_user():
     user["_id"] = str(user["_id"]) # turn objectid into string
     user["token"] = encode_auth_token(user["_id"]) # add jwt token to user
     del user["password"]
+    del user["_id"]
 
     response = make_response()
     response.status_code = 200
@@ -75,9 +76,10 @@ def login_user():
     if (not user or not check_password_hash(user["password"], password)):
         return string_response("Email or password is incorrect", 400)
 
-    user["_id"] = str(user["_id"]);
-    user["token"] = encode_auth_token(user["_id"]);
+    user["_id"] = str(user["_id"])
+    user["token"] = encode_auth_token(user["_id"])
     del user["password"]
+    del user["_id"]
 
     response = make_response()
     response.status_code = 200

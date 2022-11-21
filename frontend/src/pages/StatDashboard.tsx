@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { View, StyleSheet, FlatList, Text } from 'react-native';
-import { StatLeaderboard, LeaderboardProps } from '../components/molecules';
+// import { View, StyleSheet, FlatList, Text } from 'react-native';
+import { Text, StyleSheet } from 'react-native';
+//import { StatLeaderboard, LeaderboardProps } from '../components/molecules';
 import { LOCAL_API } from '../constants/urls';
-import { Seperator } from '@atoms/Seperator';
+//import { Seperator } from '@atoms/Seperator';
 
 // const DATA = [
 //     {
@@ -41,20 +42,21 @@ export const StatDashboard = () => {
     //         });
     // }, []);
 
-    const [ apiData, setAPIData ] = useState<string>();
-    useEffect(() => {
-        axios
-            .get<string>(`${LOCAL_API}/test`)
-            .then((response) => {
-                setAPIData(response.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }, []);
+    // const [apiData, setAPIData] = useState<string>();
+    // useEffect(() => {
+    //     axios
+    //         .get<string>(`${LOCAL_API}/test`)
+    //         .then((response) => {
+    //             setAPIData(response.data);
+    //         })
+    //         .catch((error) => {
+    //             console.log(error);
+    //         });
+    // }, []);
 
     return (
-        <Text>Test test : {apiData}</Text>
+        <Text>Something</Text>
+        //<Text>Test test : {apiData}</Text>
         // <View style={styles.container}>
         //     <StatLeaderboard
         //         _id={leaderboard?._id!}

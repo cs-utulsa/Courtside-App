@@ -18,7 +18,7 @@ type AuthContextData = {
     authError: string | undefined;
     signIn(email: string, password: string): Promise<void>;
     signUp(email: string, password: string): Promise<void>;
-    signOut(): void;
+    signOut(): Promise<void>;
 };
 
 type AuthData = {
@@ -72,7 +72,6 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             );
 
             const _authData = response.data;
-            console.log(_authData);
             SecureStore.setItemAsync('authData', JSON.stringify(_authData));
             setAuthData(_authData);
         } catch (err) {
