@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from flask_cors import CORS
 from db import db
 import pandas as pd
+import pymongo
 import os
 
 app = Flask(__name__)
@@ -11,36 +12,35 @@ CORS(app)
 
 app.register_blueprint(auth_blueprint)
 
+@app.route('/test', methods=['GET'])
+def test_api():
+    return jsonify('test')
+
 # Return roster of player id's for specified team
 @app.route('/roster/<team_code>', methods=['GET'])
 def get_roster(team_code):
-    curr_dir = os.path.dirname(os.path.abspath(__file__))
-    target_dir = os.path.join(curr_dir, "rosters", f"{team_code}_2023.csv")
-
-    roster = pd.read_csv(target_dir, index_col=0)
-    return jsonify({"roster": roster['player_id'].tolist()})
+    return db.rosters.find_one({'_id': f'{team_code}_roster'})
 
 # Return leaderboard for specified stat/season
 @app.route('/leaderboard/<stat>', methods=['GET'])
 def get_leaderboard(stat):
-    curr_dir = os.path.dirname(os.path.abspath(__file__))
-    target_dir = os.path.join(curr_dir, "leaderboards", f"{stat}_2022.csv")
-
-    leaderboard = pd.read_csv(target_dir)
-    return leaderboard.to_json(orient="records")
+    return db.leaderboards.find_one({'_id': f'{stat}'})
 
 # Return schedule for a requested day
 @app.route('/schedule/<int:month>/<int:day>', methods=['GET'])
 def get_schedule(month, day):
-    curr_dir = os.path.dirname(os.path.abspath(__file__))
-    target_dir = os.path.join(curr_dir, "schedule", "2023_schedule.csv")
-
-    schedule = pd.read_csv(target_dir, index_col=0)
+    schedule = db.schedule.find_one({'_id': 'schedule_2023'})
     if month in [10,11,12]:
-        day_schedule = schedule[schedule['game_date'] == f"{month}-{day}-2022"]
+        check_str = f"{str(month).rjust(2,'0')}{str(day).rjust(2, '0')}{2022}"
     else:
-        day_schedule = schedule[schedule['game_date'] == f"{month}-{day}-2023"]
-    return day_schedule.to_json(orient="index")
+        check_str = f"{str(month).rjust(2,'0')}{str(day).rjust(2, '0')}{2023}"
+    good_keys = []
+    for i in list(schedule.keys()):
+        if i == '_id':
+            continue
+        if i.split('-')[2] == check_str:
+            good_keys.append(i)
+    return {i:schedule[i] for i in good_keys}
 
 # Main method
 if __name__ == "__main__":
