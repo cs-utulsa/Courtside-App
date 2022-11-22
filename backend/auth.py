@@ -37,7 +37,9 @@ def create_user():
         insert_obj = db.users.insert_one(
             { 
                 "email": email,
-                "password": hashed_password
+                "password": hashed_password,
+                "stats": [],
+                "teams": []
             }
         )
 
