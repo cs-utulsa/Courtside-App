@@ -19,6 +19,8 @@ type AuthContextData = {
     signIn(email: string, password: string): Promise<void>;
     signUp(email: string, password: string): Promise<void>;
     signOut(): Promise<void>;
+    updateStats(newStats: string[]): Promise<void>;
+    updateTeams(newTeams: string[]): Promise<void>;
 };
 
 type AuthData = {
@@ -116,9 +118,52 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         await SecureStore.deleteItemAsync('authData');
     };
 
+    const updateStats = async (newStats: string[]) => {
+        try {
+            const response = await axios.patch(
+                `${DEVELOPMENT_API}/users/leaderboards`,
+                {
+                    email: authData?.email,
+                    stats: newStats,
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${authData?.token}`,
+                    },
+                }
+            );
+
+            const _stats = response.data;
+            SecureStore.setItemAsync(
+                'authData',
+                JSON.stringify({ ...authData, stats: _stats })
+            );
+            setAuthData({ ...authData!, stats: _stats });
+        } catch (err) {
+            if (axios.isAxiosError(err)) {
+                setAuthError(err.response?.data);
+            } else {
+                setAuthError('Unknown Error Occurred. Try Again Later.');
+            }
+        }
+    };
+
+    const updateTeams = async (newTeams: string[]) => {
+        console.log(newTeams);
+    };
+
     return (
         <AuthContext.Provider
-            value={{ authData, loading, authError, signIn, signUp, signOut }}
+            value={{
+                authData,
+                loading,
+                authError,
+                signIn,
+                signUp,
+                signOut,
+                updateStats,
+                updateTeams,
+            }}
         >
             {children}
         </AuthContext.Provider>
