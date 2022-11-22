@@ -14,6 +14,9 @@ type StatSectionProps = {
 const StatSection: FC<StatSectionProps> = ({ title, data }) => {
     const [open, setOpen] = useState<boolean>(false);
     const { authData } = useAuth();
+    const [selectedStats, setSelectedStats] = useState<string[]>(
+        authData!.stats!
+    );
 
     useEffect(() => {
         if (title === 'Shooting') setOpen(true);
@@ -36,11 +39,23 @@ const StatSection: FC<StatSectionProps> = ({ title, data }) => {
                 <View style={sectionStyles.stats}>
                     {data.map((stat, index) => (
                         <ToggleButton
-                            initial={!!authData?.stats?.includes(stat.id)}
+                            initial={selectedStats.includes(stat.id)}
                             text={stat.name}
                             key={`${title}-stat-${index}`}
                             onToggle={(on: boolean) => {
-                                console.log(on);
+                                if (on)
+                                    setSelectedStats([
+                                        ...selectedStats,
+                                        stat.id,
+                                    ]);
+                                else {
+                                    setSelectedStats(
+                                        selectedStats.filter(
+                                            (selectedItem) =>
+                                                selectedItem !== stat.id
+                                        )
+                                    );
+                                }
                             }}
                         />
                     ))}
