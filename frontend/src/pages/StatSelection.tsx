@@ -5,18 +5,25 @@ import { Text, StyleSheet, FlatList, View, Pressable } from 'react-native';
 import { STATS } from './../constants';
 import { ToggleButton } from '../components/atoms';
 import { useAuth } from '@hooks/useAuth';
+import { useNavigation } from '@react-navigation/native';
+import { StatsNavigationProp } from '@navigation/types';
 
 type StatSectionProps = {
     title: string;
     data: { id: string; name: string }[];
+    selectedStats: string[];
+    addStat: (stat: string) => void;
+    removeStat: (stat: string) => void;
 };
 
-const StatSection: FC<StatSectionProps> = ({ title, data }) => {
+const StatSection: FC<StatSectionProps> = ({
+    title,
+    data,
+    selectedStats,
+    addStat,
+    removeStat,
+}) => {
     const [open, setOpen] = useState<boolean>(false);
-    const { authData } = useAuth();
-    const [selectedStats, setSelectedStats] = useState<string[]>(
-        authData!.stats!
-    );
 
     useEffect(() => {
         if (title === 'Shooting') setOpen(true);
@@ -43,19 +50,8 @@ const StatSection: FC<StatSectionProps> = ({ title, data }) => {
                             text={stat.name}
                             key={`${title}-stat-${index}`}
                             onToggle={(on: boolean) => {
-                                if (on)
-                                    setSelectedStats([
-                                        ...selectedStats,
-                                        stat.id,
-                                    ]);
-                                else {
-                                    setSelectedStats(
-                                        selectedStats.filter(
-                                            (selectedItem) =>
-                                                selectedItem !== stat.id
-                                        )
-                                    );
-                                }
+                                if (on) addStat(stat.id);
+                                else removeStat(stat.id);
                             }}
                         />
                     ))}
@@ -66,6 +62,31 @@ const StatSection: FC<StatSectionProps> = ({ title, data }) => {
 };
 
 export const StatSelection = () => {
+    const navigation = useNavigation<StatsNavigationProp>();
+
+    const { authData, updateStats } = useAuth();
+    const [selectedStats, setSelectedStats] = useState<string[]>(
+        authData!.stats!
+    );
+
+    useEffect(() => {
+        navigation.addListener('beforeRemove', async (e) => {
+            e.preventDefault();
+            await updateStats(selectedStats);
+            navigation.dispatch(e.data.action);
+        });
+    }, [navigation, selectedStats, updateStats]);
+
+    const addStat = (stat: string) => {
+        setSelectedStats([...selectedStats, stat]);
+    };
+
+    const removeStat = (stat: string) => {
+        setSelectedStats(
+            selectedStats.filter((selectedItem) => selectedItem !== stat)
+        );
+    };
+
     return (
         <FlatList
             data={STATS}
@@ -73,6 +94,9 @@ export const StatSelection = () => {
                 <StatSection
                     title={item.title}
                     data={item.data}
+                    selectedStats={selectedStats}
+                    addStat={addStat}
+                    removeStat={removeStat}
                     key={`stat-section-${index}`}
                 />
             )}
