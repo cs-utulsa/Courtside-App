@@ -38,14 +38,14 @@ export const StatLeaderboard: FC<LeaderboardProps> = ({
                 <View style={styles.statCol}>
                     {player_id.map((item: any, index) => (
                         <Text key={`id-${index}-${item.player_id}`}>
-                            {item.player_id}
+                            {item}
                         </Text>
                     ))}
                 </View>
                 <View style={styles.statCol}>
                     {value.map((item: any, index) => (
                         <Text key={`val-${index}-${item.player_id}`}>
-                            {item.value}
+                            {item}
                         </Text>
                     ))}
                 </View>
@@ -61,6 +61,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         marginHorizontal: 20,
         borderRadius: 15,
+        width: '80%',
+        marginVertical: 15,
     },
     titleBlock: {
         alignItems: 'center',

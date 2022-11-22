@@ -80,8 +80,10 @@ export const StatSelection = () => {
     );
 
     useEffect(() => {
-        navigation.addListener('beforeRemove', async () => {
+        navigation.addListener('beforeRemove', async (e) => {
+            e.preventDefault();
             await updateStats(selectedStats);
+            navigation.dispatch(e.data.action);
         });
 
         return navigation.removeListener('beforeRemove', async () => {

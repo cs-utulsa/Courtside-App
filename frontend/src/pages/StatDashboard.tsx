@@ -48,7 +48,6 @@ export const StatDashboard = () => {
             const response = await axios.get(
                 `${DEVELOPMENT_API}/leaderboard/${stat_id}`
             );
-            // console.log(stat_id, response.data);
             return response.data;
         } catch (err) {
             console.log(err);
@@ -79,7 +78,7 @@ export const StatDashboard = () => {
     );
 
     return (
-        <ScrollView>
+        <ScrollView contentContainerStyle={styles.pageContainer}>
             <Pressable
                 style={styles.followBtn}
                 onPress={() => push('Selection')}
@@ -87,8 +86,8 @@ export const StatDashboard = () => {
                 <Text style={styles.followBtnText}>Follow More Stats</Text>
             </Pressable>
 
-            {authData?.stats?.map((stat) => (
-                <Text key={stat}>{stat}</Text>
+            {authData?.stats?.map((item) => (
+                <Text key={item}>{item}</Text>
             ))}
 
             {statData.map((stat) => {
@@ -124,10 +123,10 @@ const styles = StyleSheet.create({
         color: '#EE6730',
         fontSize: 16,
     },
-    // pageContainer: {
-    //     alignItems: 'center',
-    //     marginVertical: 15,
-    // },
+    pageContainer: {
+        alignItems: 'center',
+        marginVertical: 15,
+    },
 });
 
 // export const StatDashboard = () => {
