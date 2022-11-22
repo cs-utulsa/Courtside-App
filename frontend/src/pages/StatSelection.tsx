@@ -8,7 +8,7 @@ import { useAuth } from '@hooks/useAuth';
 
 type StatSectionProps = {
     title: string;
-    data: string[];
+    data: { id: string; name: string }[];
 };
 
 const StatSection: FC<StatSectionProps> = ({ title, data }) => {
@@ -36,8 +36,8 @@ const StatSection: FC<StatSectionProps> = ({ title, data }) => {
                 <View style={sectionStyles.stats}>
                     {data.map((stat, index) => (
                         <ToggleButton
-                            initial={!!authData?.stats?.includes(stat)}
-                            text={stat}
+                            initial={!!authData?.stats?.includes(stat.id)}
+                            text={stat.name}
                             key={`${title}-stat-${index}`}
                             onToggle={(on: boolean) => {
                                 console.log(on);
