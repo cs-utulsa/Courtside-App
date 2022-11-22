@@ -144,7 +144,12 @@ def change_teams():
             { '$set': { "teams": teams} }
         )
 
-        return string_response("Update successful", 200)
+        response = make_response()
+        response.status_code = 200
+        response.response = json.dumps(teams)
+        response.mimetype = 'application/json'
+
+        return response
     except OperationFailure:
         return string_response("Cannot add teams to user", 500)
     
@@ -167,9 +172,14 @@ def change_stats():
         db.users.update_one(
             { 'email': email },
             { '$set': { "stats": stats } }
-        )
+        );
 
-        return string_response("Update successful", 200)
+        response = make_response()
+        response.status_code = 200
+        response.response = json.dumps(stats)
+        response.mimetype = 'application/json'
+
+        return response
     except OperationFailure:
         return string_response("Cannot add stats to user", 500)
 
