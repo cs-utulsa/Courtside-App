@@ -29,38 +29,25 @@
 //     },
 // ];
 
-import { Modal, Pressable, StyleSheet, Text, View } from 'react-native';
-import React, { useState } from 'react';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
+import React from 'react';
 import { useAuth } from '@hooks/useAuth';
-import { StatSelection } from './StatSelection';
+import { useNavigation } from '@react-navigation/native';
+import { StatsNavigationProp } from '@navigation/types';
 
 export const StatDashboard = () => {
     const { authData } = useAuth();
-
-    const [modalVisible, setModalVisible] = useState<boolean>(false);
-
-    const closeModal = () => {
-        setModalVisible(false);
-    };
+    const { navigate } = useNavigation<StatsNavigationProp>();
 
     return (
         <View style={styles.pageContainer}>
             <Pressable
                 style={styles.followBtn}
-                onPress={() => setModalVisible(true)}
+                onPress={() => navigate('Selection')}
             >
                 <Text style={styles.followBtnText}>Follow More Stats</Text>
             </Pressable>
-            <Modal
-                animationType="slide"
-                visible={modalVisible}
-                onRequestClose={closeModal}
-            >
-                <View>
-                    <Text style={styles.modalHeader}>Customize Your Stats</Text>
-                    <StatSelection />
-                </View>
-            </Modal>
+
             {authData?.stats?.map((stat) => (
                 <Text key={stat}>{stat}</Text>
             ))}

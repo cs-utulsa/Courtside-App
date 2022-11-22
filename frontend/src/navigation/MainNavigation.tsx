@@ -1,8 +1,9 @@
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Schedule, StatDashboard, Rosters, Settings } from './../pages';
+import { Schedule, Rosters, Settings } from './../pages';
 import { Ionicons, FontAwesome, FontAwesome5 } from '@expo/vector-icons';
+import { StatsStack } from './StatsStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -59,7 +60,7 @@ export const MainNavigation = () => {
                 },
             })}
         >
-            <Tab.Screen name="Stats" component={StatDashboard} />
+            <Tab.Screen name="Stats" component={StatsStack} />
             <Tab.Screen name="Schedule" component={Schedule} />
             <Tab.Screen name="Rosters" component={Rosters} />
             <Tab.Screen name="Settings" component={Settings} />

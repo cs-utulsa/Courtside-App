@@ -4,7 +4,6 @@ import { Text, StyleSheet, FlatList, View, Pressable } from 'react-native';
 
 import { STATS } from './../constants';
 import { ToggleButton } from '../components/atoms';
-import { useAuth } from '@hooks/useAuth';
 
 type StatSectionProps = {
     title: string;
@@ -13,7 +12,6 @@ type StatSectionProps = {
 
 const StatSection: FC<StatSectionProps> = ({ title, data }) => {
     const [open, setOpen] = useState<boolean>(false);
-    const { authData } = useAuth();
 
     return (
         <View style={sectionStyles.section}>
@@ -32,19 +30,11 @@ const StatSection: FC<StatSectionProps> = ({ title, data }) => {
                 <View style={sectionStyles.stats}>
                     {data.map((stat, index) => (
                         <ToggleButton
-                            initial={
-                                !!authData?.stats &&
-                                authData.stats.includes(stat)
-                            }
+                            initial={false}
                             text={stat}
                             key={`${title}-stat-${index}`}
                             onToggle={(on: boolean) => {
-                                if (on) authData?.stats?.push(stat);
-                                else {
-                                    authData?.stats?.filter(
-                                        (item) => item !== stat
-                                    );
-                                }
+                                console.log(on);
                             }}
                         />
                     ))}

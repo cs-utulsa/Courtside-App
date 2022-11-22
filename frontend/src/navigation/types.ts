@@ -25,3 +25,11 @@ export type AuthNavigatorParamList = {
 
 export type AuthNavigationProp =
     NativeStackNavigationProp<AuthNavigatorParamList>;
+
+export type StatsNavigatorParamList = {
+    Dashboard: undefined;
+    Selection: undefined;
+};
+
+export type StatsNavigationProp =
+    NativeStackNavigationProp<StatsNavigatorParamList>;
