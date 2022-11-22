@@ -29,18 +29,57 @@
 //     },
 // ];
 
-import { Pressable, StyleSheet, Text, View } from 'react-native';
-import React from 'react';
+import { Pressable, StyleSheet, Text, ScrollView } from 'react-native';
+import React, { useCallback, useState } from 'react';
 import { useAuth } from '@hooks/useAuth';
-import { useNavigation } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { StatsNavigationProp } from '@navigation/types';
+import axios from 'axios';
+import { DEVELOPMENT_API } from '../constants/urls';
+import { StatLeaderboard } from '@molecules/StatLeaderboard';
 
 export const StatDashboard = () => {
     const { authData } = useAuth();
     const { push } = useNavigation<StatsNavigationProp>();
+    const [statData, setStatData] = useState<any[]>([]);
+
+    const getStatData = useCallback(async (stat_id: string) => {
+        try {
+            const response = await axios.get(
+                `${DEVELOPMENT_API}/leaderboard/${stat_id}`
+            );
+            // console.log(stat_id, response.data);
+            return response.data;
+        } catch (err) {
+            console.log(err);
+        }
+    }, []);
+
+    const getAllStats = useCallback(
+        async (stats: string[]) => {
+            const _statData: any = [];
+            for (let stat of stats) {
+                let data = await getStatData(stat);
+                _statData.push(data);
+            }
+            return _statData;
+        },
+        [getStatData]
+    );
+
+    useFocusEffect(
+        useCallback(() => {
+            (async () => {
+                if (authData?.stats) {
+                    const _statData = await getAllStats(authData.stats);
+                    setStatData(_statData);
+                }
+            })();
+        }, [authData, getAllStats])
+    );
 
     return (
-        <View style={styles.pageContainer}>
+        <ScrollView>
             <Pressable
                 style={styles.followBtn}
                 onPress={() => push('Selection')}
@@ -51,7 +90,18 @@ export const StatDashboard = () => {
             {authData?.stats?.map((stat) => (
                 <Text key={stat}>{stat}</Text>
             ))}
-        </View>
+
+            {statData.map((stat) => {
+                return (
+                    <StatLeaderboard
+                        key={stat._id}
+                        _id={stat._id}
+                        player_id={stat.player_id}
+                        value={stat.value}
+                    />
+                );
+            })}
+        </ScrollView>
     );
 };
 
@@ -74,10 +124,10 @@ const styles = StyleSheet.create({
         color: '#EE6730',
         fontSize: 16,
     },
-    pageContainer: {
-        alignItems: 'center',
-        marginVertical: 15,
-    },
+    // pageContainer: {
+    //     alignItems: 'center',
+    //     marginVertical: 15,
+    // },
 });
 
 // export const StatDashboard = () => {

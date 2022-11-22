@@ -10,9 +10,13 @@ export type LeaderboardProps = {
     _id: string;
     player_id: string[];
     value: number[];
-}
+};
 
-export const StatLeaderboard: FC<LeaderboardProps> = ({ _id, player_id, value }) => {
+export const StatLeaderboard: FC<LeaderboardProps> = ({
+    _id,
+    player_id,
+    value,
+}) => {
     return (
         <View style={styles.leaderboardBlock}>
             <View style={styles.titleBlock}>
