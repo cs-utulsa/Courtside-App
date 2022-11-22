@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unstable-nested-components */
-import React from 'react';
+import React, { FC } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Schedule, Rosters, Settings } from './../pages';
 import { Ionicons, FontAwesome, FontAwesome5 } from '@expo/vector-icons';
@@ -7,9 +7,16 @@ import { StatsStack } from './StatsStack';
 
 const Tab = createBottomTabNavigator();
 
-export const MainNavigation = () => {
+type MainNavigationProps = {
+    routeName: string | undefined;
+};
+
+export const MainNavigation: FC<MainNavigationProps> = ({ routeName }) => {
+    const hideBar = routeName === 'Selection';
+
     return (
         <Tab.Navigator
+            initialRouteName="Stats"
             screenOptions={({ route }) => ({
                 tabBarActiveTintColor: '#EE6730',
                 tabBarInactiveTintColor: 'gray',
@@ -19,6 +26,7 @@ export const MainNavigation = () => {
                 tabBarStyle: {
                     height: '9%',
                     paddingBottom: 5,
+                    display: hideBar ? 'none' : 'flex',
                 },
                 tabBarLabelStyle: {
                     transform: [{ scale: 1.1 }],

@@ -1,5 +1,9 @@
-import React from 'react';
-import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
+import React, { useState } from 'react';
+import {
+    createNavigationContainerRef,
+    DefaultTheme,
+    NavigationContainer,
+} from '@react-navigation/native';
 import { useAuth } from './../hooks/useAuth';
 import { MainNavigation } from './MainNavigation';
 import { AuthStack } from './AuthStack';
@@ -11,13 +15,25 @@ const Theme = {
     },
 };
 
+const ref = createNavigationContainerRef();
+
 const RootNavigator = () => {
     const { authData } = useAuth();
+    const [routeName, setRouteName] = useState<string | undefined>();
 
     if (authData?.token) {
         return (
-            <NavigationContainer theme={Theme}>
-                <MainNavigation />
+            <NavigationContainer
+                theme={Theme}
+                ref={ref}
+                onReady={() => setRouteName(ref.getCurrentRoute()?.name)}
+                onStateChange={async () => {
+                    //const previousRouteName = routeName;
+                    const currentRouteName = ref.getCurrentRoute()?.name;
+                    setRouteName(currentRouteName);
+                }}
+            >
+                <MainNavigation routeName={routeName} />
             </NavigationContainer>
         );
     }
