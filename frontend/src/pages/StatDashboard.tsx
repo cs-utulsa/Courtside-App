@@ -37,13 +37,13 @@ import { StatsNavigationProp } from '@navigation/types';
 
 export const StatDashboard = () => {
     const { authData } = useAuth();
-    const { navigate } = useNavigation<StatsNavigationProp>();
+    const { push } = useNavigation<StatsNavigationProp>();
 
     return (
         <View style={styles.pageContainer}>
             <Pressable
                 style={styles.followBtn}
-                onPress={() => navigate('Selection')}
+                onPress={() => push('Selection')}
             >
                 <Text style={styles.followBtnText}>Follow More Stats</Text>
             </Pressable>

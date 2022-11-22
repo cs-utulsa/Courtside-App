@@ -61,6 +61,16 @@ const StatSection: FC<StatSectionProps> = ({
     );
 };
 
+const StatSelectionHeader = () => {
+    const { pop } = useNavigation<StatsNavigationProp>();
+
+    return (
+        <Pressable style={styles.followBtn} onPress={() => pop()}>
+            <Text style={styles.followBtnText}>Submit</Text>
+        </Pressable>
+    );
+};
+
 export const StatSelection = () => {
     const navigation = useNavigation<StatsNavigationProp>();
 
@@ -70,10 +80,12 @@ export const StatSelection = () => {
     );
 
     useEffect(() => {
-        navigation.addListener('beforeRemove', async (e) => {
-            e.preventDefault();
+        navigation.addListener('beforeRemove', async () => {
             await updateStats(selectedStats);
-            navigation.dispatch(e.data.action);
+        });
+
+        return navigation.removeListener('beforeRemove', async () => {
+            await updateStats(selectedStats);
         });
     }, [navigation, selectedStats, updateStats]);
 
@@ -90,6 +102,7 @@ export const StatSelection = () => {
     return (
         <FlatList
             data={STATS}
+            ListHeaderComponent={<StatSelectionHeader />}
             renderItem={({ item, index }) => (
                 <StatSection
                     title={item.title}
@@ -103,6 +116,21 @@ export const StatSelection = () => {
         />
     );
 };
+
+const styles = StyleSheet.create({
+    followBtn: {
+        width: '90%',
+        paddingVertical: 15,
+        backgroundColor: 'white',
+        borderRadius: 10,
+        marginVertical: 10,
+    },
+    followBtnText: {
+        textAlign: 'center',
+        color: '#EE6730',
+        fontSize: 16,
+    },
+});
 
 export const sectionStyles = StyleSheet.create({
     section: {

@@ -74,7 +74,10 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             );
 
             const _authData = response.data;
-            SecureStore.setItemAsync('authData', JSON.stringify(_authData));
+            await SecureStore.setItemAsync(
+                'authData',
+                JSON.stringify(_authData)
+            );
             setAuthData(_authData);
         } catch (err) {
             if (axios.isAxiosError(err)) {
@@ -100,7 +103,10 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             );
 
             const _authData = response.data;
-            SecureStore.setItemAsync('authData', JSON.stringify(_authData));
+            await SecureStore.setItemAsync(
+                'authData',
+                JSON.stringify(_authData)
+            );
             setAuthData(_authData);
         } catch (err) {
             if (axios.isAxiosError(err)) {
@@ -115,6 +121,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 
     const signOut = async () => {
         setAuthData(undefined);
+        setAuthError(undefined);
         await SecureStore.deleteItemAsync('authData');
     };
 
@@ -132,14 +139,14 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
                     },
                 }
             );
-
             const _stats = response.data;
-            SecureStore.setItemAsync(
+            await SecureStore.setItemAsync(
                 'authData',
                 JSON.stringify({ ...authData, stats: _stats })
             );
             setAuthData({ ...authData!, stats: _stats });
         } catch (err) {
+            console.log(err);
             if (axios.isAxiosError(err)) {
                 setAuthError(err.response?.data);
             } else {
