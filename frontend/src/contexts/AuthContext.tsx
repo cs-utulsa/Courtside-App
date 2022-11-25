@@ -7,7 +7,7 @@ import React, {
     useState,
 } from 'react';
 import * as SecureStore from 'expo-secure-store';
-import { DEVELOPMENT_API, LOCAL_API } from '../constants/urls';
+import { DEVELOPMENT_API } from '../constants/urls';
 interface AuthProviderProps {
     children: ReactNode;
 }
@@ -44,7 +44,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         const refreshToken = async (storedAuthData: AuthData) => {
             try {
                 const response = await axios.post(
-                    `${LOCAL_API}/users/refresh`,
+                    `${DEVELOPMENT_API}/users/refresh`,
                     {
                         user_id: storedAuthData._id,
                     },
@@ -76,9 +76,13 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 
                 if (authDataSerialized) {
                     const _authData: AuthData = JSON.parse(authDataSerialized);
-                    refreshToken(_authData);
+                    await refreshToken(_authData);
                 }
-            } catch (err) {}
+            } catch (err) {
+                console.log('retrieval error');
+            } finally {
+                setLoading(false);
+            }
         };
 
         loadStorageData();
@@ -147,7 +151,22 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     const signOut = async () => {
         setAuthData(undefined);
         setAuthError(undefined);
-        await SecureStore.deleteItemAsync('authData');
+
+        try {
+            await axios.post(
+                `${DEVELOPMENT_API}/users/logout`,
+                {},
+                {
+                    headers: {
+                        Authorization: `Bearer ${authData?.token}`,
+                    },
+                    validateStatus: (status) => status < 500,
+                }
+            );
+            await SecureStore.deleteItemAsync('authData');
+        } catch (err) {
+            console.log('Error logging out');
+        }
     };
 
     const updateStats = async (newStats: string[]) => {

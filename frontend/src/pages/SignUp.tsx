@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, ActivityIndicator } from 'react-native';
 import { useAuth } from '@hooks/useAuth';
 import React from 'react';
 
@@ -33,6 +33,15 @@ export const SignUp = () => {
     const { signUp, authError, loading } = useAuth();
 
     const { navigate } = useNavigation<AuthNavigationProp>();
+
+    if (loading) {
+        return (
+            <View style={styles.container}>
+                <LogoHeader />
+                <ActivityIndicator color="black" size="large" />
+            </View>
+        );
+    }
 
     return (
         <View style={styles.container}>
@@ -83,7 +92,7 @@ export const SignUp = () => {
                             placeholder="Retype Password"
                         />
                         <AuthSubmitButton
-                            loading={loading}
+                            loading={isSubmitting}
                             submitFn={handleSubmit}
                             disabled={isSubmitting || !isValid}
                             text="Sign Up"

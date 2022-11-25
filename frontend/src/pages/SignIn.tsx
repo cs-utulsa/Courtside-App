@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ActivityIndicator } from 'react-native';
 import { useAuth } from '@hooks/useAuth';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -25,6 +25,15 @@ export const SignIn = () => {
     const { signIn, authError, loading } = useAuth();
 
     const { navigate } = useNavigation<AuthNavigationProp>();
+
+    if (loading) {
+        return (
+            <View style={styles.container}>
+                <LogoHeader />
+                <ActivityIndicator color="black" size="large" />
+            </View>
+        );
+    }
 
     return (
         <View style={styles.container}>
@@ -66,7 +75,7 @@ export const SignIn = () => {
                             placeholder="Password"
                         />
                         <AuthSubmitButton
-                            loading={loading}
+                            loading={isSubmitting}
                             submitFn={handleSubmit}
                             disabled={isSubmitting || !isValid}
                             text="Sign In"
