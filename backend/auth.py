@@ -52,7 +52,6 @@ def create_user():
     user["_id"] = str(user["_id"]) # turn objectid into string
     user["token"] = encode_auth_token(user["_id"]) # add jwt token to user
     del user["password"]
-    del user["_id"]
 
     response = make_response()
     response.status_code = 200
@@ -81,7 +80,6 @@ def login_user():
     user["_id"] = str(user["_id"])
     user["token"] = encode_auth_token(user["_id"])
     del user["password"]
-    del user["_id"]
 
     response = make_response()
     response.status_code = 200
@@ -109,6 +107,31 @@ def logout_user():
 
     return string_response("Logged out successfully", 200)
 
+
+@auth.route('/users/refresh', methods=["POST"])
+def refresh_token():
+    token = is_valid_jwt(request)
+
+    if (not token): 
+        return string_response("Invalid token", 403)
+
+    user_id = request.get_json()["user_id"]
+
+    try:
+        db.blacklisted_tokens.insert_one({
+            "token": token,
+            "blacklisted_at": datetime.now()
+        })
+
+    except Exception as e:
+        return string_response("Server error", 500)
+    
+    response = make_response()
+    response.status_code = 200
+    response.data = encode_auth_token(user_id)
+    response.mimetype = 'application/json'
+
+    return response
 
 @auth.route('/users', methods=["DELETE"])
 def delete_user():

@@ -7,7 +7,7 @@ import React, {
     useState,
 } from 'react';
 import * as SecureStore from 'expo-secure-store';
-import { DEVELOPMENT_API } from '../constants/urls';
+import { DEVELOPMENT_API, LOCAL_API } from '../constants/urls';
 interface AuthProviderProps {
     children: ReactNode;
 }
@@ -25,6 +25,7 @@ type AuthContextData = {
 
 type AuthData = {
     token: string;
+    _id: string;
     email: string;
     teams?: string[];
     stats?: string[];
@@ -40,24 +41,48 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     const [authError, setAuthError] = useState<string | undefined>(undefined);
 
     useEffect(() => {
+        const refreshToken = async (storedAuthData: AuthData) => {
+            try {
+                const response = await axios.post(
+                    `${LOCAL_API}/users/refresh`,
+                    {
+                        user_id: storedAuthData._id,
+                    },
+                    {
+                        headers: {
+                            Authorization: `Bearer ${storedAuthData.token}`,
+                        },
+                        validateStatus: (status) => status < 500,
+                    }
+                );
+                if (response.status === 200) {
+                    const newToken = response.data;
+                    setAuthData({ ...storedAuthData, token: newToken });
+                } else {
+                    await SecureStore.deleteItemAsync('authData');
+                }
+            } catch (err) {
+                setAuthError('Cannot automatically log in.');
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        const loadStorageData = async () => {
+            try {
+                const authDataSerialized = await SecureStore.getItemAsync(
+                    'authData'
+                );
+
+                if (authDataSerialized) {
+                    const _authData: AuthData = JSON.parse(authDataSerialized);
+                    refreshToken(_authData);
+                }
+            } catch (err) {}
+        };
+
         loadStorageData();
     }, []);
-
-    const loadStorageData = async () => {
-        try {
-            const authDataSerialized = await SecureStore.getItemAsync(
-                'authData'
-            );
-
-            if (authDataSerialized) {
-                const _authData: AuthData = JSON.parse(authDataSerialized);
-                setAuthData(_authData);
-            }
-        } catch (err) {
-        } finally {
-            setLoading(false);
-        }
-    };
 
     const signIn = async (email: string, password: string) => {
         setLoading(true);
