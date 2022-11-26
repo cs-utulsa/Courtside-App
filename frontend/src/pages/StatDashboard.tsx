@@ -87,10 +87,6 @@ export const StatDashboard = () => {
                 <Text style={styles.followBtnText}>Follow More Stats</Text>
             </Pressable>
 
-            {authData?.stats?.map((item) => (
-                <Text key={item}>{item}</Text>
-            ))}
-
             {statData.map((stat) => {
                 return (
                     <StatLeaderboard

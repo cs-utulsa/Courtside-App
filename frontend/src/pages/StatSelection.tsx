@@ -7,6 +7,7 @@ import { ToggleButton } from '../components/atoms';
 import { useAuth } from '@hooks/useAuth';
 import { useNavigation } from '@react-navigation/native';
 import { StatsNavigationProp } from '@navigation/types';
+//import { ALL_STATS } from '../constants/stats';
 
 type StatSectionProps = {
     title: string;
@@ -26,7 +27,7 @@ const StatSection: FC<StatSectionProps> = ({
     const [open, setOpen] = useState<boolean>(false);
 
     useEffect(() => {
-        if (title === 'Shooting') setOpen(true);
+        if (title === 'Currently Following') setOpen(true);
     }, [title]);
 
     return (
@@ -94,6 +95,16 @@ export const StatSelection = () => {
             selectedStats.filter((selectedItem) => selectedItem !== stat)
         );
     };
+
+    // const selectedStatSection = {
+    //     title: 'Currently Following',
+    //     data: ALL_STATS.filter((stat) => selectedStats.includes(stat.id)),
+    // };
+
+    // const data =
+    //     selectedStatSection.data.length > 0
+    //         ? [selectedStatSection, ...STATS]
+    //         : STATS;
 
     return (
         <FlatList

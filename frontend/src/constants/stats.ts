@@ -172,3 +172,11 @@ export const STATS = [
     ...defenseStats,
     ...playerValueStats,
 ];
+
+export const ALL_STATS = [
+    ...shootingStats[0].data,
+    ...reboundStats[0].data,
+    ...passingStats[0].data,
+    ...defenseStats[0].data,
+    ...playerValueStats[0].data,
+];
