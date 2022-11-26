@@ -68,9 +68,11 @@ type StatSectionHeaderProps = {
 
 const StatSelectionHeader: FC<StatSectionHeaderProps> = ({ handlePress }) => {
     return (
-        <Pressable style={styles.followBtn} onPress={handlePress}>
-            <Text style={styles.followBtnText}>Submit</Text>
-        </Pressable>
+        <View style={styles.headerContainer}>
+            <Pressable style={styles.followBtn} onPress={handlePress}>
+                <Text style={styles.followBtnText}>Update</Text>
+            </Pressable>
+        </View>
     );
 };
 
@@ -136,6 +138,9 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: '#EE6730',
         fontSize: 16,
+    },
+    headerContainer: {
+        alignItems: 'center',
     },
 });
 

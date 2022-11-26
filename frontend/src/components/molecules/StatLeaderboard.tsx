@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { FC, useState } from 'react';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
 
 // type LeaderboardProps = {
 //     name: string;
@@ -17,16 +17,41 @@ export const StatLeaderboard: FC<LeaderboardProps> = ({
     player_id,
     value,
 }) => {
+    const [open, setOpen] = useState<boolean>(false);
+
+    if (!open) {
+        return (
+            <Pressable
+                onPress={() => setOpen(true)}
+                style={styles.leaderboardBlock}
+            >
+                <View style={styles.titleBlock}>
+                    <Text style={styles.statTitle}>{_id}</Text>
+                </View>
+                <View style={styles.leaderboardList}>
+                    <View style={styles.statCol}>
+                        <Text>{player_id[0]}</Text>
+                    </View>
+                    <View style={styles.statCol}>
+                        <Text>{value[0]}</Text>
+                    </View>
+                </View>
+            </Pressable>
+        );
+    }
+
     return (
         <View style={styles.leaderboardBlock}>
-            <View style={styles.titleBlock}>
-                <Text style={styles.statTitle}>{_id}</Text>
-            </View>
-            <View style={styles.statHeader}>
-                {/* <Text>Rank</Text> */}
-                <Text>Player</Text>
-                <Text>Value</Text>
-            </View>
+            <Pressable onPress={() => setOpen(false)}>
+                <View style={styles.titleBlock}>
+                    <Text style={styles.statTitle}>{_id}</Text>
+                </View>
+                <View style={styles.statHeader}>
+                    {/* <Text>Rank</Text> */}
+                    <Text>Player</Text>
+                    <Text>Value</Text>
+                </View>
+            </Pressable>
             <View style={styles.leaderboardList}>
                 {/* <View style={styles.statCol}>
                     {data.map((item: any, index: number) => (
