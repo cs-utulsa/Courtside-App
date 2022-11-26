@@ -70,6 +70,7 @@ export const StatDashboard = () => {
         useCallback(() => {
             (async () => {
                 if (authData?.stats) {
+                    console.log(authData?.stats);
                     const _statData = await getAllStats(authData.stats);
                     setStatData(_statData);
                 }

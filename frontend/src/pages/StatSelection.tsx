@@ -61,35 +61,29 @@ const StatSection: FC<StatSectionProps> = ({
     );
 };
 
-const StatSelectionHeader = () => {
-    const { pop } = useNavigation<StatsNavigationProp>();
+type StatSectionHeaderProps = {
+    handlePress: () => void;
+};
 
+const StatSelectionHeader: FC<StatSectionHeaderProps> = ({ handlePress }) => {
     return (
-        <Pressable style={styles.followBtn} onPress={() => pop()}>
+        <Pressable style={styles.followBtn} onPress={handlePress}>
             <Text style={styles.followBtnText}>Submit</Text>
         </Pressable>
     );
 };
 
 export const StatSelection = () => {
-    const navigation = useNavigation<StatsNavigationProp>();
-
+    const { navigate } = useNavigation<StatsNavigationProp>();
     const { authData, updateStats } = useAuth();
     const [selectedStats, setSelectedStats] = useState<string[]>(
         authData!.stats!
     );
 
-    useEffect(() => {
-        navigation.addListener('beforeRemove', async (e) => {
-            e.preventDefault();
-            await updateStats(selectedStats);
-            navigation.dispatch(e.data.action);
-        });
-
-        return navigation.removeListener('beforeRemove', async () => {
-            await updateStats(selectedStats);
-        });
-    }, [navigation, selectedStats, updateStats]);
+    const onSubmit = async () => {
+        await updateStats(selectedStats);
+        navigate('Dashboard');
+    };
 
     const addStat = (stat: string) => {
         setSelectedStats([...selectedStats, stat]);
@@ -104,7 +98,7 @@ export const StatSelection = () => {
     return (
         <FlatList
             data={STATS}
-            ListHeaderComponent={<StatSelectionHeader />}
+            ListHeaderComponent={<StatSelectionHeader handlePress={onSubmit} />}
             renderItem={({ item, index }) => (
                 <StatSection
                     title={item.title}
