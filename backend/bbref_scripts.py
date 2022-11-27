@@ -2,14 +2,20 @@ from bs4 import BeautifulSoup
 import requests
 import pandas as pd
 import constants
+import json
 
 
 # Function to scrape rosters for specified team
 def get_team_roster(team_code, season):
-    url = f"https://www.basketball-reference.com/teams/{team_code}/{season}.html#all_roster"
+    url = f"https://www.basketball-reference.com/teams/{team_code}/{season}.html"
     soup = BeautifulSoup(requests.get(url).content, 'html5lib')
     
-    team_roster_year = []
+    with open(f"backend//player_data//player_data.txt", "r") as f:
+        player_data_dict = json.load(f)
+    with open(f"backend//rosters//team_rosters.txt", "r") as f:
+        team_roster_dict = json.load(f)
+    
+    team_roster_list = []
     team_roster = soup.find_all("table", {"id": "roster"})[0].contents[7].contents
     for player in team_roster:
         if isinstance(player, str):
@@ -17,11 +23,33 @@ def get_team_roster(team_code, season):
         
         player_data = [] 
         for i in [1, 2, 3, 4]:
-            try:
-                if i == 1:
-                    player_data.append(player.contents[i].contents[0].attrs['href'].split('/')[3].split('.html')[0])
+            if i == 1:
+                try:
+                    player_id = player.contents[i].contents[0].attrs['href'].split('/')[3].split('.html')[0]
+                    team_roster_list.append(player_id)
+                    player_data.append(player_id)
+                except:
+                    team_roster_list.append('NA')
+                    player_data.append('NA')
+                try:
                     player_data.append(player.contents[i].contents[0].contents[0])
-                elif i == 2:
+                except:
+                    player_data.append('NA')
+                try:
+                    player_data.append(player.contents[0].contents[0])
+                except:
+                    player_data.append('NA')
+                try:
+                    player_url = player.contents[i].contents[0].attrs['href']
+                    player_data.append(player_url)
+                except:
+                    player_data.append('NA')
+                try:
+                    player_data.append(get_player_pic(player_url))
+                except:
+                    player_data.append('NA')
+            elif i == 2:
+                try:
                     pos = player.contents[i].contents[0]
                     if "-" in pos:
                         pos = pos.split("-")[0]
@@ -30,14 +58,28 @@ def get_team_roster(team_code, season):
                     elif pos in ['F', 'SF', 'PF']:
                         pos = 'F'
                     player_data.append(pos)
-                else:
+                except:
+                    player_data.append('NA')
+            else:
+                try:
                     player_data.append(player.contents[i].contents[0])
-            except:
-                player_data.append('NA')
-                
-        team_roster_year.append(player_data)
-    cols = ['player_id','name','position','height','weight']
-    return(pd.DataFrame(team_roster_year, columns=cols))
+                except:
+                    player_data.append('NA')
+                    
+        player_data_dict[player_id] = player_data
+    
+    team_roster_dict[team_code] = team_roster_list
+    with open(f"backend//player_data//player_data.txt", "w") as f:
+        f.write(json.dumps(player_data_dict))
+    with open(f"backend//rosters//team_rosters.txt", "w") as f:
+        f.write(json.dumps(team_roster_dict))
+
+
+# Return player headshot url
+def get_player_pic(url):
+    url = f"https://www.basketball-reference.com{url}"
+    soup = BeautifulSoup(requests.get(url).content, 'html5lib')
+    return(soup.find_all("div", {"class": "media-item"})[0].contents[0].attrs['src'])
 
 
 # Get leaderboards for specific stat and year
@@ -84,7 +126,6 @@ def get_leaderboards(stat, season):
 #        - away_link: url to basketball-ref away team page
 #        - arena:     name of home team's arena
 def get_schedule(season):
-    
     schedule = []
     for month in ['october','november','december','january','february','march','april']:
         url = f"https://www.basketball-reference.com/leagues/NBA_{season}_games-{month}.html"
@@ -138,10 +179,10 @@ def get_schedule(season):
 
 
 if __name__ == "__main__":
-    # # Loop over all teams and get rosters
-    # for team in constants.team_codes:
-    #     roster = get_team_roster(team, 2023)
-    #     roster.to_csv(f"data\\rosters\\{team}_2023.csv")
+    # Loop over all teams and get rosters
+    for team in constants.team_codes:
+        get_team_roster(team, 2023)
+        print(f"Finished {team}")
     
     # # Get leaderboards for all stats
     # for stat in constants.leaderboard_names:
@@ -152,4 +193,4 @@ if __name__ == "__main__":
     # schedule = get_schedule(2023)
     # schedule.to_csv(f"data\\schedule\\2023_schedule.csv")
     
-    leaderboard = get_schedule(2023)
+    # leaderboard = get_schedule(2023)
