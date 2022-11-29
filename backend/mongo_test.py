@@ -3,21 +3,19 @@ from db import db
 import bbref_scripts as bbref
 import pandas as pd
 import constants
-import pickle
+import json
 import os
 
 
 if __name__ == "__main__":
-    # test = db.basketball_stats.find()
-    # for x in test:
-    #     print(x)
-
-
+    print()
     # # Update rosters collections in mongodb
-    # for team in constants.team_codes:
-    #     roster = bbref.get_team_roster(team, 2023).to_dict(orient='list')
-    #     roster.update({"_id": f"{team}_roster"})
-    #     db.rosters.insert_one(roster)
+    # with open(f"backend//player_data//player_data.txt", "r") as f:
+    #     player_data_dict = json.load(f)
+    # db.player_data.insert_one(player_data_dict)
+    # with open(f"backend//rosters//team_rosters.txt", "r") as f:
+    #     team_roster_dict = json.load(f)
+    # db.rosters.insert_one(team_roster_dict)
 
 
     # # Update leaderboard collections in mongodb
@@ -39,4 +37,3 @@ if __name__ == "__main__":
     # schedule = bbref.get_schedule(2023).to_dict(orient='index')
     # schedule.update({"_id": "schedule_2023"})
     # db.schedule.insert_one(schedule)
-    print()
