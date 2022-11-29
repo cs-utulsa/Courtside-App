@@ -16,6 +16,9 @@ export const StatLeaderboard: FC<LeaderboardProps> = ({
 }) => {
     const [open, setOpen] = useState<boolean>(false);
 
+    const playersLimitFive = player_id.slice(0, 5);
+    const valueLimitFive = value.slice(0, 5);
+
     if (!open) {
         return (
             <Pressable
@@ -27,10 +30,10 @@ export const StatLeaderboard: FC<LeaderboardProps> = ({
                 </View>
                 <View style={styles.leaderboardList}>
                     <View style={styles.statCol}>
-                        <Text>{player_id[0]}</Text>
+                        <Text>{playersLimitFive[0]}</Text>
                     </View>
                     <View style={styles.statCol}>
-                        <Text>{value[0]}</Text>
+                        <Text>{valueLimitFive[0]}</Text>
                     </View>
                 </View>
             </Pressable>
@@ -51,22 +54,18 @@ export const StatLeaderboard: FC<LeaderboardProps> = ({
             </Pressable>
             <View style={styles.leaderboardList}>
                 <View style={styles.statCol}>
-                    {player_id.map((item: any, index: number) => (
+                    {playersLimitFive.map((item: any, index: number) => (
                         <Text key={`rank-${index}-${item}`}>{index + 1}</Text>
                     ))}
                 </View>
                 <View style={styles.statCol}>
-                    {player_id.map((item: any, index) => (
-                        <Text key={`id-${index}-${item.player_id}`}>
-                            {item}
-                        </Text>
+                    {playersLimitFive.map((id: any, index) => (
+                        <Text key={`id-${index}-${id}`}>{id}</Text>
                     ))}
                 </View>
                 <View style={styles.statCol}>
-                    {value.map((item: any, index) => (
-                        <Text key={`val-${index}-${item.player_id}`}>
-                            {item}
-                        </Text>
+                    {valueLimitFive.map((valueNum: any, index) => (
+                        <Text key={`val-${index}-${valueNum}`}>{valueNum}</Text>
                     ))}
                 </View>
             </View>
