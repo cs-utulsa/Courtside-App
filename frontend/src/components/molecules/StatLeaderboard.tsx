@@ -44,19 +44,17 @@ export const StatLeaderboard: FC<LeaderboardProps> = ({
                     <Text style={styles.statTitle}>{name ? name : _id}</Text>
                 </View>
                 <View style={styles.statHeader}>
-                    {/* <Text>Rank</Text> */}
+                    <Text>Rank</Text>
                     <Text>Player</Text>
                     <Text>Value</Text>
                 </View>
             </Pressable>
             <View style={styles.leaderboardList}>
-                {/* <View style={styles.statCol}>
-                    {data.map((item: any, index: number) => (
-                        <Text key={`rank-${index}-${item.player_id}`}>
-                            {item.rank}
-                        </Text>
+                <View style={styles.statCol}>
+                    {player_id.map((item: any, index: number) => (
+                        <Text key={`rank-${index}-${item}`}>{index + 1}</Text>
                     ))}
-                </View> */}
+                </View>
                 <View style={styles.statCol}>
                     {player_id.map((item: any, index) => (
                         <Text key={`id-${index}-${item.player_id}`}>
