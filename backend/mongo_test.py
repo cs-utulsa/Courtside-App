@@ -9,6 +9,33 @@ import os
 
 if __name__ == "__main__":
     print()
+    
+    # # Update leaderboards db with stat names
+    # for x in db.leaderboards.find():
+    #     db.leaderboards.update_one({"_id": x["_id"]}, {"$set": {"name": constants.leaderboard_full_names[f'leaders_{x["_id"]}']}})
+    
+    # # Insert roster document for each team
+    # for x in db.rosters.find():
+    #     for y in x:
+    #         if y == "_id":
+    #             continue
+    #         db.rosters.insert_one({"_id": y, "roster": x[y]})
+
+    # # Insert document for each game in schedule db
+    # for x in db.schedule.find():
+    #     for y in x:
+    #         if y == "_id":
+    #             continue
+    #         db.schedule.insert_one({"_id": y, "schedule": x[y]})
+    
+    # # Insert document for each player in player_data db
+    # for x in db.player_data.find():
+    #     for y in x:
+    #         if y == "_id":
+    #             continue
+    #         db.player_data.insert_one({"_id": y, "data": x[y]})
+    
+    
     # # Update rosters collections in mongodb
     # with open(f"backend//player_data//player_data.txt", "r") as f:
     #     player_data_dict = json.load(f)
