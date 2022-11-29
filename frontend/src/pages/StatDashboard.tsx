@@ -94,6 +94,7 @@ export const StatDashboard = () => {
                         _id={stat._id}
                         player_id={stat.player_id}
                         value={stat.value}
+                        name={stat.name}
                     />
                 );
             })}

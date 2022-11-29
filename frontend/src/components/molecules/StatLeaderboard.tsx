@@ -1,13 +1,9 @@
 import React, { FC, useState } from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 
-// type LeaderboardProps = {
-//     name: string;
-//     data: { rank: number; player_id: string; value: number }[];
-// };
-
 export type LeaderboardProps = {
     _id: string;
+    name?: string;
     player_id: string[];
     value: number[];
 };
@@ -16,6 +12,7 @@ export const StatLeaderboard: FC<LeaderboardProps> = ({
     _id,
     player_id,
     value,
+    name,
 }) => {
     const [open, setOpen] = useState<boolean>(false);
 
@@ -26,7 +23,7 @@ export const StatLeaderboard: FC<LeaderboardProps> = ({
                 style={styles.leaderboardBlock}
             >
                 <View style={styles.titleBlock}>
-                    <Text style={styles.statTitle}>{_id}</Text>
+                    <Text style={styles.statTitle}>{name ? name : _id}</Text>
                 </View>
                 <View style={styles.leaderboardList}>
                     <View style={styles.statCol}>
@@ -44,7 +41,7 @@ export const StatLeaderboard: FC<LeaderboardProps> = ({
         <View style={styles.leaderboardBlock}>
             <Pressable onPress={() => setOpen(false)}>
                 <View style={styles.titleBlock}>
-                    <Text style={styles.statTitle}>{_id}</Text>
+                    <Text style={styles.statTitle}>{name ? name : _id}</Text>
                 </View>
                 <View style={styles.statHeader}>
                     {/* <Text>Rank</Text> */}
