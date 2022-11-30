@@ -37,6 +37,7 @@ import { StatsNavigationProp } from '@navigation/types';
 import axios from 'axios';
 import { DEVELOPMENT_API } from '../constants/urls';
 import { StatLeaderboard } from '@molecules/StatLeaderboard';
+import { ErrorBox } from '@atoms/ErrorBox';
 
 export const StatDashboard = () => {
     const { authData } = useAuth();
@@ -50,7 +51,10 @@ export const StatDashboard = () => {
             );
             return response.data;
         } catch (err) {
-            console.log(err);
+            return {
+                error: true,
+                _id: stat_id,
+            };
         }
     }, []);
 
@@ -88,6 +92,10 @@ export const StatDashboard = () => {
             </Pressable>
 
             {statData.map((stat) => {
+                if (stat?.error) {
+                    return <ErrorBox error={`${stat._id} cannot be found.`} />;
+                }
+
                 return (
                     <StatLeaderboard
                         key={stat._id}
@@ -115,6 +123,7 @@ const styles = StyleSheet.create({
         paddingVertical: 15,
         backgroundColor: 'white',
         borderRadius: 10,
+        marginBottom: 10,
     },
     followBtnText: {
         textAlign: 'center',
