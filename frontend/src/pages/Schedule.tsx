@@ -1,33 +1,11 @@
 import { Seperator } from '@atoms/Seperator';
 import axios from 'axios';
-// import { useFocusEffect } from '@react-navigation/native';
 import { addDays, format, getDate, getMonth, startOfToday } from 'date-fns';
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { View, FlatList, StyleSheet, Text } from 'react-native';
 import { Game } from '../components/molecules';
 import { DEVELOPMENT_API } from '../constants/urls';
 import { NAVY, ORANGE } from '../styles/colors';
-
-// const DATA = [
-//     {
-//         date: '11-21-2022',
-//         time: '8:00p',
-//         away: 'NYK',
-//         home: 'OKC',
-//     },
-//     {
-//         date: '11-21-2022',
-//         time: '10:30p',
-//         away: 'UTA',
-//         home: 'LAC',
-//     },
-//     {
-//         date: '11-21-2022',
-//         time: '8:00p',
-//         away: 'GSW',
-//         home: 'NOP',
-//     },
-// ];
 
 type Game = {
     arena: string;
@@ -73,7 +51,7 @@ const DateSection: FC<DateSectionProps> = ({ ahead }) => {
         return (
             <View style={styles.section}>
                 <Text style={styles.sectionTitle}>{dateString}</Text>
-                {games!.map((game, index) => {
+                {games.map((game, index) => {
                     return (
                         <Game
                             date={game.game_date}

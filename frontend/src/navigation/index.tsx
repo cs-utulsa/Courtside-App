@@ -28,7 +28,6 @@ const RootNavigator = () => {
                 ref={ref}
                 onReady={() => setRouteName(ref.getCurrentRoute()?.name)}
                 onStateChange={async () => {
-                    //const previousRouteName = routeName;
                     const currentRouteName = ref.getCurrentRoute()?.name;
                     setRouteName(currentRouteName);
                 }}

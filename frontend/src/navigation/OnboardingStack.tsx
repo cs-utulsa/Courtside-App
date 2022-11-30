@@ -8,7 +8,6 @@ import {
     StatSelection,
 } from './../pages';
 import { OnboardingNavigatorParamList } from './types';
-import { MainNavigation } from './MainNavigation';
 
 const OnboardingStack =
     createNativeStackNavigator<OnboardingNavigatorParamList>();
@@ -34,10 +33,6 @@ export const OnboardingNavigator = () => {
             <OnboardingStack.Screen
                 name="StatSelection"
                 component={StatSelection}
-            />
-            <OnboardingStack.Screen
-                name="MainNavigation"
-                component={MainNavigation}
             />
         </OnboardingStack.Navigator>
     );

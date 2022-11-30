@@ -14,6 +14,15 @@ const screenWidth = Dimensions.get('window').width - 20;
 const numColumns = 3;
 const tile = screenWidth / numColumns;
 
+const FavoriteTeamsHeader = () => {
+    return (
+        <>
+            <Text style={styles.header}>Select Your Favorite Teams</Text>
+            <SearchBox placeholder="Search for Your Team" />
+        </>
+    );
+};
+
 export const FavoriteTeams = () => {
     //const [selectedTeams, setSelectedTeams] = useState<string[]>([]);
 
@@ -39,16 +48,9 @@ export const FavoriteTeams = () => {
                 renderItem={renderItem}
                 numColumns={3}
                 ItemSeparatorComponent={Seperator}
-                ListHeaderComponent={() => (
-                    <>
-                        <Text style={styles.header}>
-                            Select Your Favorite Teams
-                        </Text>
-                        <SearchBox placeholder="Search for Your Team" />
-                    </>
-                )}
-                ListHeaderComponentStyle={{ alignItems: 'center' }}
-                ListFooterComponent={() => <View style={{ height: 30 }} />}
+                ListHeaderComponent={<FavoriteTeamsHeader />}
+                ListHeaderComponentStyle={styles.headerContainer}
+                ListFooterComponent={Seperator}
             />
             <View style={[styles.footer]}>
                 <RightButton
@@ -81,5 +83,8 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
         marginHorizontal: -10,
         backgroundColor: 'white',
+    },
+    headerContainer: {
+        alignItems: 'center',
     },
 });
