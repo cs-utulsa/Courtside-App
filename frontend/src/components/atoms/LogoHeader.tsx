@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { StyleSheet, Text } from 'react-native';
+import { ORANGE } from '../../styles/colors';
 
 type LogoHeaderProps = {
     style?: {};
@@ -12,7 +13,7 @@ const styles = StyleSheet.create({
     header: {
         fontSize: 40,
         fontFamily: 'BungeeShade',
-        color: '#EE6730',
+        color: ORANGE,
         textAlign: 'center',
     },
 });

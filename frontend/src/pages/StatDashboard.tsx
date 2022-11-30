@@ -13,6 +13,7 @@ import axios from 'axios';
 import { DEVELOPMENT_API } from '../constants/urls';
 import { StatLeaderboard } from '@molecules/StatLeaderboard';
 import { ErrorBox } from '@atoms/ErrorBox';
+import { ORANGE } from '../styles/colors';
 
 export const StatDashboard = () => {
     const { authData } = useAuth();
@@ -93,7 +94,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 24,
         textAlign: 'center',
-        color: '#EE6730',
+        color: ORANGE,
         marginTop: 20,
     },
     followBtn: {
@@ -105,7 +106,7 @@ const styles = StyleSheet.create({
     },
     followBtnText: {
         textAlign: 'center',
-        color: '#EE6730',
+        color: ORANGE,
         fontSize: 16,
     },
     pageContainer: {

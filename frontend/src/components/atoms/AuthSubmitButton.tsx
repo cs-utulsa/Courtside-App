@@ -5,6 +5,7 @@ import {
     StyleSheet,
 } from 'react-native';
 import React, { FC } from 'react';
+import { ORANGE } from '../../styles/colors';
 
 type AuthSubmitButtonProps = {
     submitFn: () => void;
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
         width: '60%',
         borderRadius: 10,
         padding: 10,
-        backgroundColor: '#EE6730',
+        backgroundColor: ORANGE,
         marginTop: 10,
     },
     submitText: {

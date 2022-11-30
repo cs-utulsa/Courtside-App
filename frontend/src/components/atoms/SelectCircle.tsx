@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react';
 import { View, Image, StyleSheet, Pressable } from 'react-native';
+import { ORANGE } from '../../styles/colors';
 
 type SelectCircleProps = {
     disabled?: boolean;
@@ -63,7 +64,7 @@ const styles = StyleSheet.create({
     },
 
     selected: {
-        borderColor: '#EE6730',
+        borderColor: ORANGE,
     },
 
     img: {

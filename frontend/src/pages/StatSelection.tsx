@@ -7,6 +7,7 @@ import { ToggleButton } from '../components/atoms';
 import { useAuth } from '@hooks/useAuth';
 import { useNavigation } from '@react-navigation/native';
 import { StatsNavigationProp } from '@navigation/types';
+import { ORANGE } from '../styles/colors';
 //import { ALL_STATS } from '../constants/stats';
 
 type StatSectionProps = {
@@ -98,16 +99,6 @@ export const StatSelection = () => {
         );
     };
 
-    // const selectedStatSection = {
-    //     title: 'Currently Following',
-    //     data: ALL_STATS.filter((stat) => selectedStats.includes(stat.id)),
-    // };
-
-    // const data =
-    //     selectedStatSection.data.length > 0
-    //         ? [selectedStatSection, ...STATS]
-    //         : STATS;
-
     return (
         <FlatList
             data={STATS}
@@ -136,7 +127,7 @@ const styles = StyleSheet.create({
     },
     followBtnText: {
         textAlign: 'center',
-        color: '#EE6730',
+        color: ORANGE,
         fontSize: 16,
     },
     headerContainer: {

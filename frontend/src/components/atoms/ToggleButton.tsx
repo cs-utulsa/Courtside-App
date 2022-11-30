@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react';
 import { Text, Pressable, StyleSheet } from 'react-native';
+import { ORANGE } from '../../styles/colors';
 
 type ToggleButtonProps = {
     initial: boolean;
@@ -49,14 +50,14 @@ const styles = StyleSheet.create({
         marginHorizontal: 5,
         marginVertical: 5,
         borderWidth: 2,
-        borderColor: '#EE6730',
+        borderColor: ORANGE,
     },
     buttonText: {
         fontSize: 14,
         fontWeight: '500',
     },
     btnSelected: {
-        backgroundColor: '#EE6730',
+        backgroundColor: ORANGE,
     },
     btnNotSelected: {
         backgroundColor: 'white',
@@ -65,6 +66,6 @@ const styles = StyleSheet.create({
         color: 'white',
     },
     unselectedText: {
-        color: '#EE6730',
+        color: ORANGE,
     },
 });

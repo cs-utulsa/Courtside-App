@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Schedule, Rosters, Settings } from './../pages';
 import { Ionicons, FontAwesome, FontAwesome5 } from '@expo/vector-icons';
 import { StatsStack } from './StatsStack';
+import { ORANGE } from '../styles/colors';
 
 const Tab = createBottomTabNavigator();
 
@@ -18,7 +19,7 @@ export const MainNavigation: FC<MainNavigationProps> = ({ routeName }) => {
         <Tab.Navigator
             initialRouteName="Stats"
             screenOptions={({ route }) => ({
-                tabBarActiveTintColor: '#EE6730',
+                tabBarActiveTintColor: ORANGE,
                 tabBarInactiveTintColor: 'gray',
                 tabBarIconStyle: {
                     transform: [{ scale: 1.3 }],

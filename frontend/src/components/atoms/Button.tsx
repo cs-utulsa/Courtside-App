@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { Pressable, Text, StyleSheet } from 'react-native';
+import { ORANGE } from '../../styles/colors';
 
 type ButtonProps = {
     text: string;
@@ -27,7 +28,7 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         paddingHorizontal: 20,
         paddingVertical: 10,
-        backgroundColor: '#EE6730',
+        backgroundColor: ORANGE,
         width: '65%',
     },
 
