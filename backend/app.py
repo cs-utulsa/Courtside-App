@@ -6,6 +6,7 @@ from db import db
 import pandas as pd
 import pymongo
 import os
+from utils.data_utils import schedule_key
 
 app = Flask(__name__)
 CORS(app)
@@ -58,7 +59,9 @@ def get_schedule(month, day):
         check_str = f"{str(month).rjust(2,'0')}{str(day).rjust(2, '0')}{2023}"
     games = db.schedule.find({'_id': {'$regex': '.*' + check_str}})
     # return {x['_id']:x['schedule'] for x in games}
-    return [x['schedule'] for x in games]
+    res = [x['schedule'] for x in games]
+    res.sort(key=schedule_key)
+    return res
 
 # Return bio data for a specified player
 @app.route('/player/<player_id>', methods=['GET'])

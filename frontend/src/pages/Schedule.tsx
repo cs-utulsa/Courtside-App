@@ -94,7 +94,7 @@ const DateSection: FC<DateSectionProps> = ({ ahead }) => {
 
 export const Schedule = () => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [days, setDays] = useState<number>(3);
+    const [days, setDays] = useState<number>(7);
 
     return (
         <View style={styles.container}>
@@ -105,7 +105,7 @@ export const Schedule = () => {
                 }}
                 numColumns={1}
                 ItemSeparatorComponent={Seperator}
-                onEndReached={() => setDays(days + 6)}
+                onEndReached={() => setDays(days + 7)}
             />
         </View>
     );
