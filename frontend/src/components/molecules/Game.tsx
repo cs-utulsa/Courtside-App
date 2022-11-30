@@ -5,13 +5,13 @@ import { SelectCircle } from '../atoms';
 import { ICONS } from '../../constants';
 
 type GameProps = {
-    date: string;
+    date?: string;
     time: string;
     away: string;
     home: string;
 };
 
-export const Game: FC<GameProps> = ({ date, time, away, home }) => {
+export const Game: FC<GameProps> = ({ time, away, home }) => {
     return (
         <View style={styles.gameBlock}>
             <SelectCircle
@@ -20,8 +20,7 @@ export const Game: FC<GameProps> = ({ date, time, away, home }) => {
                 disabled={true}
             />
             <View style={styles.gameData}>
-                <Text>{date}</Text>
-                <Text>{time}</Text>
+                <Text style={styles.gameTime}>{time}</Text>
             </View>
             <SelectCircle
                 url={ICONS.find((icon) => icon.code === home)?.logo}
@@ -46,5 +45,9 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    gameTime: {
+        fontSize: 24,
+        fontWeight: 'bold',
     },
 });
