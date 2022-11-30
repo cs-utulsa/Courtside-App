@@ -180,7 +180,8 @@ def get_schedule(season):
 
 if __name__ == "__main__":
     # Loop over all teams and get rosters
-    for team in constants.team_codes:
+    # for team in constants.team_codes:
+    for team in ['BKN','CHA','CHI','CLE']:
         get_team_roster(team, 2023)
         print(f"Finished {team}")
     
