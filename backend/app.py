@@ -36,8 +36,11 @@ def get_leaderboard(stat):
 
     leaderboard["player_names"] = []
     cursor = 0
+    # loop over player ids and only return a player name if it is present, this code is necessary since all of the players are not in the database
     for i in range(0, len(leaderboard["player_id"])):
-        if (leaderboard["player_id"][i] == player_document[cursor]["data"][0]):
+        if cursor > len(player_document) - 1:
+            leaderboard["player_names"].append(leaderboard["player_id"][i])
+        elif (leaderboard["player_id"][i] == player_document[cursor]["data"][0]):
             name = player_document[cursor]["data"][1]
             leaderboard["player_names"].append(name)
             cursor += 1
