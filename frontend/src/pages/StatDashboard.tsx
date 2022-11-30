@@ -1,35 +1,10 @@
-// import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
-// // import { View, StyleSheet, FlatList, Text } from 'react-native';
-// import { Text, StyleSheet } from 'react-native';
-// //import { StatLeaderboard, LeaderboardProps } from '../components/molecules';
-// import { LOCAL_API } from '../constants/urls';
-// //import { Seperator } from '@atoms/Seperator';
-
-// const DATA = [
-//     {
-//         title: 'VORP',
-//         data: [
-//             { rank: 1, player_id: 'jokicni01', value: 9.8 },
-//             { rank: 2, player_id: 'antetgi01', value: 7.4 },
-//             { rank: 3, player_id: 'embiijo01', value: 6.5 },
-//             { rank: 4, player_id: 'doncilu01', value: 5.9 },
-//             { rank: 5, player_id: 'jamesle01', value: 5.1 },
-//         ],
-//     },
-//     {
-//         title: 'PER',
-//         data: [
-//             { rank: 1, player_id: 'jokicni01', value: 32.8 },
-//             { rank: 2, player_id: 'antetgi01', value: 32.1 },
-//             { rank: 3, player_id: 'embiijo01', value: 31.2 },
-//             { rank: 4, player_id: 'jamesle01', value: 26.2 },
-//             { rank: 5, player_id: 'duranke01', value: 25.6 },
-//         ],
-//     },
-// ];
-
-import { Pressable, StyleSheet, Text, ScrollView } from 'react-native';
+import {
+    Pressable,
+    StyleSheet,
+    Text,
+    ScrollView,
+    ActivityIndicator,
+} from 'react-native';
 import React, { useCallback, useState } from 'react';
 import { useAuth } from '@hooks/useAuth';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
@@ -43,6 +18,7 @@ export const StatDashboard = () => {
     const { authData } = useAuth();
     const { push } = useNavigation<StatsNavigationProp>();
     const [statData, setStatData] = useState<any[]>([]);
+    const [loadingStats, setLoadingStats] = useState<boolean>(false);
 
     const getStatData = useCallback(async (stat_id: string) => {
         try {
@@ -74,9 +50,10 @@ export const StatDashboard = () => {
         useCallback(() => {
             (async () => {
                 if (authData?.stats) {
-                    console.log(authData?.stats);
+                    setLoadingStats(true);
                     const _statData = await getAllStats(authData.stats);
                     setStatData(_statData);
+                    setLoadingStats(false);
                 }
             })();
         }, [authData, getAllStats])
@@ -106,6 +83,7 @@ export const StatDashboard = () => {
                     />
                 );
             })}
+            {loadingStats && <ActivityIndicator color="black" size="large" />}
         </ScrollView>
     );
 };
