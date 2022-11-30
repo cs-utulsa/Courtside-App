@@ -22,8 +22,6 @@ export const Game: FC<GameProps> = ({ date, time, away, home }) => {
             <View style={styles.gameData}>
                 <Text>{date}</Text>
                 <Text>{time}</Text>
-                <Text>{away}</Text>
-                <Text>{home}</Text>
             </View>
             <SelectCircle
                 url={ICONS.find((icon) => icon.code === home)?.logo}
