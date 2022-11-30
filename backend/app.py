@@ -24,7 +24,27 @@ def get_roster(team_code):
 # Return leaderboard for specified stat/season
 @app.route('/leaderboard/<stat>', methods=['GET'])
 def get_leaderboard(stat):
-    return db.leaderboards.find_one({'_id': f'{stat}'})
+    leaderboard = db.leaderboards.find_one({'_id': f'{stat}'})
+    leaderboard["player_id"] = leaderboard["player_id"][0:5]
+    leaderboard["value"] = leaderboard["value"][0:5]
+
+    player_names_cursor = db.player_data.find(
+        { "_id": { "$in": leaderboard["player_id"]}}
+    )
+
+    player_document = list(player_names_cursor)
+    
+    leaderboard["player_names"] = []
+    cursor = 0
+    for i in range(0, len(leaderboard["player_id"])):
+        if (leaderboard["player_id"][i] == player_document[cursor]["data"][0]):
+            name = player_document[cursor]["data"][1]
+            leaderboard["player_names"].append(name)
+            cursor += 1
+        else:
+            leaderboard["player_names"].append(leaderboard["player_id"][i])
+
+    return leaderboard
 
 # Return schedule for a requested day
 @app.route('/schedule/<int:month>/<int:day>', methods=['GET'])
