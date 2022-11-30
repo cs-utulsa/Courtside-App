@@ -6,6 +6,7 @@ import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { View, FlatList, StyleSheet, Text } from 'react-native';
 import { Game } from '../components/molecules';
 import { DEVELOPMENT_API } from '../constants/urls';
+import { NAVY, ORANGE } from '../styles/colors';
 
 // const DATA = [
 //     {
@@ -68,32 +69,29 @@ const DateSection: FC<DateSectionProps> = ({ ahead }) => {
         })();
     }, [getDaySchedule]);
 
-    return (
-        <View>
-            <>
+    if (games) {
+        return (
+            <View style={styles.section}>
                 <Text style={styles.sectionTitle}>{dateString}</Text>
-                {games ? (
-                    games!.map((game, index) => {
-                        return (
-                            <Game
-                                date={game.game_date}
-                                time={game.game_time}
-                                away={game.away_code}
-                                home={game.home_code}
-                                key={`game-${index}`}
-                            />
-                        );
-                    })
-                ) : (
-                    <Text>Loading</Text>
-                )}
-            </>
-        </View>
-    );
+                {games!.map((game, index) => {
+                    return (
+                        <Game
+                            date={game.game_date}
+                            time={game.game_time}
+                            away={game.away_code}
+                            home={game.home_code}
+                            key={`game-${index}`}
+                        />
+                    );
+                })}
+            </View>
+        );
+    }
+
+    return <View />;
 };
 
 export const Schedule = () => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [days, setDays] = useState<number>(7);
 
     return (
@@ -119,6 +117,16 @@ const styles = StyleSheet.create({
     sectionTitle: {
         textAlign: 'center',
         fontWeight: 'bold',
-        fontSize: 20,
+        fontSize: 30,
+        textDecorationLine: 'underline',
+        color: ORANGE,
+    },
+    section: {
+        borderWidth: 3,
+        borderColor: NAVY,
+        marginHorizontal: 10,
+        borderRadius: 10,
+        paddingVertical: 5,
+        marginVertical: 5,
     },
 });

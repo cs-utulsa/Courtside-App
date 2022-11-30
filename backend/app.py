@@ -58,7 +58,6 @@ def get_schedule(month, day):
     else:
         check_str = f"{str(month).rjust(2,'0')}{str(day).rjust(2, '0')}{2023}"
     games = db.schedule.find({'_id': {'$regex': '.*' + check_str}})
-    # return {x['_id']:x['schedule'] for x in games}
     res = [x['schedule'] for x in games]
     res.sort(key=schedule_key)
     return res
