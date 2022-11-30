@@ -92,7 +92,7 @@ export const StatDashboard = () => {
                     <StatLeaderboard
                         key={stat._id}
                         _id={stat._id}
-                        player_id={stat.player_id}
+                        player_id={stat.player_names}
                         value={stat.value}
                         name={stat.name}
                     />

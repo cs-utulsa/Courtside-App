@@ -30,6 +30,10 @@ def get_leaderboard(stat):
 
     player_document = list(player_names_cursor)
     
+    if len(player_document) == 0:
+        leaderboard["player_names"] = leaderboard["player_id"]
+        return leaderboard
+
     leaderboard["player_names"] = []
     cursor = 0
     for i in range(0, len(leaderboard["player_id"])):
