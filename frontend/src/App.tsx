@@ -9,6 +9,8 @@ import { ICONS } from './constants';
 import { registerRootComponent } from 'expo';
 import { AuthProvider } from '@contexts/AuthContext';
 
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
 function cacheImages(images: string[]) {
     return images.map((image: string) => {
         if (typeof image === 'string') {
@@ -25,6 +27,8 @@ export default function App() {
     const [fontsReady] = useFonts({
         BungeeShade: require('./assets/fonts/BungeeShade-Regular.ttf'),
     });
+
+    const queryClient = new QueryClient();
 
     useEffect(() => {
         const loadResources = async () => {
@@ -53,9 +57,11 @@ export default function App() {
 
     return (
         <>
-            <AuthProvider>
-                <RootNavigator />
-            </AuthProvider>
+            <QueryClientProvider client={queryClient}>
+                <AuthProvider>
+                    <RootNavigator />
+                </AuthProvider>
+            </QueryClientProvider>
             <StatusBar style="auto" />
         </>
     );
