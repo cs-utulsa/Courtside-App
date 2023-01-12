@@ -37,3 +37,6 @@ This is for all the different screens in the app.
 
 ## Styles
 This is for global styles and multi use functions that can create style objects.
+
+## Types
+Custom typescript types for our app.
