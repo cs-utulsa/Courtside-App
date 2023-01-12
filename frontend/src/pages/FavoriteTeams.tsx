@@ -1,14 +1,18 @@
+//external imports
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { View, StyleSheet, FlatList, Dimensions, Text } from 'react-native';
-import {
-    RightButton,
-    SelectCircle,
-    SearchBox,
-    Seperator,
-} from '../components/atoms';
+
+// types
+import { OnboardingNavigationProp } from '../types/Navigation';
+
+//custom components
+import { RightButton, SelectCircle } from '../components/buttons';
+import { SearchBox } from '../components/misc/SearchBox';
+import { Seperator } from '../components/misc/Seperator';
+
+// constants
 import { ICONS } from '../constants';
-import { OnboardingNavigationProp } from '../navigation/types';
 
 const screenWidth = Dimensions.get('window').width - 20;
 const numColumns = 3;

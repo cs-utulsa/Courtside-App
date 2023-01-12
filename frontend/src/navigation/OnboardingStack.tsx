@@ -1,13 +1,8 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import {
-    GetStarted,
-    FavoritePlayers,
-    FavoriteTeams,
-    StatSelection,
-} from './../pages';
-import { OnboardingNavigatorParamList } from './types';
+import { FavoritePlayers, FavoriteTeams, StatSelection } from './../pages';
+import { OnboardingNavigatorParamList } from './../types/Navigation';
 
 const OnboardingStack =
     createNativeStackNavigator<OnboardingNavigatorParamList>();
@@ -15,13 +10,12 @@ const OnboardingStack =
 export const OnboardingNavigator = () => {
     return (
         <OnboardingStack.Navigator
-            initialRouteName="GetStarted"
+            initialRouteName="FavoriteTeams"
             screenOptions={{
                 headerShown: false,
                 animation: 'slide_from_right',
             }}
         >
-            <OnboardingStack.Screen name="GetStarted" component={GetStarted} />
             <OnboardingStack.Screen
                 name="FavoriteTeams"
                 component={FavoriteTeams}

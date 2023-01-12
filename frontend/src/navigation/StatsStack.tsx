@@ -2,7 +2,7 @@ import React from 'react';
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatSelection, StatDashboard } from '../pages/index';
-import { StatsNavigatorParamList } from './types';
+import { StatsNavigatorParamList } from './../types/Navigation';
 
 const Stack = createNativeStackNavigator<StatsNavigatorParamList>();
 

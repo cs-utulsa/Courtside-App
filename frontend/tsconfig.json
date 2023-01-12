@@ -5,13 +5,14 @@
         "module": "es6",
         "paths": {
             "@assets/*": ["./src/assets/*"],
-            "@atoms/*": ["./src/components/atoms/*"],
-            "@molecules/*": ["./src/components/molecules/*"],
-            "@organisms/*": ["./src/components/organisms/*"],
+            "@components/*": ["./src/components/*"],
+            "@constants/*": ["./src/constants/*"],
             "@contexts/*": ["./src/contexts/*"],
             "@hooks/*": ["./src/hooks/*"],
             "@navigation/*": ["./src/navigation/*"],
-            "@pages/*": ["./src/pages/*"]
+            "@pages/*": ["./src/pages/*"],
+            "@styles/*": ["./src/styles/*"],
+            "@types/*": ["./src/types/*"]
         }
     }
 }

@@ -6,16 +6,35 @@ For static files. Think images or fonts.
 
 ## Components
 
-This folder follows the ideas of atomic design.
+This folder has all of the different custom components of the app separated by feature or type. Other folders may be added in the future as more components of a given type are created.
 
-### Atoms
-The smallest possible components. Think a button or a single form input (text box or a radio button)
+### Auth
 
-### Molecules
-Combinations of atoms. Think a search box (a text input plus a button) or a group of radio buttons
+This is components relating to the Auth Flow
 
-### Organisms
-Combinations of molecules. This would be a whole section on a page typically. Think of a website header or a complete form with many different inputs.
+### Buttons
+
+Buttons.
+
+### Data
+
+These are components that display data. This might be Game data, Stat data, player data, etc. etc.
+
+### Error
+
+Components that display an error or inform the user that na error has occurred.
+
+### Logo
+
+Components related to the branding of Courtside.
+
+### Misc
+
+Components there is not another place for.
+
+### Navigation
+
+Components related to navigation through the app including things like navigation bars, drawers, and links.
 
 ## Constants
 

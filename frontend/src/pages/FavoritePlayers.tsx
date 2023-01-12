@@ -1,8 +1,9 @@
 import React from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
-import { RightButton, LeftButton, Seperator } from '../components/atoms';
+import { RightButton, LeftButton } from '../components/buttons';
+import { Seperator } from './../components/misc/Seperator';
 import { useNavigation } from '@react-navigation/native';
-import { OnboardingNavigationProp } from '../navigation/types';
+import { OnboardingNavigationProp } from '../types/Navigation';
 
 export const FavoritePlayers = () => {
     const { navigate } = useNavigation<OnboardingNavigationProp>();
@@ -15,15 +16,6 @@ export const FavoritePlayers = () => {
                 renderItem={({ item }) => <Text>{item}</Text>}
                 numColumns={3}
                 ItemSeparatorComponent={Seperator}
-                // ListHeaderComponent={() => (
-                //     <>
-                //         <Text style={styles.header}>
-                //             Follow Your Favorite Players
-                //         </Text>
-                //     </>
-                // )}
-                // ListHeaderComponentStyle={{ alignItems: 'center' }}
-                // ListFooterComponent={() => <View style={{ height: 30 }} />}
             />
             <View style={[styles.footer]}>
                 <LeftButton

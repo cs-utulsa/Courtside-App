@@ -1,19 +1,25 @@
-import * as Yup from 'yup';
-import { Formik } from 'formik';
-import { StyleSheet, View, ActivityIndicator } from 'react-native';
-import { useAuth } from '@hooks/useAuth';
+// external imports
 import React from 'react';
+import { View, StyleSheet, ActivityIndicator } from 'react-native';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+import { useNavigation } from '@react-navigation/native';
 
+// types
+import { AuthNavigationProp } from './../types/Navigation';
+
+// custom hooks
+import { useAuth } from '@hooks/useAuth';
+
+//custom components
 import {
-    LogoHeader,
-    ErrorBox,
     EmailInput,
     PasswordInput,
     AuthSubmitButton,
-    SmallLink,
-} from '@atoms/index';
-import { useNavigation } from '@react-navigation/native';
-import { AuthNavigationProp } from './../navigation/types';
+} from './../components/auth';
+import { LogoHeader } from '../components/logo';
+import { SmallLink } from '../components/navigation';
+import { ErrorBox } from '../components/error';
 
 const authSchema = Yup.object().shape({
     email: Yup.string()

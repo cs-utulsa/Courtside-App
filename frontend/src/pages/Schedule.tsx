@@ -1,23 +1,12 @@
-import { Seperator } from '@atoms/Seperator';
+import { Seperator } from '../components/misc/Seperator';
 import axios from 'axios';
 import { addDays, format, getDate, getMonth, startOfToday } from 'date-fns';
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { View, FlatList, StyleSheet, Text } from 'react-native';
-import { Game } from '../components/molecules';
+import { GameDisplay } from '../components/data';
 import { DEVELOPMENT_API } from '../constants/urls';
 import { NAVY, ORANGE } from '../styles/colors';
-
-type Game = {
-    arena: string;
-    game_date: string;
-    game_time: string;
-    home_code: string;
-    home_name: string;
-    home_link: string;
-    away_code: string;
-    away_name: string;
-    away_link: string;
-};
+import { Game } from '../types/Game';
 
 type DateSectionProps = {
     ahead: number;
@@ -53,7 +42,7 @@ const DateSection: FC<DateSectionProps> = ({ ahead }) => {
                 <Text style={styles.sectionTitle}>{dateString}</Text>
                 {games.map((game, index) => {
                     return (
-                        <Game
+                        <GameDisplay
                             date={game.game_date}
                             time={game.game_time}
                             away={game.away_code}

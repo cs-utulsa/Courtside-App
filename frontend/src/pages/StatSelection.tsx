@@ -3,12 +3,11 @@ import AntIcon from '@expo/vector-icons/AntDesign';
 import { Text, StyleSheet, FlatList, View, Pressable } from 'react-native';
 
 import { STATS } from './../constants';
-import { ToggleButton } from '../components/atoms';
+import { ToggleButton } from '../components/buttons';
 import { useAuth } from '@hooks/useAuth';
 import { useNavigation } from '@react-navigation/native';
-import { StatsNavigationProp } from '@navigation/types';
+import { StatsNavigationProp } from './../types/Navigation';
 import { ORANGE } from '../styles/colors';
-//import { ALL_STATS } from '../constants/stats';
 
 type StatSectionProps = {
     title: string;

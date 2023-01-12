@@ -1,3 +1,4 @@
+// external imports
 import {
     Pressable,
     StyleSheet,
@@ -7,14 +8,22 @@ import {
     View,
 } from 'react-native';
 import React from 'react';
-import { useAuth } from '@hooks/useAuth';
 import { useNavigation } from '@react-navigation/native';
-import { StatsNavigationProp } from '@navigation/types';
-import { StatLeaderboard } from '@molecules/StatLeaderboard';
-import { ORANGE } from '../styles/colors';
+
+//custom hooks
+import { useAuth } from '@hooks/useAuth';
 import useRefreshOnFocus from '@hooks/useRefreshOnFocus';
 import useStats from '@hooks/useStats';
+
+// types
+import { StatsNavigationProp } from './../types/Navigation';
 import { Stat } from '../types/Stat';
+
+// custom components
+import { StatLeaderboard } from '../components/data';
+
+// constants
+import { ORANGE } from '../styles/colors';
 
 export const StatDashboard = () => {
     const { authData } = useAuth();

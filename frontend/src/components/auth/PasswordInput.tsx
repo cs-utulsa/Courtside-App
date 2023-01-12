@@ -1,8 +1,8 @@
 import { TextInput, Text, View } from 'react-native';
 import React, { FC } from 'react';
 
-import { InputProps } from './types';
-import { inputStyles as styles } from './styles';
+import { InputProps } from '../../types/InputTypes';
+import { inputStyles as styles } from '../../styles/inputStyles';
 
 export const PasswordInput: FC<InputProps & { placeholder: string }> = ({
     changeFn,

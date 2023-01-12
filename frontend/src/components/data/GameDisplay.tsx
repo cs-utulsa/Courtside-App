@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native';
 import React, { FC } from 'react';
 
-import { SelectCircle } from '../atoms';
+import { SelectCircle } from '../buttons/SelectCircle';
 import { ICONS } from '../../constants';
 
 type GameProps = {
@@ -11,7 +11,7 @@ type GameProps = {
     home: string;
 };
 
-export const Game: FC<GameProps> = ({ time, away, home }) => {
+export const GameDisplay: FC<GameProps> = ({ time, away, home }) => {
     return (
         <View style={styles.gameBlock}>
             <SelectCircle
