@@ -23,6 +23,7 @@ export const StatDashboard = () => {
     const { data, isError, isLoading, isSuccess, isRefetching, refetch } =
         useStats(authData?.stats);
 
+    // refetch the data when user returns to screen (stale data is still displayed during refetch)
     useRefreshOnFocus(refetch);
 
     if (isError) {
@@ -33,12 +34,16 @@ export const StatDashboard = () => {
         );
     }
 
+    // navigates to the stat selection screen, i.e., pushes the Selection screen onto the navigation stack
     function navigateToSelectionScreen() {
         push('Selection');
     }
 
+    const isFetchingData = isLoading || isRefetching;
+
     return (
         <ScrollView contentContainerStyle={styles.pageContainer}>
+            {/* Button that navigates to the stat selection screen */}
             <Pressable
                 style={styles.followBtn}
                 onPress={navigateToSelectionScreen}
@@ -60,10 +65,8 @@ export const StatDashboard = () => {
                     );
                 })}
 
-            {/* if data is loading, display a loading indicator */}
-            {(isLoading || isRefetching) && (
-                <ActivityIndicator color="black" size="large" />
-            )}
+            {/* if data is being fetched from the server, display a loading indicator */}
+            {isFetchingData && <ActivityIndicator color="black" size="large" />}
         </ScrollView>
     );
 };
