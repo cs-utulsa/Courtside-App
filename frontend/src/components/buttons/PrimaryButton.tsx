@@ -19,6 +19,7 @@ export const PrimaryButton: FC<PrimaryButtonProps> = ({ onPress }) => {
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
+        width: '100%',
     },
     btn: {
         width: '90%',
