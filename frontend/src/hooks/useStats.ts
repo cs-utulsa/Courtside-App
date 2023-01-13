@@ -2,7 +2,7 @@ import axios from 'axios';
 import { DEVELOPMENT_API } from '../constants/urls';
 import { useQuery } from '@tanstack/react-query';
 
-const useStats = (stats: string[] | undefined) => {
+export const useStats = (stats: string[] | undefined) => {
     return useQuery({
         queryKey: ['stats'],
         queryFn: async () => {
@@ -20,5 +20,3 @@ const useStats = (stats: string[] | undefined) => {
         },
     });
 };
-
-export default useStats;

@@ -10,9 +10,7 @@ import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 //custom hooks
-import { useAuth } from '@hooks/useAuth';
-import useRefreshOnFocus from '@hooks/useRefreshOnFocus';
-import useStats from '@hooks/useStats';
+import { useAuth, useRefreshOnFocus, useStats } from '@hooks/index';
 
 // types
 import { StatsNavigationProp } from './../types/Navigation';
