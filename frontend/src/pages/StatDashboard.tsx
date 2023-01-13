@@ -1,6 +1,5 @@
 // external imports
 import {
-    Pressable,
     StyleSheet,
     Text,
     ScrollView,
@@ -20,7 +19,8 @@ import { StatsNavigationProp } from './../types/Navigation';
 import { Stat } from '../types/Stat';
 
 // custom components
-import { StatLeaderboard } from '../components/data';
+import { StatLeaderboard } from '@components/data';
+import { PrimaryButton } from '@components/buttons';
 
 // constants
 import { ORANGE } from '../styles/colors';
@@ -53,12 +53,7 @@ export const StatDashboard = () => {
     return (
         <ScrollView contentContainerStyle={styles.pageContainer}>
             {/* Button that navigates to the stat selection screen */}
-            <Pressable
-                style={styles.followBtn}
-                onPress={navigateToSelectionScreen}
-            >
-                <Text style={styles.followBtnText}>Follow More Stats</Text>
-            </Pressable>
+            <PrimaryButton onPress={navigateToSelectionScreen} />
 
             {/* if data was fetched successfully, create a leaderboard for each stat */}
             {isSuccess &&
