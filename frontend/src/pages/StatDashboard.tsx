@@ -16,14 +16,14 @@ import useStats from '@hooks/useStats';
 
 // types
 import { StatsNavigationProp } from './../types/Navigation';
-import { Stat } from '../types/Stat';
+import { Stat } from './../types/Stat';
 
 // custom components
 import { StatLeaderboard } from '@components/data';
 import { PrimaryButton } from '@components/buttons';
 
 // constants
-import { ORANGE } from '../styles/colors';
+import { ORANGE } from '@styles/colors';
 
 export const StatDashboard = () => {
     const { authData } = useAuth();

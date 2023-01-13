@@ -1,11 +1,16 @@
-import { Seperator } from '../components/misc/Seperator';
+// external imports
 import axios from 'axios';
 import { addDays, format, getDate, getMonth, startOfToday } from 'date-fns';
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { View, FlatList, StyleSheet, Text } from 'react-native';
-import { GameDisplay } from '../components/data';
-import { DEVELOPMENT_API } from '../constants/urls';
-import { NAVY, ORANGE } from '../styles/colors';
+
+//custom components
+import { Seperator } from '@components/misc/Seperator';
+import { GameDisplay } from '@components/data';
+
+// misc
+import { DEVELOPMENT_API } from '@constants/urls';
+import { NAVY, ORANGE } from '@styles/colors';
 import { Game } from '../types/Game';
 
 type DateSectionProps = {

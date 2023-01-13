@@ -7,9 +7,9 @@ import { View, StyleSheet, FlatList, Dimensions, Text } from 'react-native';
 import { OnboardingNavigationProp } from '../types/Navigation';
 
 //custom components
-import { RightButton, SelectCircle } from '../components/buttons';
-import { SearchBox } from '../components/misc/SearchBox';
-import { Seperator } from '../components/misc/Seperator';
+import { RightButton, SelectCircle } from '@components/buttons';
+import { SearchBox } from '@components/misc/SearchBox';
+import { Seperator } from '@components/misc/Seperator';
 
 // constants
 import { ICONS } from '../constants';
