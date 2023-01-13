@@ -5,6 +5,7 @@ import { Seperator } from '@components/misc/Seperator';
 import { useNavigation } from '@react-navigation/native';
 import { OnboardingNavigationProp } from '../types/Navigation';
 
+/** This component allows users to choose what players they want to follow */
 export const FavoritePlayers = () => {
     const { navigate } = useNavigation<OnboardingNavigationProp>();
 

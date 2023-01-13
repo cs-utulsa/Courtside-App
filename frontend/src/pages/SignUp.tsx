@@ -31,6 +31,9 @@ const authSchema = Yup.object().shape({
     ),
 });
 
+/**
+ * This component is the sign up form that displays when a new user launches the app and wants to join.
+ */
 export const SignUp = () => {
     const { signUp, authError, loading } = useAuth();
 

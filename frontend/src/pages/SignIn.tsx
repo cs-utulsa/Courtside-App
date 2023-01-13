@@ -24,6 +24,9 @@ const authSchema = Yup.object().shape({
     password: Yup.string().required('Password is required'),
 });
 
+/**
+ * This component displays when a user needs to sign back into the app.
+ */
 export const SignIn = () => {
     const { signIn, authError, loading } = useAuth();
 

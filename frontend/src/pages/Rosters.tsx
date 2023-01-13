@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 
+/** This component displays the members of teams that the user is following */
 export const Rosters = () => {
     return (
         <View style={styles.container}>

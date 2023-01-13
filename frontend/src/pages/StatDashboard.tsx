@@ -25,6 +25,9 @@ import { PrimaryButton } from '@components/buttons';
 // constants
 import { ORANGE } from '@styles/colors';
 
+/**
+ * This component allows user to view the leaderboards for the stats that they are following.
+ */
 export const StatDashboard = () => {
     const { authData } = useAuth();
     const { push } = useNavigation<StatsNavigationProp>();

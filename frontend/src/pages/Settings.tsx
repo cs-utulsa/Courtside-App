@@ -2,6 +2,9 @@ import { useAuth } from '@hooks/index';
 import React from 'react';
 import { Pressable, StyleSheet, View, Text } from 'react-native';
 
+/**
+ * This component allows the user to access settings about the app and to log out of the app.
+ */
 export const Settings = () => {
     const { signOut } = useAuth();
 

@@ -27,6 +27,7 @@ const FavoriteTeamsHeader = () => {
     );
 };
 
+/** This component lets the user choose what teams they want to follow */
 export const FavoriteTeams = () => {
     //const [selectedTeams, setSelectedTeams] = useState<string[]>([]);
 

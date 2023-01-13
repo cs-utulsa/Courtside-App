@@ -8,6 +8,9 @@ import { StatsNavigationProp } from './../types/Navigation';
 import { StatSection } from '@components/data';
 import { PrimaryButton } from '@components/buttons/PrimaryButton';
 
+/**
+ * This component is a screen that allows the user to change what stats they follow.
+ */
 export const StatSelection = () => {
     const { navigate } = useNavigation<StatsNavigationProp>();
     const { authData, updateStats } = useAuth();
