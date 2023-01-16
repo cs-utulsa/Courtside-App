@@ -2,12 +2,19 @@ import React, { FC, useState } from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 
 export type LeaderboardProps = {
+    /** The id of the stat being displayed */
     _id: string;
+    /** The name of the stat being displayed. If this is not given, the id will be shown in the component instead. */
     name?: string;
+    /** Array of top ranking players for this stat */
     player_id: string[];
+    /** Array of the scores of the top ranking players for this stat */
     value: number[];
 };
 
+/**
+ * This component displays the players with the highest value for the specified stat
+ */
 export const StatLeaderboard: FC<LeaderboardProps> = ({
     _id,
     player_id,
@@ -74,6 +81,7 @@ export const StatLeaderboard: FC<LeaderboardProps> = ({
 };
 
 const styles = StyleSheet.create({
+    /** Styles for the element containing the rest of the component */
     leaderboardBlock: {
         backgroundColor: '#DEDEDE',
         paddingVertical: 8,
@@ -83,22 +91,27 @@ const styles = StyleSheet.create({
         width: '80%',
         marginVertical: 15,
     },
+    /** Styles for the container of the stat title text */
     titleBlock: {
         alignItems: 'center',
     },
+    /** Styles for the text displaying the name of the stat */
     statTitle: {
         fontSize: 20,
         fontWeight: 'bold',
         paddingBottom: 5,
     },
+    /** Styles for the header which states what each row of the leaderboard is */
     statHeader: {
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
+    /** Styles for the container of the player data */
     leaderboardList: {
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
+    /** Styles for the columns that display player names and the stat values of the players */
     statCol: {
         flexDirection: 'column',
     },

@@ -32,21 +32,14 @@ export const DaySchedule: FC<DayScheduleProps> = ({ ahead }) => {
             <Text style={styles.sectionTitle}>{dateString}</Text>
             {isSuccess &&
                 data.map((game, index) => {
-                    return (
-                        <GameDisplay
-                            date={game.game_date}
-                            time={game.game_time}
-                            away={game.away_code}
-                            home={game.home_code}
-                            key={`game-${index}`}
-                        />
-                    );
+                    return <GameDisplay game={game} key={`game-${index}`} />;
                 })}
         </View>
     );
 };
 
 const styles = StyleSheet.create({
+    /** Styles for the text at the top of the section which state what day this section represents */
     sectionTitle: {
         textAlign: 'center',
         fontWeight: 'bold',
@@ -54,6 +47,7 @@ const styles = StyleSheet.create({
         textDecorationLine: 'underline',
         color: ORANGE,
     },
+    /** Styles for the View that contains all of the section information */
     section: {
         borderWidth: 3,
         borderColor: NAVY,
