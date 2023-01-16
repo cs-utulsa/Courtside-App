@@ -36,7 +36,9 @@ export const StatSelection = () => {
     return (
         <FlatList
             data={STATS}
-            ListHeaderComponent={<PrimaryButton onPress={onSubmit} />}
+            ListHeaderComponent={
+                <PrimaryButton onPress={onSubmit} text="Update Stats" />
+            }
             renderItem={({ item, index }) => (
                 <StatSection
                     title={item.title}

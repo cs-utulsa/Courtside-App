@@ -47,12 +47,12 @@ export const StatSection: FC<StatSectionProps> = ({
     const [open, setOpen] = useState<boolean>(false);
 
     return (
-        <View style={sectionStyles.section}>
+        <View style={styles.section}>
             <Pressable
-                style={sectionStyles.sectionHeader}
+                style={styles.sectionHeader}
                 onPress={() => setOpen(!open)}
             >
-                <Text style={sectionStyles.sectionHeading}>{title}</Text>
+                <Text style={styles.sectionHeading}>{title}</Text>
                 <AntIcon
                     name="caretdown"
                     style={open && { transform: [{ rotate: '180deg' }] }}
@@ -60,7 +60,7 @@ export const StatSection: FC<StatSectionProps> = ({
             </Pressable>
 
             {open && (
-                <View style={sectionStyles.stats}>
+                <View style={styles.stats}>
                     {data.map((stat, index) => (
                         <ToggleButton
                             initial={selectedStats.includes(stat.id)}
@@ -78,27 +78,26 @@ export const StatSection: FC<StatSectionProps> = ({
     );
 };
 
-const sectionStyles = StyleSheet.create({
+const styles = StyleSheet.create({
+    /** Styles for the container of the rest fo the component */
     section: {
         marginLeft: 10,
     },
+    /** Styles for the text displaying the section title */
     sectionHeading: {
         fontWeight: 'bold',
         fontSize: 22,
         marginBottom: 5,
         marginRight: 5,
     },
+    /** Styles for the container of the toggle buttons for each stat */
     stats: {
         flexDirection: 'row',
         flexWrap: 'wrap',
     },
+    /** Styles for the container fo the text displaying the section title */
     sectionHeader: {
         flexDirection: 'row',
         alignItems: 'center',
-    },
-    statsOpen: {},
-    statsClose: {
-        height: 0,
-        display: 'none',
     },
 });

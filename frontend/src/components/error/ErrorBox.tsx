@@ -2,9 +2,18 @@ import React, { FC } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 type ErrorBoxProps = {
+    /** The error message */
     error: string | undefined;
 };
 
+/**
+ * This component displays an error message in a red box
+ *
+ * @component
+ * @example
+ * const message = "There was an error";
+ * return <ErrorBox error={message} />
+ */
 export const ErrorBox: FC<ErrorBoxProps> = ({ error }) => {
     if (error) {
         return (

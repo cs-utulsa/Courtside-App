@@ -4,12 +4,21 @@ import { View, StyleSheet, Text } from 'react-native';
 import { GameDisplay } from './GameDisplay';
 import { NAVY, ORANGE } from '@styles/colors';
 import { useDaySchedule } from '@hooks/index';
+import { FullError } from '@components/error';
 
 type DayScheduleProps = {
     /** the date of this schedule represented by how many days away it is from today */
     ahead: number;
 };
 
+/**
+ * This component displays all of the games that are within a given day.
+ * The day is defined by a number, which is how many days ahead of today the date is.
+ *
+ * @example
+ * const daysAhead = 3;
+ * return <DaySchedule ahead={daysAhead} />
+ */
 export const DaySchedule: FC<DayScheduleProps> = ({ ahead }) => {
     const date = useMemo(() => addDays(startOfToday(), ahead), [ahead]);
     const dateString = format(date, 'yyyy-MM-dd');
@@ -17,11 +26,7 @@ export const DaySchedule: FC<DayScheduleProps> = ({ ahead }) => {
     const { data, isError, isSuccess } = useDaySchedule(date);
 
     if (isError) {
-        return (
-            <View>
-                <Text>Cannot get game data</Text>
-            </View>
-        );
+        return <FullError text="Cannot get game data. Try again later" />;
     }
 
     return (
@@ -29,21 +34,14 @@ export const DaySchedule: FC<DayScheduleProps> = ({ ahead }) => {
             <Text style={styles.sectionTitle}>{dateString}</Text>
             {isSuccess &&
                 data.map((game, index) => {
-                    return (
-                        <GameDisplay
-                            date={game.game_date}
-                            time={game.game_time}
-                            away={game.away_code}
-                            home={game.home_code}
-                            key={`game-${index}`}
-                        />
-                    );
+                    return <GameDisplay game={game} key={`game-${index}`} />;
                 })}
         </View>
     );
 };
 
 const styles = StyleSheet.create({
+    /** Styles for the text at the top of the section which state what day this section represents */
     sectionTitle: {
         textAlign: 'center',
         fontWeight: 'bold',
@@ -51,6 +49,7 @@ const styles = StyleSheet.create({
         textDecorationLine: 'underline',
         color: ORANGE,
     },
+    /** Styles for the View that contains all of the section information */
     section: {
         borderWidth: 3,
         borderColor: NAVY,
