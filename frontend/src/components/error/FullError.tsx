@@ -10,6 +10,11 @@ type FullErrorProps = {
 /**
  * A component that displays an error message in the center of a screen.
  * This should be used when a whole page is not able to be utilized due to some error.
+ *
+ * @component
+ * @example
+ * const message = "There is an error";
+ * return <FullError text={message} />
  */
 export const FullError: FC<FullErrorProps> = ({ text }) => {
     return (
@@ -21,11 +26,13 @@ export const FullError: FC<FullErrorProps> = ({ text }) => {
 };
 
 const styles = StyleSheet.create({
+    /** Styles for the container of the error message */
     container: {
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: 150,
     },
+    /** Styles for the text of the error message */
     text: {
         color: 'red',
         fontSize: 16,
