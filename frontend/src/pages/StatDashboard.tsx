@@ -1,11 +1,5 @@
 // external imports
-import {
-    StyleSheet,
-    Text,
-    ScrollView,
-    ActivityIndicator,
-    View,
-} from 'react-native';
+import { StyleSheet, ScrollView, ActivityIndicator } from 'react-native';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 
@@ -22,6 +16,7 @@ import { PrimaryButton } from '@components/buttons';
 
 // constants
 import { ORANGE } from '@styles/colors';
+import { FullError } from '@components/error';
 
 /**
  * This component allows user to view the leaderboards for the stats that they are following.
@@ -37,11 +32,7 @@ export const StatDashboard = () => {
     useRefreshOnFocus(refetch);
 
     if (isError) {
-        return (
-            <View>
-                <Text>Cannot load stat data :(</Text>
-            </View>
-        );
+        return <FullError text="Cannot load stat data. Try again later." />;
     }
 
     // navigates to the stat selection screen, i.e., pushes the Selection screen onto the navigation stack

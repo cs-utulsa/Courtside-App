@@ -4,6 +4,7 @@ import { View, StyleSheet, Text } from 'react-native';
 import { GameDisplay } from './GameDisplay';
 import { NAVY, ORANGE } from '@styles/colors';
 import { useDaySchedule } from '@hooks/index';
+import { FullError } from '@components/error';
 
 type DayScheduleProps = {
     /** the date of this schedule represented by how many days away it is from today */
@@ -17,11 +18,7 @@ export const DaySchedule: FC<DayScheduleProps> = ({ ahead }) => {
     const { data, isError, isSuccess } = useDaySchedule(date);
 
     if (isError) {
-        return (
-            <View>
-                <Text>Cannot get game data</Text>
-            </View>
-        );
+        return <FullError text="Cannot get game data. Try again later" />;
     }
 
     return (
