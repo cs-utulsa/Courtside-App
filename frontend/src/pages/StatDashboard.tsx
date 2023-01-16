@@ -45,7 +45,10 @@ export const StatDashboard = () => {
     return (
         <ScrollView contentContainerStyle={styles.pageContainer}>
             {/* Button that navigates to the stat selection screen */}
-            <PrimaryButton onPress={navigateToSelectionScreen} />
+            <PrimaryButton
+                onPress={navigateToSelectionScreen}
+                text="Follow More Stats"
+            />
 
             {/* if data was fetched successfully, create a leaderboard for each stat */}
             {isSuccess &&

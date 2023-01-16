@@ -15,6 +15,11 @@ type SelectCircleProps = {
 /**
  * This component is a circle which displays an image. If it is not disabled, it can be selected on or off.
  * If disabled, this component is just a circle which displays an image
+ * @example
+ * const url = "/path/to/local/image";
+ * const size = 100;
+ * const onSelectChanged = (newStatus: boolean) => console.log("Is this button on?", newStatus);
+ * return <SelectCircle url={url} size={size} onSelectChanged={onSelectChanged} />
  */
 export const SelectCircle: FC<SelectCircleProps> = ({
     url,

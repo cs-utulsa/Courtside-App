@@ -12,6 +12,10 @@ type GameProps = {
 
 /**
  * This component displays information about a specific game including the teams and the time the game is played.
+ * @example
+ * // get game data from server
+ * const game = data[0];
+ * return <GameDisplay game={game} />
  */
 export const GameDisplay: FC<GameProps> = ({ game }) => {
     const awayIconUrl = ICONS.find(

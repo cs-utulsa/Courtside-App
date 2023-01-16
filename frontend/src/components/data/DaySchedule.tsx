@@ -15,7 +15,9 @@ type DayScheduleProps = {
  * This component displays all of the games that are within a given day.
  * The day is defined by a number, which is how many days ahead of today the date is.
  *
- * @component
+ * @example
+ * const daysAhead = 3;
+ * return <DaySchedule ahead={daysAhead} />
  */
 export const DaySchedule: FC<DayScheduleProps> = ({ ahead }) => {
     const date = useMemo(() => addDays(startOfToday(), ahead), [ahead]);

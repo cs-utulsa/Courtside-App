@@ -16,6 +16,11 @@ type ToggleButtonProps = {
 
 /**
  * A button that toggles between on and off when you press it.
+ * @example
+ * const initial={true}
+ * const text="Button"
+ * const onToggle = (on: boolean) => console.log("Is it on?", on);
+ * return <ToggleButton initial={initial} text={text} onToggle={onToggle} />
  */
 export const ToggleButton: FC<ToggleButtonProps> = ({
     initial,

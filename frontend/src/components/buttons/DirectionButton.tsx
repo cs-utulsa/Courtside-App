@@ -13,6 +13,11 @@ type DirectionButtonProps = {
 
 /**
  * A button that can display either a left arrow or a right arrow next to some text
+ * @example
+ * const direction = 'left';
+ * const text = 'Going Left!';
+ * const onPress = () => navigate("Screen to the left");
+ * return <DirectionButton direction={direction} text={text} onPress={onPress} />
  */
 export const DirectionButton: FC<DirectionButtonProps> = ({
     direction,

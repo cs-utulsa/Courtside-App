@@ -14,6 +14,12 @@ export type LeaderboardProps = {
 
 /**
  * This component displays the players with the highest value for the specified stat
+ * @example
+ * const _id = "statId";
+ * const name = "Stat";
+ * const player_id = ["Player 1", "Player 2", "Player 3"];
+ * const value = [5, 3, 1]; //5 is the stat value for Player 1, 3 for Player 2, etc.
+ * return <StatLeaderboard _id={_id} name={name} player_id={player_id} value={value} />
  */
 export const StatLeaderboard: FC<LeaderboardProps> = ({
     _id,

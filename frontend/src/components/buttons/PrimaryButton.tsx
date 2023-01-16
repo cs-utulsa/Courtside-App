@@ -5,16 +5,22 @@ import { View, Pressable, Text, StyleSheet } from 'react-native';
 type PrimaryButtonProps = {
     /** This function runs whenever the button is pressed */
     onPress: () => void;
+    /** The text displayed in the button */
+    text: string;
 };
 
 /**
  * This component is a large button which stretches across most of the screen
+ * @example
+ * const text = "Button Text";
+ * const onPress = () => console.log("Button pressed!");
+ * return <PrimaryButton text={text} onPress={onPress} />
  */
-export const PrimaryButton: FC<PrimaryButtonProps> = ({ onPress }) => {
+export const PrimaryButton: FC<PrimaryButtonProps> = ({ onPress, text }) => {
     return (
         <View style={styles.container}>
             <Pressable style={styles.btn} onPress={onPress}>
-                <Text style={styles.btnText}>Update</Text>
+                <Text style={styles.btnText}>{text}</Text>
             </Pressable>
         </View>
     );
