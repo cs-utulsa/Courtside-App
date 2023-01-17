@@ -10,9 +10,9 @@ def get_team_roster(team_code, season):
     url = f"https://www.basketball-reference.com/teams/{team_code}/{season}.html"
     soup = BeautifulSoup(requests.get(url).content, 'html5lib')
     
-    with open(f"backend//player_data//player_data.txt", "r") as f:
+    with open(f"backend//data//player_data//player_data.txt", "r") as f:
         player_data_dict = json.load(f)
-    with open(f"backend//rosters//team_rosters.txt", "r") as f:
+    with open(f"backend//data//rosters//team_rosters.txt", "r") as f:
         team_roster_dict = json.load(f)
     
     team_roster_list = []
@@ -69,9 +69,9 @@ def get_team_roster(team_code, season):
         player_data_dict[player_id] = player_data
     
     team_roster_dict[team_code] = team_roster_list
-    with open(f"backend//player_data//player_data.txt", "w") as f:
+    with open(f"backend//data//player_data//player_data.txt", "w") as f:
         f.write(json.dumps(player_data_dict))
-    with open(f"backend//rosters//team_rosters.txt", "w") as f:
+    with open(f"backend//data//rosters//team_rosters.txt", "w") as f:
         f.write(json.dumps(team_roster_dict))
 
 
