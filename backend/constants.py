@@ -135,7 +135,7 @@ leaderboard_full_names = {
     'leaders_tov_pct': 'Turnover %',
 }
 
-seasons = [
+gamelog_seasons = [
     '2009-10',
     '2010-11',
     '2011-12',
