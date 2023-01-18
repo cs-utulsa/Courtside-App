@@ -1,6 +1,7 @@
 # Environment
 .venv/
 .env
+models/
 
 # Byte-complied / optimized / DLL fiels
 __pycache__/
