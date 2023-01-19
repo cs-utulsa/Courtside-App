@@ -2,6 +2,7 @@
 .venv/
 .env
 models/
+old/
 
 # Byte-complied / optimized / DLL fiels
 __pycache__/
