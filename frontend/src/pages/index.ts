@@ -1,5 +1,5 @@
 export { FavoritePlayers } from './FavoritePlayers';
-export { FavoriteTeams } from './FavoriteTeams';
+export { TeamSelection } from './TeamSelection';
 export { StatSelection } from './StatSelection';
 export { Schedule } from './Schedule';
 export { Rosters } from './Rosters';
