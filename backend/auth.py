@@ -13,8 +13,22 @@ NO_EMAIL_MESSAGE = "Email must be provided"
 NO_PASSWORD_MESSAGE = "Password must be provided"
 JSON_MIME_TYPE = "application/json"
 INVALID_TOKEN_MESSAGE = "Invalid token"
+SERVER_ERROR = "Cannot complete request"
 
 def string_response(message, code):
+    """Creates a HTTP Response with a single message
+
+    Args:
+        message: string
+            The message to be sent as the data of the response
+        code: number
+            The HTTP code of the response
+
+    Returns:
+        An instance of the Response class with the data of the response as the given message 
+        and the status code of the response as the specified code
+    
+    """
     response = make_response()
     response.data = message
     response.status_code = code
@@ -22,6 +36,43 @@ def string_response(message, code):
 
 @auth.route('/users/register', methods=["POST"])
 def create_user():
+    """Creates a user within the database
+
+    Checks to see if email exists in database and then hashes the provided password.
+    Takes the user's email and hashed password adds them to a new database record.
+    A separate record is created to store the user's data and preferences
+
+    Returns:
+        A Response object
+        - if no email:
+            status_code = 400
+            data = "Email must be provided"
+
+        - if no password
+            status_code = 400
+            data = "Password must be provided"
+
+        - if email already exists in the database
+            status_code = 409
+            data = "Email already exists"
+
+        - if there is an error accessing database
+            status_code = 500
+            data = "Cannot complete request"
+
+        - if success
+            status_code = 200
+            data = {
+                _id: the user's id as a string
+                token: the user's JWT as a string
+                stats: a string array of the user's stats
+                teams: a string array of the user's teams
+                email: the user's email
+            }
+    
+    """
+
+    # get email and password from request
     email = request.get_json()["email"]
     password = request.get_json()["password"]
 
@@ -30,12 +81,16 @@ def create_user():
     elif (not password):
         return string_response(NO_PASSWORD_MESSAGE, 400)
 
+    # Check if email already exists in database
     if (db.users.find_one({ "email": email})):
         return string_response("Email already exists", 409)
     
+    # hash the password
     user = None
     hashed_password=generate_password_hash(password, method='sha256')
+
     try: 
+        # create document in users collection for auth data
         insert_user_obj = db.users.insert_one(
             { 
                 "email": email,
@@ -51,13 +106,16 @@ def create_user():
             "teams": []
         }
 
+        # create document in user_preferences for other user data
         db.user_preferences.insert_one(user);
 
     except OperationFailure:
-        return string_response("Cannot complete request", 500)
+        # return error if database cannot be accessed
+        return string_response(SERVER_ERROR, 500)
     
     user["token"] = encode_auth_token(user_id) # add jwt token to user
 
+    #create response with user record (PASSWORD is not sent back to client)
     response = make_response()
     response.status_code = 200
     response.response = json.dumps(user)
@@ -67,6 +125,41 @@ def create_user():
 
 @auth.route('/users/login', methods=["POST"])
 def login_user():
+    """Logs in an existing user
+
+    Checks if email is in database and if the submitted password hash matches the hash in the database.
+    Gets the user's preferences from the db and returns them to the client
+
+    Returns:
+        A response object
+
+        - if no email:
+            status_code: 400
+            data: "Email must be provided"
+
+        - if no password:
+            status_code: 400
+            data: "Password must be provided"
+
+        - if no user record in database or password hashes do not match:
+            status_code: 400
+            data: "Email or password is incorrect"
+
+        - if database cannot be accessed:
+            status_code: 500
+            data: "Cannot complete request"
+
+        - if success:
+            status_code: 200
+            data: {
+                _id: the user's id as a string
+                email: the user's email
+                token: the user's JWT as a string
+                stats: a string array of the ids of the stats the user follows
+                teams: a string array of the ids of the teams the user follows
+            }
+    
+    """
     email = request.get_json()["email"]
     password = request.get_json()["password"]
 
@@ -75,9 +168,12 @@ def login_user():
     elif (not password):
         return string_response(NO_PASSWORD_MESSAGE, 400)
 
-    user = db.users.find_one(
-        {"email": email}
-    )
+    try:
+        user = db.users.find_one(
+            {"email": email}
+        )
+    except OperationFailure:
+        return string_response(SERVER_ERROR, 500)
     
     if (not user or not check_password_hash(user["password"], password)):
         return string_response("Email or password is incorrect", 400)
@@ -85,9 +181,12 @@ def login_user():
     user_id = str(user["_id"])
 
     # get the user's preferences, which will be returned
-    result = db.user_preferences.find_one(
-        {"email": email }
-    )
+    try:
+        result = db.user_preferences.find_one(
+            {"email": email }
+        )
+    except OperationFailure:
+        return string_response(SERVER_ERROR, 500)
 
     # get the jwt token for this response
     result["token"] = encode_auth_token(user_id)
