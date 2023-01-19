@@ -50,23 +50,23 @@ def create_user():
     Returns:
         A Response object
         - if no email:
-            status_code = 400
+            status_code = 400,
             data = "Email must be provided"
 
         - if no password
-            status_code = 400
+            status_code = 400,
             data = "Password must be provided"
 
         - if email already exists in the database
-            status_code = 409
+            status_code = 409,
             data = "Email already exists"
 
         - if there is an error accessing database
-            status_code = 500
+            status_code = 500,
             data = "Cannot complete request"
 
         - if success
-            status_code = 200
+            status_code = 200,
             data = {
                 _id: the user's id as a string
                 token: the user's JWT as a string
@@ -145,23 +145,23 @@ def login_user():
         A response object
 
         - if no email:
-            status_code: 400
+            status_code: 400,
             data: "Email must be provided"
 
         - if no password:
-            status_code: 400
+            status_code: 400,
             data: "Password must be provided"
 
         - if no user record in database or password hashes do not match:
-            status_code: 400
+            status_code: 400,
             data: "Email or password is incorrect"
 
         - if database cannot be accessed:
-            status_code: 500
+            status_code: 500,
             data: "Cannot complete request"
 
         - if success:
-            status_code: 200
+            status_code: 200,
             data: {
                 _id: the user's id as a string
                 email: the user's email
@@ -227,15 +227,15 @@ def logout_user():
         A Response object
 
         if token is invalid:
-            - status_code: 403
+            - status_code: 403,
             - data: "Invalid Token"
 
         if database cannot be accessed:
-            - status_code: 500
+            - status_code: 500,
             - data: "Cannot complete request"
 
         if successfully logged out:
-            - status_code: 200
+            - status_code: 200,
             - data: "Logged out successfully"
 
     """
@@ -275,15 +275,15 @@ def refresh_token():
         A Response object
 
         if token is invalid:
-            - status_code: 403
+            - status_code: 403,
             - data: "Invalid token"
 
         if database cannot be accessed:
-            - status_code: 500
+            - status_code: 500,
             - data: "Cannot complete request"
 
         if success:
-            - status_code: 200
+            - status_code: 200,
             - data: the user's new token as a string
     """
     token = is_valid_jwt(request)
@@ -323,19 +323,19 @@ def delete_user():
         A Response object
 
         - if email not provided:
-            status_code: 400
+            status_code: 400,
             data: "Email must be provided"
 
         - if user info not in database:
-            status_code: 400
+            status_code: 400,
             data: "User does not exist"
 
         - if database cannot be accessed:
-            status_code: 500
+            status_code: 500,
             data: "Cannot delete user"
 
         - if user is successfully deleted:
-            status_code: 200
+            status_code: 200,
             data: "Deleted successfully"
 
     """
@@ -358,6 +358,39 @@ def delete_user():
 
 @auth.route('/users/teams', methods=["PATCH"])
 def change_teams():
+    """Updates the teams the user is following
+
+    Check to make sure the user's token is valid.
+    Update the array of team ids in the database.
+
+    Request:
+        Headers:
+            Authorization:
+                must be of the form "Bearer <token>" where token is the user's JWT
+        Body:
+            email: the user's email
+            teams: a string array of team ids
+
+    Returns:
+        A Response object
+
+        - if token not valid
+            status_code: 403
+            data: "Invalid Token"
+
+        - if email not provided
+            status_code: 400
+            data: "Email must be provided
+
+        - if database cannot be accessed
+            status_code: 500
+            data: "Cannot add teams to user"
+
+        - if success
+            status_code: 200
+            data: the updated list of teams the user is following
+
+    """
 
     token = is_valid_jwt(request)
 
@@ -389,6 +422,39 @@ def change_teams():
 
 @auth.route('/users/leaderboards', methods=["PATCH"])
 def change_stats():
+    """Updates the stats the user is following
+
+    Check to make sure the user's token is valid.
+    Update the array of stat ids in the database.
+
+    Request:
+        Headers:
+            Authorization:
+                must be of the form "Bearer <token>" where token is the user's JWT
+        Body:
+            email: the user's email
+            stats: a string array of team ids
+
+    Returns:
+        A Response object
+
+        - if token not valid
+            status_code: 403
+            data: "Invalid Token"
+
+        - if email not provided
+            status_code: 400
+            data: "Email must be provided
+
+        - if database cannot be accessed
+            status_code: 500
+            data: "Cannot add stats to user"
+
+        - if success
+            status_code: 200
+            data: the updated list of teams the user is following
+
+    """
     token = is_valid_jwt(request)
 
     if (not token): 
