@@ -42,6 +42,11 @@ def create_user():
     Takes the user's email and hashed password adds them to a new database record.
     A separate record is created to store the user's data and preferences
 
+    Request:
+        Body:
+            email: user's email as a string
+            password: user's password as a string
+
     Returns:
         A Response object
         - if no email:
@@ -130,6 +135,12 @@ def login_user():
     Checks if email is in database and if the submitted password hash matches the hash in the database.
     Gets the user's preferences from the db and returns them to the client
 
+    Request:
+        Body:
+            email: user's email as a string
+            password: user's password as a string
+
+
     Returns:
         A response object
 
@@ -201,6 +212,33 @@ def login_user():
 
 @auth.route('/users/logout', methods=["POST"])
 def logout_user():
+    """Logout the user
+
+    Check to see if submitted token is valid
+    Add token to blacklist in database so it cannot be used anymore
+
+    Request:
+        Headers:
+            Authorization:
+                must be of the form "Bearer <token>" where token is the user's JWT
+
+
+    Returns:
+        A Response object
+
+        if token is invalid:
+            - status_code: 403
+            - data: "Invalid Token"
+
+        if database cannot be accessed:
+            - status_code: 500
+            - data: "Cannot complete request"
+
+        if successfully logged out:
+            - status_code: 200
+            - data: "Logged out successfully"
+
+    """
 
     token = is_valid_jwt(request)
 
@@ -213,14 +251,41 @@ def logout_user():
             "blacklisted_at": datetime.now()
         })
 
-    except Exception as e:
-        return string_response("Server error", 500)
+    except OperationFailure:
+        return string_response(SERVER_ERROR, 500)
 
     return string_response("Logged out successfully", 200)
 
 
 @auth.route('/users/refresh', methods=["POST"])
 def refresh_token():
+    """Refresh the user's JWT
+
+    Check to make sure current JWT is valid and if it is add the token to the blacklist
+    Return a new token to the user
+
+    Request:
+        Headers:
+            Authorization:
+                must be of the form "Bearer <token>" where token is the user's JWT
+        Body:
+            user_id: the user's id as a string
+
+    Returns:
+        A Response object
+
+        if token is invalid:
+            - status_code: 403
+            - data: "Invalid token"
+
+        if database cannot be accessed:
+            - status_code: 500
+            - data: "Cannot complete request"
+
+        if success:
+            - status_code: 200
+            - data: the user's new token as a string
+    """
     token = is_valid_jwt(request)
 
     if (not token): 
@@ -234,7 +299,7 @@ def refresh_token():
             "blacklisted_at": datetime.now()
         })
 
-    except Exception as e:
+    except OperationFailure:
         return string_response("Server error", 500)
     
     response = make_response()
@@ -246,10 +311,38 @@ def refresh_token():
 
 @auth.route('/users', methods=["DELETE"])
 def delete_user():
+    """Deletes a user from the database
+
+    Removes records from auth collection and user preferences collection
+
+    Request:
+        Body:
+            email: the user's email
+
+    Returns:
+        A Response object
+
+        - if email not provided:
+            status_code: 400
+            data: "Email must be provided"
+
+        - if user info not in database:
+            status_code: 400
+            data: "User does not exist"
+
+        - if database cannot be accessed:
+            status_code: 500
+            data: "Cannot delete user"
+
+        - if user is successfully deleted:
+            status_code: 200
+            data: "Deleted successfully"
+
+    """
     email = request.get_json()["email"]
 
     if (not email):
-        return string_response("Email must be provided", 400)
+        return string_response(NO_EMAIL_MESSAGE, 400)
 
     try:
         user_result = db.users.find_one_and_delete({"email": email})
