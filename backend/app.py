@@ -16,7 +16,7 @@ app.register_blueprint(auth_blueprint)
 # Return roster of player id's for specified team
 @app.route('/roster/<team_code>', methods=['GET'])
 def get_roster(team_code):
-    return db.rosters.find_one({'_id': team_code})
+    return db.teams.find_one({'_id': team_code})['roster']
 
 # Return leaderboard for specified stat/season
 @app.route('/leaderboard/<stat>', methods=['GET'])
