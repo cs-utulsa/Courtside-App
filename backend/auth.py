@@ -11,6 +11,8 @@ auth = Blueprint('auth', __name__)
 
 NO_EMAIL_MESSAGE = "Email must be provided"
 NO_PASSWORD_MESSAGE = "Password must be provided"
+JSON_MIME_TYPE = "application/json"
+INVALID_TOKEN_MESSAGE = "Invalid token"
 
 def string_response(message, code):
     response = make_response()
@@ -34,29 +36,31 @@ def create_user():
     user = None
     hashed_password=generate_password_hash(password, method='sha256')
     try: 
-        insert_obj = db.users.insert_one(
+        insert_user_obj = db.users.insert_one(
             { 
                 "email": email,
                 "password": hashed_password,
-                "stats": [],
-                "teams": []
             }
-        )
+        );
 
-        user = db.users.find_one(
-            {"_id": insert_obj.inserted_id}
-        )
+        user_id = str(insert_user_obj.inserted_id)
+        user = {
+            "email": email,
+            "stats": [],
+            "teams": []
+        }
+
+        db.user_preferences.insert_one(user);
+
     except OperationFailure:
         return string_response("Cannot complete request", 500)
     
-    user["_id"] = str(user["_id"]) # turn objectid into string
-    user["token"] = encode_auth_token(user["_id"]) # add jwt token to user
-    del user["password"]
+    user["token"] = encode_auth_token(user_id) # add jwt token to user
 
     response = make_response()
     response.status_code = 200
     response.response = json.dumps(user)
-    response.mimetype = 'application/json'
+    response.mimetype = JSON_MIME_TYPE
 
     return response
 
@@ -76,15 +80,21 @@ def login_user():
     
     if (not user or not check_password_hash(user["password"], password)):
         return string_response("Email or password is incorrect", 400)
-
+    
     user["_id"] = str(user["_id"])
-    user["token"] = encode_auth_token(user["_id"])
-    del user["password"]
+
+    # get the user's preferences, which will be returned
+    result = db.user_preferences.find_one(
+        {"email": email }
+    )
+
+    # get the jwt token for this response
+    result["token"] = encode_auth_token(user["_id"])
 
     response = make_response()
     response.status_code = 200
-    response.response = json.dumps(user)
-    response.mimetype = 'application/json'
+    response.response = json.dumps(result)
+    response.mimetype = JSON_MIME_TYPE
 
     return response
 
@@ -94,7 +104,7 @@ def logout_user():
     token = is_valid_jwt(request)
 
     if (not token): 
-        return string_response("Invalid token", 403)
+        return string_response(INVALID_TOKEN_MESSAGE, 403)
 
     try:
         db.blacklisted_tokens.insert_one({
@@ -113,7 +123,7 @@ def refresh_token():
     token = is_valid_jwt(request)
 
     if (not token): 
-        return string_response("Invalid token", 403)
+        return string_response(INVALID_TOKEN_MESSAGE, 403)
 
     user_id = request.get_json()["user_id"]
 
@@ -129,7 +139,7 @@ def refresh_token():
     response = make_response()
     response.status_code = 200
     response.data = encode_auth_token(user_id)
-    response.mimetype = 'application/json'
+    response.mimetype = JSON_MIME_TYPE
 
     return response
 
@@ -141,9 +151,12 @@ def delete_user():
         return string_response("Email must be provided", 400)
 
     try:
-        result = db.users.find_one_and_delete({"email": email})
-        if (not result):
+        user_result = db.users.find_one_and_delete({"email": email})
+        pref_result = db.user_preferences.find_one_and_delete({ "email": email })
+        
+        if (not user_result and not pref_result):
             return string_response("User does not exist", 400)
+
     except OperationFailure:
         return string_response("Cannot delete user", 500)
 
@@ -155,7 +168,7 @@ def change_teams():
     token = is_valid_jwt(request)
 
     if (not token): 
-        return string_response("Invalid token", 403)
+        return string_response(INVALID_TOKEN_MESSAGE, 403)
 
     email = request.get_json()["email"]
     teams = request.get_json()["teams"]
@@ -164,7 +177,7 @@ def change_teams():
         return string_response(NO_EMAIL_MESSAGE, 400)
 
     try:
-        db.users.update_one(
+        db.user_preferences.update_one(
             { 'email': email },
             { '$set': { "teams": teams} }
         )
@@ -172,7 +185,7 @@ def change_teams():
         response = make_response()
         response.status_code = 200
         response.response = json.dumps(teams)
-        response.mimetype = 'application/json'
+        response.mimetype = JSON_MIME_TYPE
 
         return response
     except OperationFailure:
@@ -185,7 +198,7 @@ def change_stats():
     token = is_valid_jwt(request)
 
     if (not token): 
-        return string_response("Invalid token", 403)
+        return string_response(INVALID_TOKEN_MESSAGE, 403)
 
     email = request.get_json()["email"]
     stats = request.get_json()["stats"]
@@ -194,7 +207,7 @@ def change_stats():
         return string_response(NO_EMAIL_MESSAGE, 400)
 
     try:
-        db.users.update_one(
+        db.user_preferences.update_one(
             { 'email': email },
             { '$set': { "stats": stats } }
         );
@@ -202,7 +215,7 @@ def change_stats():
         response = make_response()
         response.status_code = 200
         response.response = json.dumps(stats)
-        response.mimetype = 'application/json'
+        response.mimetype = JSON_MIME_TYPE
 
         return response
     except OperationFailure:
