@@ -1,13 +1,9 @@
 //external imports
-import { useNavigation } from '@react-navigation/native';
-import React from 'react';
-import { View, StyleSheet, FlatList, Dimensions, Text } from 'react-native';
-
-// types
-import { OnboardingNavigationProp } from '../types/Navigation';
+import React, { useCallback } from 'react';
+import { StyleSheet, FlatList, Dimensions, Text } from 'react-native';
 
 //custom components
-import { RightButton, SelectCircle } from '@components/buttons';
+import { SelectCircle } from '@components/buttons';
 import { SearchBox } from '@components/misc/SearchBox';
 import { Seperator } from '@components/misc/Seperator';
 
@@ -29,65 +25,41 @@ const FavoriteTeamsHeader = () => {
 
 /** This component lets the user choose what teams they want to follow */
 export const TeamSelection = () => {
-    //const [selectedTeams, setSelectedTeams] = useState<string[]>([]);
+    const renderItem = useCallback(
+        ({ item }: { item: { name: string; logo: string } }) => {
+            const handleSelectChange = (newStatus: boolean) => {
+                console.log(newStatus);
+            };
 
-    const { navigate } = useNavigation<OnboardingNavigationProp>();
-
-    const renderItem = ({ item }: { item: { name: string; logo: string } }) => {
-        return (
-            <SelectCircle
-                url={item.logo}
-                size={tile}
-                onSelectChanged={(newStatus: boolean) => {
-                    console.log(newStatus);
-                }}
-            />
-        );
-    };
+            return (
+                <SelectCircle
+                    url={item.logo}
+                    size={tile}
+                    onSelectChanged={handleSelectChange}
+                />
+            );
+        },
+        []
+    );
 
     return (
-        <View style={styles.container}>
-            <FlatList
-                style={styles.list}
-                data={ICONS}
-                renderItem={renderItem}
-                numColumns={3}
-                ItemSeparatorComponent={Seperator}
-                ListHeaderComponent={<FavoriteTeamsHeader />}
-                ListHeaderComponentStyle={styles.headerContainer}
-                ListFooterComponent={Seperator}
-            />
-            <View style={[styles.footer]}>
-                <RightButton
-                    //text={userTeams.length < 1 ? 'Skip' : 'Next'}
-                    text="Next"
-                    onPress={() => navigate('StatSelection')}
-                />
-            </View>
-        </View>
+        <FlatList
+            data={ICONS}
+            renderItem={renderItem}
+            numColumns={3}
+            ItemSeparatorComponent={Seperator}
+            ListHeaderComponent={<FavoriteTeamsHeader />}
+            ListHeaderComponentStyle={styles.headerContainer}
+            ListFooterComponent={Seperator}
+        />
     );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        marginTop: 60,
-        marginHorizontal: 10,
-        flex: 1,
-    },
     header: {
         fontWeight: 'bold',
         fontSize: 22,
         marginBottom: 20,
-    },
-    list: {
-        flex: 0.9,
-    },
-    footer: {
-        flex: 0.1,
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
-        marginHorizontal: -10,
-        backgroundColor: 'white',
     },
     headerContainer: {
         alignItems: 'center',

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import {
     createNavigationContainerRef,
     DefaultTheme,
@@ -21,16 +21,22 @@ const RootNavigator = () => {
     const { authData } = useAuth();
     const [routeName, setRouteName] = useState<string | undefined>();
 
+    const handleNavReady = useCallback(() => {
+        setRouteName(ref.getCurrentRoute()?.name);
+    }, []);
+
+    const handleNavStateChange = useCallback(async () => {
+        const currentRouteName = ref.getCurrentRoute()?.name;
+        setRouteName(currentRouteName);
+    }, []);
+
     if (authData?.token) {
         return (
             <NavigationContainer
                 theme={Theme}
                 ref={ref}
-                onReady={() => setRouteName(ref.getCurrentRoute()?.name)}
-                onStateChange={async () => {
-                    const currentRouteName = ref.getCurrentRoute()?.name;
-                    setRouteName(currentRouteName);
-                }}
+                onReady={handleNavReady}
+                onStateChange={handleNavStateChange}
             >
                 <MainNavigation routeName={routeName} />
             </NavigationContainer>
