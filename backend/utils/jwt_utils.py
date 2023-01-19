@@ -4,6 +4,16 @@ import os
 from db import db
 
 def encode_auth_token(user_id):
+    """Creates a token for the user
+
+    Create a payload with the user's id. The expiration date is a week from token creation.
+    Encode the payload and return it to the user
+
+    Args: 
+        user_id: the id of the user as a string
+
+    Returns: the user's token as a string
+    """
     try:
         payload = {
             'exp': datetime.utcnow() + timedelta(weeks=1),
@@ -20,6 +30,25 @@ def encode_auth_token(user_id):
         return e
 
 def decode_auth_token(token):
+    """Decodes a token back into the payload
+
+    Args: 
+        token: the user's token as a string
+
+    Returns:
+        - if the token is invalid:
+            'Invalid token. Please log in again.'
+
+        - if the token has expired (i.e. existed for more than a week)
+            'Signature expired. Please log in again.'
+
+        - if the token is found in the blacklist
+            'Token blacklisted. Please log in again.'
+
+        - if successfully decoded
+            The payload is returned
+
+    """
     
     try:
         payload = jwt.decode(
@@ -42,6 +71,21 @@ def decode_auth_token(token):
     return payload
 
 def is_valid_jwt(request):
+    """Checks to see if a given JWT is a valid token
+
+    Gets the token from the auth header and then decodes it.
+
+    Args:
+        request: the HTTP request sent to the server. The request should have an Authorization header
+
+    Returns:
+        - if token is not in Authorization header or auth token cannot be decoded:
+            False
+
+        - if token is decoded and valid
+            True
+    """
+
     auth_header = request.headers.get('Authorization')
 
     token = ''
