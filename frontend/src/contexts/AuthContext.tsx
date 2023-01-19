@@ -3,7 +3,9 @@ import React, {
     createContext,
     FC,
     ReactNode,
+    useCallback,
     useEffect,
+    useMemo,
     useState,
 } from 'react';
 import * as SecureStore from 'expo-secure-store';
@@ -88,7 +90,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         loadStorageData();
     }, []);
 
-    const signIn = async (email: string, password: string) => {
+    const signIn = useCallback(async (email: string, password: string) => {
         setLoading(true);
         try {
             const response = await axios.post(
@@ -117,9 +119,9 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         }
 
         setLoading(false);
-    };
+    }, []);
 
-    const signUp = async (email: string, password: string) => {
+    const signUp = useCallback(async (email: string, password: string) => {
         setLoading(true);
 
         try {
@@ -146,9 +148,9 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         }
 
         setLoading(false);
-    };
+    }, []);
 
-    const signOut = async () => {
+    const signOut = useCallback(async () => {
         setAuthData(undefined);
         setAuthError(undefined);
 
@@ -167,55 +169,69 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         } catch (err) {
             console.log('Error logging out');
         }
-    };
+    }, [authData?.token]);
 
-    const updateStats = async (newStats: string[]) => {
-        try {
-            const response = await axios.patch(
-                `${DEVELOPMENT_API}/users/leaderboards`,
-                {
-                    email: authData?.email,
-                    stats: newStats,
-                },
-                {
-                    headers: {
-                        Authorization: `Bearer ${authData?.token}`,
+    const updateStats = useCallback(
+        async (newStats: string[]) => {
+            try {
+                const response = await axios.patch(
+                    `${DEVELOPMENT_API}/users/leaderboards`,
+                    {
+                        email: authData?.email,
+                        stats: newStats,
                     },
+                    {
+                        headers: {
+                            Authorization: `Bearer ${authData?.token}`,
+                        },
+                    }
+                );
+                const _stats = response.data;
+                await SecureStore.setItemAsync(
+                    'authData',
+                    JSON.stringify({ ...authData, stats: _stats })
+                );
+                setAuthData({ ...authData!, stats: _stats });
+            } catch (err) {
+                console.log(err);
+                if (axios.isAxiosError(err)) {
+                    setAuthError(err.response?.data);
+                } else {
+                    setAuthError('Unknown Error Occurred. Try Again Later.');
                 }
-            );
-            const _stats = response.data;
-            await SecureStore.setItemAsync(
-                'authData',
-                JSON.stringify({ ...authData, stats: _stats })
-            );
-            setAuthData({ ...authData!, stats: _stats });
-        } catch (err) {
-            console.log(err);
-            if (axios.isAxiosError(err)) {
-                setAuthError(err.response?.data);
-            } else {
-                setAuthError('Unknown Error Occurred. Try Again Later.');
             }
-        }
-    };
+        },
+        [authData]
+    );
 
-    const updateTeams = async (newTeams: string[]) => {
+    const updateTeams = useCallback(async (newTeams: string[]) => {
         console.log(newTeams);
-    };
+    }, []);
+
+    const contextData: AuthContextData = useMemo(() => {
+        return {
+            authData,
+            loading,
+            authError,
+            signIn,
+            signUp,
+            signOut,
+            updateStats,
+            updateTeams,
+        };
+    }, [
+        authData,
+        authError,
+        loading,
+        signIn,
+        signUp,
+        signOut,
+        updateStats,
+        updateTeams,
+    ]);
 
     return (
-        <AuthContext.Provider
-            value={{
-                authData,
-                loading,
-                authError,
-                signIn,
-                signUp,
-                signOut,
-                updateStats,
-                updateTeams,
-            }}
-        >
+        <AuthContext.Provider value={contextData}>
             {children}
         </AuthContext.Provider>
     );

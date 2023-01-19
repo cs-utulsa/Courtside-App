@@ -45,6 +45,7 @@ def create_user():
 
         user_id = str(insert_user_obj.inserted_id)
         user = {
+            "_id": user_id,
             "email": email,
             "stats": [],
             "teams": []
@@ -81,7 +82,7 @@ def login_user():
     if (not user or not check_password_hash(user["password"], password)):
         return string_response("Email or password is incorrect", 400)
     
-    user["_id"] = str(user["_id"])
+    user_id = str(user["_id"])
 
     # get the user's preferences, which will be returned
     result = db.user_preferences.find_one(
@@ -89,7 +90,8 @@ def login_user():
     )
 
     # get the jwt token for this response
-    result["token"] = encode_auth_token(user["_id"])
+    result["token"] = encode_auth_token(user_id)
+    result["_id"] = user_id
 
     response = make_response()
     response.status_code = 200
