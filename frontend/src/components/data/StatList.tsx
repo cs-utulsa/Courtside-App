@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { ToggleButton } from '@components/buttons';
 
 type StatListProps = {
-    title: string;
+    title?: string;
     stats: LimitedStat[];
     addStat: (stat: string) => void;
     removeStat: (stat: string) => void;
@@ -20,7 +20,7 @@ export const StatList: FC<StatListProps> = ({
 }) => {
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>{title}</Text>
+            {title && <Text style={styles.title}>{title}</Text>}
             <View style={styles.stats}>
                 {stats.map((stat, index) => (
                     <ToggleButton
@@ -39,7 +39,9 @@ export const StatList: FC<StatListProps> = ({
 };
 
 const styles = StyleSheet.create({
-    container: {},
+    container: {
+        marginHorizontal: 10,
+    },
     title: {
         fontWeight: 'bold',
         fontSize: 20,

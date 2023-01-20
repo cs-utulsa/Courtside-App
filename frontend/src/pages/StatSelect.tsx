@@ -5,12 +5,12 @@ import { LimitedStat } from './../types/Stat';
 import React, { useState } from 'react';
 import {
     View,
-    Text,
     StyleSheet,
     NativeSyntheticEvent,
     TextInputChangeEventData,
 } from 'react-native';
 import { useAuth } from '@hooks/useAuth';
+import { PrimaryButton } from '@components/buttons';
 
 export const StatSelect = () => {
     const { authData } = useAuth();
@@ -24,6 +24,11 @@ export const StatSelect = () => {
         e: NativeSyntheticEvent<TextInputChangeEventData>
     ) => {
         const query = e.nativeEvent.text;
+
+        if (query === '') {
+            setResult([]);
+            return;
+        }
 
         const _result = NEW_STATS.filter((stat) =>
             stat.name.toLowerCase().includes(query.toLowerCase())
@@ -44,13 +49,15 @@ export const StatSelect = () => {
 
     return (
         <View style={styles.container}>
-            <Text>Choose Stats</Text>
+            <PrimaryButton
+                onPress={() => console.log('press')}
+                text="Update Stats"
+            />
             <SearchBox
                 placeholder="Search for stats"
                 onChange={handleSearchQueryChange}
             />
             <StatList
-                title="Results"
                 stats={result}
                 selected={selectedStats}
                 addStat={addStat}
