@@ -1,5 +1,5 @@
 // external imports
-import { StyleSheet, ScrollView, ActivityIndicator } from 'react-native';
+import { StyleSheet, ScrollView, ActivityIndicator, Text } from 'react-native';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 
@@ -8,10 +8,10 @@ import { useAuth, useRefreshOnFocus, useStats } from '@hooks/index';
 
 // types
 import { StatsNavigationProp } from './../types/Navigation';
-import { Stat } from './../types/Stat';
+// import { Stat } from './../types/Stat';
 
 // custom components
-import { StatLeaderboard } from '@components/data';
+// import { StatLeaderboard } from '@components/data';
 import { PrimaryButton } from '@components/buttons';
 
 // constants
@@ -25,8 +25,10 @@ export const StatDashboard = () => {
     const { authData } = useAuth();
     const { push } = useNavigation<StatsNavigationProp>();
 
-    const { data, isError, isLoading, isSuccess, isRefetching, refetch } =
-        useStats(authData?.stats, 'all');
+    const { isError, isLoading, isSuccess, isRefetching, refetch } = useStats(
+        authData?.stats,
+        'tot'
+    );
 
     // refetch the data when user returns to screen (stale data is still displayed during refetch)
     useRefreshOnFocus(refetch);
@@ -51,18 +53,18 @@ export const StatDashboard = () => {
             />
 
             {/* if data was fetched successfully, create a leaderboard for each stat */}
-            {isSuccess &&
-                data.map((stat: Stat) => {
-                    return (
-                        <StatLeaderboard
-                            key={stat._id}
-                            _id={stat._id}
-                            player_id={stat.player_names}
-                            value={stat.value}
-                            name={stat.name}
-                        />
-                    );
-                })}
+            {isSuccess && <Text>Success</Text>}
+            {/* // data.map((stat: Stat) => {
+                //     return (
+                //         <StatLeaderboard
+                //             key={stat._id}
+                //             _id={stat._id}
+                //             player_id={stat.player_names}
+                //             value={stat.value}
+                //             name={stat.name}
+                //         />
+                //     );
+                // })} */}
 
             {/* if data is being fetched from the server, display a loading indicator */}
             {isFetchingData && <ActivityIndicator color="black" size="large" />}

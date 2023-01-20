@@ -21,4 +21,9 @@ type NewStat = {
     modes: StatPerMode[];
 };
 
-export { Stat, PerMode, StatPerMode, PerModeId, NewStat };
+type LimitedStat = {
+    id: string;
+    name: string;
+};
+
+export { Stat, PerMode, StatPerMode, PerModeId, NewStat, LimitedStat };

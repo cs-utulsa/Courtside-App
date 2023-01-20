@@ -7,3 +7,4 @@ export { StatDashboard } from './StatDashboard';
 export { Settings } from './Settings';
 export { SignIn } from './SignIn';
 export { SignUp } from './SignUp';
+export { StatSelect } from './StatSelect';

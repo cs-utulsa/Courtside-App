@@ -1,9 +1,15 @@
 import React, { FC } from 'react';
-import { StyleSheet, TextInput } from 'react-native';
+import {
+    NativeSyntheticEvent,
+    StyleSheet,
+    TextInput,
+    TextInputChangeEventData,
+} from 'react-native';
 
 type SearchBoxProps = {
     /** Text that is displayed when the value of the text box is an empty string */
     placeholder: string;
+    onChange: (e: NativeSyntheticEvent<TextInputChangeEventData>) => void;
 };
 
 /**
@@ -12,8 +18,14 @@ type SearchBoxProps = {
  * const placeholder="Search";
  * return <SearchBox placeholder={placeholder} />
  */
-export const SearchBox: FC<SearchBoxProps> = ({ placeholder }) => {
-    return <TextInput style={styles.search} placeholder={placeholder} />;
+export const SearchBox: FC<SearchBoxProps> = ({ placeholder, onChange }) => {
+    return (
+        <TextInput
+            style={styles.search}
+            placeholder={placeholder}
+            onChange={onChange}
+        />
+    );
 };
 
 const styles = StyleSheet.create({
