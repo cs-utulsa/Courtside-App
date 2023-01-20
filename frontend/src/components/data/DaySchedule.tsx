@@ -1,10 +1,11 @@
 import { addDays, startOfToday, format } from 'date-fns';
 import React, { FC, useMemo } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import { GameDisplay } from './GameDisplay';
 import { NAVY, ORANGE } from '@styles/colors';
 import { useDaySchedule } from '@hooks/index';
-import { FullError } from '@components/error';
+
+import { FullError } from './../error/FullError';
+import { GameDisplay } from './GameDisplay';
 
 type DayScheduleProps = {
     /** the date of this schedule represented by how many days away it is from today */

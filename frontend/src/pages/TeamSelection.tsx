@@ -3,9 +3,7 @@ import React, { useCallback } from 'react';
 import { StyleSheet, FlatList, Dimensions, Text } from 'react-native';
 
 //custom components
-import { SelectCircle } from '@components/buttons';
-import { SearchBox } from '@components/misc/SearchBox';
-import { Seperator } from '@components/misc/Seperator';
+import { SelectCircle, Seperator } from '@components/index';
 
 // constants
 import { ICONS } from '../constants';
@@ -18,7 +16,7 @@ const FavoriteTeamsHeader = () => {
     return (
         <>
             <Text style={styles.header}>Select Your Favorite Teams</Text>
-            <SearchBox placeholder="Search for Your Team" />
+            {/* <SearchBox placeholder="Search for Your Team" /> */}
         </>
     );
 };
