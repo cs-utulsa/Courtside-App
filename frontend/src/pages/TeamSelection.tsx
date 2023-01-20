@@ -49,6 +49,7 @@ export const TeamSelection = () => {
             ListHeaderComponent={<FavoriteTeamsHeader />}
             ListHeaderComponentStyle={styles.headerContainer}
             ListFooterComponent={Seperator}
+            contentContainerStyle={styles.container}
         />
     );
 };
@@ -60,6 +61,9 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     headerContainer: {
+        alignItems: 'center',
+    },
+    container: {
         alignItems: 'center',
     },
 });
