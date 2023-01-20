@@ -1,9 +1,11 @@
-import React, { FC } from 'react';
+import useDebounce from '@hooks/useDebounce';
+import React, { FC, useState, useEffect } from 'react';
 import { StyleSheet, TextInput } from 'react-native';
 
 type SearchBoxProps = {
     /** Text that is displayed when the value of the text box is an empty string */
     placeholder: string;
+    onChange: (query: string) => void;
 };
 
 /**
@@ -12,8 +14,22 @@ type SearchBoxProps = {
  * const placeholder="Search";
  * return <SearchBox placeholder={placeholder} />
  */
-export const SearchBox: FC<SearchBoxProps> = ({ placeholder }) => {
-    return <TextInput style={styles.search} placeholder={placeholder} />;
+export const SearchBox: FC<SearchBoxProps> = ({ placeholder, onChange }) => {
+    const [query, setQuery] = useState<string>('');
+
+    const debouncedQuery = useDebounce(query, 100);
+
+    useEffect(() => {
+        onChange(debouncedQuery);
+    }, [debouncedQuery, onChange]);
+
+    return (
+        <TextInput
+            style={styles.search}
+            placeholder={placeholder}
+            onChange={(e) => setQuery(e.nativeEvent.text)}
+        />
+    );
 };
 
 const styles = StyleSheet.create({
