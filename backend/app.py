@@ -24,12 +24,8 @@ def get_roster(team_code):
 # --- per_mode can be either tot, pg, or p48
 @app.route('/leaderboard/<stat>/<per_mode>', methods=['GET'])
 def get_leaderboard(stat, per_mode):
-    return json.dumps(db.leaderboards.find_one({'_id': f'{stat}_{per_mode}'}))
+    leaderboard = db.leaderboards.find_one({'_id': f'{stat}_{per_mode}'})
 
-# Return leaderboard for specified stat/season
-@app.route('/leaderboard/<stat>', methods=['GET'])
-def get_leaderboard(stat):
-    leaderboard = db.leaderboards.find_one({'_id': f'{stat}'})
     leaderboard["player_id"] = leaderboard["player_id"][0:5]
     leaderboard["value"] = leaderboard["value"][0:5]
 
