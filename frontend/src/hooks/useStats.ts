@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { DEVELOPMENT_API } from '../constants/urls';
 import { useQuery } from '@tanstack/react-query';
+import { PerModeId } from './../types/Stat';
 
-export const useStats = (stats: string[] | undefined) => {
+export const useStats = (stats: string[] | undefined, mode: PerModeId) => {
     return useQuery({
         queryKey: ['stats'],
         queryFn: async () => {
@@ -11,7 +12,7 @@ export const useStats = (stats: string[] | undefined) => {
             const _statsData = [];
             for (let stat of stats) {
                 const { data } = await axios.get(
-                    `${DEVELOPMENT_API}/leaderboard/${stat}`
+                    `${DEVELOPMENT_API}/leaderboard/${stat}/${mode}`
                 );
                 _statsData.push(data);
             }
