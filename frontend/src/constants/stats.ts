@@ -180,3 +180,26 @@ export const ALL_STATS = [
     ...defenseStats[0].data,
     ...playerValueStats[0].data,
 ];
+
+export const NEW_STATS = [
+    { id: 'GP', name: 'Games Played' },
+    { id: 'MIN', name: 'Minutes' },
+    { id: 'FGM', name: 'Field Goals Made' },
+    { id: 'FGA', name: 'Field Goals Attempted' },
+    { id: 'FG_PCT', name: 'Field Goal %' },
+    { id: 'FG3M', name: 'Three Point Shots Made' },
+    { id: 'FG3A', name: '3 Point Shots Attempted' },
+    { id: 'FG3_PCT', name: '3 Point Shot %' },
+    { id: 'FTM', name: 'Free Throws Made' },
+    { id: 'FTA', name: 'Free Throws Attempted' },
+    { id: 'FT_PCT', name: 'Free Throw %' },
+    { id: 'OREB', name: 'Offensive Rebounds' },
+    { id: 'DREB', name: 'Defensive Rebounds' },
+    { id: 'REB', name: 'Rebounds' },
+    { id: 'AST', name: 'Assists' },
+    { id: 'STL', name: 'Steals' },
+    { id: 'BLK', name: 'Blocks' },
+    { id: 'TOV', name: 'Turnovers' },
+    { id: 'PTS', name: 'Points' },
+    { id: 'EFF', name: 'Efficiency' },
+];
