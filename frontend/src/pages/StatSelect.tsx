@@ -11,9 +11,12 @@ import {
 } from 'react-native';
 import { useAuth } from '@hooks/useAuth';
 import { PrimaryButton } from '@components/buttons';
+import { useNavigation } from '@react-navigation/native';
+import { StatsNavigationProp } from './../types/Navigation';
 
 export const StatSelect = () => {
-    const { authData } = useAuth();
+    const { authData, updateStats } = useAuth();
+    const { navigate } = useNavigation<StatsNavigationProp>();
 
     const [selectedStats, setSelectedStats] = useState<string[]>(
         authData?.stats ?? []
@@ -47,12 +50,14 @@ export const StatSelect = () => {
         );
     };
 
+    const handleSubmit = async () => {
+        await updateStats(selectedStats);
+        navigate('Dashboard');
+    };
+
     return (
         <View style={styles.container}>
-            <PrimaryButton
-                onPress={() => console.log('press')}
-                text="Update Stats"
-            />
+            <PrimaryButton onPress={handleSubmit} text="Update Stats" />
             <SearchBox
                 placeholder="Search for stats"
                 onChange={handleSearchQueryChange}

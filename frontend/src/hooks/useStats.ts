@@ -16,7 +16,7 @@ export const useStats = (stats: string[] | undefined, mode: PerModeId) => {
                     `${DEVELOPMENT_API}/leaderboard/${stat}/${mode}`
                 );
                 // get stat name
-                const name = NEW_STATS.find((item) => stat === item.id);
+                const name = NEW_STATS.find((item) => stat === item.id)?.name;
                 _statsData.push({ ...data, name });
             }
 

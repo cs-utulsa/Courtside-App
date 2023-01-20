@@ -187,7 +187,7 @@ export const NEW_STATS = [
     { id: 'FGM', name: 'Field Goals Made' },
     { id: 'FGA', name: 'Field Goals Attempted' },
     { id: 'FG_PCT', name: 'Field Goal %' },
-    { id: 'FG3M', name: 'Three Point Shots Made' },
+    { id: 'FG3M', name: '3 Point Shots Made' },
     { id: 'FG3A', name: '3 Point Shots Attempted' },
     { id: 'FG3_PCT', name: '3 Point Shot %' },
     { id: 'FTM', name: 'Free Throws Made' },

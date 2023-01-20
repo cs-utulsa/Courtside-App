@@ -28,7 +28,6 @@ export const StatLeaderboard: FC<LeaderboardProps> = ({
     name,
 }) => {
     const [open, setOpen] = useState<boolean>(false);
-
     const playersLimitFive = player_id.slice(0, 5);
     const valueLimitFive = value.slice(0, 5);
 

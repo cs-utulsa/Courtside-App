@@ -1,13 +1,13 @@
 type Stat = {
     _id: string;
-    player_names: string[];
+    player_id: string[];
     value: number[];
     name: string;
 };
 
 type StatPerMode = {
     _id: string;
-    player_names: string[];
+    player_id: string[];
     value: number[];
     per_mode: PerMode;
 };
