@@ -21,7 +21,6 @@ export const Rosters = () => {
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
-        justifyContent: 'center',
         flex: 1,
     },
     header: {

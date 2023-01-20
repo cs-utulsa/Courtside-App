@@ -1,22 +1,27 @@
 //external imports
 import React, { useCallback } from 'react';
-import { StyleSheet, FlatList, Dimensions, Text } from 'react-native';
+import { StyleSheet, FlatList, Dimensions } from 'react-native';
 
 //custom components
-import { SelectCircle, Seperator } from '@components/index';
+import { PrimaryButton, SelectCircle, Seperator } from '@components/index';
 
 // constants
 import { ICONS } from '../constants';
+import { useNavigation } from '@react-navigation/native';
+import { TeamNavigationProp } from './../types/Navigation';
 
 const screenWidth = Dimensions.get('window').width - 20;
 const numColumns = 3;
 const tile = screenWidth / numColumns;
 
 const FavoriteTeamsHeader = () => {
+    const { navigate } = useNavigation<TeamNavigationProp>();
     return (
         <>
-            <Text style={styles.header}>Select Your Favorite Teams</Text>
-            {/* <SearchBox placeholder="Search for Your Team" /> */}
+            <PrimaryButton
+                text="Update Your Teams"
+                onPress={() => navigate('Dashboard')}
+            />
         </>
     );
 };
@@ -47,9 +52,9 @@ export const TeamSelection = () => {
             numColumns={3}
             ItemSeparatorComponent={Seperator}
             ListHeaderComponent={<FavoriteTeamsHeader />}
-            ListHeaderComponentStyle={styles.headerContainer}
             ListFooterComponent={Seperator}
             contentContainerStyle={styles.container}
+            ListHeaderComponentStyle={styles.headerContainer}
         />
     );
 };
@@ -60,10 +65,10 @@ const styles = StyleSheet.create({
         fontSize: 22,
         marginBottom: 20,
     },
-    headerContainer: {
-        alignItems: 'center',
-    },
     container: {
         alignItems: 'center',
+    },
+    headerContainer: {
+        width: '100%',
     },
 });
