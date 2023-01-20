@@ -26,7 +26,7 @@ export const StatList: FC<StatListProps> = ({
                     <ToggleButton
                         initial={selected.includes(stat.id)}
                         text={stat.name}
-                        key={`${title}-stat-${index}`}
+                        key={`${title}-${index}-${stat.id}`}
                         onToggle={(on: boolean) => {
                             if (on) addStat(stat.id);
                             else removeStat(stat.id);

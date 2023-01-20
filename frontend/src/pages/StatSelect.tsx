@@ -2,32 +2,30 @@ import { StatList } from '@components/data/StatList';
 import { SearchBox } from '@components/misc/SearchBox';
 import { NEW_STATS } from '@constants/stats';
 import { LimitedStat } from './../types/Stat';
-import React, { useState } from 'react';
-import {
-    View,
-    StyleSheet,
-    NativeSyntheticEvent,
-    TextInputChangeEventData,
-} from 'react-native';
+import React, { useCallback, useState } from 'react';
+import { View, StyleSheet } from 'react-native';
 import { useAuth } from '@hooks/useAuth';
 import { PrimaryButton } from '@components/buttons';
 import { useNavigation } from '@react-navigation/native';
 import { StatsNavigationProp } from './../types/Navigation';
 
 export const StatSelect = () => {
+    // get user data and the method to update user stats
     const { authData, updateStats } = useAuth();
+
+    // get the navigate method
     const { navigate } = useNavigation<StatsNavigationProp>();
 
+    // create state for the stats that the user currently has selected
     const [selectedStats, setSelectedStats] = useState<string[]>(
         authData?.stats ?? []
     );
+
+    // create state for the result of the user's search
     const [result, setResult] = useState<LimitedStat[]>([]);
 
-    const handleSearchQueryChange = (
-        e: NativeSyntheticEvent<TextInputChangeEventData>
-    ) => {
-        const query = e.nativeEvent.text;
-
+    // method which updates the search results when the query changes
+    const handleSearchQueryChange = useCallback((query: string) => {
         if (query === '') {
             setResult([]);
             return;
@@ -38,18 +36,21 @@ export const StatSelect = () => {
         );
 
         setResult(_result);
-    };
+    }, []);
 
+    // method to add a stat
     const addStat = (stat: string) => {
         setSelectedStats([...selectedStats, stat]);
     };
 
+    // method to remove a stat
     const removeStat = (stat: string) => {
         setSelectedStats(
             selectedStats.filter((selectedItem) => selectedItem !== stat)
         );
     };
 
+    // method to update stats on server when user updates
     const handleSubmit = async () => {
         await updateStats(selectedStats);
         navigate('Dashboard');
