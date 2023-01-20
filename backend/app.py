@@ -15,7 +15,10 @@ app.register_blueprint(auth_blueprint)
 # Return roster of player id's for specified team
 @app.route('/roster/<team_code>', methods=['GET'])
 def get_roster(team_code):
-    return db.teams.find_one({'_id': team_code})['roster']
+    if type(team_code) == str:
+        return db.teams.find_one({'abbr': team_code})['roster']
+    else:
+        return db.teams.find_one({'_id': team_code})['roster']
 
 # Return leaderboard for specified stat
 # --- per_mode can be either tot, pg, or p48
