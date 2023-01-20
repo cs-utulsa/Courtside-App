@@ -24,7 +24,7 @@ def get_roster(team_code):
 # --- per_mode can be either tot, pg, or p48
 @app.route('/leaderboard/<stat>/<per_mode>', methods=['GET'])
 def get_leaderboard(stat, per_mode):
-    return json.dumps(db.leaderboards2.find_one({'_id': f'{stat}_{per_mode}'}))
+    return json.dumps(db.leaderboards.find_one({'_id': f'{stat}_{per_mode}'}))
 
 # Return schedule for a requested day
 @app.route('/schedule/<int:month>/<int:day>', methods=['GET'])
