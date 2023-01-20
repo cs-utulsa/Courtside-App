@@ -10,8 +10,14 @@ import {
     NativeSyntheticEvent,
     TextInputChangeEventData,
 } from 'react-native';
+import { useAuth } from '@hooks/useAuth';
 
 export const StatSelect = () => {
+    const { authData } = useAuth();
+
+    const [selectedStats, setSelectedStats] = useState<string[]>(
+        authData?.stats ?? []
+    );
     const [result, setResult] = useState<LimitedStat[]>([]);
 
     const handleSearchQueryChange = (
@@ -26,6 +32,16 @@ export const StatSelect = () => {
         setResult(_result);
     };
 
+    const addStat = (stat: string) => {
+        setSelectedStats([...selectedStats, stat]);
+    };
+
+    const removeStat = (stat: string) => {
+        setSelectedStats(
+            selectedStats.filter((selectedItem) => selectedItem !== stat)
+        );
+    };
+
     return (
         <View style={styles.container}>
             <Text>Choose Stats</Text>
@@ -33,7 +49,13 @@ export const StatSelect = () => {
                 placeholder="Search for stats"
                 onChange={handleSearchQueryChange}
             />
-            <StatList title="Results" stats={result} />
+            <StatList
+                title="Results"
+                stats={result}
+                selected={selectedStats}
+                addStat={addStat}
+                removeStat={removeStat}
+            />
         </View>
     );
 };
