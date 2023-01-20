@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { DEVELOPMENT_API } from '../constants/urls';
 import { useQuery } from '@tanstack/react-query';
-import { PerModeId } from './../types/Stat';
+import { PerModeId, Stat } from './../types/Stat';
 import { NEW_STATS } from '@constants/stats';
 
 export const useStats = (stats: string[] | undefined, mode: PerModeId) => {
-    return useQuery({
+    return useQuery<Stat[]>({
         queryKey: ['stats'],
         queryFn: async () => {
             if (!stats) return [];

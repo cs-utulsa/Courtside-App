@@ -26,33 +26,26 @@ def get_roster(team_code):
 def get_leaderboard(stat, per_mode):
     leaderboard = db.leaderboards.find_one({'_id': f'{stat}_{per_mode}'})
 
+    # only return first 5 values
     leaderboard["player_id"] = leaderboard["player_id"][0:5]
     leaderboard["value"] = leaderboard["value"][0:5]
 
-    player_names_cursor = db.player_data.find(
-        { "_id": { "$in": leaderboard["player_id"]}}
+    # get players in the leaderboard
+    player_names_cursor = db.players.find(
+        { "_id": { "$in": leaderboard["player_id"]}},
+        { "_id": 1, "name": 1 }
     )
 
     player_document = list(player_names_cursor)
 
-    if len(player_document) == 0:
-        leaderboard["player_names"] = leaderboard["player_id"]
-        return leaderboard
+    leaderboard["player_names"] = [None] * 5
 
-    leaderboard["player_names"] = []
-    cursor = 0
-    # loop over player ids and only return a player name if it is present, this code is necessary since all of the players are not in the database
-    for i in range(0, len(leaderboard["player_id"])):
-        if cursor > len(player_document) - 1:
-            leaderboard["player_names"].append(leaderboard["player_id"][i])
-        elif (leaderboard["player_id"][i] == player_document[cursor]["data"][0]):
-            name = player_document[cursor]["data"][1]
-            leaderboard["player_names"].append(name)
-            cursor += 1
-        else:
-            leaderboard["player_names"].append(leaderboard["player_id"][i])
+    # Line up player ids with the player's name
+    for i in range(0, len(player_document)):
+        index = leaderboard["player_id"].index(player_document[i]['_id'])
+        leaderboard["player_names"][index] = player_document[i]['name']
 
-    return leaderboard
+    return json.dumps(leaderboard)
 
 # Return schedule for a requested day
 @app.route('/schedule/<int:month>/<int:day>', methods=['GET'])
