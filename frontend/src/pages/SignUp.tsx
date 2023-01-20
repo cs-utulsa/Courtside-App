@@ -12,10 +12,14 @@ import { AuthNavigationProp } from './../types/Navigation';
 import { useAuth } from '@hooks/useAuth';
 
 //custom components
-import { EmailInput, PasswordInput, AuthSubmitButton } from '@components/auth';
-import { LogoHeader } from '@components/logo';
-import { SmallLink } from '@components/navigation';
-import { ErrorBox } from '@components/error';
+import {
+    EmailInput,
+    PasswordInput,
+    AuthSubmitButton,
+    LogoHeader,
+    SmallLink,
+    ErrorBox,
+} from '@components/index';
 
 const authSchema = Yup.object().shape({
     email: Yup.string()

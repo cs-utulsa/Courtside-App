@@ -1,7 +1,7 @@
 import { LimitedStat } from './../../types/Stat';
 import React, { FC } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { ToggleButton } from '@components/buttons';
+import { ToggleButton } from './../buttons/ToggleButton';
 
 type StatListProps = {
     title?: string;

@@ -1,11 +1,9 @@
-import { StatList } from '@components/data/StatList';
-import { SearchBox } from '@components/misc/SearchBox';
 import { STATS } from '@constants/stats';
 import { LimitedStat } from '../types/Stat';
 import React, { useCallback, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { useAuth } from '@hooks/useAuth';
-import { PrimaryButton } from '@components/buttons';
+import { PrimaryButton, StatList, SearchBox } from '@components/index';
 import { useNavigation } from '@react-navigation/native';
 import { StatsNavigationProp } from '../types/Navigation';
 

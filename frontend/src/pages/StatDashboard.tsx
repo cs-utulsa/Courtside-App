@@ -11,12 +11,10 @@ import { StatsNavigationProp } from './../types/Navigation';
 import { Stat } from './../types/Stat';
 
 // custom components
-import { StatLeaderboard } from '@components/data';
-import { PrimaryButton } from '@components/buttons';
+import { StatLeaderboard, PrimaryButton, FullError } from '@components/index';
 
 // constants
 import { ORANGE } from '@styles/colors';
-import { FullError } from '@components/error';
 
 /**
  * This component allows user to view the leaderboards for the stats that they are following.
