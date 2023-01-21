@@ -64,6 +64,19 @@ def get_schedule(month, day):
 def get_player_data(player_id):
     return json.dumps(db.players.find_one({'_id': player_id}))
 
+# Return all teams
+@app.route('/team', methods=['GET'])
+def get_all_teams():
+    teams = list(db.teams.find({}, { '_id': 1, 'name': 1, 'abbr': 1}))
+
+    for team in teams:
+        team["id"] = str(team["_id"])
+        team["code"] = team['abbr']
+        del team["_id"]
+        del team['abbr']
+
+    return json.dumps(teams)
+
 # Main method
 if __name__ == "__main__":
     load_dotenv()

@@ -9,6 +9,7 @@ import { PrimaryButton, SelectCircle, Seperator } from '@components/index';
 import { ICONS } from '../constants';
 import { useNavigation } from '@react-navigation/native';
 import { TeamNavigationProp } from './../types/Navigation';
+// import { useAuth } from '@hooks/useAuth';
 
 const screenWidth = Dimensions.get('window').width - 20;
 const numColumns = 3;
@@ -28,6 +29,11 @@ const FavoriteTeamsHeader = () => {
 
 /** This component lets the user choose what teams they want to follow */
 export const TeamSelection = () => {
+    // const { authData } = useAuth();
+    // const [selectedTeams, setSelectedTeams] = useState<string[]>(
+    //     authData?.teams ?? []
+    // );
+
     const renderItem = useCallback(
         ({ item }: { item: { name: string; logo: string } }) => {
             const handleSelectChange = (newStatus: boolean) => {

@@ -4,7 +4,7 @@ import {
     DefaultTheme,
     NavigationContainer,
 } from '@react-navigation/native';
-import { useAuth } from './../hooks/useAuth';
+import { useAuth } from '../hooks/useAuth';
 import { MainNavigation } from './MainNavigation';
 import { AuthStack } from './AuthStack';
 

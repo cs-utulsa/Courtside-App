@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { DEVELOPMENT_API } from '../constants/urls';
+import { DEVELOPMENT_API } from '../../constants/urls';
 import { useQuery } from '@tanstack/react-query';
-import { PerModeId, Stat } from './../types/Stat';
+import { PerModeId, Stat } from '../../types/Stat';
 import { STATS } from '@constants/stats';
 
 export const useStats = (stats: string[] | undefined, mode: PerModeId) => {
