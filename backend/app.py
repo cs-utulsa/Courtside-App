@@ -77,6 +77,19 @@ def get_all_teams():
 
     return json.dumps(teams)
 
+# return one team
+@app.route('/team/<code>', methods=['GET'])
+def get_team(code):
+    team = db.teams.find_one({ 'abbr': code}, { '_id': 1, 'name': 1, "abbr": 1})
+
+    team["id"] = str(team["_id"])
+    del team["_id"]
+
+    team["code"] = team["abbr"]
+    del team ["abbr"]
+
+    return json.dumps(team)
+
 # Main method
 if __name__ == "__main__":
     load_dotenv()
