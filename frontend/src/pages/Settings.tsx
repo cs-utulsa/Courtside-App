@@ -1,4 +1,4 @@
-import { DangerButton } from '@components/index';
+import { DangerButton, TourTooltip } from '@components/index';
 import { useAuth } from '@hooks/index';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
@@ -11,6 +11,7 @@ export const Settings = () => {
 
     return (
         <View style={styles.pageContainer}>
+            <TourTooltip title="Title" content="Content" />
             <DangerButton text="Clear Data" onPress={clearData} />
             <DangerButton text="Log Out" onPress={signOut} />
         </View>
