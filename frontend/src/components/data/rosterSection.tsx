@@ -58,7 +58,7 @@ export const RosterSection: FC<RosterSectionProps> = ({
     const { push } = useNavigation<RosterNavigationProp>(); //can I just use statsnavigation prop??
     function navigateToSelectionScreen() {
       
-       push('Players', {foo: players});
+       push('Players', {p: players, u: uri, n:name});
     }
     /*
     
@@ -121,8 +121,9 @@ const styles = StyleSheet.create({
 
   type PlayerSectionProps = {
     /** the title of the section */
-    name: string;
+    fname: string;
     uri: string;
+    stats: string[];
     
     /** the stats that are within this section */
     //data: { id: string; name: string }[];
@@ -147,9 +148,9 @@ const styles = StyleSheet.create({
 
 
 export const PlayerSection: FC<PlayerSectionProps> = ({
-    name,
+    fname,
     uri,
-    
+    stats,
    // data,
    // selectedStats,
   //  addStat,
@@ -159,7 +160,7 @@ export const PlayerSection: FC<PlayerSectionProps> = ({
     const [open, setOpen] = useState<boolean>(false);
     const { push } = useNavigation<RosterNavigationProp>();
     function navigateToSelectionScreen() {
-       push('Players');
+       push('Player', {fn: fname, s: stats, u: uri } );
     }
     /*
     
@@ -184,12 +185,57 @@ export const PlayerSection: FC<PlayerSectionProps> = ({
           resizeMode={"cover"}
         />
        </TouchableOpacity>
-        <Text style={styles.text}>{name}</Text>
+        <Text style={styles.text}>{fname}</Text>
 
 
            
         </View>
     );
 };
+
+
+
+export const PlayerView: FC<PlayerSectionProps> = ({
+  fname,
+  stats,
+  uri,
+  
+ // data,
+ // selectedStats,
+//  addStat,
+ // removeStat,
+ 
+}) => {
+  const [open, setOpen] = useState<boolean>(false);
+  //const { push } = useNavigation<RosterNavigationProp>();
+  //function navigateToSelectionScreen() {
+    // push('Player');
+  //}
+  /*
+  
+  const rotate = new Animated.Value(0);
+  const ExpandOut = () => {
+      // Will change fadeAnim value to 0 in 3 seconds
+      Animated.timing(rotate, {
+        toValue: 500,
+        duration: 3000,
+        useNativeDriver: true,
+      }).start();
+    };
+    */
+  return (
+      
+      <View style={styles.Container}>
+
+  
+      <Text style={styles.text}>{fname}</Text>
+
+      <Text style={styles.text}>{stats[0]}</Text>
+         
+      </View>
+  );
+};
+
+
 
 

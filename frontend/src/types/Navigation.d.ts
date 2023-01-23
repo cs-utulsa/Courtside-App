@@ -32,9 +32,9 @@ export type StatsNavigatorParamList = {
 
 export type RosterNavigatorParamList = {
     Dashboard: undefined;
-    Players: { foo: players[]; };
+    Players: { p: players[], u: uri, n: name};
     //name: Int;
-    Player: undefined;
+    Player: {fn: string, s: string[], u: uri};
 };
 export type StatsNavigationProp =
     NativeStackNavigationProp<StatsNavigatorParamList>;

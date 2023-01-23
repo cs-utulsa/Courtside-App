@@ -1,4 +1,4 @@
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, Image } from 'react-native';
 import React, { useState } from 'react';
 import { FlatList } from 'react-native';
 
@@ -10,9 +10,11 @@ import { StatsNavigationProp } from './../types/Navigation';
 import { useNavigation } from '@react-navigation/native';
 import { RosterSection } from '@components/data';
 import { PlayerSection } from '@components/data';
+import { PlayerView } from '@components/data';
 import { PrimaryButton } from '@components/buttons/PrimaryButton';
 import { FC } from 'react';
 import { useRoute } from '@react-navigation/native';
+import { RosterNavigationProp, RosterNavigatorParamList  } from './../types/Navigation';
 /** This component displays the members of teams that the user is following */
 export const Rosters = () => {
     return (
@@ -45,6 +47,7 @@ export const RosterSelection = () => {
                 <RosterSection
                 name={item.name}
                 uri={item.uri}
+                players={item.players}
                      
                 />
             )}
@@ -59,13 +62,19 @@ export const RosterSelection = () => {
 
 export const PlayerSelection = () => {
     const route = useRoute(); //got the string a to send... still lots of errors
-    return (
+    const playahs:player[] = route.params.p;
+    return ( //could add undefined type to catch the error if no data was sent!e
         <View>
-               <Text style={styles.text}>{route.params.foo[0].fname}</Text>
+               <Text style={styles.text}>{route.params.n}</Text> 
+               <Image
+          source={{ uri: route.params.u }}
+          style={styles.circleImageLayout}
+          resizeMode={"cover"}
+        />
         
   
         <FlatList
-            data={roster} //this now has to be passed data
+            data={playahs} //this now has to be passed data
            // contentContainerStyle={{alignSelf: 'flex-start'}}
             numColumns= {3}//{Math.ceil(roster.length / 2)}
             showsVerticalScrollIndicator={false}
@@ -75,8 +84,9 @@ export const PlayerSelection = () => {
                 //need to create my own version of statsection
                 
                 <PlayerSection
-                name={item.name}
+                fname={item.fname}
                 uri={item.uri}
+                stats={item.stats}
                      
                 />
             )}
@@ -86,6 +96,20 @@ export const PlayerSelection = () => {
     );
 };
 
+
+
+export const Player = () => {
+    const route = useRoute(); //got the string a to send... still lots of errors
+
+    return ( //could add undefined type to catch the error if no data was sent!e
+        <View>
+               <Text style={styles.text}>{route.params.fn}</Text> 
+               <Text style={styles.text}>{route.params.s[0]}</Text> 
+  
+
+          </View>
+    );
+};
 
 
 
@@ -106,6 +130,13 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontWeight: 'bold',
         margin: 5
+      },    circleImageLayout: {
+        width: 75,
+        height: 75,
+        borderRadius: 75 / 2,
+        borderColor: 'grey',
+        borderWidth: 2,      
+      
       }
 });
 
@@ -119,6 +150,7 @@ type player = {
     fname: string;
     lname: string;
     uri: string;
+    stats: string[];
  //   playerimage: String;
 }
 //team type
@@ -135,13 +167,15 @@ type team = {
 const giannis: player = {
     fname:"giannis",
     lname: "antetokpumpo",
-    uri: 'https://imagizer.imageshack.com/img924/9084/H33H0z.jpg'
+    uri: 'https://imagizer.imageshack.com/img924/9084/H33H0z.jpg',
+    stats: ["52 points"]
  //   playerimage: "C:\Users\rjp\Documents\GitHub\Courtside-App\frontend\\src\\assets\\dummy";
 }
 const middleton: player = {
     fname:"chris",
     lname: "middelton",
-    uri:'https://imagizer.imageshack.com/img924/9084/H33H0z.jpg'
+    uri:'https://imagizer.imageshack.com/img924/9084/H33H0z.jpg',
+    stats: ["trash af"]
  //   playerimage: "C:\Users\rjp\Documents\GitHub\Courtside-App\frontend\\src\\assets\\dummy";
 }
 const bucks: team = {
