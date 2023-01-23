@@ -23,6 +23,7 @@ type AuthContextData = {
     signOut(): Promise<void>;
     updateStats(newStats: string[]): Promise<void>;
     updateTeams(newTeams: string[]): Promise<void>;
+    clearData: () => Promise<void>;
 };
 
 type AuthData = {
@@ -212,7 +213,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             try {
                 const data = await axios
                     .patch(
-                        `${DEVELOPMENT_API}/users/leaderboards`,
+                        `${DEVELOPMENT_API}/users/teams`,
                         {
                             email: authData?.email,
                             stats: newTeams,
@@ -242,6 +243,13 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         [authData]
     );
 
+    const clearData = useCallback(async () => {
+        await SecureStore.setItemAsync(
+            'authData',
+            JSON.stringify({ ...authData, teams: [], stats: [] })
+        );
+    }, [authData]);
+
     const contextData: AuthContextData = useMemo(() => {
         return {
             authData,
@@ -252,6 +260,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             signOut,
             updateStats,
             updateTeams,
+            clearData,
         };
     }, [
         authData,
@@ -262,6 +271,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         signOut,
         updateStats,
         updateTeams,
+        clearData,
     ]);
 
     return (

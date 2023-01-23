@@ -1,18 +1,18 @@
+import { DangerButton } from '@components/index';
 import { useAuth } from '@hooks/index';
 import React from 'react';
-import { Pressable, StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 /**
  * This component allows the user to access settings about the app and to log out of the app.
  */
 export const Settings = () => {
-    const { signOut } = useAuth();
+    const { signOut, clearData } = useAuth();
 
     return (
         <View style={styles.pageContainer}>
-            <Pressable onPress={signOut} style={styles.logOutButton}>
-                <Text style={styles.logOutText}>Log Out</Text>
-            </Pressable>
+            <DangerButton text="Clear Data" onPress={clearData} />
+            <DangerButton text="Log Out" onPress={signOut} />
         </View>
     );
 };
@@ -21,17 +21,5 @@ const styles = StyleSheet.create({
     pageContainer: {
         alignItems: 'center',
         marginVertical: 10,
-    },
-    logOutButton: {
-        width: '85%',
-        backgroundColor: '#ffcfcd',
-        paddingVertical: 15,
-        borderRadius: 10,
-    },
-    logOutText: {
-        textAlign: 'center',
-        color: 'red',
-        fontSize: 16,
-        textTransform: 'uppercase',
     },
 });

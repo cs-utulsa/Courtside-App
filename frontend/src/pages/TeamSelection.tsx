@@ -44,24 +44,28 @@ export const TeamSelection = () => {
     );
 
     const { data, isSuccess, isLoading, isError } = useAllTeams();
+    console.log(selectedTeams);
+    const renderItem = useCallback(
+        ({ item }: { item: LimitedTeam }) => {
+            const handleSelectChange = (newStatus: boolean) => {
+                if (newStatus) setSelectedTeams((prev) => [...prev, item.id]);
+                else
+                    setSelectedTeams((prev) =>
+                        prev.filter((oldListItem) => oldListItem !== item.id)
+                    );
+            };
 
-    const renderItem = useCallback(({ item }: { item: LimitedTeam }) => {
-        const handleSelectChange = (newStatus: boolean) => {
-            if (newStatus) setSelectedTeams((prev) => [...prev, item.id]);
-            else
-                setSelectedTeams((prev) =>
-                    prev.filter((oldListItem) => oldListItem !== item.id)
-                );
-        };
-
-        return (
-            <SelectCircle
-                url={item.icon}
-                size={tile}
-                onSelectChanged={handleSelectChange}
-            />
-        );
-    }, []);
+            return (
+                <SelectCircle
+                    initialState={selectedTeams.includes(item.id)}
+                    url={item.icon}
+                    size={tile}
+                    onSelectChanged={handleSelectChange}
+                />
+            );
+        },
+        [selectedTeams]
+    );
 
     const submitTeamSelectionUpdates = async () => {
         await updateTeams(selectedTeams);

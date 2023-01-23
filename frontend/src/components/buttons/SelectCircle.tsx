@@ -3,6 +3,8 @@ import { View, Image, StyleSheet, Pressable } from 'react-native';
 import { ORANGE } from '../../styles/colors';
 
 type SelectCircleProps = {
+    /** Whether or not the button is selected initially */
+    initialState?: boolean;
     /** Whether or not the user can change the state of the button. Defaults to false. */
     disabled?: boolean;
     /** The url of the image that should be displayed */

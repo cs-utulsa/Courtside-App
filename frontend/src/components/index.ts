@@ -10,6 +10,7 @@ export { ToggleButton } from './buttons/ToggleButton';
 export { SelectCircle } from './buttons/SelectCircle';
 export { PrimaryButton } from './buttons/PrimaryButton';
 export { DirectionButton } from './buttons/DirectionButton';
+export { DangerButton } from './buttons/DangerButton';
 
 // Data
 export { GameDisplay } from './data/GameDisplay';
