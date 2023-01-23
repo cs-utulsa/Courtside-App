@@ -38,7 +38,7 @@ export const TeamSelection = () => {
     const [submitting, setSubmitting] = useState<boolean>(false);
 
     const { data, isSuccess, isLoading, isError } = useAllTeams();
-    console.log(selectedTeams);
+
     const renderItem = useCallback(
         ({ item }: { item: LimitedTeam }) => {
             const handleSelectChange = (newStatus: boolean) => {

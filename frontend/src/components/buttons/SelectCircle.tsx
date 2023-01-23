@@ -27,9 +27,10 @@ export const SelectCircle: FC<SelectCircleProps> = ({
     url,
     size,
     disabled = false,
+    initialState = false,
     onSelectChanged = () => {},
 }) => {
-    const [selected, setSelected] = useState<boolean>(false);
+    const [selected, setSelected] = useState<boolean>(initialState);
 
     /**
      * Derives the size of the containing circle and the margins based on the size of the component
