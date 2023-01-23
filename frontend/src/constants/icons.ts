@@ -12,12 +12,12 @@ export const ICONS: { name: string; logo: string; code: string }[] = [
     {
         logo: 'https://content.sportslogos.net/logos/6/3786/full/brooklyn_nets_logo_primary_20135043.png',
         name: 'Brooklyn Nets',
-        code: 'BRK',
+        code: 'BKN',
     },
     {
         logo: 'https://content.sportslogos.net/logos/6/5120/full/1926_charlotte__hornets_-primary-2015.png',
         name: 'Charlotte Hornets',
-        code: 'CHO',
+        code: 'CHA',
     },
     {
         name: 'Chicago Bulls',
@@ -117,7 +117,7 @@ export const ICONS: { name: string; logo: string; code: string }[] = [
     {
         name: 'Phoenix Suns',
         logo: 'https://content.sportslogos.net/logos/6/238/full/phoenix_suns_logo_primary_20143696.png',
-        code: 'PHO',
+        code: 'PHX',
     },
     {
         name: 'Portland Trail Blazers',
