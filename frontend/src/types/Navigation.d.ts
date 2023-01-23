@@ -30,5 +30,15 @@ export type StatsNavigatorParamList = {
     Selection: undefined;
 };
 
+export type RosterNavigatorParamList = {
+    Dashboard: undefined;
+    Players: { foo: players[]; };
+    //name: Int;
+    Player: undefined;
+};
 export type StatsNavigationProp =
     NativeStackNavigationProp<StatsNavigatorParamList>;
+
+
+export type RosterNavigationProp =
+    NativeStackNavigationProp<RosterNavigatorParamList>;

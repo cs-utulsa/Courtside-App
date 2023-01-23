@@ -4,7 +4,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Schedule, Rosters, Settings } from './../pages';
 import { Ionicons, FontAwesome, FontAwesome5 } from '@expo/vector-icons';
 import { StatsStack } from './StatsStack';
+import { RosterStack } from './RosterStack';
 import { ORANGE } from '../styles/colors';
+import { RosterSelection } from '@pages/Rosters';
 
 const Tab = createBottomTabNavigator();
 
@@ -71,7 +73,7 @@ export const MainNavigation: FC<MainNavigationProps> = ({ routeName }) => {
         >
             <Tab.Screen name="Stats" component={StatsStack} />
             <Tab.Screen name="Schedule" component={Schedule} />
-            <Tab.Screen name="Rosters" component={Rosters} />
+            <Tab.Screen name="Rosters" component={RosterStack} />
             <Tab.Screen name="Settings" component={Settings} />
         </Tab.Navigator>
     );

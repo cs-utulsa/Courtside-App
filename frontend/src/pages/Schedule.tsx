@@ -16,7 +16,6 @@ export const Schedule = () => {
                 renderItem={({ item, index }) => {
                     return <DaySchedule key={`date-${index}`} ahead={item} />;
                 }}
-                numColumns={1}
                 ItemSeparatorComponent={Seperator}
                 onEndReached={() => setDays(days + 7)}
             />

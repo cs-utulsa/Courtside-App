@@ -1,6 +1,6 @@
 import { ToggleButton } from '@components/buttons';
 import React, { FC, useState } from 'react';
-import { View, Pressable, Text, StyleSheet } from 'react-native';
+import { Text, Animated, StyleSheet, FlatList, View, Pressable } from 'react-native'; //animated animation related
 import AntIcon from '@expo/vector-icons/AntDesign';
 
 type StatSectionProps = {
@@ -37,6 +37,10 @@ type StatSectionProps = {
  *      />
  * );
  */
+
+
+
+
 export const StatSection: FC<StatSectionProps> = ({
     title,
     data,
@@ -45,7 +49,17 @@ export const StatSection: FC<StatSectionProps> = ({
     removeStat,
 }) => {
     const [open, setOpen] = useState<boolean>(false);
-
+    /*
+    const rotate = new Animated.Value(0);
+    const ExpandOut = () => {
+        // Will change fadeAnim value to 0 in 3 seconds
+        Animated.timing(rotate, {
+          toValue: 500,
+          duration: 3000,
+          useNativeDriver: true,
+        }).start();
+      };
+      */
     return (
         <View style={styles.section}>
             <Pressable
