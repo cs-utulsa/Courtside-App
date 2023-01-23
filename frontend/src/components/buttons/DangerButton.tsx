@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Pressable, StyleSheet, Text } from 'react-native';
+import { Alert, Pressable, StyleSheet, Text } from 'react-native';
 
 type DangerButtonProps = {
     /** The text describing the action of the button */
@@ -9,11 +9,30 @@ type DangerButtonProps = {
 };
 
 /**
- * A button colored red with red text expressing that when pressed the user will do a dangerous activity
+ * A button colored red with red text expressing that when pressed the user will do a dangerous activity.
+ * When the button is pressed an alert will pop up to confirm whether or not the user wants to complete the action.
  */
 export const DangerButton: FC<DangerButtonProps> = ({ text, onPress }) => {
+    const createAlert = () => {
+        Alert.alert(
+            'Do you want to continue?',
+            '',
+            [
+                {
+                    text: 'Cancel',
+                    style: 'cancel',
+                },
+                {
+                    text,
+                    onPress,
+                },
+            ],
+            { cancelable: false }
+        );
+    };
+
     return (
-        <Pressable onPress={onPress} style={styles.button}>
+        <Pressable onPress={createAlert} style={styles.button}>
             <Text style={styles.text}>{text}</Text>
         </Pressable>
     );
