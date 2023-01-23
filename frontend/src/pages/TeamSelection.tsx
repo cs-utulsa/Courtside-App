@@ -1,5 +1,5 @@
 //external imports
-import React, { FC, useCallback, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import {
     StyleSheet,
     FlatList,
@@ -26,14 +26,6 @@ const screenWidth = Dimensions.get('window').width - 20;
 const numColumns = 3;
 const tile = screenWidth / numColumns;
 
-const FavoriteTeamsHeader: FC<{ onPress: () => void }> = ({ onPress }) => {
-    return (
-        <>
-            <PrimaryButton text="Update Your Teams" onPress={onPress} />
-        </>
-    );
-};
-
 /** This component lets the user choose what teams they want to follow */
 export const TeamSelection = () => {
     const { navigate } = useNavigation<TeamNavigationProp>();
@@ -42,6 +34,8 @@ export const TeamSelection = () => {
     const [selectedTeams, setSelectedTeams] = useState<string[]>(
         authData?.teams ?? []
     );
+
+    const [submitting, setSubmitting] = useState<boolean>(false);
 
     const { data, isSuccess, isLoading, isError } = useAllTeams();
     console.log(selectedTeams);
@@ -68,8 +62,12 @@ export const TeamSelection = () => {
     );
 
     const submitTeamSelectionUpdates = async () => {
+        setSubmitting(true);
+
         await updateTeams(selectedTeams);
         navigate('Dashboard');
+
+        setSubmitting(false);
     };
 
     if (isLoading) {
@@ -88,7 +86,11 @@ export const TeamSelection = () => {
                 numColumns={3}
                 ItemSeparatorComponent={Seperator}
                 ListHeaderComponent={
-                    <FavoriteTeamsHeader onPress={submitTeamSelectionUpdates} />
+                    <PrimaryButton
+                        text="Update Your Teams"
+                        onPress={submitTeamSelectionUpdates}
+                        loading={submitting}
+                    />
                 }
                 ListFooterComponent={Seperator}
                 contentContainerStyle={styles.container}

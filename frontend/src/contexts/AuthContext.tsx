@@ -216,7 +216,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
                         `${DEVELOPMENT_API}/users/teams`,
                         {
                             email: authData?.email,
-                            stats: newTeams,
+                            teams: newTeams,
                         },
                         {
                             headers: {

@@ -1,12 +1,20 @@
 import { ORANGE } from '@styles/colors';
 import React, { FC } from 'react';
-import { View, Pressable, Text, StyleSheet } from 'react-native';
+import {
+    View,
+    Pressable,
+    Text,
+    StyleSheet,
+    ActivityIndicator,
+} from 'react-native';
 
 type PrimaryButtonProps = {
     /** This function runs whenever the button is pressed */
     onPress: () => void;
     /** The text displayed in the button */
     text: string;
+    /** Whether or not the button is loading. If true a spinner will be displayed */
+    loading?: boolean;
 };
 
 /**
@@ -16,11 +24,17 @@ type PrimaryButtonProps = {
  * const onPress = () => console.log("Button pressed!");
  * return <PrimaryButton text={text} onPress={onPress} />
  */
-export const PrimaryButton: FC<PrimaryButtonProps> = ({ onPress, text }) => {
+export const PrimaryButton: FC<PrimaryButtonProps> = ({
+    onPress,
+    text,
+    loading = false,
+}) => {
     return (
         <View style={styles.container}>
             <Pressable style={styles.btn} onPress={onPress}>
-                <Text style={styles.btnText}>{text}</Text>
+                <Text style={styles.btnText}>
+                    {loading ? <ActivityIndicator /> : text}
+                </Text>
             </Pressable>
         </View>
     );
