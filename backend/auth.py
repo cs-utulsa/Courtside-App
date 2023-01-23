@@ -485,3 +485,57 @@ def change_stats():
 def change_settings():
     # settings not implemented yet
     pass
+
+@auth.route('/users/clear', methods=["POST"])
+def clear_data():
+    """Removes all user preferences from the servers
+
+    Check to make sure user's token is valid and then set stat and team data to empty arrays
+
+    Request:
+        Headers:
+            Authorization:
+                must be of the form "Bearer <token>" where token is the user's JWT
+        Body:
+            email: the user's email
+
+    Returns:
+        A Response object
+
+        - if token not valid:
+            status_code: 403
+            message: 'Invalid token'
+
+        - if email not provided
+            status_code: 400
+            message: 'Email must be provided'
+
+        - if server cannot be accessed
+            status_code: 500
+            message: 'Cannot complete request'
+
+        - if data successfully cleared
+            status_code: 200
+            message: 'User data cleared'
+    
+    """
+    token = is_valid_jwt(request)
+
+    if (not token): 
+        return string_response(INVALID_TOKEN_MESSAGE, 403)
+
+    email = request.get_json()['email']
+
+    if not email:
+        return string_response(NO_EMAIL_MESSAGE, 400)
+
+    try:
+        db.user_preferences.update_one(
+            { 'email': email },
+            { '$set': { "stats": [], "teams": [] } }
+        )
+
+    except OperationFailure:
+        return string_response(SERVER_ERROR, 500)
+
+    return string_response("User data cleared", 200)

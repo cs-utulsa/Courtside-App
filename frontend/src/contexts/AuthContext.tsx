@@ -244,10 +244,27 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     );
 
     const clearData = useCallback(async () => {
-        await SecureStore.setItemAsync(
-            'authData',
-            JSON.stringify({ ...authData, teams: [], stats: [] })
-        );
+        try {
+            await axios.post(`${DEVELOPMENT_API}/users/clear`, {
+                headers: {
+                    Authorization: `Bearer ${authData?.token}`,
+                },
+                body: {
+                    email: authData?.email,
+                },
+            });
+
+            await SecureStore.setItemAsync(
+                'authData',
+                JSON.stringify({ ...authData, teams: [], stats: [] })
+            );
+        } catch (err) {
+            if (axios.isAxiosError(err)) {
+                setAuthError(err.response?.data);
+            } else {
+                setAuthError('Unknown Error Occurred. Try Again Later.');
+            }
+        }
     }, [authData]);
 
     const contextData: AuthContextData = useMemo(() => {
