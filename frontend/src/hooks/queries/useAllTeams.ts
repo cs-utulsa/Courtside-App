@@ -5,7 +5,7 @@ import axios from 'axios';
 import { ICONS } from '@constants/icons';
 
 export const useAllTeams = () => {
-    return useQuery<LimitedTeam>({
+    return useQuery<LimitedTeam[]>({
         queryKey: ['teams'],
         queryFn: async () => {
             const data = await axios

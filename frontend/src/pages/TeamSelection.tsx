@@ -1,68 +1,97 @@
 //external imports
-import React, { useCallback } from 'react';
-import { StyleSheet, FlatList, Dimensions } from 'react-native';
+import React, { FC, useCallback, useState } from 'react';
+import {
+    StyleSheet,
+    FlatList,
+    Dimensions,
+    ActivityIndicator,
+} from 'react-native';
 
 //custom components
-import { PrimaryButton, SelectCircle, Seperator } from '@components/index';
+import {
+    FullError,
+    PrimaryButton,
+    SelectCircle,
+    Seperator,
+} from '@components/index';
 
 // constants
-import { ICONS } from '../constants';
 import { useNavigation } from '@react-navigation/native';
 import { TeamNavigationProp } from './../types/Navigation';
-// import { useAuth } from '@hooks/useAuth';
+import { useAuth } from '@hooks/useAuth';
+import { useAllTeams } from '@hooks/index';
+import { LimitedTeam } from './../types/Team';
 
 const screenWidth = Dimensions.get('window').width - 20;
 const numColumns = 3;
 const tile = screenWidth / numColumns;
 
-const FavoriteTeamsHeader = () => {
-    const { navigate } = useNavigation<TeamNavigationProp>();
+const FavoriteTeamsHeader: FC<{ onPress: () => void }> = ({ onPress }) => {
     return (
         <>
-            <PrimaryButton
-                text="Update Your Teams"
-                onPress={() => navigate('Dashboard')}
-            />
+            <PrimaryButton text="Update Your Teams" onPress={onPress} />
         </>
     );
 };
 
 /** This component lets the user choose what teams they want to follow */
 export const TeamSelection = () => {
-    // const { authData } = useAuth();
-    // const [selectedTeams, setSelectedTeams] = useState<string[]>(
-    //     authData?.teams ?? []
-    // );
+    const { navigate } = useNavigation<TeamNavigationProp>();
 
-    const renderItem = useCallback(
-        ({ item }: { item: { name: string; logo: string } }) => {
-            const handleSelectChange = (newStatus: boolean) => {
-                console.log(newStatus);
-            };
-
-            return (
-                <SelectCircle
-                    url={item.logo}
-                    size={tile}
-                    onSelectChanged={handleSelectChange}
-                />
-            );
-        },
-        []
+    const { authData, updateTeams } = useAuth();
+    const [selectedTeams, setSelectedTeams] = useState<string[]>(
+        authData?.teams ?? []
     );
 
-    return (
-        <FlatList
-            data={ICONS}
-            renderItem={renderItem}
-            numColumns={3}
-            ItemSeparatorComponent={Seperator}
-            ListHeaderComponent={<FavoriteTeamsHeader />}
-            ListFooterComponent={Seperator}
-            contentContainerStyle={styles.container}
-            ListHeaderComponentStyle={styles.headerContainer}
-        />
-    );
+    const { data, isSuccess, isLoading, isError } = useAllTeams();
+
+    const renderItem = useCallback(({ item }: { item: LimitedTeam }) => {
+        const handleSelectChange = (newStatus: boolean) => {
+            if (newStatus) setSelectedTeams((prev) => [...prev, item.id]);
+            else
+                setSelectedTeams((prev) =>
+                    prev.filter((oldListItem) => oldListItem !== item.id)
+                );
+        };
+
+        return (
+            <SelectCircle
+                url={item.icon}
+                size={tile}
+                onSelectChanged={handleSelectChange}
+            />
+        );
+    }, []);
+
+    const submitTeamSelectionUpdates = async () => {
+        await updateTeams(selectedTeams);
+        navigate('Dashboard');
+    };
+
+    if (isLoading) {
+        return <ActivityIndicator />;
+    }
+
+    if (isError) {
+        return <FullError text="Cannot retrieve teams data. Try again later" />;
+    }
+
+    if (isSuccess) {
+        return (
+            <FlatList
+                data={data}
+                renderItem={renderItem}
+                numColumns={3}
+                ItemSeparatorComponent={Seperator}
+                ListHeaderComponent={
+                    <FavoriteTeamsHeader onPress={submitTeamSelectionUpdates} />
+                }
+                ListFooterComponent={Seperator}
+                contentContainerStyle={styles.container}
+                ListHeaderComponentStyle={styles.headerContainer}
+            />
+        );
+    }
 };
 
 const styles = StyleSheet.create({
