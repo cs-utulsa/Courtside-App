@@ -18,7 +18,7 @@ export const RosterStack = () => {
         >
             <Stack.Screen name="Dashboard" component={RostersScreen} />
             <Stack.Screen name="Selection" component={TeamSelectionScreen} />
-            <Stack.Screen name="Players" component={TeamScreen} />
+            <Stack.Screen name="Team" component={TeamScreen} />
             <Stack.Screen name="Player" component={PlayerScreen} />
         </Stack.Navigator>
     );

@@ -1,11 +1,11 @@
 import { CircleImage, PlayerSection } from '@components/index';
 import { useRoute } from '@react-navigation/native';
-import { PlayersScreenRouteProp } from '../types/Navigation';
+import { TeamScreenRouteProp } from '../types/Navigation';
 import { View, FlatList, StyleSheet, Text } from 'react-native';
 import React from 'react';
 
 export const TeamScreen = () => {
-    const route = useRoute<PlayersScreenRouteProp>();
+    const route = useRoute<TeamScreenRouteProp>();
     const team = route.params.team;
 
     return (
