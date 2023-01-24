@@ -78,9 +78,9 @@ def get_all_teams():
     return json.dumps(teams)
 
 # return one team
-@app.route('/team/<code>', methods=['GET'])
-def get_team(code):
-    team = db.teams.find_one({ 'abbr': code}, { '_id': 1, 'name': 1, "abbr": 1})
+@app.route('/team/<id>', methods=['GET'])
+def get_team(id):
+    team = db.teams.find_one({ '_id': id }, { '_id': 1, 'name': 1, "abbr": 1})
 
     team["id"] = str(team["_id"])
     del team["_id"]
