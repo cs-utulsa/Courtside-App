@@ -13,7 +13,7 @@ type Team = {
     name: string;
     short: string;
     city: string;
-    icon: string;
+    icon?: string;
     players: FullPlayer[];
 };
 

@@ -10,13 +10,15 @@ export const useTeams = (teams: string[]) => {
         queryFn: async () => {
             if (!teams) return [];
 
-            const _teamData = [];
+            const _teamData: Team[] = [];
             for (let team of teams) {
-                const data = await axios
+                const data: Team = await axios
                     .get(`${DEVELOPMENT_API}/team/${team}`)
                     .then((res) => res.data);
 
-                const icon = ICONS.find((item) => item.code === team)?.logo;
+                const icon = ICONS.find(
+                    (item) => item.code === data.abbr
+                )?.logo;
 
                 _teamData.push({ ...data, icon });
             }
