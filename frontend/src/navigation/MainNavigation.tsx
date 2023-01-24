@@ -6,9 +6,14 @@ import {
 import { Schedule, Settings } from './../pages';
 import { Ionicons, FontAwesome, FontAwesome5 } from '@expo/vector-icons';
 import { StatsStack } from './StatsStack';
+import { RosterStack } from './RosterStack';
 import { ORANGE } from '../styles/colors';
+<<<<<<< HEAD
 import { TeamsStack } from './TeamsStack';
 import { RouteProp, ParamListBase } from '@react-navigation/native';
+=======
+import { RosterSelection } from '@pages/Rosters';
+>>>>>>> rosterpage
 
 const Tab = createBottomTabNavigator();
 
@@ -75,7 +80,11 @@ export const MainNavigation: FC<MainNavigationProps> = ({ routeName }) => {
         <Tab.Navigator initialRouteName="Stats" screenOptions={options}>
             <Tab.Screen name="Stats" component={StatsStack} />
             <Tab.Screen name="Schedule" component={Schedule} />
+<<<<<<< HEAD
             <Tab.Screen name="Rosters" component={TeamsStack} />
+=======
+            <Tab.Screen name="Rosters" component={RosterStack} />
+>>>>>>> rosterpage
             <Tab.Screen name="Settings" component={Settings} />
         </Tab.Navigator>
     );

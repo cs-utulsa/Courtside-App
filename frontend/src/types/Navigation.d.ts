@@ -36,10 +36,23 @@ export type StatsNavigatorParamList = {
 export type StatsNavigationProp =
     NativeStackNavigationProp<StatsNavigatorParamList>;
 
-export type TeamsNavigatorParamList = {
+// Roster Screens Navigator
+export type RosterNavigatorParamList = {
     Dashboard: undefined;
+    Players: { p: players[]; u: uri; n: name };
     Selection: undefined;
+    Player: { fn: string; s: string[]; u: uri };
 };
 
-export type TeamNavigationProp =
-    NativeStackNavigationProp<TeamsNavigatorParamList>;
+export type RosterNavigationProp =
+    NativeStackNavigationProp<RosterNavigatorParamList>;
+
+export type PlayersScreenRouteProp = RouteProp<
+    RosterNavigatorParamList,
+    'Players'
+>;
+
+export type PlayerScreenRouteProp = RouteProp<
+    RosterNavigatorParamList,
+    'Player'
+>;
