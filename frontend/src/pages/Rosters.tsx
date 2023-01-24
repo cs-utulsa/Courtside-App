@@ -56,37 +56,3 @@ const styles = StyleSheet.create({
     },
     text: {},
 });
-
-// type team = {
-//     name: string;
-//     uri: string;
-//     //  logo: File;
-//     players: Player[];
-// };
-// const giannis: Player = {
-//     fname: 'giannis',
-//     lname: 'antetokpumpo',
-//     uri: 'https://imagizer.imageshack.com/img924/9084/H33H0z.jpg',
-//     stats: ['52 points'],
-//     //   playerimage: "C:\Users\rjp\Documents\GitHub\Courtside-App\frontend\\src\\assets\\dummy";
-// };
-// const middleton: Player = {
-//     fname: 'chris',
-//     lname: 'middelton',
-//     uri: 'https://imagizer.imageshack.com/img924/9084/H33H0z.jpg',
-//     stats: ['trash af'],
-//     //   playerimage: "C:\Users\rjp\Documents\GitHub\Courtside-App\frontend\\src\\assets\\dummy";
-// };
-// const bucks: team = {
-//     name: 'bucks',
-//     uri: 'https://imagizer.imageshack.com/img924/9084/H33H0z.jpg',
-//     players: [giannis, middleton],
-// };
-
-// const nets: team = {
-//     name: 'nets',
-//     uri: 'https://imagizer.imageshack.com/img924/9084/H33H0z.jpg',
-//     players: [giannis, middleton],
-// };
-
-// const roster: team[] = [nets, bucks, nets, bucks, nets, bucks];

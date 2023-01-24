@@ -3,11 +3,11 @@ import { useRoute } from '@react-navigation/native';
 import { PlayersScreenRouteProp } from './../types/Navigation';
 import { View, FlatList, StyleSheet, Text, Image } from 'react-native';
 import React from 'react';
-import { Player } from './../types/Player';
+import { FullPlayer } from './../types/Player';
 
 export const TeamPlayers = () => {
     const route = useRoute<PlayersScreenRouteProp>(); //got the string a to send... still lots of errors
-    const playahs: Player[] = route.params.p;
+    const players: FullPlayer[] = route.params.p;
 
     return (
         //could add undefined type to catch the error if no data was sent!e
@@ -20,17 +20,11 @@ export const TeamPlayers = () => {
             />
 
             <FlatList
-                data={playahs} //this now has to be passed data
+                data={players} //this now has to be passed data
                 numColumns={3} //{Math.ceil(roster.length / 2)}
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
-                renderItem={({ item }) => (
-                    <PlayerSection
-                        fname={item.fname}
-                        uri={item.uri}
-                        stats={item.stats}
-                    />
-                )}
+                renderItem={({ item }) => <PlayerSection player={item} />}
             />
         </View>
     );

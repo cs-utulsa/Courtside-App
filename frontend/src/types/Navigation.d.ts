@@ -1,5 +1,6 @@
 import { RouteProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { FullPlayer } from './Player';
 
 // Onboarding Navigator
 export type OnboardingNavigatorParamList = {
@@ -39,7 +40,7 @@ export type StatsNavigationProp =
 // Roster Screens Navigator
 export type RosterNavigatorParamList = {
     Dashboard: undefined;
-    Players: { p: players[]; u: uri; n: name };
+    Players: { p: FullPlayer[]; u: uri; n: name };
     Selection: undefined;
     Player: { fn: string; s: string[]; u: uri };
 };
