@@ -8,23 +8,18 @@ import {
     StyleSheet,
     Dimensions,
 } from 'react-native';
-import { Team } from './../../types/Team';
+import { FullPlayer } from './../../types/Player';
 import { CircleImage } from '@components/index';
 
-type RosterSectionProps = {
-    team: Team;
+type PlayerSectionProps = {
+    player: FullPlayer;
 };
 
-export const RosterSection: FC<RosterSectionProps> = ({ team }) => {
+export const PlayerSection: FC<PlayerSectionProps> = ({ player }) => {
     const { push } = useNavigation<RosterNavigationProp>();
     function navigateToSelectionScreen() {
-        push('Players', { p: team.players, u: team.icon, n: team.name });
+        push('Player', { fn: player.name, s: [], u: player.headshot });
     }
-
-    const screenWidth = Dimensions.get('window').width - 20;
-    const numColumns = 3;
-    const tile = screenWidth / numColumns;
-
     /*
     
     const rotate = new Animated.Value(0);
@@ -35,38 +30,35 @@ export const RosterSection: FC<RosterSectionProps> = ({ team }) => {
             duration: 3000,
             useNativeDriver: true,
         }).start();
-        };
+    };
       */
+
+    const screenWidth = Dimensions.get('window').width - 20;
+    const numColumns = 3;
+    const tile = screenWidth / numColumns;
+
     return (
-        <View style={styles.Container}>
+        <View style={styles.container}>
             <TouchableOpacity
                 activeOpacity={0.5}
                 onPress={navigateToSelectionScreen}
             >
-                <CircleImage url={team.icon} size={tile} />
+                <CircleImage url={player.headshot} size={tile} />
             </TouchableOpacity>
-            <Text style={styles.text}>{team.abbr}</Text>
+            <Text style={styles.text}>{player.name}</Text>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
-    Container: {
+    container: {
         justifyContent: 'center',
         alignItems: 'center',
         flex: 1,
         margin: 10,
     },
-    circleImageLayout: {
-        width: 75,
-        height: 75,
-        borderRadius: 75 / 2,
-        borderColor: 'grey',
-        borderWidth: 2,
-        resizeMode: 'contain',
-    },
     text: {
-        fontSize: 16,
+        fontSize: 25,
         textAlign: 'center',
         margin: 5,
     },

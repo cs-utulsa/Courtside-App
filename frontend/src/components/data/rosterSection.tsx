@@ -1,60 +1,41 @@
-import React, { FC } from 'react';
-import { Text, StyleSheet, View, Image, TouchableOpacity } from 'react-native'; //animated animation related
 import { useNavigation } from '@react-navigation/native';
-import { RosterNavigationProp } from './../../types/Navigation';
-import { Player } from './../../types/Player';
+import { RosterNavigationProp } from '../../types/Navigation';
+import React, { FC } from 'react';
+import {
+    View,
+    TouchableOpacity,
+    Text,
+    StyleSheet,
+    Dimensions,
+} from 'react-native';
+import { Team } from '../../types/Team';
+import { CircleImage } from '@components/index';
 
 type RosterSectionProps = {
-    /** the title of the section */
-    name: string;
-    uri: string;
-    players: Player[];
-
-    /** the stats that are within this section */
-    //data: { id: string; name: string }[];
-    /** the stats that are currently selected, this is stored as state in the parent component */
-    //   selectedStats: string[];
-    /** method that adds a stat to the list of currently selected stats, defined in parent component  */
-    //   addStat: (stat: string) => void;
-    /** method that removes a stat from the list of currently selected stats, defined in parent component  */
-    //  removeStat: (stat: string) => void;
+    team: Team;
 };
 
-/**
- * A component
- *
- *
- * @component
- * @example
- * const title = "Defense Stats"
- *      />
- * );
- */
-
-export const RosterSection: FC<RosterSectionProps> = ({
-    name,
-    uri,
-    players,
-    // data,
-    // selectedStats,
-    //  addStat,
-    // removeStat,
-}) => {
-    const { push } = useNavigation<RosterNavigationProp>(); //can I just use statsnavigation prop??
+export const RosterSection: FC<RosterSectionProps> = ({ team }) => {
+    const { push } = useNavigation<RosterNavigationProp>();
     function navigateToSelectionScreen() {
-        push('Players', { p: players, u: uri, n: name });
+        push('Players', { p: team.players, u: team.icon, n: team.name });
     }
+
+    const screenWidth = Dimensions.get('window').width - 20;
+    const numColumns = 3;
+    const tile = screenWidth / numColumns;
+
     /*
     
     const rotate = new Animated.Value(0);
     const ExpandOut = () => {
         // Will change fadeAnim value to 0 in 3 seconds
         Animated.timing(rotate, {
-          toValue: 500,
-          duration: 3000,
-          useNativeDriver: true,
+            toValue: 500,
+            duration: 3000,
+            useNativeDriver: true,
         }).start();
-      };
+        };
       */
     return (
         <View style={styles.Container}>
@@ -62,13 +43,9 @@ export const RosterSection: FC<RosterSectionProps> = ({
                 activeOpacity={0.5}
                 onPress={navigateToSelectionScreen}
             >
-                <Image
-                    source={{ uri: uri }}
-                    style={styles.circleImageLayout}
-                    resizeMode={'cover'}
-                />
+                <CircleImage url={team.icon} size={tile} />
             </TouchableOpacity>
-            <Text style={styles.text}>{name}</Text>
+            <Text style={styles.text}>{team.abbr}</Text>
         </View>
     );
 };
@@ -86,113 +63,11 @@ const styles = StyleSheet.create({
         borderRadius: 75 / 2,
         borderColor: 'grey',
         borderWidth: 2,
+        resizeMode: 'contain',
     },
     text: {
-        fontSize: 25,
+        fontSize: 16,
         textAlign: 'center',
         margin: 5,
     },
 });
-
-type PlayerSectionProps = {
-    /** the title of the section */
-    fname: string;
-    uri: string;
-    stats: string[];
-
-    /** the stats that are within this section */
-    //data: { id: string; name: string }[];
-    /** the stats that are currently selected, this is stored as state in the parent component */
-    //   selectedStats: string[];
-    /** method that adds a stat to the list of currently selected stats, defined in parent component  */
-    //   addStat: (stat: string) => void;
-    /** method that removes a stat from the list of currently selected stats, defined in parent component  */
-    //  removeStat: (stat: string) => void;
-};
-
-/**
- * A component
- *
- *
- * @component
- * @example
- * const title = "Defense Stats"
- *      />
- * );
- */
-
-export const PlayerSection: FC<PlayerSectionProps> = ({
-    fname,
-    uri,
-    stats,
-    // data,
-    // selectedStats,
-    //  addStat,
-    // removeStat,
-}) => {
-    const { push } = useNavigation<RosterNavigationProp>();
-    function navigateToSelectionScreen() {
-        push('Player', { fn: fname, s: stats, u: uri });
-    }
-    /*
-    
-    const rotate = new Animated.Value(0);
-    const ExpandOut = () => {
-        // Will change fadeAnim value to 0 in 3 seconds
-        Animated.timing(rotate, {
-          toValue: 500,
-          duration: 3000,
-          useNativeDriver: true,
-        }).start();
-      };
-      */
-    return (
-        <View style={styles.Container}>
-            <TouchableOpacity
-                activeOpacity={0.5}
-                onPress={navigateToSelectionScreen}
-            >
-                <Image
-                    source={{ uri: uri }}
-                    style={styles.circleImageLayout}
-                    resizeMode={'cover'}
-                />
-            </TouchableOpacity>
-            <Text style={styles.text}>{fname}</Text>
-        </View>
-    );
-};
-
-export const PlayerView: FC<PlayerSectionProps> = ({
-    fname,
-    stats,
-
-    // data,
-    // selectedStats,
-    //  addStat,
-    // removeStat,
-}) => {
-    //const { push } = useNavigation<RosterNavigationProp>();
-    //function navigateToSelectionScreen() {
-    // push('Player');
-    //}
-    /*
-  
-  const rotate = new Animated.Value(0);
-  const ExpandOut = () => {
-      // Will change fadeAnim value to 0 in 3 seconds
-      Animated.timing(rotate, {
-        toValue: 500,
-        duration: 3000,
-        useNativeDriver: true,
-      }).start();
-    };
-    */
-    return (
-        <View style={styles.Container}>
-            <Text style={styles.text}>{fname}</Text>
-
-            <Text style={styles.text}>{stats[0]}</Text>
-        </View>
-    );
-};

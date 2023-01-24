@@ -17,8 +17,9 @@ export { GameDisplay } from './data/GameDisplay';
 export { StatLeaderboard } from './data/StatLeaderboard';
 export { DaySchedule } from './data/DaySchedule';
 export { StatList } from './data/StatList';
-export { RosterSection } from './data/RosterSect';
-export { PlayerSection } from './data/rosterSection';
+export { RosterSection } from './data/RosterSection';
+export { PlayerSection } from './data/PlayerSection';
+export { PlayerView } from './data/PlayerView';
 
 // Error
 export { ErrorBox } from './error/ErrorBox';
