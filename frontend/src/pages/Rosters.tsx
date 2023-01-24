@@ -22,6 +22,7 @@ export const Rosters = () => {
     const { isLoading, isSuccess, isError, refetch } = useTeams(
         authData?.teams ?? []
     );
+
     useRefreshOnFocus(refetch);
 
     return (

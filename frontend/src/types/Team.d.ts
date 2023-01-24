@@ -1,3 +1,5 @@
+import { FullPlayer } from './Player';
+
 type LimitedTeam = {
     id: string;
     name: string;
@@ -11,7 +13,8 @@ type Team = {
     name: string;
     short: string;
     city: string;
-    roster: string[];
+    icon: string;
+    players: FullPlayer[];
 };
 
 export { LimitedTeam, Team };

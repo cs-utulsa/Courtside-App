@@ -2,10 +2,10 @@ import { ICONS } from '@constants/icons';
 import { DEVELOPMENT_API } from '@constants/urls';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { LimitedTeam } from './../../types/Team';
+import { Team } from './../../types/Team';
 
 export const useTeams = (teams: string[]) => {
-    return useQuery<LimitedTeam[]>({
+    return useQuery<Team[]>({
         queryKey: ['userTeams'],
         queryFn: async () => {
             if (!teams) return [];
