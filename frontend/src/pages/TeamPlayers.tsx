@@ -1,4 +1,4 @@
-import { PlayerSection } from '@components/data';
+import { PlayerSection } from '@components/index';
 import { useRoute } from '@react-navigation/native';
 import { PlayersScreenRouteProp } from './../types/Navigation';
 import { View, FlatList, StyleSheet, Text, Image } from 'react-native';

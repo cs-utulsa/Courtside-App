@@ -4,8 +4,9 @@ import React from 'react';
 import { View, StyleSheet, Text, FlatList } from 'react-native';
 
 import { useAuth } from '@hooks/useAuth';
-import { RosterSection } from '@components/data';
+import { RosterSection } from '@components/index';
 import { RosterNavigationProp } from './../types/Navigation';
+import { Player } from './../types/Player';
 /** This component displays the members of teams that the user is following */
 export const Rosters = () => {
     const { navigate } = useNavigation<RosterNavigationProp>();
@@ -28,8 +29,6 @@ export const Rosters = () => {
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
                 renderItem={({ item }) => (
-                    //need to create my own version of statsection
-
                     <RosterSection
                         name={item.name}
                         uri={item.uri}
@@ -71,28 +70,13 @@ export const Rosters = () => {
 // };
 
 const styles = StyleSheet.create({
-    container: {
-        alignItems: 'center',
-        flex: 1,
-    },
+    container: {},
     header: {
         fontWeight: 'bold',
         fontSize: 24,
         textAlign: 'center',
     },
-    text: {
-        fontSize: 20,
-        textAlign: 'center',
-        fontWeight: 'bold',
-        margin: 5,
-    },
-    circleImageLayout: {
-        width: 75,
-        height: 75,
-        borderRadius: 75 / 2,
-        borderColor: 'grey',
-        borderWidth: 2,
-    },
+    text: {},
 });
 
 //Fake roster data
@@ -101,13 +85,6 @@ const styles = StyleSheet.create({
 //- position
 //- player name
 //- player image
-type player = {
-    fname: string;
-    lname: string;
-    uri: string;
-    stats: string[];
-    //   playerimage: String;
-};
 //team type
 //- team name
 //- team image
@@ -116,16 +93,16 @@ type team = {
     name: string;
     uri: string;
     //  logo: File;
-    players: player[];
+    players: Player[];
 };
-const giannis: player = {
+const giannis: Player = {
     fname: 'giannis',
     lname: 'antetokpumpo',
     uri: 'https://imagizer.imageshack.com/img924/9084/H33H0z.jpg',
     stats: ['52 points'],
     //   playerimage: "C:\Users\rjp\Documents\GitHub\Courtside-App\frontend\\src\\assets\\dummy";
 };
-const middleton: player = {
+const middleton: Player = {
     fname: 'chris',
     lname: 'middelton',
     uri: 'https://imagizer.imageshack.com/img924/9084/H33H0z.jpg',
