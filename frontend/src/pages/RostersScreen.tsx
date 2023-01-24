@@ -1,13 +1,7 @@
 import { ErrorBox, PrimaryButton } from '@components/index';
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import {
-    View,
-    StyleSheet,
-    Text,
-    FlatList,
-    ActivityIndicator,
-} from 'react-native';
+import { StyleSheet, FlatList, ActivityIndicator } from 'react-native';
 
 import { useAuth } from '@hooks/useAuth';
 import { RosterSection } from '@components/index';
@@ -18,32 +12,32 @@ export const RostersScreen = () => {
     const { navigate } = useNavigation<RosterNavigationProp>();
     const { authData } = useAuth();
 
-    const { data, isLoading, isSuccess, isError, refetch } = useTeams(
+    const { data, isLoading, isError, refetch } = useTeams(
         authData?.teams ?? []
     );
 
     useRefreshOnFocus(refetch);
 
     return (
-        <View style={styles.container}>
-            <PrimaryButton
-                text="Follow Teams"
-                onPress={() => navigate('Selection')}
-            />
-            <Text style={styles.text}>Teams</Text>
-            {isLoading && <ActivityIndicator />}
-            {isError && <ErrorBox error="Error" />}
-            {isSuccess && (
-                <FlatList
-                    data={data}
-                    // contentContainerStyle={{alignSelf: 'flex-start'}}
-                    numColumns={3} //{Math.ceil(roster.length / 2)}
-                    showsVerticalScrollIndicator={false}
-                    showsHorizontalScrollIndicator={false}
-                    renderItem={({ item }) => <RosterSection team={item} />}
-                />
-            )}
-        </View>
+        <FlatList
+            data={data}
+            // contentContainerStyle={{alignSelf: 'flex-start'}}
+            numColumns={3} //{Math.ceil(roster.length / 2)}
+            showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
+            renderItem={({ item }) => <RosterSection team={item} />}
+            ListHeaderComponent={
+                <>
+                    <PrimaryButton
+                        text="Follow Teams"
+                        onPress={() => navigate('Selection')}
+                    />
+                    {isLoading && <ActivityIndicator />}
+                    {isError && <ErrorBox error="Error" />}
+                </>
+            }
+            ListHeaderComponentStyle={styles.headerContainer}
+        />
     );
 };
 
@@ -54,5 +48,12 @@ const styles = StyleSheet.create({
         fontSize: 24,
         textAlign: 'center',
     },
-    text: {},
+    text: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    headerContainer: {
+        alignItems: 'center',
+    },
 });
