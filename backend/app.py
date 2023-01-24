@@ -72,13 +72,11 @@ def get_all_teams():
     Returns:
         A Response object with an array of team data, each team has an id, name, and code
     """
-    teams = list(db.teams.find({}, { '_id': 1, 'name': 1, 'abbr': 1}))
+    teams = list(db.teams.find({}, { '_id': 1, 'icon': 1 }))
 
     for team in teams:
         team["id"] = str(team["_id"])
-        team["code"] = team['abbr']
         del team["_id"]
-        del team['abbr']
 
     return json.dumps(teams)
 

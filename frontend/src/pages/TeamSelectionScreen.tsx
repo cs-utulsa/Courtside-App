@@ -21,7 +21,7 @@ import { useNavigation } from '@react-navigation/native';
 import { RosterNavigationProp } from '../types/Navigation';
 import { useAuth } from '@hooks/useAuth';
 import { useAllTeams } from '@hooks/index';
-import { LimitedTeam } from '../types/Team';
+import { TeamIcon } from '../types/Team';
 
 const screenWidth = Dimensions.get('window').width - 20;
 const numColumns = 3;
@@ -41,7 +41,7 @@ export const TeamSelectionScreen = () => {
     const { data, isSuccess, isLoading, isError } = useAllTeams();
 
     const renderItem = useCallback(
-        ({ item }: { item: LimitedTeam }) => {
+        ({ item }: { item: TeamIcon }) => {
             const handleSelectChange = (newStatus: boolean) => {
                 if (newStatus) setSelectedTeams((prev) => [...prev, item.id]);
                 else
