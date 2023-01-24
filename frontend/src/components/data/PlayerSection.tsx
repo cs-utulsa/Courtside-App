@@ -47,6 +47,7 @@ export const PlayerSection: FC<PlayerSectionProps> = ({ player }) => {
                     url={player.headshot}
                     size={tile}
                     imageRatio={0.9}
+                    resizeMode="cover"
                 />
             </TouchableOpacity>
             <View style={styles.textContainer}>

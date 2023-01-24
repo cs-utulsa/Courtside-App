@@ -10,11 +10,13 @@ import {
 
 type CircleImageProps = {
     /** Url of the image to display */
-    url?: string;
+    url: string;
     /** Size of the component in pixels */
     size: number;
     /** How big the image should be compared to the container; value should be between 0 and 1 */
     imageRatio?: number;
+    /** The resizeMode of the image */
+    resizeMode?: 'cover' | 'contain';
 };
 
 /**
@@ -24,6 +26,7 @@ export const CircleImage: FC<CircleImageProps> = ({
     url,
     size,
     imageRatio = 0.6,
+    resizeMode = 'contain',
 }) => {
     const circleSize: StyleProp<ViewStyle> = {
         height: size - 6,
@@ -32,14 +35,15 @@ export const CircleImage: FC<CircleImageProps> = ({
         marginHorizontal: 3,
     };
 
-    const imgSize: StyleProp<ImageStyle> = {
+    const imgStyles: StyleProp<ImageStyle> = {
         height: size * imageRatio,
         width: size * imageRatio,
+        resizeMode,
     };
 
     return (
         <View style={[styles.container, circleSize]}>
-            <Image source={{ uri: url }} style={[styles.image, imgSize]} />
+            <Image source={{ uri: url }} style={imgStyles} />
         </View>
     );
 };
@@ -52,10 +56,5 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: 'white',
         overflow: 'hidden',
-    },
-    image: {
-        resizeMode: 'cover',
-        width: 55,
-        height: 55,
     },
 });

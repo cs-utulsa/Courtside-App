@@ -24,6 +24,7 @@ export const TeamScreen = () => {
                     </>
                 }
                 ListHeaderComponentStyle={styles.headerContainer}
+                contentContainerStyle={styles.container}
             />
         </View>
     );
@@ -31,8 +32,7 @@ export const TeamScreen = () => {
 
 const styles = StyleSheet.create({
     container: {
-        alignItems: 'center',
-        flex: 1,
+        marginVertical: 10,
     },
     headerText: {
         fontWeight: 'bold',
