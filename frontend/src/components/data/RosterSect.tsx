@@ -1,8 +1,15 @@
 import { useNavigation } from '@react-navigation/native';
 import { RosterNavigationProp } from './../../types/Navigation';
 import React, { FC } from 'react';
-import { View, TouchableOpacity, Image, Text, StyleSheet } from 'react-native';
+import {
+    View,
+    TouchableOpacity,
+    Text,
+    StyleSheet,
+    Dimensions,
+} from 'react-native';
 import { Team } from './../../types/Team';
+import { CircleImage } from '@components/index';
 
 type RosterSectionProps = {
     team: Team;
@@ -13,6 +20,11 @@ export const RosterSection: FC<RosterSectionProps> = ({ team }) => {
     function navigateToSelectionScreen() {
         push('Players', { p: team.players, u: team.icon, n: team.name });
     }
+
+    const screenWidth = Dimensions.get('window').width - 20;
+    const numColumns = 3;
+    const tile = screenWidth / numColumns;
+
     /*
     
     const rotate = new Animated.Value(0);
@@ -31,11 +43,7 @@ export const RosterSection: FC<RosterSectionProps> = ({ team }) => {
                 activeOpacity={0.5}
                 onPress={navigateToSelectionScreen}
             >
-                <Image
-                    source={{ uri: team.icon }}
-                    style={styles.circleImageLayout}
-                    resizeMode={'cover'}
-                />
+                <CircleImage url={team.icon} size={tile} />
             </TouchableOpacity>
             <Text style={styles.text}>{team.abbr}</Text>
         </View>
@@ -55,6 +63,7 @@ const styles = StyleSheet.create({
         borderRadius: 75 / 2,
         borderColor: 'grey',
         borderWidth: 2,
+        resizeMode: 'contain',
     },
     text: {
         fontSize: 16,

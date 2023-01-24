@@ -24,6 +24,9 @@ export { PlayerSection } from './data/rosterSection';
 export { ErrorBox } from './error/ErrorBox';
 export { FullError } from './error/FullError';
 
+// Images
+export { CircleImage } from './images/CircleImage';
+
 // Logo
 export { LogoHeader } from './logo/LogoHeader';
 
