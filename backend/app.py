@@ -67,6 +67,11 @@ def get_player_data(player_id):
 # Return all teams
 @app.route('/team', methods=['GET'])
 def get_all_teams():
+    """Returns all teams
+
+    Returns:
+        A Response object with an array of team data, each team has an id, name, and code
+    """
     teams = list(db.teams.find({}, { '_id': 1, 'name': 1, 'abbr': 1}))
 
     for team in teams:
