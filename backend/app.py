@@ -72,34 +72,33 @@ def get_all_teams():
     Returns:
         A Response object with an array of team data, each team has an id, name, and code
     """
-    teams = list(db.teams.find({}, { '_id': 1, 'name': 1, 'abbr': 1}))
+    teams = list(db.teams.find({}, { '_id': 1, 'icon': 1 }))
 
     for team in teams:
         team["id"] = str(team["_id"])
-        team["code"] = team['abbr']
         del team["_id"]
-        del team['abbr']
 
     return json.dumps(teams)
 
 # return one team
-@app.route('/team/<code>', methods=['GET'])
-def get_team(code):
-    """Returns the data for the team with the specified code
+@app.route('/team/<id>', methods=['GET'])
+def get_team(id):
+    team_cursor = db.teams.aggregate([
+        { '$match': { '_id': int(id) }},
+        { '$lookup': {
+            "from": "players",
+            "localField": "roster",
+            "foreignField": "_id",
+            "as": "players"
+        }}
+    ])
 
-    Args:
-        code: the team's three letter code as a string
+    team = list(team_cursor)[0]
 
-    Returns:
-        A Response object with the team's data including its id, name, and code
-    """
-    team = db.teams.find_one({ 'abbr': code}, { '_id': 1, 'name': 1, "abbr": 1})
-
+    del team["roster"]
+    
     team["id"] = str(team["_id"])
     del team["_id"]
-
-    team["code"] = team["abbr"]
-    del team ["abbr"]
 
     return json.dumps(team)
 

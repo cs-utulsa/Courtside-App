@@ -1,9 +1,11 @@
 export { FavoritePlayers } from './FavoritePlayers';
-export { TeamSelection } from './TeamSelection';
+export { TeamSelectionScreen } from './TeamSelectionScreen';
 export { StatSelection } from './StatSelection';
 export { Schedule } from './Schedule';
-export { Rosters } from './Rosters';
+export { RostersScreen } from './RostersScreen';
 export { StatDashboard } from './StatDashboard';
 export { Settings } from './Settings';
 export { SignIn } from './SignIn';
 export { SignUp } from './SignUp';
+export { PlayerScreen } from './PlayerScreen';
+export { TeamScreen } from './TeamScreen';

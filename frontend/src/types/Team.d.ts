@@ -1,8 +1,8 @@
-type LimitedTeam = {
+import { Player } from './Player';
+
+type TeamIcon = {
     id: string;
-    name: string;
     icon: string;
-    code: string;
 };
 
 type Team = {
@@ -11,7 +11,8 @@ type Team = {
     name: string;
     short: string;
     city: string;
-    roster: string[];
+    icon: string;
+    players: Player[];
 };
 
-export { LimitedTeam, Team };
+export { TeamIcon, Team };

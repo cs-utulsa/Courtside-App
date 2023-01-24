@@ -5,6 +5,7 @@ import {
     FlatList,
     Dimensions,
     ActivityIndicator,
+    View,
 } from 'react-native';
 
 //custom components
@@ -17,18 +18,18 @@ import {
 
 // constants
 import { useNavigation } from '@react-navigation/native';
-import { TeamNavigationProp } from './../types/Navigation';
+import { RosterNavigationProp } from '../types/Navigation';
 import { useAuth } from '@hooks/useAuth';
 import { useAllTeams } from '@hooks/index';
-import { LimitedTeam } from './../types/Team';
+import { TeamIcon } from '../types/Team';
 
 const screenWidth = Dimensions.get('window').width - 20;
 const numColumns = 3;
 const tile = screenWidth / numColumns;
 
 /** This component lets the user choose what teams they want to follow */
-export const TeamSelection = () => {
-    const { navigate } = useNavigation<TeamNavigationProp>();
+export const TeamSelectionScreen = () => {
+    const { navigate } = useNavigation<RosterNavigationProp>();
 
     const { authData, updateTeams } = useAuth();
     const [selectedTeams, setSelectedTeams] = useState<string[]>(
@@ -40,7 +41,7 @@ export const TeamSelection = () => {
     const { data, isSuccess, isLoading, isError } = useAllTeams();
 
     const renderItem = useCallback(
-        ({ item }: { item: LimitedTeam }) => {
+        ({ item }: { item: TeamIcon }) => {
             const handleSelectChange = (newStatus: boolean) => {
                 if (newStatus) setSelectedTeams((prev) => [...prev, item.id]);
                 else
@@ -98,6 +99,8 @@ export const TeamSelection = () => {
             />
         );
     }
+
+    return <View />;
 };
 
 const styles = StyleSheet.create({

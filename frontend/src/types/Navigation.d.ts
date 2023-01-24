@@ -1,5 +1,7 @@
 import { RouteProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { Player } from './Player';
+import { Team } from './Team';
 
 // Onboarding Navigator
 export type OnboardingNavigatorParamList = {
@@ -36,10 +38,23 @@ export type StatsNavigatorParamList = {
 export type StatsNavigationProp =
     NativeStackNavigationProp<StatsNavigatorParamList>;
 
-export type TeamsNavigatorParamList = {
+// Roster Screens Navigator
+export type RosterNavigatorParamList = {
     Dashboard: undefined;
+    Players: { team: Team };
     Selection: undefined;
+    Player: { player: Player };
 };
 
-export type TeamNavigationProp =
-    NativeStackNavigationProp<TeamsNavigatorParamList>;
+export type RosterNavigationProp =
+    NativeStackNavigationProp<RosterNavigatorParamList>;
+
+export type PlayersScreenRouteProp = RouteProp<
+    RosterNavigatorParamList,
+    'Players'
+>;
+
+export type PlayerScreenRouteProp = RouteProp<
+    RosterNavigatorParamList,
+    'Player'
+>;
