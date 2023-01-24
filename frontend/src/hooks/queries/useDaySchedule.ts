@@ -1,6 +1,6 @@
 import { DEVELOPMENT_API } from '@constants/urls';
 import { useQuery } from '@tanstack/react-query';
-import { Game } from './../types/Game';
+import { Game } from '../../types/Game';
 import axios from 'axios';
 import { getMonth, getDate } from 'date-fns';
 

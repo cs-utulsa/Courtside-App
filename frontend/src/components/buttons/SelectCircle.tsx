@@ -3,6 +3,8 @@ import { View, Image, StyleSheet, Pressable } from 'react-native';
 import { ORANGE } from '../../styles/colors';
 
 type SelectCircleProps = {
+    /** Whether or not the button is selected initially */
+    initialState?: boolean;
     /** Whether or not the user can change the state of the button. Defaults to false. */
     disabled?: boolean;
     /** The url of the image that should be displayed */
@@ -25,9 +27,10 @@ export const SelectCircle: FC<SelectCircleProps> = ({
     url,
     size,
     disabled = false,
+    initialState = false,
     onSelectChanged = () => {},
 }) => {
-    const [selected, setSelected] = useState<boolean>(false);
+    const [selected, setSelected] = useState<boolean>(initialState);
 
     /**
      * Derives the size of the containing circle and the margins based on the size of the component

@@ -23,6 +23,7 @@ type AuthContextData = {
     signOut(): Promise<void>;
     updateStats(newStats: string[]): Promise<void>;
     updateTeams(newTeams: string[]): Promise<void>;
+    clearData: () => Promise<void>;
 };
 
 type AuthData = {
@@ -174,24 +175,27 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     const updateStats = useCallback(
         async (newStats: string[]) => {
             try {
-                const response = await axios.patch(
-                    `${DEVELOPMENT_API}/users/leaderboards`,
-                    {
-                        email: authData?.email,
-                        stats: newStats,
-                    },
-                    {
-                        headers: {
-                            Authorization: `Bearer ${authData?.token}`,
+                const data = await axios
+                    .patch(
+                        `${DEVELOPMENT_API}/users/leaderboards`,
+                        {
+                            email: authData?.email,
+                            stats: newStats,
                         },
-                    }
-                );
-                const _stats = response.data;
+                        {
+                            headers: {
+                                Authorization: `Bearer ${authData?.token}`,
+                            },
+                        }
+                    )
+                    .then((res) => res.data);
+
                 await SecureStore.setItemAsync(
                     'authData',
-                    JSON.stringify({ ...authData, stats: _stats })
+                    JSON.stringify({ ...authData, stats: data })
                 );
-                setAuthData({ ...authData!, stats: _stats });
+
+                setAuthData({ ...authData!, stats: data });
             } catch (err) {
                 console.log(err);
                 if (axios.isAxiosError(err)) {
@@ -204,9 +208,64 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         [authData]
     );
 
-    const updateTeams = useCallback(async (newTeams: string[]) => {
-        console.log(newTeams);
-    }, []);
+    const updateTeams = useCallback(
+        async (newTeams: string[]) => {
+            try {
+                const data = await axios
+                    .patch(
+                        `${DEVELOPMENT_API}/users/teams`,
+                        {
+                            email: authData?.email,
+                            teams: newTeams,
+                        },
+                        {
+                            headers: {
+                                Authorization: `Bearer ${authData?.token}`,
+                            },
+                        }
+                    )
+                    .then((res) => res.data);
+
+                await SecureStore.setItemAsync(
+                    'authData',
+                    JSON.stringify({ ...authData, teams: data })
+                );
+
+                setAuthData({ ...authData!, teams: data });
+            } catch (err) {
+                if (axios.isAxiosError(err)) {
+                    setAuthError(err.response?.data);
+                } else {
+                    setAuthError('Unknown Error Occurred. Try Again Later.');
+                }
+            }
+        },
+        [authData]
+    );
+
+    const clearData = useCallback(async () => {
+        try {
+            await axios.post(`${DEVELOPMENT_API}/users/clear`, {
+                headers: {
+                    Authorization: `Bearer ${authData?.token}`,
+                },
+                body: {
+                    email: authData?.email,
+                },
+            });
+
+            await SecureStore.setItemAsync(
+                'authData',
+                JSON.stringify({ ...authData, teams: [], stats: [] })
+            );
+        } catch (err) {
+            if (axios.isAxiosError(err)) {
+                setAuthError(err.response?.data);
+            } else {
+                setAuthError('Unknown Error Occurred. Try Again Later.');
+            }
+        }
+    }, [authData]);
 
     const contextData: AuthContextData = useMemo(() => {
         return {
@@ -218,6 +277,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             signOut,
             updateStats,
             updateTeams,
+            clearData,
         };
     }, [
         authData,
@@ -228,6 +288,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         signOut,
         updateStats,
         updateTeams,
+        clearData,
     ]);
 
     return (
