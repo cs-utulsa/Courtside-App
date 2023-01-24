@@ -1,7 +1,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { FavoritePlayers, FavoriteTeams, StatSelection } from './../pages';
+import { FavoritePlayers, StatSelection } from './../pages';
 import { OnboardingNavigatorParamList } from './../types/Navigation';
 
 const OnboardingStack =
@@ -16,10 +16,6 @@ export const OnboardingNavigator = () => {
                 animation: 'slide_from_right',
             }}
         >
-            <OnboardingStack.Screen
-                name="FavoriteTeams"
-                component={FavoriteTeams}
-            />
             <OnboardingStack.Screen
                 name="FavoritePlayers"
                 component={FavoritePlayers}

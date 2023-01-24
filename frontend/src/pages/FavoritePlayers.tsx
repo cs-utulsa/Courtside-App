@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
-import { RightButton, LeftButton } from '@components/buttons';
-import { Seperator } from '@components/misc/Seperator';
+import { RightButton, LeftButton, Seperator } from '@components/index';
 import { useNavigation } from '@react-navigation/native';
 import { OnboardingNavigationProp } from '../types/Navigation';
 

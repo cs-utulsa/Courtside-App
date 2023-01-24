@@ -3,8 +3,7 @@ import React, { useState } from 'react';
 import { View, FlatList, StyleSheet } from 'react-native';
 
 //custom components
-import { Seperator } from '@components/misc/Seperator';
-import { DaySchedule } from '@components/data/DaySchedule';
+import { Seperator, DaySchedule } from '@components/index';
 
 export const Schedule = () => {
     const [days, setDays] = useState<number>(7);
