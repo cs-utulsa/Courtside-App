@@ -1,16 +1,28 @@
-import { PrimaryButton } from '@components/index';
+import { ErrorBox, PrimaryButton } from '@components/index';
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { View, StyleSheet, Text, FlatList } from 'react-native';
+import {
+    View,
+    StyleSheet,
+    Text,
+    FlatList,
+    ActivityIndicator,
+} from 'react-native';
 
 import { useAuth } from '@hooks/useAuth';
 import { RosterSection } from '@components/index';
 import { RosterNavigationProp } from './../types/Navigation';
 import { Player } from './../types/Player';
+import { useRefreshOnFocus, useTeams } from '@hooks/index';
 /** This component displays the members of teams that the user is following */
 export const Rosters = () => {
     const { navigate } = useNavigation<RosterNavigationProp>();
     const { authData } = useAuth();
+
+    const { isLoading, isSuccess, isError, refetch } = useTeams(
+        authData?.teams ?? []
+    );
+    useRefreshOnFocus(refetch);
 
     return (
         <View style={styles.container}>
@@ -19,9 +31,12 @@ export const Rosters = () => {
                 onPress={() => navigate('Selection')}
             />
             <Text style={styles.text}>Teams</Text>
-            {authData?.teams?.map((team) => {
-                return <Text key={team}>{team}</Text>;
-            })}
+            {isLoading && <ActivityIndicator />}
+            {isError && <ErrorBox error="Error" />}
+            {isSuccess &&
+                authData?.teams?.map((team) => {
+                    return <Text key={team}>{team}</Text>;
+                })}
             <FlatList
                 data={roster}
                 // contentContainerStyle={{alignSelf: 'flex-start'}}

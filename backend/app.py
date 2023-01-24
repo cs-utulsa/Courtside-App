@@ -80,8 +80,8 @@ def get_all_teams():
 # return one team
 @app.route('/team/<id>', methods=['GET'])
 def get_team(id):
-    team = db.teams.find_one({ '_id': id }, { '_id': 1, 'name': 1, "abbr": 1})
-
+    team = db.teams.find_one({ '_id': int(id) }, { '_id': 1, 'name': 1, "abbr": 1})
+    
     team["id"] = str(team["_id"])
     del team["_id"]
 
