@@ -43,9 +43,15 @@ export const PlayerSection: FC<PlayerSectionProps> = ({ player }) => {
                 activeOpacity={0.5}
                 onPress={navigateToSelectionScreen}
             >
-                <CircleImage url={player.headshot} size={tile} />
+                <CircleImage
+                    url={player.headshot}
+                    size={tile}
+                    imageRatio={0.9}
+                />
             </TouchableOpacity>
-            <Text style={styles.text}>{player.name}</Text>
+            <View style={styles.textContainer}>
+                <Text style={styles.text}>{player.name}</Text>
+            </View>
         </View>
     );
 };
@@ -58,8 +64,11 @@ const styles = StyleSheet.create({
         margin: 10,
     },
     text: {
-        fontSize: 25,
+        fontSize: 16,
         textAlign: 'center',
         margin: 5,
+    },
+    textContainer: {
+        height: 50,
     },
 });

@@ -9,11 +9,22 @@ import {
 } from 'react-native';
 
 type CircleImageProps = {
+    /** Url of the image to display */
     url?: string;
+    /** Size of the component in pixels */
     size: number;
+    /** How big the image should be compared to the container; value should be between 0 and 1 */
+    imageRatio?: number;
 };
 
-export const CircleImage: FC<CircleImageProps> = ({ url, size }) => {
+/**
+ * A circular image with a border around it
+ */
+export const CircleImage: FC<CircleImageProps> = ({
+    url,
+    size,
+    imageRatio = 0.6,
+}) => {
     const circleSize: StyleProp<ViewStyle> = {
         height: size - 6,
         width: size - 6,
@@ -22,8 +33,8 @@ export const CircleImage: FC<CircleImageProps> = ({ url, size }) => {
     };
 
     const imgSize: StyleProp<ImageStyle> = {
-        height: size * 0.6,
-        width: size * 0.6,
+        height: size * imageRatio,
+        width: size * imageRatio,
     };
 
     return (
@@ -40,9 +51,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: 'white',
+        overflow: 'hidden',
     },
     image: {
-        resizeMode: 'contain',
+        resizeMode: 'cover',
         width: 55,
         height: 55,
     },
