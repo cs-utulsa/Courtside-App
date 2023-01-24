@@ -11,10 +11,10 @@ import {
 
 import { useAuth } from '@hooks/useAuth';
 import { RosterSection } from '@components/index';
-import { RosterNavigationProp } from './../types/Navigation';
+import { RosterNavigationProp } from '../types/Navigation';
 import { useRefreshOnFocus, useTeams } from '@hooks/index';
 /** This component displays the members of teams that the user is following */
-export const Rosters = () => {
+export const RostersScreen = () => {
     const { navigate } = useNavigation<RosterNavigationProp>();
     const { authData } = useAuth();
 

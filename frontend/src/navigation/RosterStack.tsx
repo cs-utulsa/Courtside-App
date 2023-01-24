@@ -1,7 +1,12 @@
 import React from 'react';
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { TeamSelection, Rosters, Player, TeamPlayers } from '../pages/index';
+import {
+    TeamSelectionScreen,
+    RostersScreen,
+    PlayerScreen,
+    TeamScreen,
+} from '../pages/index';
 import { RosterNavigatorParamList } from './../types/Navigation';
 const Stack = createNativeStackNavigator<RosterNavigatorParamList>();
 
@@ -11,10 +16,10 @@ export const RosterStack = () => {
             initialRouteName="Dashboard"
             screenOptions={{ headerShown: false }}
         >
-            <Stack.Screen name="Dashboard" component={Rosters} />
-            <Stack.Screen name="Selection" component={TeamSelection} />
-            <Stack.Screen name="Players" component={TeamPlayers} />
-            <Stack.Screen name="Player" component={Player} />
+            <Stack.Screen name="Dashboard" component={RostersScreen} />
+            <Stack.Screen name="Selection" component={TeamSelectionScreen} />
+            <Stack.Screen name="Players" component={TeamScreen} />
+            <Stack.Screen name="Player" component={PlayerScreen} />
         </Stack.Navigator>
     );
 };

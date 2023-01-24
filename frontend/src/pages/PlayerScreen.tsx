@@ -1,9 +1,9 @@
-import { PlayerScreenRouteProp } from './../types/Navigation';
+import { PlayerScreenRouteProp } from '../types/Navigation';
 import React from 'react';
 import { useRoute } from '@react-navigation/native';
 import { View, Text, StyleSheet } from 'react-native';
 
-export const Player = () => {
+export const PlayerScreen = () => {
     const route = useRoute<PlayerScreenRouteProp>(); //got the string a to send... still lots of errors
 
     return (

@@ -18,17 +18,17 @@ import {
 
 // constants
 import { useNavigation } from '@react-navigation/native';
-import { RosterNavigationProp } from './../types/Navigation';
+import { RosterNavigationProp } from '../types/Navigation';
 import { useAuth } from '@hooks/useAuth';
 import { useAllTeams } from '@hooks/index';
-import { LimitedTeam } from './../types/Team';
+import { LimitedTeam } from '../types/Team';
 
 const screenWidth = Dimensions.get('window').width - 20;
 const numColumns = 3;
 const tile = screenWidth / numColumns;
 
 /** This component lets the user choose what teams they want to follow */
-export const TeamSelection = () => {
+export const TeamSelectionScreen = () => {
     const { navigate } = useNavigation<RosterNavigationProp>();
 
     const { authData, updateTeams } = useAuth();
