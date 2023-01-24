@@ -1,4 +1,3 @@
-import { ICONS } from '@constants/icons';
 import { DEVELOPMENT_API } from '@constants/urls';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
@@ -16,11 +15,7 @@ export const useTeams = (teams: string[]) => {
                     .get(`${DEVELOPMENT_API}/team/${team}`)
                     .then((res) => res.data);
 
-                const icon = ICONS.find(
-                    (item) => item.code === data.abbr
-                )?.logo;
-
-                _teamData.push({ ...data, icon });
+                _teamData.push(data);
             }
 
             return _teamData;
