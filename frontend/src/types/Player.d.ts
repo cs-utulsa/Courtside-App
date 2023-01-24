@@ -1,12 +1,4 @@
 export type Player = {
-    fname: string;
-    lname: string;
-    uri: string;
-    stats: string[];
-    //   playerimage: String;
-};
-
-export type FullPlayer = {
     id: string;
     name: string;
     age: string;

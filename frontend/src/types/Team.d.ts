@@ -1,4 +1,4 @@
-import { FullPlayer } from './Player';
+import { Player } from './Player';
 
 type LimitedTeam = {
     id: string;
@@ -13,8 +13,8 @@ type Team = {
     name: string;
     short: string;
     city: string;
-    icon?: string;
-    players: FullPlayer[];
+    icon: string;
+    players: Player[];
 };
 
 export { LimitedTeam, Team };

@@ -18,7 +18,7 @@ type RosterSectionProps = {
 export const RosterSection: FC<RosterSectionProps> = ({ team }) => {
     const { push } = useNavigation<RosterNavigationProp>();
     function navigateToSelectionScreen() {
-        push('Players', { p: team.players, u: team.icon, n: team.name });
+        push('Players', { team });
     }
 
     const screenWidth = Dimensions.get('window').width - 20;

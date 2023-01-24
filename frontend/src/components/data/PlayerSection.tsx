@@ -8,17 +8,17 @@ import {
     StyleSheet,
     Dimensions,
 } from 'react-native';
-import { FullPlayer } from './../../types/Player';
+import { Player } from './../../types/Player';
 import { CircleImage } from '@components/index';
 
 type PlayerSectionProps = {
-    player: FullPlayer;
+    player: Player;
 };
 
 export const PlayerSection: FC<PlayerSectionProps> = ({ player }) => {
     const { push } = useNavigation<RosterNavigationProp>();
     function navigateToSelectionScreen() {
-        push('Player', { fn: player.name, s: [], u: player.headshot });
+        push('Player', { player });
     }
     /*
     

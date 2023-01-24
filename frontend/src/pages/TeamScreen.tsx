@@ -3,24 +3,23 @@ import { useRoute } from '@react-navigation/native';
 import { PlayersScreenRouteProp } from '../types/Navigation';
 import { View, FlatList, StyleSheet, Text } from 'react-native';
 import React from 'react';
-import { FullPlayer } from '../types/Player';
 
 export const TeamScreen = () => {
     const route = useRoute<PlayersScreenRouteProp>();
-    const players: FullPlayer[] = route.params.p;
+    const team = route.params.team;
 
     return (
         <View>
             <FlatList
-                data={players} //this now has to be passed data
+                data={team.players} //this now has to be passed data
                 numColumns={3} //{Math.ceil(roster.length / 2)}
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
                 renderItem={({ item }) => <PlayerSection player={item} />}
                 ListHeaderComponent={
                     <>
-                        <CircleImage url={route.params.u} size={150} />
-                        <Text style={styles.headerText}>{route.params.n}</Text>
+                        <CircleImage url={team.icon} size={150} />
+                        <Text style={styles.headerText}>{team.name}</Text>
                     </>
                 }
                 ListHeaderComponentStyle={styles.headerContainer}

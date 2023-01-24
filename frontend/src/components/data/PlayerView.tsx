@@ -1,9 +1,9 @@
-import { FullPlayer } from './../../types/Player';
+import { Player } from './../../types/Player';
 import React, { FC } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 type PlayerViewProps = {
-    player: FullPlayer;
+    player: Player;
 };
 
 export const PlayerView: FC<PlayerViewProps> = ({ player }) => {
