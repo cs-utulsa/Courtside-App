@@ -2,6 +2,7 @@
 import { StyleSheet, ScrollView, ActivityIndicator } from 'react-native';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { useTourGuideController } from 'rn-tourguide';
 
 //custom hooks
 import { useAuth, useRefreshOnFocus, useStats } from '@hooks/index';
@@ -11,7 +12,12 @@ import { StatsNavigationProp } from './../types/Navigation';
 import { Stat } from './../types/Stat';
 
 // custom components
-import { StatLeaderboard, PrimaryButton, FullError } from '@components/index';
+import {
+    StatLeaderboard,
+    PrimaryButton,
+    FullError,
+    StartTourModal,
+} from '@components/index';
 
 // constants
 import { ORANGE } from '@styles/colors';
@@ -29,16 +35,18 @@ export const StatDashboard = () => {
     // refetch the data when user returns to screen (stale data is still displayed during refetch)
     useRefreshOnFocus(refetch);
 
-    if (isError) {
-        return <FullError text="Cannot load stat data. Try again later." />;
-    }
-
     // navigates to the stat selection screen, i.e., pushes the Selection screen onto the navigation stack
     function navigateToSelectionScreen() {
         push('Selection');
     }
 
     const isFetchingData = isLoading || isRefetching;
+
+    const { start } = useTourGuideController();
+
+    if (isError) {
+        return <FullError text="Cannot load stat data. Try again later." />;
+    }
 
     return (
         <ScrollView contentContainerStyle={styles.pageContainer}>
@@ -61,6 +69,10 @@ export const StatDashboard = () => {
                         />
                     );
                 })}
+
+            {isSuccess && !authData?.tutorial && (
+                <StartTourModal onStart={start} />
+            )}
 
             {/* if data is being fetched from the server, display a loading indicator */}
             {isFetchingData && <ActivityIndicator color="black" size="large" />}

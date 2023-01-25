@@ -39,5 +39,4 @@ export { Seperator } from './misc/Seperator';
 export { SmallLink } from './navigation/SmallLink';
 
 // Tour
-export { TourTooltip } from './tour/TourTooltip';
-export { TourButton } from './tour/TourButton';
+export { StartTourModal } from './tour/StartTourModal';
