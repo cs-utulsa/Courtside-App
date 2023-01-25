@@ -41,7 +41,7 @@ export type StatsNavigationProp =
 // Roster Screens Navigator
 export type RosterNavigatorParamList = {
     Dashboard: undefined;
-    Players: { team: Team };
+    Team: { team: Team };
     Selection: undefined;
     Player: { player: Player };
 };
@@ -49,10 +49,7 @@ export type RosterNavigatorParamList = {
 export type RosterNavigationProp =
     NativeStackNavigationProp<RosterNavigatorParamList>;
 
-export type PlayersScreenRouteProp = RouteProp<
-    RosterNavigatorParamList,
-    'Players'
->;
+export type TeamScreenRouteProp = RouteProp<RosterNavigatorParamList, 'Team'>;
 
 export type PlayerScreenRouteProp = RouteProp<
     RosterNavigatorParamList,

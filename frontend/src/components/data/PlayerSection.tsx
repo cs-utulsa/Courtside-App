@@ -17,7 +17,8 @@ type PlayerSectionProps = {
 
 export const PlayerSection: FC<PlayerSectionProps> = ({ player }) => {
     const { push } = useNavigation<RosterNavigationProp>();
-    function navigateToSelectionScreen() {
+
+    function navigateToPlayerScreen() {
         push('Player', { player });
     }
     /*
@@ -41,7 +42,7 @@ export const PlayerSection: FC<PlayerSectionProps> = ({ player }) => {
         <View style={styles.container}>
             <TouchableOpacity
                 activeOpacity={0.5}
-                onPress={navigateToSelectionScreen}
+                onPress={navigateToPlayerScreen}
             >
                 <CircleImage
                     url={player.headshot}
