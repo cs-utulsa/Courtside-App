@@ -25,7 +25,7 @@ export const TourContext = createContext<TourContextData>(
 export const TourProvider: FC<TourProviderProps> = ({ children }) => {
     const { authData } = useAuth();
     const [tourActive, setTourActive] = useState<boolean>(false);
-    const [step, setStep] = useState<number | undefined>(undefined);
+    const [step, setStep] = useState<number | undefined>(1);
 
     const start = useCallback(() => {
         if (authData && !authData.tutorial) {

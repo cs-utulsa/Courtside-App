@@ -1,6 +1,7 @@
 import { useTour } from '@hooks/useTour';
 import React, { FC, ReactNode } from 'react';
 import { StyleSheet, View } from 'react-native';
+import { FullOverlay } from './FullOverlay';
 
 type TourZoneProps = {
     children: ReactNode;
@@ -14,9 +15,16 @@ export const TourZone: FC<TourZoneProps> = ({ children, tourStep }) => {
         return <>{children}</>;
     }
 
-    return <View style={styles.container}>{children}</View>;
+    return (
+        <View style={styles.container}>
+            {children}
+            <FullOverlay />
+        </View>
+    );
 };
 
 const styles = StyleSheet.create({
-    container: {},
+    container: {
+        width: '100%',
+    },
 });

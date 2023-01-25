@@ -1,4 +1,5 @@
-import { DangerButton } from '@components/index';
+import { DangerButton, PrimaryButton } from '@components/index';
+import { TourZone } from '@components/tour/TourZone';
 import { useAuth } from '@hooks/index';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
@@ -11,6 +12,12 @@ export const Settings = () => {
 
     return (
         <View style={styles.pageContainer}>
+            <TourZone tourStep={1}>
+                <PrimaryButton
+                    text="Button Text"
+                    onPress={() => console.log('press')}
+                />
+            </TourZone>
             <DangerButton text="Clear Data" onPress={clearData} />
             <DangerButton text="Log Out" onPress={signOut} />
         </View>

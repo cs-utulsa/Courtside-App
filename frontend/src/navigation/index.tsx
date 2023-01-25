@@ -32,14 +32,16 @@ const RootNavigator = () => {
 
     if (authData?.token) {
         return (
-            <NavigationContainer
-                theme={Theme}
-                ref={ref}
-                onReady={handleNavReady}
-                onStateChange={handleNavStateChange}
-            >
-                <MainNavigation routeName={routeName} />
-            </NavigationContainer>
+            <>
+                <NavigationContainer
+                    theme={Theme}
+                    ref={ref}
+                    onReady={handleNavReady}
+                    onStateChange={handleNavStateChange}
+                >
+                    <MainNavigation routeName={routeName} />
+                </NavigationContainer>
+            </>
         );
     }
 
