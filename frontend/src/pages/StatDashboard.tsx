@@ -2,7 +2,6 @@
 import { StyleSheet, ScrollView, ActivityIndicator } from 'react-native';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { useTourGuideController } from 'rn-tourguide';
 
 //custom hooks
 import { useAuth, useRefreshOnFocus, useStats } from '@hooks/index';
@@ -42,8 +41,6 @@ export const StatDashboard = () => {
 
     const isFetchingData = isLoading || isRefetching;
 
-    const { start } = useTourGuideController();
-
     if (isError) {
         return <FullError text="Cannot load stat data. Try again later." />;
     }
@@ -70,9 +67,7 @@ export const StatDashboard = () => {
                     );
                 })}
 
-            {isSuccess && !authData?.tutorial && (
-                <StartTourModal onStart={start} />
-            )}
+            {isSuccess && !authData?.tutorial && <StartTourModal />}
 
             {/* if data is being fetched from the server, display a loading indicator */}
             {isFetchingData && <ActivityIndicator color="black" size="large" />}

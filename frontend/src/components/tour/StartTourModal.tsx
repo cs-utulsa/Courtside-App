@@ -1,17 +1,23 @@
-import React, { FC } from 'react';
+import React, { useState } from 'react';
 import { Modal, View, Text, Pressable, StyleSheet } from 'react-native';
 
-type StartTourModalProps = {
-    onStart: () => void;
-};
+export const StartTourModal = () => {
+    const [visible] = useState<boolean>(true);
 
-export const StartTourModal: FC<StartTourModalProps> = ({ onStart }) => {
     return (
-        <Modal animationType="slide" transparent={true} style={styles.modal}>
+        <Modal
+            animationType="slide"
+            transparent={true}
+            style={styles.modal}
+            visible={visible}
+        >
             <View style={styles.container}>
                 <View style={styles.modalContent}>
                     <Text>Welcome to Courtside!</Text>
-                    <Pressable onPress={onStart}>
+                    <Pressable
+                        onPress={() => console.log('start')}
+                        style={styles.startBtn}
+                    >
                         <Text>Begin Tour</Text>
                     </Pressable>
                 </View>
@@ -40,5 +46,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: 'white',
         borderRadius: 20,
+    },
+    startBtn: {
+        borderWidth: 3,
+        borderColor: 'black',
+        padding: 2,
     },
 });

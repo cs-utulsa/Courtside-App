@@ -1,4 +1,5 @@
 export { useAuth } from './useAuth';
+export { useTour } from './useTour';
 export { useDaySchedule } from './queries/useDaySchedule';
 export { useRefreshOnFocus } from './useRefreshOnFocus';
 export { useStats } from './queries/useStats';

@@ -10,7 +10,7 @@ import { registerRootComponent } from 'expo';
 import { AuthProvider } from '@contexts/AuthContext';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { TourGuideProvider } from 'rn-tourguide';
+import { TourProvider } from '@contexts/TourContext';
 
 function cacheImages(images: string[]) {
     return images.map((image: string) => {
@@ -60,9 +60,9 @@ export default function App() {
         <>
             <QueryClientProvider client={queryClient}>
                 <AuthProvider>
-                    <TourGuideProvider>
+                    <TourProvider>
                         <RootNavigator />
-                    </TourGuideProvider>
+                    </TourProvider>
                 </AuthProvider>
             </QueryClientProvider>
             <StatusBar style="auto" />
