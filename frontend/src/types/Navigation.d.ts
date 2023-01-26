@@ -55,3 +55,14 @@ export type PlayerScreenRouteProp = RouteProp<
     RosterNavigatorParamList,
     'Player'
 >;
+
+// Schedule
+export type ScheduleNavigatorParamList = {
+    Schedule: undefined;
+    Game: { game: Game };
+};
+
+export type ScheduleNavigationProp =
+    NativeStackNavigationProp<ScheduleNavigatorParamList>;
+
+export type GameScreenRouteProp = RouteProp<ScheduleNavigatorParamList, 'Game'>;

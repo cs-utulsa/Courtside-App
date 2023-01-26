@@ -9,3 +9,4 @@ export { SignIn } from './SignIn';
 export { SignUp } from './SignUp';
 export { PlayerScreen } from './PlayerScreen';
 export { TeamScreen } from './TeamScreen';
+export { GameScreen } from './GameScreen';
