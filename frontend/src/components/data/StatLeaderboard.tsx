@@ -1,6 +1,6 @@
 import { NewStat } from './../../types/Stat';
 import React, { FC } from 'react';
-import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 export type LeaderboardProps = {
     stat: NewStat;
@@ -16,10 +16,12 @@ export type LeaderboardProps = {
  * return <StatLeaderboard _id={_id} name={name} player_id={player_id} value={value} />
  */
 export const StatLeaderboard: FC<LeaderboardProps> = ({ stat }) => {
+    const topFivePlayers = stat.total.players.slice(0, 5);
+
     return (
         <View style={styles.leaderboardBlock}>
             <View style={styles.titleBlock}>
-                <Text style={styles.statTitle}>{name ? name : _id}</Text>
+                <Text style={styles.statTitle}>{stat.name}</Text>
             </View>
             <View style={styles.statHeader}>
                 <Text>Rank</Text>
@@ -27,21 +29,13 @@ export const StatLeaderboard: FC<LeaderboardProps> = ({ stat }) => {
                 <Text>Value</Text>
             </View>
             <View style={styles.leaderboardList}>
-                <View style={styles.statCol}>
-                    {player_id.map((item: any, index: number) => (
-                        <Text key={`rank-${index}-${item}`}>{index + 1}</Text>
-                    ))}
-                </View>
-                <View style={styles.statCol}>
-                    {player_id.map((id: any, index) => (
-                        <Text key={`id-${index}-${id}`}>{id}</Text>
-                    ))}
-                </View>
-                <View style={styles.statCol}>
-                    {value.map((valueNum: any, index) => (
-                        <Text key={`val-${index}-${valueNum}`}>{valueNum}</Text>
-                    ))}
-                </View>
+                {topFivePlayers.map((player, index) => (
+                    <View style={styles.statRow}>
+                        <Text>{index}</Text>
+                        <Text>{player.name}</Text>
+                        <Text>{player.value}</Text>
+                    </View>
+                ))}
             </View>
         </View>
     );
@@ -81,5 +75,9 @@ const styles = StyleSheet.create({
     /** Styles for the columns that display player names and the stat values of the players */
     statCol: {
         flexDirection: 'column',
+    },
+    statRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
     },
 });
