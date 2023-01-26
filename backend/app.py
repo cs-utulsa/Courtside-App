@@ -80,7 +80,7 @@ def get_all_leaderboards(stat):
                 'per_mode': 1,
                 'name': 1,
             }
-        }
+        }, { '$sort': { 'id': 1 }}
     ])
 
     leaderboards = list(leaderboard_cursor)
@@ -91,7 +91,9 @@ def get_all_leaderboards(stat):
     leaderboards_json = {
         'id': stat,
         'name': name,
-        'modes': leaderboards
+        'per48': leaderboards[0],
+        'perGame': leaderboards[1],
+        'total': leaderboards[2]
     }
 
     return json.dumps(leaderboards_json)

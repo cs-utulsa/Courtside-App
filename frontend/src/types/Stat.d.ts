@@ -19,7 +19,9 @@ type PerMode = 'Per48' | 'PerGame' | 'Totals';
 type NewStat = {
     id: string;
     name: string;
-    modes: StatPerMode[];
+    per48: StatPerMode;
+    perGame: StatPerMode;
+    total: StatPerMode;
 };
 
 type LimitedStat = {

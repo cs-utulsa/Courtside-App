@@ -1,15 +1,9 @@
-import React, { FC, useState } from 'react';
+import { NewStat } from './../../types/Stat';
+import React, { FC } from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 
 export type LeaderboardProps = {
-    /** The id of the stat being displayed */
-    _id: string;
-    /** The name of the stat being displayed. If this is not given, the id will be shown in the component instead. */
-    name?: string;
-    /** Array of top ranking players for this stat */
-    player_id: string[];
-    /** Array of the scores of the top ranking players for this stat */
-    value: number[];
+    stat: NewStat;
 };
 
 /**
@@ -21,47 +15,17 @@ export type LeaderboardProps = {
  * const value = [5, 3, 1]; //5 is the stat value for Player 1, 3 for Player 2, etc.
  * return <StatLeaderboard _id={_id} name={name} player_id={player_id} value={value} />
  */
-export const StatLeaderboard: FC<LeaderboardProps> = ({
-    _id,
-    player_id,
-    value,
-    name,
-}) => {
-    const [open, setOpen] = useState<boolean>(false);
-
-    if (!open) {
-        return (
-            <Pressable
-                onPress={() => setOpen(true)}
-                style={styles.leaderboardBlock}
-            >
-                <View style={styles.titleBlock}>
-                    <Text style={styles.statTitle}>{name ? name : _id}</Text>
-                </View>
-                <View style={styles.leaderboardList}>
-                    <View style={styles.statCol}>
-                        <Text>{player_id[0]}</Text>
-                    </View>
-                    <View style={styles.statCol}>
-                        <Text>{value[0]}</Text>
-                    </View>
-                </View>
-            </Pressable>
-        );
-    }
-
+export const StatLeaderboard: FC<LeaderboardProps> = ({ stat }) => {
     return (
         <View style={styles.leaderboardBlock}>
-            <Pressable onPress={() => setOpen(false)}>
-                <View style={styles.titleBlock}>
-                    <Text style={styles.statTitle}>{name ? name : _id}</Text>
-                </View>
-                <View style={styles.statHeader}>
-                    <Text>Rank</Text>
-                    <Text>Player</Text>
-                    <Text>Value</Text>
-                </View>
-            </Pressable>
+            <View style={styles.titleBlock}>
+                <Text style={styles.statTitle}>{name ? name : _id}</Text>
+            </View>
+            <View style={styles.statHeader}>
+                <Text>Rank</Text>
+                <Text>Player</Text>
+                <Text>Value</Text>
+            </View>
             <View style={styles.leaderboardList}>
                 <View style={styles.statCol}>
                     {player_id.map((item: any, index: number) => (
