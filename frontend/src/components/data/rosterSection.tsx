@@ -9,7 +9,7 @@ import {
     Dimensions,
 } from 'react-native';
 import { Team } from '../../types/Team';
-import { CircleImage } from '@components/index';
+import { CircleImage } from '@components/images/CircleImage';
 
 type RosterSectionProps = {
     team: Team;

@@ -9,7 +9,7 @@ import {
     Dimensions,
 } from 'react-native';
 import { Player } from './../../types/Player';
-import { CircleImage } from '@components/index';
+import { CircleImage } from '@components/images/CircleImage';
 
 type PlayerSectionProps = {
     player: Player;
