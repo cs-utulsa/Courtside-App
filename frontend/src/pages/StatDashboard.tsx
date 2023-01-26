@@ -8,7 +8,7 @@ import { useAuth, useRefreshOnFocus, useStats } from '@hooks/index';
 
 // types
 import { StatsNavigationProp } from './../types/Navigation';
-import { NewStat } from './../types/Stat';
+import { Stat } from './../types/Stat';
 
 // custom components
 import {
@@ -55,7 +55,7 @@ export const StatDashboard = () => {
 
             {/* if data was fetched successfully, create a leaderboard for each stat */}
             {isSuccess &&
-                data.map((stat: NewStat) => {
+                data.map((stat: Stat) => {
                     return <StatLeaderboard key={stat.id} stat={stat} />;
                 })}
 

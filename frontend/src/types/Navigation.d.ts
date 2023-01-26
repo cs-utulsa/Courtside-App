@@ -1,7 +1,7 @@
 import { RouteProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Player } from './Player';
-import { NewStat } from './Stat';
+import { Stat } from './Stat';
 import { Team } from './Team';
 
 // Onboarding Navigator
@@ -34,7 +34,7 @@ export type AuthNavigationProp =
 export type StatsNavigatorParamList = {
     Dashboard: undefined;
     Selection: undefined;
-    Stat: { stat: NewStat };
+    Stat: { stat: Stat };
 };
 
 export type StatsNavigationProp =

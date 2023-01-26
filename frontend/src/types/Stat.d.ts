@@ -1,11 +1,3 @@
-type Stat = {
-    _id: string;
-    player_id: string[];
-    player_names: string[];
-    value: number[];
-    name: string;
-};
-
 type StatPerMode = {
     _id: string;
     players: { id: number; name: string; headshot: string; value: number }[];
@@ -15,7 +7,7 @@ type StatPerMode = {
 type PerModeId = 'tot' | 'pg' | 'p48' | 'all';
 type PerMode = 'Per48' | 'PerGame' | 'Totals';
 
-type NewStat = {
+type Stat = {
     id: string;
     name: string;
     per48: StatPerMode;
@@ -28,4 +20,4 @@ type LimitedStat = {
     name: string;
 };
 
-export { Stat, PerMode, StatPerMode, PerModeId, NewStat, LimitedStat };
+export { PerMode, StatPerMode, PerModeId, Stat, LimitedStat };

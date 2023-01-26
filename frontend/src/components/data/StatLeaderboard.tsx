@@ -1,11 +1,11 @@
-import { NewStat } from './../../types/Stat';
+import { Stat } from './../../types/Stat';
 import React, { FC } from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StatsNavigationProp } from './../../types/Navigation';
 
 export type LeaderboardProps = {
-    stat: NewStat;
+    stat: Stat;
 };
 
 /**
