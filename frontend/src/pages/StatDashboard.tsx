@@ -11,7 +11,12 @@ import { StatsNavigationProp } from './../types/Navigation';
 import { NewStat } from './../types/Stat';
 
 // custom components
-import { StatLeaderboard, PrimaryButton, FullError } from '@components/index';
+import {
+    StatLeaderboard,
+    PrimaryButton,
+    FullError,
+    Seperator,
+} from '@components/index';
 
 // constants
 import { ORANGE } from '@styles/colors';
@@ -56,6 +61,8 @@ export const StatDashboard = () => {
 
             {/* if data is being fetched from the server, display a loading indicator */}
             {isFetchingData && <ActivityIndicator color="black" size="large" />}
+            <Seperator />
+            <Seperator />
         </ScrollView>
     );
 };

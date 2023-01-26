@@ -1,6 +1,7 @@
 import { RouteProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Player } from './Player';
+import { NewStat } from './Stat';
 import { Team } from './Team';
 
 // Onboarding Navigator
@@ -33,11 +34,13 @@ export type AuthNavigationProp =
 export type StatsNavigatorParamList = {
     Dashboard: undefined;
     Selection: undefined;
-    Stat: undefined;
+    Stat: { stat: NewStat };
 };
 
 export type StatsNavigationProp =
     NativeStackNavigationProp<StatsNavigatorParamList>;
+
+export type StatScreenRouteProp = RouteProp<StatsNavigatorParamList, 'Stat'>;
 
 // Roster Screens Navigator
 export type RosterNavigatorParamList = {

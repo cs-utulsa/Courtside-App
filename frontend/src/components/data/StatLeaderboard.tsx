@@ -1,6 +1,8 @@
 import { NewStat } from './../../types/Stat';
 import React, { FC } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { StatsNavigationProp } from './../../types/Navigation';
 
 export type LeaderboardProps = {
     stat: NewStat;
@@ -18,8 +20,13 @@ export type LeaderboardProps = {
 export const StatLeaderboard: FC<LeaderboardProps> = ({ stat }) => {
     const topFivePlayers = stat.total.players.slice(0, 5);
 
+    const { push } = useNavigation<StatsNavigationProp>();
+
     return (
-        <View style={styles.leaderboardBlock}>
+        <Pressable
+            style={styles.leaderboardBlock}
+            onPress={() => push('Stat', { stat })}
+        >
             <View style={styles.titleBlock}>
                 <Text style={styles.statTitle}>{stat.name}</Text>
             </View>
@@ -37,7 +44,7 @@ export const StatLeaderboard: FC<LeaderboardProps> = ({ stat }) => {
                     </View>
                 ))}
             </View>
-        </View>
+        </Pressable>
     );
 };
 
