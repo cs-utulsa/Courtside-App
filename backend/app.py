@@ -47,6 +47,55 @@ def get_leaderboard(stat, per_mode):
 
     return json.dumps(leaderboard)
 
+@app.route('/leaderboard/<stat>', methods=['GET'])
+def get_all_leaderboards(stat):
+    leaderboard_cursor = db.leaderboards.aggregate([
+        {
+            '$match': { '$or': [
+                {'_id': f'{stat}_tot'},
+                {'_id': f'{stat}_p48'},
+                {'_id': f'{stat}_pg' }
+            ]}
+        }, {
+            '$lookup': {
+                'from': 'players', 
+                'localField': 'player_id', 
+                'foreignField': '_id', 
+                'as': 'players',
+                'pipeline': [
+                    { '$project': {
+                        'id': '$_id',
+                        '_id': 0,
+                        'name': 1,
+                        'headshot': 1,
+                    }}
+                ]
+            }
+        }, {
+            '$project': {
+                'id': '$_id',
+                '_id': 0, 
+                'value': 1, 
+                'players': 1,
+                'per_mode': 1,
+                'name': 1,
+            }
+        }
+    ])
+
+    leaderboards = list(leaderboard_cursor)
+    name = leaderboards[0]['name']
+    for leaderboard in leaderboards:
+        del leaderboard['name']
+
+    leaderboards_json = {
+        'id': stat,
+        'name': name,
+        'modes': leaderboards
+    }
+
+    return json.dumps(leaderboards_json)
+
 # Return schedule for a requested day
 @app.route('/schedule/<int:month>/<int:day>', methods=['GET'])
 def get_schedule(month, day):

@@ -8,16 +8,16 @@ type Stat = {
 
 type StatPerMode = {
     _id: string;
-    player_id: string[];
+    players: { id: number; name: string; headshot: string };
     value: number[];
-    per_mode: PerMode;
+    perMode: PerMode;
 };
 
 type PerModeId = 'tot' | 'pg' | 'p48' | 'all';
 type PerMode = 'Per48' | 'PerGame' | 'Totals';
 
 type NewStat = {
-    _id: string;
+    id: string;
     name: string;
     modes: StatPerMode[];
 };
