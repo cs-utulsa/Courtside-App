@@ -33,6 +33,7 @@ export type AuthNavigationProp =
 export type StatsNavigatorParamList = {
     Dashboard: undefined;
     Selection: undefined;
+    Stat: undefined;
 };
 
 export type StatsNavigationProp =
