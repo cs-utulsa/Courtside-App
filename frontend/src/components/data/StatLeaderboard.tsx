@@ -23,14 +23,14 @@ export const StatLeaderboard: FC<LeaderboardProps> = ({ stat }) => {
             <View style={styles.titleBlock}>
                 <Text style={styles.statTitle}>{stat.name}</Text>
             </View>
-            <View style={styles.statHeader}>
-                <Text>Rank</Text>
-                <Text>Player</Text>
-                <Text>Value</Text>
+            <View style={styles.row}>
+                <Text style={styles.colHeading}>Rank</Text>
+                <Text style={styles.colHeading}>Player</Text>
+                <Text style={styles.colHeading}>Value</Text>
             </View>
-            <View style={styles.leaderboardList}>
+            <View>
                 {topFivePlayers.map((player, index) => (
-                    <View style={styles.statRow}>
+                    <View style={styles.row}>
                         <Text>{index}</Text>
                         <Text>{player.name}</Text>
                         <Text>{player.value}</Text>
@@ -63,21 +63,11 @@ const styles = StyleSheet.create({
         paddingBottom: 5,
     },
     /** Styles for the header which states what each row of the leaderboard is */
-    statHeader: {
+    row: {
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
-    /** Styles for the container of the player data */
-    leaderboardList: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-    },
-    /** Styles for the columns that display player names and the stat values of the players */
-    statCol: {
-        flexDirection: 'column',
-    },
-    statRow: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
+    colHeading: {
+        fontWeight: 'bold',
     },
 });
