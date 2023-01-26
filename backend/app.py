@@ -62,20 +62,32 @@ def get_all_leaderboards(stat):
                 'localField': 'player_id', 
                 'foreignField': '_id', 
                 'as': 'players',
+                'let': { 'player_values': '$value', 'player_ids': '$player_id'},
                 'pipeline': [
                     { '$project': {
                         'id': '$_id',
                         '_id': 0,
                         'name': 1,
                         'headshot': 1,
-                    }}
+                        'value': { 
+                            '$arrayElemAt': [
+                                '$$player_values',
+                                { '$indexOfArray': [
+                                '$$player_ids',
+                                '$_id',
+                                ]}
+                            ]
+                        }
+                    }},
+                    { 
+                        '$sort': { 'value': -1 },
+                    }
                 ]
             }
         }, {
             '$project': {
                 'id': '$_id',
-                '_id': 0, 
-                'value': 1, 
+                '_id': 0,
                 'players': 1,
                 'per_mode': 1,
                 'name': 1,

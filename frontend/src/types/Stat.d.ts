@@ -8,8 +8,7 @@ type Stat = {
 
 type StatPerMode = {
     _id: string;
-    players: { id: number; name: string; headshot: string };
-    value: number[];
+    players: { id: number; name: string; headshot: string; value: number }[];
     perMode: PerMode;
 };
 
