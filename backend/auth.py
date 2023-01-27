@@ -80,6 +80,7 @@ def create_user():
             { 
                 "email": email,
                 "password": hashed_password,
+                "emailVerified": False,
             }
         );
 
@@ -352,6 +353,25 @@ def test_email():
 
     return string_response("Sent", 200)
 
-@auth.route('/users/verifyEmail/<token>', methods=['GET'])
-def verify_email(token):
+@auth.route('/users/verifyEmail/<token>/<email>', methods=['GET'])
+def verify_email(token, email):
+
+    token = is_valid_jwt(token)
+
+    if not token:
+        return string_response(INVALID_TOKEN_MESSAGE, 400)
+
+    try:
+        db.users.update_one(
+            { 'email': email },
+            { '$set': { 'emaiLVerified': True }}
+        )
+
+        db.blacklisted_tokens.insert_one({
+            "token": token,
+            "blacklisted_at": datetime.now()
+        })
+    except OperationFailure:
+        return string_response(SERVER_ERROR, 500)
+
     return string_response("Hello", 200)

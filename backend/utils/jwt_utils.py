@@ -29,6 +29,22 @@ def encode_auth_token(user_id):
     except Exception as e:
         return e
 
+def encode_email_token(user_id):
+    try:
+        payload = {
+            'exp': datetime.utcnow() + timedelta(minutes=10),
+            'iat': datetime.utcnow(),
+            'sub': user_id
+        }
+
+        return jwt.encode(
+            payload,
+            os.getenv("JWT_SECRET"),
+            algorithm='HS256'
+        )
+    except Exception as e:
+        return e
+
 def decode_auth_token(token):
     """Decodes a token back into the payload
 
