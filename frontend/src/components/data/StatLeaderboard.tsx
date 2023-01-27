@@ -37,7 +37,7 @@ export const StatLeaderboard: FC<LeaderboardProps> = ({ stat }) => {
             </View>
             <View>
                 {topFivePlayers.map((player, index) => (
-                    <View style={styles.row}>
+                    <View style={styles.row} key={`${player.id}-${stat.id}`}>
                         <Text>{index}</Text>
                         <Text>{player.name}</Text>
                         <Text>{player.value}</Text>
