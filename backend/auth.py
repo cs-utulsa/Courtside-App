@@ -3,10 +3,12 @@ from pymongo.errors import OperationFailure
 from werkzeug.security import generate_password_hash, check_password_hash
 import json
 from datetime import datetime
+from sendgrid.helpers.mail import Mail
 
 from db import db
 from utils.jwt_utils import encode_auth_token, is_valid_jwt
 from utils.response_utils import string_response, INVALID_TOKEN_MESSAGE, NO_EMAIL_MESSAGE, SERVER_ERROR, JSON_MIME_TYPE, NO_PASSWORD_MESSAGE
+from email_client import sg
 
 auth = Blueprint('auth', __name__)
 
@@ -334,4 +336,22 @@ def delete_user():
 
     return string_response("Deleted successfully", 200)
 
+@auth.route('/email', methods=['POST'])
+def test_email():
+    email = request.get_json()['email']
+    
+    try:
+        message = Mail(
+            from_email=('courtside@benriethmeier.dev', 'Courtside Team'),
+            to_emails=email,
+            subject='Sending with Twilio SendGrid is Fun',
+            html_content='<strong>and easy to do anywhere, even with Python</strong>')
+        sg.send(message)
+    except Exception:
+        return string_response("Not Sent", 500)
 
+    return string_response("Sent", 200)
+
+@auth.route('/users/verifyEmail/<token>', methods=['GET'])
+def verify_email(token):
+    return string_response("Hello", 200)
