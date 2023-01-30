@@ -2,7 +2,6 @@ import os
 from dotenv import load_dotenv
 from sendgrid import Email, To, Content, Mail
 from flask import render_template
-from python_http_client.exceptions import HTTPError
 
 from email_client import sg
 from utils.jwt_utils import encode_email_token
@@ -23,8 +22,5 @@ def send_verification_email(email, user_id):
 
     mail = Mail(from_email, to_email, subject, content)
 
-    try: 
-        sg.send(mail)
-    except HTTPError as e:
-        print(e.to_dict)
+    sg.send(mail)
 

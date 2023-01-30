@@ -4,6 +4,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import json
 from datetime import datetime
 from bson import ObjectId
+from python_http_client.exceptions import HTTPError
 
 from db import db
 from utils.jwt_utils import encode_auth_token, is_valid_jwt, is_valid_jwt_no_request
@@ -98,7 +99,10 @@ def create_user():
         # return error if database cannot be accessed
         return string_response(SERVER_ERROR, 500)
     
-    send_verification_email(email, user_id)
+    try:
+        send_verification_email(email, user_id)
+    except HTTPError as e:
+        print(e.to_dict)
 
     user["token"] = encode_auth_token(user_id) # add jwt token to user
     user["emailVerified"] = False
