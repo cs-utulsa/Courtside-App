@@ -425,3 +425,41 @@ def get_user(token):
     except OperationFailure:
         return string_response(SERVER_ERROR, 500)
         
+
+@auth.route('/users/changeEmail', methods=['POST'])
+def change_email():
+    token = is_valid_jwt(request)
+
+    if (not token): 
+        return string_response(INVALID_TOKEN_MESSAGE, 403)
+
+    try:
+        new_email = request.get_json()['new_email']
+        old_email = request.get_json()['old_email']
+    except KeyError:
+        return string_response("Must submit both old email and new email", 400)
+
+    try:
+
+        user = db.users.find_one(
+            { 'email': new_email }
+        )
+
+        if user:
+            return string_response("There is already a user with that email", 409)
+
+        db.users.update_one(
+            { 'email': old_email },
+            { '$set': { 'email': new_email }}
+        )
+
+        db.user_preferences.update_one(
+            { 'email': old_email },
+            { '$set': { 'email': new_email }}
+        )
+
+        return string_response("Successfully changed")
+    except OperationFailure:
+        return string_response(SERVER_ERROR, 500)
+
+
