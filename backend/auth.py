@@ -3,7 +3,6 @@ from pymongo.errors import OperationFailure
 from werkzeug.security import generate_password_hash, check_password_hash
 import json
 from datetime import datetime
-from sendgrid.helpers.mail import Mail
 
 from db import db
 from utils.jwt_utils import encode_auth_token, is_valid_jwt, is_valid_jwt_no_request
