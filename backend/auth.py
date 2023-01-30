@@ -368,8 +368,16 @@ def verify_email(token):
 
 @auth.route('/users/resendEmailVerification', methods=['POST'])
 def resend_verification():
+
+    token = is_valid_jwt(request)
+
+    if (not token): 
+        return string_response(INVALID_TOKEN_MESSAGE, 403)
+
     user_id = request.get_json().get('id')
     email = request.get_json().get('email')
+    print(user_id)
+    print(email)
 
     if (not user_id or not email):
         return string_response("Must include user id and email", 400)

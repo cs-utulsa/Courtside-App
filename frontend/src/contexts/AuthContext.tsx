@@ -246,6 +246,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     );
 
     const clearData = useCallback(async () => {
+        setAuthData(undefined);
         try {
             await axios.post(`${DEVELOPMENT_API}/users/clear`, {
                 headers: {
@@ -270,6 +271,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     }, [authData]);
 
     const resendEmailVerification = useCallback(async () => {
+        setAuthError(undefined);
         try {
             await axios.post(
                 `${DEVELOPMENT_API}/users/resendEmailVerification`,
@@ -277,6 +279,9 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
                     body: {
                         email: authData?.email,
                         id: authData?._id,
+                    },
+                    headers: {
+                        Authorization: `Bearer ${authData?.token}`,
                     },
                 }
             );
@@ -287,7 +292,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
                 setAuthError('Unknown Error Occurred. Try Again Later.');
             }
         }
-    }, [authData?.email, authData?._id]);
+    }, [authData?.email, authData?._id, authData?.token]);
 
     const contextData: AuthContextData = useMemo(() => {
         return {
