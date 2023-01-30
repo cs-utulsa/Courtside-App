@@ -371,4 +371,7 @@ def resend_verification():
     user_id = request.get_json()['user_id']
     email = request.get_json()['email']
 
+    if (not user_id or not email):
+        return string_response("Must include user id and email", 400)
+
     send_verification_email(email, user_id)
