@@ -467,7 +467,7 @@ def change_email():
         return string_response(SERVER_ERROR, 500)
 
     try:
-        send_verification_email(new_email, user["user_id"])
+        send_verification_email(new_email, user["_id"])
     except HTTPError:
         print("Cannot send email")
 

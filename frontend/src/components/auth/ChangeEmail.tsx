@@ -14,7 +14,7 @@ import { useAuth } from '@hooks/useAuth';
 const emailSchema = yup.string().email();
 
 export const ChangeEmail = () => {
-    const { authData, updateEmail } = useAuth();
+    const { authData, authError, updateEmail } = useAuth();
 
     const [email, setEmail] = useState<string>(authData?.email!);
     const [error, setError] = useState<string | undefined>(undefined);
@@ -44,10 +44,11 @@ export const ChangeEmail = () => {
                 style={styles.input}
             />
             {error && <Text style={styles.errorText}>{error}</Text>}
+            {authError && <Text style={styles.errorText}>{authError}</Text>}
             {changed && (
                 <DangerButton
                     text="Change Email"
-                    onPress={() => updateEmail}
+                    onPress={() => updateEmail(email)}
                     disabled={!!error}
                 />
             )}

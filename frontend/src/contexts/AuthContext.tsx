@@ -337,7 +337,16 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
                     }
                 );
 
-                await updateAuthData();
+                const _authData = {
+                    ...authData,
+                    email: newEmail,
+                    emailVerified: false,
+                };
+
+                await SecureStore.setItemAsync(
+                    'authData',
+                    JSON.stringify(_authData)
+                );
             } catch (err) {
                 if (axios.isAxiosError(err)) {
                     setAuthError(err.response?.data);
@@ -346,7 +355,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
                 }
             }
         },
-        [authData?.email, authData?.token, updateAuthData]
+        [authData]
     );
 
     const contextData: AuthContextData = useMemo(() => {
