@@ -11,3 +11,4 @@ export { PlayerScreen } from './PlayerScreen';
 export { TeamScreen } from './TeamScreen';
 export { GameScreen } from './GameScreen';
 export { StatScreen } from './StatScreen';
+export { VerifyEmailScreen } from './VerifyEmailScreen';

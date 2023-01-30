@@ -7,7 +7,7 @@ import {
 import { useAuth } from '../hooks/useAuth';
 import { MainNavigation } from './MainNavigation';
 import { AuthStack } from './AuthStack';
-import { View, Text } from 'react-native';
+import { VerifyEmailScreen } from '@pages/index';
 
 const Theme = {
     ...DefaultTheme,
@@ -43,11 +43,7 @@ const RootNavigator = () => {
             </NavigationContainer>
         );
     } else if (authData?.token && !authData?.emailVerified) {
-        return (
-            <View>
-                <Text>Verify Email</Text>
-            </View>
-        );
+        return <VerifyEmailScreen />;
     }
 
     return (
