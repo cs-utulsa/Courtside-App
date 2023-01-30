@@ -13,7 +13,7 @@ def send_verification_email(email, user_id):
 
     server_url = os.getenv("SERVER_URL")
 
-    url = f'http://localhost:5000/users/verifyEmail/{token}'
+    url = f'{server_url}/users/verifyEmail/{token}'
 
     from_email = Email(os.getenv("email_from"))
     to_email = To(email)
