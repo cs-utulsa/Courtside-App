@@ -189,6 +189,7 @@ def login_user():
     # get the jwt token for this response
     result["token"] = encode_auth_token(user_id)
     result["_id"] = user_id
+    result["emailVerified"] = user["emailVerified"]
 
     response = make_response()
     response.status_code = 200
