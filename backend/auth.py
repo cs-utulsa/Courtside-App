@@ -6,7 +6,7 @@ from datetime import datetime
 from sendgrid.helpers.mail import Mail
 
 from db import db
-from utils.jwt_utils import encode_auth_token, is_valid_jwt
+from utils.jwt_utils import encode_auth_token, is_valid_jwt, is_valid_jwt_no_request
 from utils.response_utils import string_response, INVALID_TOKEN_MESSAGE, NO_EMAIL_MESSAGE, SERVER_ERROR, JSON_MIME_TYPE, NO_PASSWORD_MESSAGE
 from email_client import sg
 from utils.email_utils import send_verification_email
@@ -341,18 +341,16 @@ def delete_user():
 
     return string_response("Deleted successfully", 200)
 
-@auth.route('/users/verifyEmail/<token>/<email>', methods=['GET'])
-def verify_email(token, email):
-    print(token)
-    print(email)
-    token = is_valid_jwt(token)
+@auth.route('/users/verifyEmail/<token>', methods=['GET'])
+def verify_email(token):
+    token, user_id = is_valid_jwt_no_request(token)
 
     if not token:
         return string_response(INVALID_TOKEN_MESSAGE, 400)
 
     try:
         db.users.update_one(
-            { 'email': email },
+            { '_id', user_id },
             { '$set': { 'emailVerified': True }}
         )
 
@@ -361,6 +359,6 @@ def verify_email(token, email):
             "blacklisted_at": datetime.now()
         })
     except OperationFailure:
-        return string_response(SERVER_ERROR, 500)
+        return string_response("Cannot verify email right now.", 200)
 
     return string_response("Hello! You have successfully verified your email! You can return to the app now!", 200)
