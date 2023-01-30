@@ -9,6 +9,7 @@ from db import db
 from utils.jwt_utils import encode_auth_token, is_valid_jwt
 from utils.response_utils import string_response, INVALID_TOKEN_MESSAGE, NO_EMAIL_MESSAGE, SERVER_ERROR, JSON_MIME_TYPE, NO_PASSWORD_MESSAGE
 from email_client import sg
+from utils.email_utils import send_verification_email
 
 auth = Blueprint('auth', __name__)
 
@@ -93,13 +94,16 @@ def create_user():
         }
 
         # create document in user_preferences for other user data
-        db.user_preferences.insert_one(user);
+        db.user_preferences.insert_one(user)
 
     except OperationFailure:
         # return error if database cannot be accessed
         return string_response(SERVER_ERROR, 500)
     
+    send_verification_email(email, user_id)
+
     user["token"] = encode_auth_token(user_id) # add jwt token to user
+    user["emailVerified"] = False
 
     #create response with user record (PASSWORD is not sent back to client)
     response = make_response()
@@ -337,25 +341,10 @@ def delete_user():
 
     return string_response("Deleted successfully", 200)
 
-@auth.route('/email', methods=['POST'])
-def test_email():
-    email = request.get_json()['email']
-    
-    try:
-        message = Mail(
-            from_email=('courtside@benriethmeier.dev', 'Courtside Team'),
-            to_emails=email,
-            subject='Sending with Twilio SendGrid is Fun',
-            html_content='<strong>and easy to do anywhere, even with Python</strong>')
-        sg.send(message)
-    except Exception:
-        return string_response("Not Sent", 500)
-
-    return string_response("Sent", 200)
-
 @auth.route('/users/verifyEmail/<token>/<email>', methods=['GET'])
 def verify_email(token, email):
-
+    print(token)
+    print(email)
     token = is_valid_jwt(token)
 
     if not token:
@@ -364,7 +353,7 @@ def verify_email(token, email):
     try:
         db.users.update_one(
             { 'email': email },
-            { '$set': { 'emaiLVerified': True }}
+            { '$set': { 'emailVerified': True }}
         )
 
         db.blacklisted_tokens.insert_one({
@@ -374,4 +363,4 @@ def verify_email(token, email):
     except OperationFailure:
         return string_response(SERVER_ERROR, 500)
 
-    return string_response("Hello", 200)
+    return string_response("Hello! You have successfully verified your email! You can return to the app now!", 200)
