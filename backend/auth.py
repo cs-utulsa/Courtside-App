@@ -1,5 +1,6 @@
 from flask import Blueprint, request, make_response
 from pymongo.errors import OperationFailure
+from pymongo import ReturnDocument
 from werkzeug.security import generate_password_hash, check_password_hash
 import json
 from datetime import datetime
@@ -441,16 +442,20 @@ def change_email():
 
     try:
 
-        user = db.users.find_one(
+        email_exists = db.users.find_one(
             { 'email': new_email }
         )
 
-        if user:
+        if email_exists:
             return string_response("There is already a user with that email", 409)
 
-        db.users.update_one(
+        user = db.users.find_one_and_update(
             { 'email': old_email },
-            { '$set': { 'email': new_email }}
+            { '$set': { 
+                'email': new_email,
+                'emailVerified': False 
+            }},
+            return_document=ReturnDocument.AFTER
         )
 
         db.user_preferences.update_one(
@@ -458,8 +463,14 @@ def change_email():
             { '$set': { 'email': new_email }}
         )
 
-        return string_response("Successfully changed")
     except OperationFailure:
         return string_response(SERVER_ERROR, 500)
+
+    try:
+        send_verification_email(new_email, user["user_id"])
+    except HTTPError:
+        print("Cannot send email")
+
+    return string_response("Successfully changed")
 
 
