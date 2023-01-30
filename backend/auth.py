@@ -3,6 +3,7 @@ from pymongo.errors import OperationFailure
 from werkzeug.security import generate_password_hash, check_password_hash
 import json
 from datetime import datetime
+from bson import ObjectId
 
 from db import db
 from utils.jwt_utils import encode_auth_token, is_valid_jwt, is_valid_jwt_no_request
@@ -11,8 +12,6 @@ from email_client import sg
 from utils.email_utils import send_verification_email
 
 auth = Blueprint('auth', __name__)
-
-
 
 @auth.route('/users/register', methods=["POST"])
 def create_user():
@@ -343,13 +342,13 @@ def delete_user():
 @auth.route('/users/verifyEmail/<token>', methods=['GET'])
 def verify_email(token):
     token, user_id = is_valid_jwt_no_request(token)
-
+    print(user_id)
     if not token:
         return string_response(INVALID_TOKEN_MESSAGE, 400)
 
     try:
         db.users.update_one(
-            { '_id', user_id },
+            { '_id': ObjectId(user_id) },
             { '$set': { 'emailVerified': True }}
         )
 

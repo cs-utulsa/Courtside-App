@@ -122,6 +122,6 @@ def is_valid_jwt_no_request(token):
     resp = decode_auth_token(token)
 
     if isinstance(resp, str):
-        return False
+        return False, False
 
     return token, resp["sub"]
