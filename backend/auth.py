@@ -186,6 +186,12 @@ def login_user():
     except OperationFailure:
         return string_response(SERVER_ERROR, 500)
 
+    if not user["emailVerified"]:
+        try:
+            send_verification_email(email, user_id)
+        except HTTPError as e:
+            print(e.to_dict)
+
     # get the jwt token for this response
     result["token"] = encode_auth_token(user_id)
     result["_id"] = user_id
