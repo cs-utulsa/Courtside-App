@@ -276,12 +276,13 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             await axios.post(
                 `${DEVELOPMENT_API}/users/resendEmailVerification`,
                 {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${authData?.token}`,
+                    },
                     body: {
                         email: authData?.email,
                         id: authData?._id,
-                    },
-                    headers: {
-                        Authorization: `Bearer ${authData?.token}`,
                     },
                 }
             );

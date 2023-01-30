@@ -18,10 +18,14 @@ export const VerifyEmailScreen = () => {
     return (
         <View style={styles.container}>
             <LogoHeader />
-            <Text style={styles.heading}>
-                A verification email was sent to {authData?.email}!
-            </Text>
-            {authError && <ErrorBox error={authError} />}
+            {authError ? (
+                <ErrorBox error={authError} />
+            ) : (
+                <Text style={styles.heading}>
+                    A verification email was sent to {authData?.email}!
+                </Text>
+            )}
+
             <PrimaryButton text="Resend Email" onPress={onResendPress} />
             <PrimaryButton text="Return to Login" onPress={signOut} />
         </View>
