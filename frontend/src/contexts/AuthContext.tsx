@@ -30,6 +30,7 @@ type AuthData = {
     token: string;
     _id: string;
     email: string;
+    emailVerified: string;
     teams?: string[];
     stats?: string[];
 };

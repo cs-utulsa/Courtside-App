@@ -346,7 +346,7 @@ def delete_user():
 @auth.route('/users/verifyEmail/<token>', methods=['GET'])
 def verify_email(token):
     token, user_id = is_valid_jwt_no_request(token)
-    print(user_id)
+
     if not token:
         return string_response(INVALID_TOKEN_MESSAGE, 400)
 
