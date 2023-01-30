@@ -471,6 +471,6 @@ def change_email():
     except HTTPError:
         print("Cannot send email")
 
-    return string_response("Successfully changed")
+    return string_response("Successfully changed", 200)
 
 
