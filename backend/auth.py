@@ -365,3 +365,10 @@ def verify_email(token):
         return string_response("Cannot verify email right now.", 200)
 
     return string_response("Hello! You have successfully verified your email! You can return to the app now!", 200)
+
+@auth.route('/users/resendEmailVerification', methods=['POST'])
+def resend_verification():
+    user_id = request.get_json()['user_id']
+    email = request.get_json()['email']
+
+    send_verification_email(email, user_id)

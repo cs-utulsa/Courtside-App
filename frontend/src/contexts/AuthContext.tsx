@@ -24,6 +24,7 @@ type AuthContextData = {
     updateStats(newStats: string[]): Promise<void>;
     updateTeams(newTeams: string[]): Promise<void>;
     clearData: () => Promise<void>;
+    resendEmailVerification: () => Promise<void>;
 };
 
 type AuthData = {
@@ -268,6 +269,26 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         }
     }, [authData]);
 
+    const resendEmailVerification = useCallback(async () => {
+        try {
+            await axios.post(
+                `${DEVELOPMENT_API}/users/resendEmailVerification`,
+                {
+                    body: {
+                        email: authData?.email,
+                        user_id: authData?._id,
+                    },
+                }
+            );
+        } catch (err) {
+            if (axios.isAxiosError(err)) {
+                setAuthError(err.response?.data);
+            } else {
+                setAuthError('Unknown Error Occurred. Try Again Later.');
+            }
+        }
+    }, [authData?.email, authData?._id]);
+
     const contextData: AuthContextData = useMemo(() => {
         return {
             authData,
@@ -279,6 +300,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             updateStats,
             updateTeams,
             clearData,
+            resendEmailVerification,
         };
     }, [
         authData,
@@ -290,6 +312,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         updateStats,
         updateTeams,
         clearData,
+        resendEmailVerification,
     ]);
 
     return (

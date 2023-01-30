@@ -4,7 +4,7 @@ import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 
 export const VerifyEmailScreen = () => {
-    const { authData } = useAuth();
+    const { authData, resendEmailVerification } = useAuth();
 
     return (
         <View style={styles.container}>
@@ -14,7 +14,7 @@ export const VerifyEmailScreen = () => {
             </Text>
             <PrimaryButton
                 text="Resend Email"
-                onPress={() => console.log('Button')}
+                onPress={resendEmailVerification}
             />
         </View>
     );
