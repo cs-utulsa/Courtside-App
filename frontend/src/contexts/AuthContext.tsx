@@ -276,7 +276,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
                 {
                     body: {
                         email: authData?.email,
-                        user_id: authData?._id,
+                        id: authData?._id,
                     },
                 }
             );

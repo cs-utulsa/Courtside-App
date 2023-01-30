@@ -2,9 +2,18 @@ import { LogoHeader, PrimaryButton } from '@components/index';
 import { useAuth } from '@hooks/useAuth';
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
+import Toast from 'react-native-root-toast';
 
 export const VerifyEmailScreen = () => {
-    const { authData, resendEmailVerification } = useAuth();
+    const { authData, resendEmailVerification, signOut } = useAuth();
+
+    const onResendPress = () => {
+        Toast.show('Sending verification...', {
+            duration: Toast.durations.LONG,
+            position: Toast.positions.BOTTOM,
+        });
+        resendEmailVerification();
+    };
 
     return (
         <View style={styles.container}>
@@ -12,10 +21,8 @@ export const VerifyEmailScreen = () => {
             <Text style={styles.heading}>
                 A verification email was sent to {authData?.email}!
             </Text>
-            <PrimaryButton
-                text="Resend Email"
-                onPress={resendEmailVerification}
-            />
+            <PrimaryButton text="Resend Email" onPress={onResendPress} />
+            <PrimaryButton text="Log Out" onPress={signOut} />
         </View>
     );
 };

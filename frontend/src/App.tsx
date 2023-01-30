@@ -8,6 +8,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { ICONS } from './constants';
 import { registerRootComponent } from 'expo';
 import { AuthProvider } from '@contexts/AuthContext';
+import { RootSiblingParent } from 'react-native-root-siblings';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
@@ -58,9 +59,11 @@ export default function App() {
     return (
         <>
             <QueryClientProvider client={queryClient}>
-                <AuthProvider>
-                    <RootNavigator />
-                </AuthProvider>
+                <RootSiblingParent>
+                    <AuthProvider>
+                        <RootNavigator />
+                    </AuthProvider>
+                </RootSiblingParent>
             </QueryClientProvider>
             <StatusBar style="auto" />
         </>
