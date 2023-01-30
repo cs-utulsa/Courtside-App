@@ -248,14 +248,17 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     const clearData = useCallback(async () => {
         setAuthData(undefined);
         try {
-            await axios.post(`${DEVELOPMENT_API}/users/clear`, {
-                headers: {
-                    Authorization: `Bearer ${authData?.token}`,
-                },
-                body: {
+            await axios.post(
+                `${DEVELOPMENT_API}/users/clear`,
+                {
                     email: authData?.email,
                 },
-            });
+                {
+                    headers: {
+                        Authorization: `Bearer ${authData?.token}`,
+                    },
+                }
+            );
 
             await SecureStore.setItemAsync(
                 'authData',
@@ -276,13 +279,12 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             await axios.post(
                 `${DEVELOPMENT_API}/users/resendEmailVerification`,
                 {
+                    email: authData?.email,
+                    id: authData?._id,
+                },
+                {
                     headers: {
-                        'Content-Type': 'application/json',
                         Authorization: `Bearer ${authData?.token}`,
-                    },
-                    body: {
-                        email: authData?.email,
-                        id: authData?._id,
                     },
                 }
             );
