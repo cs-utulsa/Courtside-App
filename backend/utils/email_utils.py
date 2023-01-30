@@ -15,7 +15,7 @@ def send_verification_email(email, user_id):
 
     url = f'{server_url}/users/verifyEmail/{token}'
 
-    from_email = Email(os.getenv("email_from"))
+    from_email = Email(os.getenv("EMAIL_FROM"))
     to_email = To(email)
     subject = "Verify Your Email for Courtside"
     content = Content("text/html", render_template('verifyEmail.html', url=url))
