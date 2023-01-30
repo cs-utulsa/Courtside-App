@@ -394,14 +394,14 @@ def resend_verification():
 
 @auth.route('/users/<token>', methods=['GET'])
 def get_user(token):
-    user_token, user_id = is_valid_jwt_no_request(token)\
+    user_token, user_id = is_valid_jwt_no_request(token)
     
     if (not user_token): 
         return string_response(INVALID_TOKEN_MESSAGE, 403)
 
     try:
         user = db.users.find_one(
-            { '_id': user_id }
+            { '_id': ObjectId(user_id) }
         )
 
         preferences = db.users_preferences.find_one(

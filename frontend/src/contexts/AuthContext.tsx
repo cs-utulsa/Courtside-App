@@ -312,7 +312,11 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
                 JSON.stringify(_authData)
             );
         } catch (err) {
-            setAuthError('Unknown error occurred.');
+            if (axios.isAxiosError(err)) {
+                setAuthError(err.response?.data);
+            } else {
+                setAuthError('Unknown Error Occurred. Try Again Later.');
+            }
         }
     }, [authData?.token]);
 
