@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-from sendgrid.helpers.mail import Email, To, Content, Mail
+from sendgrid import Email, To, Content, Mail
 from flask import render_template
 
 from email_client import sg
