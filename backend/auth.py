@@ -374,4 +374,9 @@ def resend_verification():
     if (not user_id or not email):
         return string_response("Must include user id and email", 400)
 
-    send_verification_email(email, user_id)
+    try:
+        send_verification_email(email, user_id)
+        return string_response("Email sent", 200)
+    except HTTPError as e:
+        print(e.to_dict())
+        return string_response("Email cannot be sent", 500)
