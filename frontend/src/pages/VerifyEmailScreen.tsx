@@ -1,11 +1,17 @@
 import { ErrorBox, LogoHeader, PrimaryButton } from '@components/index';
 import { useAuth } from '@hooks/useAuth';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import Toast from 'react-native-root-toast';
 
 export const VerifyEmailScreen = () => {
-    const { authData, resendEmailVerification, signOut, authError } = useAuth();
+    const {
+        authData,
+        resendEmailVerification,
+        signOut,
+        authError,
+        updateAuthData,
+    } = useAuth();
 
     const onResendPress = () => {
         Toast.show('Sending verification...', {
@@ -14,6 +20,15 @@ export const VerifyEmailScreen = () => {
         });
         resendEmailVerification();
     };
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            updateAuthData();
+            console.log('interval');
+        }, 3000);
+
+        return () => clearInterval(intervalId);
+    });
 
     return (
         <View style={styles.container}>

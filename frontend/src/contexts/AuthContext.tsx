@@ -25,6 +25,7 @@ type AuthContextData = {
     updateTeams(newTeams: string[]): Promise<void>;
     clearData: () => Promise<void>;
     resendEmailVerification: () => Promise<void>;
+    updateAuthData: () => Promise<void>;
 };
 
 type AuthData = {
@@ -297,6 +298,24 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         }
     }, [authData?.email, authData?._id, authData?.token]);
 
+    const updateAuthData = useCallback(async () => {
+        try {
+            const data = await axios
+                .get(`${DEVELOPMENT_API}/users/${authData?.token}`)
+                .then((res) => res.data);
+
+            const _authData = { ...data, token: authData?.token };
+            setAuthData(_authData);
+
+            await SecureStore.setItemAsync(
+                'authData',
+                JSON.stringify(_authData)
+            );
+        } catch (err) {
+            setAuthError('Unknown error occurred.');
+        }
+    }, [authData?.token]);
+
     const contextData: AuthContextData = useMemo(() => {
         return {
             authData,
@@ -309,6 +328,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             updateTeams,
             clearData,
             resendEmailVerification,
+            updateAuthData,
         };
     }, [
         authData,
@@ -321,6 +341,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         updateTeams,
         clearData,
         resendEmailVerification,
+        updateAuthData,
     ]);
 
     return (

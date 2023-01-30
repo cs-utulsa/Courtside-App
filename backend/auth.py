@@ -391,3 +391,37 @@ def resend_verification():
     except HTTPError as e:
         print(e.to_dict())
         return string_response("Email cannot be sent", 500)
+
+@auth.route('/users/<token>', methods=['GET'])
+def get_user(token):
+    user_token, user_id = is_valid_jwt_no_request(token)\
+    
+    if (not user_token): 
+        return string_response(INVALID_TOKEN_MESSAGE, 403)
+
+    try:
+        user = db.users.find_one(
+            { '_id': user_id }
+        )
+
+        preferences = db.users_preferences.find_one(
+            { 'email': user['email']}
+        )
+
+        result = dict()
+        result["_id"] = user_id
+        result["email"] = user["email"]
+        result["emailVerified"] = user["emailVerified"]
+        result["stats"] = preferences["stats"]
+        result["teams"] = preferences["teams"]
+
+        response = make_response()
+        response.data = json.dumps(result)
+        response.status_code = 200
+        response.mimetype = JSON_MIME_TYPE
+
+        return response
+
+    except OperationFailure:
+        return string_response(SERVER_ERROR, 500)
+        
