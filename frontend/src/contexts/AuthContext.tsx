@@ -26,6 +26,7 @@ type AuthContextData = {
     clearData: () => Promise<void>;
     resendEmailVerification: () => Promise<void>;
     updateAuthData: () => Promise<void>;
+    updateEmail: (newEmail: string) => Promise<void>;
 };
 
 type AuthData = {
@@ -320,6 +321,34 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         }
     }, [authData?.token]);
 
+    const updateEmail = useCallback(
+        async (newEmail: string) => {
+            try {
+                await axios.post(
+                    `${DEVELOPMENT_API}/users/changeEmail`,
+                    {
+                        old_email: authData?.email,
+                        new_email: newEmail,
+                    },
+                    {
+                        headers: {
+                            Authorization: `Bearer ${authData?.token}`,
+                        },
+                    }
+                );
+
+                await updateAuthData();
+            } catch (err) {
+                if (axios.isAxiosError(err)) {
+                    setAuthError(err.response?.data);
+                } else {
+                    setAuthError('Unknown Error Occurred. Try Again Later.');
+                }
+            }
+        },
+        [authData?.email, authData?.token, updateAuthData]
+    );
+
     const contextData: AuthContextData = useMemo(() => {
         return {
             authData,
@@ -333,6 +362,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             clearData,
             resendEmailVerification,
             updateAuthData,
+            updateEmail,
         };
     }, [
         authData,
@@ -346,6 +376,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         clearData,
         resendEmailVerification,
         updateAuthData,
+        updateEmail,
     ]);
 
     return (

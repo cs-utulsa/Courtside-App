@@ -7,13 +7,13 @@ import { StyleSheet, View, Text } from 'react-native';
  * This component allows the user to access settings about the app and to log out of the app.
  */
 export const Settings = () => {
-    const { signOut, clearData, authData } = useAuth();
+    const { signOut, clearData } = useAuth();
 
     return (
         <View style={styles.pageContainer}>
             <View style={styles.pageContainer}>
                 <Text style={styles.heading}>Account Information</Text>
-                <ChangeEmail initialEmail={authData?.email!} />
+                <ChangeEmail />
             </View>
             <Text style={styles.heading}>Actions</Text>
             <DangerButton text="Clear Data" onPress={clearData} />

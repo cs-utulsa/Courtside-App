@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import {
     View,
     TextInput,
@@ -9,18 +9,17 @@ import {
 } from 'react-native';
 import { DangerButton } from '../buttons/DangerButton';
 import * as yup from 'yup';
-
-type ChangeEmailProps = {
-    initialEmail: string;
-};
+import { useAuth } from '@hooks/useAuth';
 
 const emailSchema = yup.string().email();
 
-export const ChangeEmail: FC<ChangeEmailProps> = ({ initialEmail }) => {
-    const [email, setEmail] = useState<string>(initialEmail);
+export const ChangeEmail = () => {
+    const { authData, updateEmail } = useAuth();
+
+    const [email, setEmail] = useState<string>(authData?.email!);
     const [error, setError] = useState<string | undefined>(undefined);
 
-    const changed = email !== initialEmail;
+    const changed = email !== authData?.email;
 
     const handleChange = (
         e: NativeSyntheticEvent<TextInputChangeEventData>
@@ -48,7 +47,7 @@ export const ChangeEmail: FC<ChangeEmailProps> = ({ initialEmail }) => {
             {changed && (
                 <DangerButton
                     text="Change Email"
-                    onPress={() => console.log('Danger')}
+                    onPress={() => updateEmail}
                     disabled={!!error}
                 />
             )}
