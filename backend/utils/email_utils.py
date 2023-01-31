@@ -8,6 +8,17 @@ from utils.jwt_utils import encode_email_token
 
 load_dotenv()
 def send_verification_email(email, user_id):
+    """Sends the user an email with a link that allows them to confirm their email
+
+    Encodes a 10 minute token for the email and sends the email with the verifyEmail template to the user
+
+    Args:
+        email: the address to send the email to
+        user_id: the id of the user the email is being sent to
+
+    Returns:
+        None
+    """
 
     token = encode_email_token(user_id)
 
