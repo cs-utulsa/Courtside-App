@@ -3,6 +3,11 @@ import { GameScreenRouteProp } from './../types/Navigation';
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
+/**
+ * This screen shows information for a specific game.
+ *
+ * The data for the game is passed through a navigation parameter
+ */
 export const GameScreen = () => {
     const { params } = useRoute<GameScreenRouteProp>();
     // params.game has all the data on the games

@@ -4,6 +4,10 @@ import { TeamScreenRouteProp } from '../types/Navigation';
 import { View, FlatList, StyleSheet, Text } from 'react-native';
 import React from 'react';
 
+/**
+ * This screen shows the data for a specific team as well as a roster of the players.
+ * The team data is passed through a navigation parameter.
+ */
 export const TeamScreen = () => {
     const route = useRoute<TeamScreenRouteProp>();
     const team = route.params.team;
@@ -11,8 +15,8 @@ export const TeamScreen = () => {
     return (
         <View>
             <FlatList
-                data={team.players} //this now has to be passed data
-                numColumns={3} //{Math.ceil(roster.length / 2)}
+                data={team.players}
+                numColumns={3}
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
                 renderItem={({ item }) => <PlayerSection player={item} />}

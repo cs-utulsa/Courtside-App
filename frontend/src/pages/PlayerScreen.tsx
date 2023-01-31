@@ -5,6 +5,10 @@ import { View, Text, StyleSheet } from 'react-native';
 import { Player } from './../types/Player';
 import { CircleImage } from '@components/index';
 
+/**
+ * This screen shows the data for one player.
+ * The player data is passed through a navigation parameter
+ */
 export const PlayerScreen = () => {
     const route = useRoute<PlayerScreenRouteProp>();
     const player: Player = route.params.player;

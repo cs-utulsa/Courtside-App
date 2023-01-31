@@ -3,6 +3,10 @@ import { StatScreenRouteProp } from './../types/Navigation';
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
+/**
+ * This screen shows the full leaderboard for a specific stat for each of the three modes: per48, per game, and total
+ * The stat data is passed through a navigation parameter.
+ */
 export const StatScreen = () => {
     const { params } = useRoute<StatScreenRouteProp>();
     // params.stat includes all of the stat data
