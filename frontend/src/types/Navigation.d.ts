@@ -23,7 +23,9 @@ export type AuthScreenRouteProp = RouteProp<
 >;
 
 export type AuthNavigatorParamList = {
+    /** screen that allows user to sign in */
     SignIn: undefined;
+    /** screen that allows user to register for the app */
     SignUp: undefined;
 };
 
@@ -32,8 +34,11 @@ export type AuthNavigationProp =
 
 // Stat Screen Navigator
 export type StatsNavigatorParamList = {
+    /** screen that displays all of the stats a user follows */
     Dashboard: undefined;
+    /** screen that allows users to change their stat selections */
     Selection: undefined;
+    /** screen that shows the leaderboard for an individual stat */
     Stat: { stat: Stat };
 };
 
@@ -44,9 +49,13 @@ export type StatScreenRouteProp = RouteProp<StatsNavigatorParamList, 'Stat'>;
 
 // Roster Screens Navigator
 export type RosterNavigatorParamList = {
+    /** screen that shows all of the teams a user follows */
     Dashboard: undefined;
+    /** screen that shows the roster and data for a specific team */
     Team: { team: Team };
+    /** screen where user can change the teams they follow */
     Selection: undefined;
+    /** screen that shows the data for a specific player */
     Player: { player: Player };
 };
 
@@ -62,7 +71,9 @@ export type PlayerScreenRouteProp = RouteProp<
 
 // Schedule
 export type ScheduleNavigatorParamList = {
+    /** screen that shows the whole game schedule */
     Schedule: undefined;
+    /** screen that shows all of the information about a specific game */
     Game: { game: Game };
 };
 
