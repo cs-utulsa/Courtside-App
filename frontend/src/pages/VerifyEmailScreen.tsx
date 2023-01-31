@@ -33,7 +33,6 @@ export const VerifyEmailScreen = () => {
     useEffect(() => {
         const intervalId = setInterval(() => {
             updateAuthData();
-            console.log('interval');
         }, 3000);
 
         return () => clearInterval(intervalId);
