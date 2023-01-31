@@ -353,10 +353,33 @@ def delete_user():
 
 @auth.route('/users/verifyEmail/<token>', methods=['GET'])
 def verify_email(token):
+    """Verifies a user's email
+
+    Checks to make sure the token is a valid token and then blacklists the token and sets the user's email to a verified status
+    An HTML page is returned that tells the user to go back to the app.
+
+    Args:
+        token: the JWT token the user was given to check their email with
+
+    Returns:
+        A response object
+
+        if the token is invalid:
+            status_code: 403
+            message: "Invalid token"
+
+        if the server cannot be accessed:
+            status_code: 500
+            message: "Cannot verify email right now."
+
+        if successful:
+            status_code: 200
+            message: "Hello! You have successfully verified your email! You can return to the app now!"
+    """
     token, user_id = is_valid_jwt_no_request(token)
 
     if not token:
-        return string_response(INVALID_TOKEN_MESSAGE, 400)
+        return string_response(INVALID_TOKEN_MESSAGE, 403)
 
     try:
         db.users.update_one(
@@ -375,17 +398,49 @@ def verify_email(token):
 
 @auth.route('/users/resendEmailVerification', methods=['POST'])
 def resend_verification():
+    """Sends the verification email to the user's email
+
+    Checks to see if the user's auth token is valid and then sends the email to the user
+
+    Request:
+        Headers:
+            Authorization:
+                must be of the form "Bearer <token>" where token is the user's JWT
+        Body:
+            id: the user's id as a string
+            email: the user's email as a string
+
+    Returns:
+        A Response object
+
+        - if token is invalid:
+            status_code: 403
+            message: "Invalid token"
+
+        - if all parameters not included:
+            status_code: 400
+            message: "Must include user id and email"
+
+        - if email cannot be sent:
+            status_code: 500
+            message: "Email cannot be sent"
+
+        - if email is sent:
+            status_code: 200
+            message: "Email sent"
+    
+    """
     token = is_valid_jwt(request)
 
     if (not token): 
         return string_response(INVALID_TOKEN_MESSAGE, 403)
 
-    user_id = request.get_json(force=True)['id']
-    email = request.get_json(force=True)['email']
-
-    if (not user_id or not email):
+    try:
+        user_id = request.get_json(force=True)['id']
+        email = request.get_json(force=True)['email']
+    except KeyError:
         return string_response("Must include user id and email", 400)
-
+        
     try:
         send_verification_email(email, user_id)
         return string_response("Email sent", 200)
@@ -395,6 +450,29 @@ def resend_verification():
 
 @auth.route('/users/<token>', methods=['GET'])
 def get_user(token):
+    """Get the information for a specific user
+
+    Check to make sure the token is valid.
+    Return the user's data
+
+    Args:
+        token: the user's JWT
+
+    Returns:
+        A Response object
+
+        - if token is invalid:
+            status_code: 403
+            message: "Invalid token"
+
+        - if server cannot be accessed:
+            status_code: 500
+            message: "Cannot complete request"
+
+        - if successful
+            status_code: 200
+            data: JSON object with user id, email, email verification status, list of stats, and list of teams
+    """
     user_token, user_id = is_valid_jwt_no_request(token)
     
     if (not user_token): 
