@@ -12,9 +12,14 @@ import { Player } from './../../types/Player';
 import { CircleImage } from '@components/images/CircleImage';
 
 type PlayerSectionProps = {
+    /** the player to be shown in this component */
     player: Player;
 };
 
+/**
+ * This component shows a headshot of a player and their name. When clicked it navigates to the specific page for that team.
+ * This component is meant to be included in a FlatList with others
+ */
 export const PlayerSection: FC<PlayerSectionProps> = ({ player }) => {
     const { push } = useNavigation<RosterNavigationProp>();
 

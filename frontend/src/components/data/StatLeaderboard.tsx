@@ -5,17 +5,12 @@ import { useNavigation } from '@react-navigation/native';
 import { StatsNavigationProp } from './../../types/Navigation';
 
 export type LeaderboardProps = {
+    /** the stat to be displayed on this leaderboard */
     stat: Stat;
 };
 
 /**
  * This component displays the players with the highest value for the specified stat
- * @example
- * const _id = "statId";
- * const name = "Stat";
- * const player_id = ["Player 1", "Player 2", "Player 3"];
- * const value = [5, 3, 1]; //5 is the stat value for Player 1, 3 for Player 2, etc.
- * return <StatLeaderboard _id={_id} name={name} player_id={player_id} value={value} />
  */
 export const StatLeaderboard: FC<LeaderboardProps> = ({ stat }) => {
     const topFivePlayers = stat.total.players.slice(0, 5);
@@ -74,6 +69,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
+    /** styles for the text that heads each column of data */
     colHeading: {
         fontWeight: 'bold',
     },

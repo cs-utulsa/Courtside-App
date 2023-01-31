@@ -34,8 +34,13 @@ export const DaySchedule: FC<DayScheduleProps> = ({ ahead }) => {
         <View style={styles.section}>
             <Text style={styles.sectionTitle}>{dateString}</Text>
             {isSuccess &&
-                data.map((game, index) => {
-                    return <GameDisplay game={game} key={`game-${index}`} />;
+                data.map((game) => {
+                    return (
+                        <GameDisplay
+                            game={game}
+                            key={`game-${game.away_code}-${game.home_code}-${game.game_date}`}
+                        />
+                    );
                 })}
         </View>
     );
