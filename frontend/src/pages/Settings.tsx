@@ -1,4 +1,4 @@
-import { ChangeEmail, DangerButton } from '@components/index';
+import { DangerButton } from '@components/index';
 import { useAuth } from '@hooks/index';
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
@@ -13,7 +13,7 @@ export const Settings = () => {
         <View style={styles.pageContainer}>
             <View style={styles.pageContainer}>
                 <Text style={styles.heading}>Account Information</Text>
-                <ChangeEmail />
+                {/* <ChangeEmail /> */}
             </View>
             <Text style={styles.heading}>Actions</Text>
             <DangerButton text="Clear Data" onPress={clearData} />
