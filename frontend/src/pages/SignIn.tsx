@@ -94,6 +94,10 @@ export const SignIn = () => {
                             onPress={() => navigate('SignUp')}
                             text="Create an Account"
                         />
+                        <SmallLink
+                            onPress={() => navigate('ForgotPassword')}
+                            text="Forgot Password?"
+                        />
                     </View>
                 )}
             </Formik>
