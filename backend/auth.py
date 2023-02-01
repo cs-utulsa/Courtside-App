@@ -551,4 +551,14 @@ def change_email():
 
     return string_response("Successfully changed", 200)
 
+@auth.route('/users/forgotPassword/<token>')
+def forgot_password(token):
+    # validate token
+    # if token is still valid, send HTML page with input to reset password
+    print("Forgot")
 
+@auth.route('/users/resetPassword')
+def reset_password():
+    # validate token from header
+    # get password from body and change the password in the database
+    print("Reset")
