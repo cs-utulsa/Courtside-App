@@ -1,4 +1,4 @@
-from flask import Blueprint, request, make_response
+from flask import Blueprint, request, make_response, render_template
 from pymongo.errors import OperationFailure
 from pymongo import ReturnDocument
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -11,7 +11,7 @@ from db import db
 from utils.jwt_utils import encode_auth_token, is_valid_jwt, is_valid_jwt_no_request
 from utils.response_utils import string_response, INVALID_TOKEN_MESSAGE, NO_EMAIL_MESSAGE, SERVER_ERROR, JSON_MIME_TYPE, NO_PASSWORD_MESSAGE
 from email_client import sg
-from utils.email_utils import send_verification_email
+from utils.email_utils import send_verification_email, send_forgot_password_email
 
 auth = Blueprint('auth', __name__)
 
@@ -554,17 +554,53 @@ def change_email():
 # send the forgot password email if email in db
 @auth.route('/users/forgotPassword', methods=['POST'])
 def send_forgot_email():
-    # get email from request, make sure email is in db
-    print('email')
+    
+    try:
+        email = request.get_json()['email']
+    except KeyError:
+        return string_response(NO_EMAIL_MESSAGE, 400)
+
+    try:
+        user = db.users.find_one(
+            { 'email': email }
+        )
+
+        if (not user):
+            return string_response("No user with that email exists", 404)
+    except OperationFailure:
+        return string_response(SERVER_ERROR, 500)
+
+    try:
+        send_forgot_password_email(email, user["_id"])
+        return string_response("Email sent", 200)
+    except HTTPError:
+        return string_response("Email not sent", 500)
+
 
 # send HTML page where user can reset password
 @auth.route('/users/forgotPassword/<token>', methods=['GET', 'POST'])
 def reset_password(token):
+    returned_token, user_id = is_valid_jwt_no_request(token)
+
+    if not returned_token:
+        # make this a link expired page eventually
+        return string_response(INVALID_TOKEN_MESSAGE, 403)
+
     if request.method == 'GET':
-        print('send html page')
+        return render_template("resetPassword.html")
 
     elif request.method == 'POST':
-        print('change password in database')
-    # validate token
-    # if token is still valid, send HTML page with input to reset password
-    print("Forgot")
+        new_password = request.form['password']
+
+        hashed_password=generate_password_hash(new_password, method='sha256')
+
+        try:
+            db.user.update_one(
+                { '_id', user_id },
+                { '$set': { 'password': hashed_password }}
+            )
+
+            # Eventually make success page
+            return string_response("Password updated. Return to app and login!")
+        except OperationFailure:
+            return string_response(SERVER_ERROR, 500)
