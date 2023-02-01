@@ -551,14 +551,20 @@ def change_email():
 
     return string_response("Successfully changed", 200)
 
-@auth.route('/users/forgotPassword/<token>')
-def forgot_password(token):
+# send the forgot password email if email in db
+@auth.route('/users/forgotPassword', methods=['POST'])
+def send_forgot_email():
+    # get email from request, make sure email is in db
+    print('email')
+
+# send HTML page where user can reset password
+@auth.route('/users/forgotPassword/<token>', methods=['GET', 'POST'])
+def reset_password(token):
+    if request.method == 'GET':
+        print('send html page')
+
+    elif request.method == 'POST':
+        print('change password in database')
     # validate token
     # if token is still valid, send HTML page with input to reset password
     print("Forgot")
-
-@auth.route('/users/resetPassword')
-def reset_password():
-    # validate token from header
-    # get password from body and change the password in the database
-    print("Reset")
