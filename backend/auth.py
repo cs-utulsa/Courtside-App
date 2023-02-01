@@ -596,7 +596,7 @@ def reset_password(token):
         hashed_password=generate_password_hash(new_password, method='sha256')
 
         try:
-            db.user.update_one(
+            db.users.update_one(
                 { '_id': ObjectId(user_id) },
                 { '$set': { 'password': hashed_password }}
             )
