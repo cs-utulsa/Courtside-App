@@ -38,7 +38,7 @@ def send_verification_email(email, user_id):
 def send_forgot_password_email(email, user_id):
     token = encode_email_token(user_id)
 
-    server_url = os.getenv("SERVER_URL")
+    server_url = os.getenv("LOCAL_URL")
 
     url = f'{server_url}/users/forgotPassword/{token}'
 

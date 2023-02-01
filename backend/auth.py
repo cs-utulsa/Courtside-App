@@ -564,14 +564,14 @@ def send_forgot_email():
         user = db.users.find_one(
             { 'email': email }
         )
-
+        print(user)
         if (not user):
             return string_response("No user with that email exists", 404)
     except OperationFailure:
         return string_response(SERVER_ERROR, 500)
 
     try:
-        send_forgot_password_email(email, user["_id"])
+        send_forgot_password_email(email, str(user["_id"]))
         return string_response("Email sent", 200)
     except HTTPError:
         return string_response("Email not sent", 500)
@@ -581,13 +581,14 @@ def send_forgot_email():
 @auth.route('/users/forgotPassword/<token>', methods=['GET', 'POST'])
 def reset_password(token):
     returned_token, user_id = is_valid_jwt_no_request(token)
+    print(returned_token, user_id)
 
     if not returned_token:
         # make this a link expired page eventually
         return string_response(INVALID_TOKEN_MESSAGE, 403)
 
     if request.method == 'GET':
-        return render_template("resetPassword.html")
+        return render_template("resetPasswordPage.html")
 
     elif request.method == 'POST':
         new_password = request.form['password']
@@ -596,11 +597,16 @@ def reset_password(token):
 
         try:
             db.user.update_one(
-                { '_id', user_id },
+                { '_id': ObjectId(user_id) },
                 { '$set': { 'password': hashed_password }}
             )
 
+            db.blacklisted_tokens.insert_one({
+                "token": returned_token,
+                "blacklisted_at": datetime.now()
+            })
+
             # Eventually make success page
-            return string_response("Password updated. Return to app and login!")
+            return string_response("Password updated. Return to app and login!", 200)
         except OperationFailure:
             return string_response(SERVER_ERROR, 500)
