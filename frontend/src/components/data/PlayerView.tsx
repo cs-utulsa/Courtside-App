@@ -23,13 +23,6 @@ const styles = StyleSheet.create({
         flex: 1,
         margin: 10,
     },
-    circleImageLayout: {
-        width: 75,
-        height: 75,
-        borderRadius: 75 / 2,
-        borderColor: 'grey',
-        borderWidth: 2,
-    },
     text: {
         fontSize: 25,
         textAlign: 'center',

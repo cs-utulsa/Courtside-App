@@ -9,12 +9,17 @@ import {
     Dimensions,
 } from 'react-native';
 import { Team } from '../../types/Team';
-import { CircleImage } from '@components/index';
+import { CircleImage } from '@components/images/CircleImage';
 
 type RosterSectionProps = {
+    /** The team to be shown in this component */
     team: Team;
 };
 
+/**
+ * This component shows a team's icon and when clicked it navigates to the specific page for that team
+ * This component is meant to be shown in a FlatList with others
+ */
 export const RosterSection: FC<RosterSectionProps> = ({ team }) => {
     const { push } = useNavigation<RosterNavigationProp>();
 
@@ -26,20 +31,8 @@ export const RosterSection: FC<RosterSectionProps> = ({ team }) => {
     const numColumns = 3;
     const tile = screenWidth / numColumns;
 
-    /*
-    
-    const rotate = new Animated.Value(0);
-    const ExpandOut = () => {
-        // Will change fadeAnim value to 0 in 3 seconds
-        Animated.timing(rotate, {
-            toValue: 500,
-            duration: 3000,
-            useNativeDriver: true,
-        }).start();
-        };
-      */
     return (
-        <View style={styles.Container}>
+        <View style={styles.container}>
             <TouchableOpacity
                 activeOpacity={0.5}
                 onPress={navigateToTeamScreen}
@@ -52,20 +45,14 @@ export const RosterSection: FC<RosterSectionProps> = ({ team }) => {
 };
 
 const styles = StyleSheet.create({
-    Container: {
+    /** styles for the component's container */
+    container: {
         justifyContent: 'center',
         alignItems: 'center',
         flex: 1,
         margin: 10,
     },
-    circleImageLayout: {
-        width: 75,
-        height: 75,
-        borderRadius: 75 / 2,
-        borderColor: 'grey',
-        borderWidth: 2,
-        resizeMode: 'contain',
-    },
+    /** styles for the text displayed below the image */
     text: {
         fontSize: 16,
         textAlign: 'center',

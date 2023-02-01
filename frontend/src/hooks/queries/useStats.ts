@@ -1,23 +1,21 @@
 import axios from 'axios';
 import { DEVELOPMENT_API } from '../../constants/urls';
 import { useQuery } from '@tanstack/react-query';
-import { PerModeId, Stat } from '../../types/Stat';
-import { STATS } from '@constants/stats';
+import { Stat } from '../../types/Stat';
 
-export const useStats = (stats: string[] | undefined, mode: PerModeId) => {
+export const useStats = (stats: string[] | undefined) => {
     return useQuery<Stat[]>({
         queryKey: ['stats'],
         queryFn: async () => {
             if (!stats) return [];
 
-            const _statsData = [];
+            const _statsData: Stat[] = [];
             for (let stat of stats) {
-                const { data } = await axios.get(
-                    `${DEVELOPMENT_API}/leaderboard/${stat}/${mode}`
+                const { data } = await axios.get<Stat>(
+                    `${DEVELOPMENT_API}/leaderboard/${stat}`
                 );
                 // get stat name
-                const name = STATS.find((item) => stat === item.id)?.name;
-                _statsData.push({ ...data, name });
+                _statsData.push(data);
             }
 
             return _statsData;

@@ -29,6 +29,32 @@ def encode_auth_token(user_id):
     except Exception as e:
         return e
 
+def encode_email_token(user_id):
+    """Creates a token for the user
+
+    Create a payload with the user's id. The expiration date is 10 minutes from token creation.
+    Encode the payload and return it to the user
+
+    Args: 
+        user_id: the id of the user as a string
+
+    Returns: the user's token as a string
+    """
+    try:
+        payload = {
+            'exp': datetime.utcnow() + timedelta(minutes=10),
+            'iat': datetime.utcnow(),
+            'sub': user_id
+        }
+
+        return jwt.encode(
+            payload,
+            os.getenv("JWT_SECRET"),
+            algorithm='HS256'
+        )
+    except Exception as e:
+        return e
+
 def decode_auth_token(token):
     """Decodes a token back into the payload
 
@@ -101,3 +127,23 @@ def is_valid_jwt(request):
         return False
 
     return token
+
+def is_valid_jwt_no_request(token):
+    """Checks to see if a token is valid when the token is not provided through an authorization header
+
+    Args:
+        token: the user's token
+
+    Returns:
+        if invalid: False, False
+
+        if valid:
+            the user's token,
+            the user's id
+    """
+    resp = decode_auth_token(token)
+
+    if isinstance(resp, str):
+        return False, False
+
+    return token, resp["sub"]

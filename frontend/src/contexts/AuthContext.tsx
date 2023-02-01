@@ -15,22 +15,44 @@ interface AuthProviderProps {
 }
 
 type AuthContextData = {
+    /** the user's data */
     authData?: AuthData;
+    /** whether or not the auth data is loading */
     loading: boolean;
+    /** the current error if one exists */
     authError: string | undefined;
+    /** method to sign in the user with email and password */
     signIn(email: string, password: string): Promise<void>;
+    /** method to register user with email and password */
     signUp(email: string, password: string): Promise<void>;
+    /** method to sign out the current user */
     signOut(): Promise<void>;
+    /** method to update the user's stats */
     updateStats(newStats: string[]): Promise<void>;
+    /** method to update the teams the user follows */
     updateTeams(newTeams: string[]): Promise<void>;
+    /** method to clear user data from the device and the server */
     clearData: () => Promise<void>;
+    /** resend the verification email to the user's provided email address */
+    resendEmailVerification: () => Promise<void>;
+    /** retrieves the updated auth data from the server */
+    updateAuthData: () => Promise<void>;
+    /** updates the user's email on the server */
+    updateEmail: (newEmail: string) => Promise<void>;
 };
 
 type AuthData = {
+    /** the user's JWT */
     token: string;
+    /** the id of the user */
     _id: string;
+    /** the user's email */
     email: string;
+    /** whether or not the user's email is verified */
+    emailVerified: string;
+    /** list of team ids of the teams that the user follows */
     teams?: string[];
+    /** list of stat ids of the stats that the user follows */
     stats?: string[];
 };
 
@@ -43,6 +65,8 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [authError, setAuthError] = useState<string | undefined>(undefined);
 
+    // if the user was previously logged in, load their data from the device
+    // and refresh their token
     useEffect(() => {
         const refreshToken = async (storedAuthData: AuthData) => {
             try {
@@ -91,6 +115,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         loadStorageData();
     }, []);
 
+    // sign in the user and store their information on the device
     const signIn = useCallback(async (email: string, password: string) => {
         setLoading(true);
         try {
@@ -122,6 +147,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         setLoading(false);
     }, []);
 
+    // sign up the user and store their information on the device
     const signUp = useCallback(async (email: string, password: string) => {
         setLoading(true);
 
@@ -151,6 +177,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         setLoading(false);
     }, []);
 
+    // sign out the user and remove their information from the device
     const signOut = useCallback(async () => {
         setAuthData(undefined);
         setAuthError(undefined);
@@ -172,6 +199,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         }
     }, [authData?.token]);
 
+    // update the user's stats
     const updateStats = useCallback(
         async (newStats: string[]) => {
             try {
@@ -208,6 +236,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         [authData]
     );
 
+    // update the user's teams
     const updateTeams = useCallback(
         async (newTeams: string[]) => {
             try {
@@ -243,16 +272,21 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         [authData]
     );
 
+    // clear the user's data
     const clearData = useCallback(async () => {
+        setAuthData(undefined);
         try {
-            await axios.post(`${DEVELOPMENT_API}/users/clear`, {
-                headers: {
-                    Authorization: `Bearer ${authData?.token}`,
-                },
-                body: {
+            await axios.post(
+                `${DEVELOPMENT_API}/users/clear`,
+                {
                     email: authData?.email,
                 },
-            });
+                {
+                    headers: {
+                        Authorization: `Bearer ${authData?.token}`,
+                    },
+                }
+            );
 
             await SecureStore.setItemAsync(
                 'authData',
@@ -267,6 +301,80 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         }
     }, [authData]);
 
+    const resendEmailVerification = useCallback(async () => {
+        setAuthError(undefined);
+        try {
+            await axios.post(
+                `${DEVELOPMENT_API}/users/resendEmailVerification`,
+                {
+                    email: authData?.email,
+                    id: authData?._id,
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${authData?.token}`,
+                    },
+                }
+            );
+        } catch (err) {
+            if (axios.isAxiosError(err)) {
+                setAuthError(err.response?.data);
+            } else {
+                setAuthError('Unknown Error Occurred. Try Again Later.');
+            }
+        }
+    }, [authData?.email, authData?._id, authData?.token]);
+
+    const updateAuthData = useCallback(async () => {
+        try {
+            const data = await axios
+                .get(`${DEVELOPMENT_API}/users/${authData?.token}`)
+                .then((res) => res.data);
+
+            const _authData = { ...data, token: authData?.token };
+            setAuthData(_authData);
+
+            await SecureStore.setItemAsync(
+                'authData',
+                JSON.stringify(_authData)
+            );
+        } catch (err) {
+            if (axios.isAxiosError(err)) {
+                setAuthError(err.response?.data);
+            } else {
+                setAuthError('Unknown Error Occurred. Try Again Later.');
+            }
+        }
+    }, [authData?.token]);
+
+    const updateEmail = useCallback(
+        async (newEmail: string) => {
+            try {
+                await axios.post(
+                    `${DEVELOPMENT_API}/users/changeEmail`,
+                    {
+                        old_email: authData?.email,
+                        new_email: newEmail,
+                    },
+                    {
+                        headers: {
+                            Authorization: `Bearer ${authData?.token}`,
+                        },
+                    }
+                );
+
+                await updateAuthData();
+            } catch (err) {
+                if (axios.isAxiosError(err)) {
+                    setAuthError(err.response?.data);
+                } else {
+                    setAuthError('Unknown Error Occurred. Try Again Later.');
+                }
+            }
+        },
+        [authData, updateAuthData]
+    );
+
     const contextData: AuthContextData = useMemo(() => {
         return {
             authData,
@@ -278,6 +386,9 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             updateStats,
             updateTeams,
             clearData,
+            resendEmailVerification,
+            updateAuthData,
+            updateEmail,
         };
     }, [
         authData,
@@ -289,6 +400,9 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         updateStats,
         updateTeams,
         clearData,
+        resendEmailVerification,
+        updateAuthData,
+        updateEmail,
     ]);
 
     return (

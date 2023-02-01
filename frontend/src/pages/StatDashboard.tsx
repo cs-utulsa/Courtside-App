@@ -11,7 +11,12 @@ import { StatsNavigationProp } from './../types/Navigation';
 import { Stat } from './../types/Stat';
 
 // custom components
-import { StatLeaderboard, PrimaryButton, FullError } from '@components/index';
+import {
+    StatLeaderboard,
+    PrimaryButton,
+    FullError,
+    Seperator,
+} from '@components/index';
 
 // constants
 import { ORANGE } from '@styles/colors';
@@ -24,7 +29,7 @@ export const StatDashboard = () => {
     const { push } = useNavigation<StatsNavigationProp>();
 
     const { data, isError, isLoading, isSuccess, isRefetching, refetch } =
-        useStats(authData?.stats, 'tot');
+        useStats(authData?.stats);
 
     // refetch the data when user returns to screen (stale data is still displayed during refetch)
     useRefreshOnFocus(refetch);
@@ -51,19 +56,13 @@ export const StatDashboard = () => {
             {/* if data was fetched successfully, create a leaderboard for each stat */}
             {isSuccess &&
                 data.map((stat: Stat) => {
-                    return (
-                        <StatLeaderboard
-                            key={stat._id}
-                            _id={stat._id}
-                            player_id={stat.player_names}
-                            value={stat.value}
-                            name={stat.name}
-                        />
-                    );
+                    return <StatLeaderboard key={stat.id} stat={stat} />;
                 })}
 
             {/* if data is being fetched from the server, display a loading indicator */}
             {isFetchingData && <ActivityIndicator color="black" size="large" />}
+            <Seperator />
+            <Seperator />
         </ScrollView>
     );
 };

@@ -2,6 +2,7 @@
 export { EmailInput } from './auth/EmailInput';
 export { PasswordInput } from './auth/PasswordInput';
 export { AuthSubmitButton } from './auth/AuthSubmitButton';
+export { ChangeEmail } from './auth/ChangeEmail';
 
 // Buttons
 export { LeftButton } from './buttons/LeftButton';

@@ -1,38 +1,19 @@
 from flask import Blueprint, request, make_response
 from pymongo.errors import OperationFailure
+from pymongo import ReturnDocument
 from werkzeug.security import generate_password_hash, check_password_hash
 import json
 from datetime import datetime
+from bson import ObjectId
+from python_http_client.exceptions import HTTPError
 
 from db import db
-from utils.jwt_utils import encode_auth_token, is_valid_jwt
+from utils.jwt_utils import encode_auth_token, is_valid_jwt, is_valid_jwt_no_request
+from utils.response_utils import string_response, INVALID_TOKEN_MESSAGE, NO_EMAIL_MESSAGE, SERVER_ERROR, JSON_MIME_TYPE, NO_PASSWORD_MESSAGE
+from email_client import sg
+from utils.email_utils import send_verification_email
 
 auth = Blueprint('auth', __name__)
-
-NO_EMAIL_MESSAGE = "Email must be provided"
-NO_PASSWORD_MESSAGE = "Password must be provided"
-JSON_MIME_TYPE = "application/json"
-INVALID_TOKEN_MESSAGE = "Invalid token"
-SERVER_ERROR = "Cannot complete request"
-
-def string_response(message, code):
-    """Creates a HTTP Response with a single message
-
-    Args:
-        message: string
-            The message to be sent as the data of the response
-        code: number
-            The HTTP code of the response
-
-    Returns:
-        An instance of the Response class with the data of the response as the given message 
-        and the status code of the response as the specified code
-    
-    """
-    response = make_response()
-    response.data = message
-    response.status_code = code
-    return response
 
 @auth.route('/users/register', methods=["POST"])
 def create_user():
@@ -100,6 +81,7 @@ def create_user():
             { 
                 "email": email,
                 "password": hashed_password,
+                "emailVerified": False,
             }
         );
 
@@ -112,13 +94,19 @@ def create_user():
         }
 
         # create document in user_preferences for other user data
-        db.user_preferences.insert_one(user);
+        db.user_preferences.insert_one(user)
 
     except OperationFailure:
         # return error if database cannot be accessed
         return string_response(SERVER_ERROR, 500)
     
+    try:
+        send_verification_email(email, user_id)
+    except HTTPError as e:
+        print(e.to_dict)
+
     user["token"] = encode_auth_token(user_id) # add jwt token to user
+    user["emailVerified"] = False
 
     #create response with user record (PASSWORD is not sent back to client)
     response = make_response()
@@ -199,9 +187,16 @@ def login_user():
     except OperationFailure:
         return string_response(SERVER_ERROR, 500)
 
+    if not user["emailVerified"]:
+        try:
+            send_verification_email(email, user_id)
+        except HTTPError as e:
+            print(e.to_dict)
+
     # get the jwt token for this response
     result["token"] = encode_auth_token(user_id)
     result["_id"] = user_id
+    result["emailVerified"] = user["emailVerified"]
 
     response = make_response()
     response.status_code = 200
@@ -356,167 +351,83 @@ def delete_user():
 
     return string_response("Deleted successfully", 200)
 
-@auth.route('/users/teams', methods=["PATCH"])
-def change_teams():
-    """Updates the teams the user is following
+@auth.route('/users/verifyEmail/<token>', methods=['GET'])
+def verify_email(token):
+    """Verifies a user's email
 
-    Check to make sure the user's token is valid.
-    Update the array of team ids in the database.
+    Checks to make sure the token is a valid token and then blacklists the token and sets the user's email to a verified status
+    An HTML page is returned that tells the user to go back to the app.
 
-    Request:
-        Headers:
-            Authorization:
-                must be of the form "Bearer <token>" where token is the user's JWT
-        Body:
-            email: the user's email
-            teams: a string array of team ids
+    Args:
+        token: the JWT token the user was given to check their email with
 
     Returns:
-        A Response object
+        A response object
 
-        - if token not valid
+        if the token is invalid:
             status_code: 403
-            data: "Invalid Token"
+            message: "Invalid token"
 
-        - if email not provided
-            status_code: 400
-            data: "Email must be provided
-
-        - if database cannot be accessed
+        if the server cannot be accessed:
             status_code: 500
-            data: "Cannot add teams to user"
+            message: "Cannot verify email right now."
 
-        - if success
+        if successful:
             status_code: 200
-            data: the updated list of teams the user is following
-
+            message: "Hello! You have successfully verified your email! You can return to the app now!"
     """
+    token, user_id = is_valid_jwt_no_request(token)
 
-    token = is_valid_jwt(request)
-
-    if (not token): 
+    if not token:
         return string_response(INVALID_TOKEN_MESSAGE, 403)
 
-    email = request.get_json()["email"]
-    teams = request.get_json()["teams"]
-
-    if (not email):
-        return string_response(NO_EMAIL_MESSAGE, 400)
-
     try:
-        db.user_preferences.update_one(
-            { 'email': email },
-            { '$set': { "teams": teams} }
+        db.users.update_one(
+            { '_id': ObjectId(user_id) },
+            { '$set': { 'emailVerified': True }}
         )
 
-        response = make_response()
-        response.status_code = 200
-        response.response = json.dumps(teams)
-        response.mimetype = JSON_MIME_TYPE
-
-        return response
+        db.blacklisted_tokens.insert_one({
+            "token": token,
+            "blacklisted_at": datetime.now()
+        })
     except OperationFailure:
-        return string_response("Cannot add teams to user", 500)
-    
+        return string_response("Cannot verify email right now.", 200)
 
+    return string_response("Hello! You have successfully verified your email! You can return to the app now!", 200)
 
-@auth.route('/users/leaderboards', methods=["PATCH"])
-def change_stats():
-    """Updates the stats the user is following
+@auth.route('/users/resendEmailVerification', methods=['POST'])
+def resend_verification():
+    """Sends the verification email to the user's email
 
-    Check to make sure the user's token is valid.
-    Update the array of stat ids in the database.
+    Checks to see if the user's auth token is valid and then sends the email to the user
 
     Request:
         Headers:
             Authorization:
                 must be of the form "Bearer <token>" where token is the user's JWT
         Body:
-            email: the user's email
-            stats: a string array of team ids
+            id: the user's id as a string
+            email: the user's email as a string
 
     Returns:
         A Response object
 
-        - if token not valid
+        - if token is invalid:
             status_code: 403
-            data: "Invalid Token"
+            message: "Invalid token"
 
-        - if email not provided
+        - if all parameters not included:
             status_code: 400
-            data: "Email must be provided
+            message: "Must include user id and email"
 
-        - if database cannot be accessed
+        - if email cannot be sent:
             status_code: 500
-            data: "Cannot add stats to user"
+            message: "Email cannot be sent"
 
-        - if success
+        - if email is sent:
             status_code: 200
-            data: the updated list of teams the user is following
-
-    """
-    token = is_valid_jwt(request)
-
-    if (not token): 
-        return string_response(INVALID_TOKEN_MESSAGE, 403)
-
-    email = request.get_json()["email"]
-    stats = request.get_json()["stats"]
-
-    if (not email):
-        return string_response(NO_EMAIL_MESSAGE, 400)
-
-    try:
-        db.user_preferences.update_one(
-            { 'email': email },
-            { '$set': { "stats": stats } }
-        );
-
-        response = make_response()
-        response.status_code = 200
-        response.response = json.dumps(stats)
-        response.mimetype = JSON_MIME_TYPE
-
-        return response
-    except OperationFailure:
-        return string_response("Cannot add stats to user", 500)
-
-@auth.route('/users/settings', methods=["PUT"])
-def change_settings():
-    # settings not implemented yet
-    pass
-
-@auth.route('/users/clear', methods=["POST"])
-def clear_data():
-    """Removes all user preferences from the servers
-
-    Check to make sure user's token is valid and then set stat and team data to empty arrays
-
-    Request:
-        Headers:
-            Authorization:
-                must be of the form "Bearer <token>" where token is the user's JWT
-        Body:
-            email: the user's email
-
-    Returns:
-        A Response object
-
-        - if token not valid:
-            status_code: 403
-            message: 'Invalid token'
-
-        - if email not provided
-            status_code: 400
-            message: 'Email must be provided'
-
-        - if server cannot be accessed
-            status_code: 500
-            message: 'Cannot complete request'
-
-        - if data successfully cleared
-            status_code: 200
-            message: 'User data cleared'
+            message: "Email sent"
     
     """
     token = is_valid_jwt(request)
@@ -524,18 +435,120 @@ def clear_data():
     if (not token): 
         return string_response(INVALID_TOKEN_MESSAGE, 403)
 
-    email = request.get_json()['email']
+    try:
+        user_id = request.get_json(force=True)['id']
+        email = request.get_json(force=True)['email']
+    except KeyError:
+        return string_response("Must include user id and email", 400)
+        
+    try:
+        send_verification_email(email, user_id)
+        return string_response("Email sent", 200)
+    except HTTPError as e:
+        print(e.to_dict())
+        return string_response("Email cannot be sent", 500)
 
-    if not email:
-        return string_response(NO_EMAIL_MESSAGE, 400)
+@auth.route('/users/<token>', methods=['GET'])
+def get_user(token):
+    """Get the information for a specific user
+
+    Check to make sure the token is valid.
+    Return the user's data
+
+    Args:
+        token: the user's JWT
+
+    Returns:
+        A Response object
+
+        - if token is invalid:
+            status_code: 403
+            message: "Invalid token"
+
+        - if server cannot be accessed:
+            status_code: 500
+            message: "Cannot complete request"
+
+        - if successful
+            status_code: 200
+            data: JSON object with user id, email, email verification status, list of stats, and list of teams
+    """
+    user_token, user_id = is_valid_jwt_no_request(token)
+    
+    if (not user_token): 
+        return string_response(INVALID_TOKEN_MESSAGE, 403)
 
     try:
+        user = db.users.find_one(
+            { '_id': ObjectId(user_id) }
+        )
+
+        preferences = db.user_preferences.find_one(
+            { 'email': user['email']}
+        )
+
+        result = dict()
+        result["_id"] = user_id
+        result["email"] = user["email"]
+        result["emailVerified"] = user["emailVerified"]
+        result["stats"] = preferences["stats"]
+        result["teams"] = preferences["teams"]
+
+        response = make_response()
+        response.data = json.dumps(result)
+        response.status_code = 200
+        response.mimetype = JSON_MIME_TYPE
+
+        return response
+
+    except OperationFailure:
+        return string_response(SERVER_ERROR, 500)
+        
+
+@auth.route('/users/changeEmail', methods=['POST'])
+def change_email():
+    token = is_valid_jwt(request)
+
+    if (not token): 
+        return string_response(INVALID_TOKEN_MESSAGE, 403)
+
+    try:
+        new_email = request.get_json()['new_email']
+        old_email = request.get_json()['old_email']
+    except KeyError:
+        return string_response("Must submit both old email and new email", 400)
+
+    try:
+
+        email_exists = db.users.find_one(
+            { 'email': new_email }
+        )
+
+        if email_exists:
+            return string_response("There is already a user with that email", 409)
+
+        user = db.users.find_one_and_update(
+            { 'email': old_email },
+            { '$set': { 
+                'email': new_email,
+                'emailVerified': False 
+            }},
+            return_document=ReturnDocument.AFTER
+        )
+
         db.user_preferences.update_one(
-            { 'email': email },
-            { '$set': { "stats": [], "teams": [] } }
+            { 'email': old_email },
+            { '$set': { 'email': new_email }}
         )
 
     except OperationFailure:
         return string_response(SERVER_ERROR, 500)
 
-    return string_response("User data cleared", 200)
+    try:
+        send_verification_email(new_email, user["_id"])
+    except HTTPError:
+        print("Cannot send email")
+
+    return string_response("Successfully changed", 200)
+
+

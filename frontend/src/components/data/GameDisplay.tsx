@@ -1,9 +1,11 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
 import React, { FC } from 'react';
 
 import { SelectCircle } from '../buttons/SelectCircle';
 import { ICONS } from '../../constants';
 import { Game } from './../../types/Game';
+import { useNavigation } from '@react-navigation/native';
+import { ScheduleNavigationProp } from './../../types/Navigation';
 
 type GameProps = {
     /** The data for the game represented by this display */
@@ -18,6 +20,8 @@ type GameProps = {
  * return <GameDisplay game={game} />
  */
 export const GameDisplay: FC<GameProps> = ({ game }) => {
+    const { push } = useNavigation<ScheduleNavigationProp>();
+
     const awayIconUrl = ICONS.find(
         (icon) => icon.code === game.away_code
     )?.logo;
@@ -27,13 +31,16 @@ export const GameDisplay: FC<GameProps> = ({ game }) => {
     )?.logo;
 
     return (
-        <View style={styles.gameBlock}>
+        <Pressable
+            style={styles.gameBlock}
+            onPress={() => push('Game', { game })}
+        >
             <SelectCircle url={awayIconUrl} size={100} disabled={true} />
             <View style={styles.gameData}>
                 <Text style={styles.gameTime}>{game.game_time}</Text>
             </View>
             <SelectCircle url={homeIconUrl} size={100} disabled={true} />
-        </View>
+        </Pressable>
     );
 };
 

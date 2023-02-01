@@ -3,12 +3,13 @@ import {
     BottomTabNavigationOptions,
     createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
-import { Schedule, Settings } from '@pages/index';
+import { Settings } from '@pages/index';
 import { Ionicons, FontAwesome, FontAwesome5 } from '@expo/vector-icons';
 import { StatsStack } from './StatsStack';
 import { RosterStack } from './RosterStack';
 import { ORANGE } from '../styles/colors';
 import { ParamListBase, RouteProp } from '@react-navigation/native';
+import { ScheduleStack } from './ScheduleStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -43,7 +44,7 @@ const screenOptions = (routeName: string | undefined) => {
                         size={size}
                     />
                 );
-            } else if (route.name === 'Schedule') {
+            } else if (route.name === 'Games') {
                 return (
                     <FontAwesome name="calendar-o" color={color} size={size} />
                 );
@@ -74,7 +75,7 @@ export const MainNavigation: FC<MainNavigationProps> = ({ routeName }) => {
     return (
         <Tab.Navigator initialRouteName="Stats" screenOptions={options}>
             <Tab.Screen name="Stats" component={StatsStack} />
-            <Tab.Screen name="Schedule" component={Schedule} />
+            <Tab.Screen name="Games" component={ScheduleStack} />
             <Tab.Screen name="Rosters" component={RosterStack} />
             <Tab.Screen name="Settings" component={Settings} />
         </Tab.Navigator>

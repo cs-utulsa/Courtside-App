@@ -7,6 +7,7 @@ import {
 import { useAuth } from '../hooks/useAuth';
 import { MainNavigation } from './MainNavigation';
 import { AuthStack } from './AuthStack';
+import { VerifyEmailScreen } from '@pages/index';
 
 const Theme = {
     ...DefaultTheme,
@@ -30,7 +31,7 @@ const RootNavigator = () => {
         setRouteName(currentRouteName);
     }, []);
 
-    if (authData?.token) {
+    if (authData?.token && authData?.emailVerified) {
         return (
             <NavigationContainer
                 theme={Theme}
@@ -41,6 +42,8 @@ const RootNavigator = () => {
                 <MainNavigation routeName={routeName} />
             </NavigationContainer>
         );
+    } else if (authData?.token && !authData?.emailVerified) {
+        return <VerifyEmailScreen />;
     }
 
     return (

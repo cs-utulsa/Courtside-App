@@ -6,14 +6,22 @@ type DangerButtonProps = {
     text: string;
     /** Function defining what the button does when pressed */
     onPress: () => void;
+    /** Whether or not the button is disabled. False by default */
+    disabled?: boolean;
 };
 
 /**
  * A button colored red with red text expressing that when pressed the user will do a dangerous activity.
  * When the button is pressed an alert will pop up to confirm whether or not the user wants to complete the action.
  */
-export const DangerButton: FC<DangerButtonProps> = ({ text, onPress }) => {
+export const DangerButton: FC<DangerButtonProps> = ({
+    text,
+    onPress,
+    disabled = false,
+}) => {
     const createAlert = () => {
+        if (disabled) return;
+
         Alert.alert(
             'Do you want to continue?',
             '',
@@ -32,8 +40,13 @@ export const DangerButton: FC<DangerButtonProps> = ({ text, onPress }) => {
     };
 
     return (
-        <Pressable onPress={createAlert} style={styles.button}>
-            <Text style={styles.text}>{text}</Text>
+        <Pressable
+            onPress={createAlert}
+            style={[styles.button, disabled && styles.disabled]}
+        >
+            <Text style={[styles.text, disabled && styles.disabledText]}>
+                {text}
+            </Text>
         </Pressable>
     );
 };
@@ -53,5 +66,11 @@ const styles = StyleSheet.create({
         color: 'red',
         fontSize: 16,
         textTransform: 'uppercase',
+    },
+    disabled: {
+        backgroundColor: '#ccc8c9',
+    },
+    disabledText: {
+        color: 'grey',
     },
 });

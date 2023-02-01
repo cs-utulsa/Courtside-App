@@ -1,85 +1,45 @@
-import React, { FC, useState } from 'react';
+import { Stat } from './../../types/Stat';
+import React, { FC } from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { StatsNavigationProp } from './../../types/Navigation';
 
 export type LeaderboardProps = {
-    /** The id of the stat being displayed */
-    _id: string;
-    /** The name of the stat being displayed. If this is not given, the id will be shown in the component instead. */
-    name?: string;
-    /** Array of top ranking players for this stat */
-    player_id: string[];
-    /** Array of the scores of the top ranking players for this stat */
-    value: number[];
+    /** the stat to be displayed on this leaderboard */
+    stat: Stat;
 };
 
 /**
  * This component displays the players with the highest value for the specified stat
- * @example
- * const _id = "statId";
- * const name = "Stat";
- * const player_id = ["Player 1", "Player 2", "Player 3"];
- * const value = [5, 3, 1]; //5 is the stat value for Player 1, 3 for Player 2, etc.
- * return <StatLeaderboard _id={_id} name={name} player_id={player_id} value={value} />
  */
-export const StatLeaderboard: FC<LeaderboardProps> = ({
-    _id,
-    player_id,
-    value,
-    name,
-}) => {
-    const [open, setOpen] = useState<boolean>(false);
+export const StatLeaderboard: FC<LeaderboardProps> = ({ stat }) => {
+    const topFivePlayers = stat.total.players.slice(0, 5);
 
-    if (!open) {
-        return (
-            <Pressable
-                onPress={() => setOpen(true)}
-                style={styles.leaderboardBlock}
-            >
-                <View style={styles.titleBlock}>
-                    <Text style={styles.statTitle}>{name ? name : _id}</Text>
-                </View>
-                <View style={styles.leaderboardList}>
-                    <View style={styles.statCol}>
-                        <Text>{player_id[0]}</Text>
-                    </View>
-                    <View style={styles.statCol}>
-                        <Text>{value[0]}</Text>
-                    </View>
-                </View>
-            </Pressable>
-        );
-    }
+    const { push } = useNavigation<StatsNavigationProp>();
 
     return (
-        <View style={styles.leaderboardBlock}>
-            <Pressable onPress={() => setOpen(false)}>
-                <View style={styles.titleBlock}>
-                    <Text style={styles.statTitle}>{name ? name : _id}</Text>
-                </View>
-                <View style={styles.statHeader}>
-                    <Text>Rank</Text>
-                    <Text>Player</Text>
-                    <Text>Value</Text>
-                </View>
-            </Pressable>
-            <View style={styles.leaderboardList}>
-                <View style={styles.statCol}>
-                    {player_id.map((item: any, index: number) => (
-                        <Text key={`rank-${index}-${item}`}>{index + 1}</Text>
-                    ))}
-                </View>
-                <View style={styles.statCol}>
-                    {player_id.map((id: any, index) => (
-                        <Text key={`id-${index}-${id}`}>{id}</Text>
-                    ))}
-                </View>
-                <View style={styles.statCol}>
-                    {value.map((valueNum: any, index) => (
-                        <Text key={`val-${index}-${valueNum}`}>{valueNum}</Text>
-                    ))}
-                </View>
+        <Pressable
+            style={styles.leaderboardBlock}
+            onPress={() => push('Stat', { stat })}
+        >
+            <View style={styles.titleBlock}>
+                <Text style={styles.statTitle}>{stat.name}</Text>
             </View>
-        </View>
+            <View style={styles.row}>
+                <Text style={styles.colHeading}>Rank</Text>
+                <Text style={styles.colHeading}>Player</Text>
+                <Text style={styles.colHeading}>Value</Text>
+            </View>
+            <View>
+                {topFivePlayers.map((player, index) => (
+                    <View style={styles.row} key={`${player.id}-${stat.id}`}>
+                        <Text>{index}</Text>
+                        <Text>{player.name}</Text>
+                        <Text>{player.value}</Text>
+                    </View>
+                ))}
+            </View>
+        </Pressable>
     );
 };
 
@@ -105,17 +65,12 @@ const styles = StyleSheet.create({
         paddingBottom: 5,
     },
     /** Styles for the header which states what each row of the leaderboard is */
-    statHeader: {
+    row: {
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
-    /** Styles for the container of the player data */
-    leaderboardList: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-    },
-    /** Styles for the columns that display player names and the stat values of the players */
-    statCol: {
-        flexDirection: 'column',
+    /** styles for the text that heads each column of data */
+    colHeading: {
+        fontWeight: 'bold',
     },
 });
