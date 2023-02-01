@@ -168,8 +168,8 @@ def get_team(id):
 
     return json.dumps(team)
 
-gpr = pickle.load(open('models\gpr_model_xs.pkl', 'rb'))
-league_stats = pd.read_csv('data\league_stats.csv')
+gpr = pickle.load(open('models/gpr_model_xs.pkl', 'rb'))
+league_stats = pd.read_csv('data/league_stats.csv')
 
 # Return predicted scores for a specified matchup
 @app.route('/score/<team1>/<team2>', methods=['GET'])
