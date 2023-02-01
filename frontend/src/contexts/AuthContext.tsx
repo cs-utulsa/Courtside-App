@@ -39,6 +39,8 @@ type AuthContextData = {
     updateAuthData: () => Promise<void>;
     /** updates the user's email on the server */
     updateEmail: (newEmail: string) => Promise<void>;
+    /** sends forgot password email to user */
+    forgotPassword: (email: string) => Promise<void>;
 };
 
 type AuthData = {
@@ -375,6 +377,20 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         [authData, updateAuthData]
     );
 
+    const forgotPassword = useCallback(async (email: string) => {
+        try {
+            await axios.post(`${DEVELOPMENT_API}/users/forgotPassword`, {
+                email,
+            });
+        } catch (err) {
+            if (axios.isAxiosError(err)) {
+                setAuthError(err.response?.data);
+            } else {
+                setAuthError('Unknown Error Occurred. Try Again Later.');
+            }
+        }
+    }, []);
+
     const contextData: AuthContextData = useMemo(() => {
         return {
             authData,
@@ -389,6 +405,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             resendEmailVerification,
             updateAuthData,
             updateEmail,
+            forgotPassword,
         };
     }, [
         authData,
@@ -403,6 +420,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         resendEmailVerification,
         updateAuthData,
         updateEmail,
+        forgotPassword,
     ]);
 
     return (
