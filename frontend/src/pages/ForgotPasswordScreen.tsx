@@ -3,8 +3,11 @@ import {
     EmailInput,
     ErrorBox,
     LogoHeader,
+    SmallLink,
 } from '@components/index';
 import { useAuth } from '@hooks/useAuth';
+import { useNavigation } from '@react-navigation/native';
+import { AuthNavigationProp } from './../types/Navigation';
 import { Formik } from 'formik';
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
@@ -18,6 +21,7 @@ const authSchema = Yup.object().shape({
 
 export const ForgotPasswordScreen = () => {
     const { authError, forgotPassword } = useAuth();
+    const { goBack } = useNavigation<AuthNavigationProp>();
 
     return (
         <View style={styles.container}>
@@ -53,6 +57,10 @@ export const ForgotPasswordScreen = () => {
                             submitFn={handleSubmit}
                             disabled={isSubmitting || !isValid}
                             text="Send Password Reset Email"
+                        />
+                        <SmallLink
+                            text="Return to Sign In"
+                            onPress={() => goBack()}
                         />
                     </View>
                 )}
