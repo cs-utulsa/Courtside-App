@@ -1,7 +1,7 @@
 # Environment
 .venv/
 .env
-models/
+models/old/
 old/
 
 # Byte-complied / optimized / DLL fiels

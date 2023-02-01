@@ -1,12 +1,13 @@
-from auth import auth as auth_blueprint
 from preferences import preferences as preferences_blueprint
-from flask import Flask
+from auth import auth as auth_blueprint
+from utils.data_utils import schedule_key
 from dotenv import load_dotenv
 from flask_cors import CORS
+from flask import Flask
 from db import db
 import pandas as pd
+import pickle
 import json
-from utils.data_utils import schedule_key
 
 app = Flask(__name__)
 CORS(app)
@@ -166,6 +167,43 @@ def get_team(id):
     del team["_id"]
 
     return json.dumps(team)
+
+gpr = pickle.load(open('model\gpr_model_xs.pkl', 'rb'))
+league_stats = pd.read_csv('data\league_stats.csv')
+
+# Return predicted scores for a specified matchup
+@app.route('/score/<team1>/<team2>', methods=['GET'])
+def get_score(team1, team2):
+    team1_id = db.teams.find_one({'abbr': team1})['_id']
+    team1_stats = league_stats[league_stats['team_id'] == team1_id]
+    team1_stats.reset_index(drop=True, inplace=True)
+    team1_off = team1_stats[['off_rtg','off_rtg_10','pace','pace_10']]
+    team1_def = team1_stats[['def_rtg','def_rtg_10','pace','pace_10']]
+    team1_def.columns = ['opp_def_rtg','opp_def_rtg_10','opp_pace','opp_pace_10']
+    
+    team2_id = db.teams.find_one({'abbr': team2})['_id']
+    team2_stats = league_stats[league_stats['team_id'] == team2_id]
+    team2_stats.reset_index(drop=True, inplace=True)
+    team2_off = team2_stats[['off_rtg','off_rtg_10','pace','pace_10']]
+    team2_def = team2_stats[['def_rtg','def_rtg_10','pace','pace_10']]
+    team2_def.columns = ['opp_def_rtg','opp_def_rtg_10','opp_pace','opp_pace_10']
+    
+    team1_input = pd.concat([team1_off, team2_def], axis=1)
+    team2_input = pd.concat([team2_off, team1_def], axis=1)
+    
+    team1_preds = gpr.predict(team1_input, return_std=True)
+    team2_preds = gpr.predict(team2_input, return_std=True)
+    json_output = {
+        team1: {
+            'score': round(team1_preds[0][0], 3),
+            'stdev': round(team1_preds[1][0], 3)
+        },
+        team2: {
+            'score': round(team2_preds[0][0], 3),
+            'stdev': round(team2_preds[1][0], 3)
+        }
+    }
+    return json_output
 
 # Main method
 if __name__ == "__main__":
