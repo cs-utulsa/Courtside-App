@@ -1,5 +1,6 @@
 from preferences import preferences as preferences_blueprint
 from auth import auth as auth_blueprint
+from test import test as test_blueprint
 from utils.data_utils import schedule_key
 from dotenv import load_dotenv
 from flask_cors import CORS
@@ -14,6 +15,7 @@ CORS(app)
 
 app.register_blueprint(auth_blueprint)
 app.register_blueprint(preferences_blueprint)
+app.register_blueprint(test_blueprint)
 
 # Return roster of player id's for specified team
 @app.route('/roster/<team_code>', methods=['GET'])

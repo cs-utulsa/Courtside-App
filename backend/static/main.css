@@ -1,3 +1,22 @@
+/* Main */
+* {
+    box-sizing: border-box;
+}
+
+h1, h2, p {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Forms */
 form {
     display: flex;
     flex-direction: column;
