@@ -42,11 +42,10 @@ def send_forgot_email():
 @forgot_password('/users/forgotPassword/<token>', methods=['GET', 'POST'])
 def reset_password(token):
     returned_token, user_id = is_valid_jwt_no_request(token)
-    print(returned_token, user_id)
 
     if not returned_token:
         # make this a link expired page eventually
-        return string_response(INVALID_TOKEN_MESSAGE, 403)
+        return render_template('pages/invalidTokenPage.html')
 
     if request.method == 'GET':
         return render_template("pages/resetPasswordPage.html")
@@ -70,4 +69,4 @@ def reset_password(token):
             # Eventually make success page
             return render_template('pages/passwordResetSuccessPage.html')
         except OperationFailure:
-            return string_response(SERVER_ERROR, 500)
+            return render_template('pages/serverErrorPage.html')

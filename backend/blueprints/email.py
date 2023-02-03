@@ -41,7 +41,7 @@ def verify_email(token):
     token, user_id = is_valid_jwt_no_request(token)
 
     if not token:
-        return string_response(INVALID_TOKEN_MESSAGE, 403)
+        return render_template('pages/invalidTokenPage.html')
 
     try:
         db.users.update_one(
@@ -54,7 +54,7 @@ def verify_email(token):
             "blacklisted_at": datetime.now()
         })
     except OperationFailure:
-        return string_response("Cannot verify email right now.", 200)
+        return render_template('pages/serverErrorPage.html')
 
     return render_template('pages/verifyEmailSuccessPage.html')
 
