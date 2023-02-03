@@ -68,6 +68,6 @@ def reset_password(token):
             })
 
             # Eventually make success page
-            return string_response("Password updated. Return to app and login!", 200)
+            return render_template('pages/passwordResetSuccessPage.html')
         except OperationFailure:
             return string_response(SERVER_ERROR, 500)

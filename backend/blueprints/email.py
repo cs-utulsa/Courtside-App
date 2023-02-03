@@ -56,7 +56,7 @@ def verify_email(token):
     except OperationFailure:
         return string_response("Cannot verify email right now.", 200)
 
-    return string_response("Hello! You have successfully verified your email! You can return to the app now!", 200)
+    return render_template('pages/verifyEmailSuccessPage.html')
 
 @email.route('/users/resendEmailVerification', methods=['POST'])
 def resend_verification():
@@ -106,8 +106,7 @@ def resend_verification():
     try:
         send_verification_email(email, user_id)
         return string_response("Email sent", 200)
-    except HTTPError as e:
-        print(e.to_dict())
+    except HTTPError:
         return string_response("Email cannot be sent", 500)  
 
 @email.route('/users/changeEmail', methods=['POST'])
@@ -152,6 +151,6 @@ def change_email():
     try:
         send_verification_email(new_email, user["_id"])
     except HTTPError:
-        print("Cannot send email")
+        return string_response("Cannot send email", 500)
 
     return string_response("Successfully changed", 200)
