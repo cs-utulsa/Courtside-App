@@ -9,3 +9,7 @@ def verify():
 @test.route('/test/reset', methods=["GET"])
 def reset():
     return render_template("resetPasswordPage.html")
+
+@test.route('/test/passSuccess', methods=["GET"])
+def p_success():
+    return render_template("pages/passwordResetSuccessPage.html")
