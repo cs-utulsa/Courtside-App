@@ -39,7 +39,7 @@ def send_forgot_email():
 
 
 # send HTML page where user can reset password
-@forgot_password('/users/forgotPassword/<token>', methods=['GET', 'POST'])
+@forgot_password.route('/users/forgotPassword/<token>', methods=['GET', 'POST'])
 def reset_password(token):
     returned_token, user_id = is_valid_jwt_no_request(token)
 
