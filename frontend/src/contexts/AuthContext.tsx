@@ -120,6 +120,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     // sign in the user and store their information on the device
     const signIn = useCallback(async (email: string, password: string) => {
         setLoading(true);
+        setAuthError(undefined);
         try {
             const response = await axios.post(
                 `${DEVELOPMENT_API}/users/login`,
@@ -152,6 +153,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     // sign up the user and store their information on the device
     const signUp = useCallback(async (email: string, password: string) => {
         setLoading(true);
+        setAuthError(undefined);
 
         try {
             const response = await axios.post(
@@ -183,6 +185,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     const signOut = useCallback(async () => {
         setAuthData(undefined);
         setAuthError(undefined);
+        setLoading(true);
 
         try {
             await axios.post(
@@ -198,12 +201,17 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             await SecureStore.deleteItemAsync('authData');
         } catch (err) {
             console.log('Error logging out');
+        } finally {
+            setLoading(false);
         }
     }, [authData?.token]);
 
     // update the user's stats
     const updateStats = useCallback(
         async (newStats: string[]) => {
+            setLoading(true);
+            setAuthError(undefined);
+
             try {
                 const data = await axios
                     .patch(
@@ -233,6 +241,8 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
                 } else {
                     setAuthError('Unknown Error Occurred. Try Again Later.');
                 }
+            } finally {
+                setLoading(false);
             }
         },
         [authData]
@@ -241,6 +251,9 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     // update the user's teams
     const updateTeams = useCallback(
         async (newTeams: string[]) => {
+            setLoading(true);
+            setAuthError(undefined);
+
             try {
                 const data = await axios
                     .patch(
@@ -277,6 +290,9 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     // clear the user's data
     const clearData = useCallback(async () => {
         setAuthData(undefined);
+        setLoading(true);
+        setAuthError(undefined);
+
         try {
             await axios.post(
                 `${DEVELOPMENT_API}/users/clear`,
@@ -300,10 +316,13 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             } else {
                 setAuthError('Unknown Error Occurred. Try Again Later.');
             }
+        } finally {
+            setLoading(false);
         }
     }, [authData]);
 
     const resendEmailVerification = useCallback(async () => {
+        setLoading(true);
         setAuthError(undefined);
         try {
             await axios.post(
@@ -324,10 +343,14 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             } else {
                 setAuthError('Unknown Error Occurred. Try Again Later.');
             }
+        } finally {
+            setLoading(false);
         }
     }, [authData?.email, authData?._id, authData?.token]);
 
     const updateAuthData = useCallback(async () => {
+        setLoading(true);
+        setAuthError(undefined);
         try {
             const data = await axios
                 .get(`${DEVELOPMENT_API}/users/${authData?.token}`)
@@ -346,11 +369,15 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             } else {
                 setAuthError('Unknown Error Occurred. Try Again Later.');
             }
+        } finally {
+            setLoading(false);
         }
     }, [authData?.token]);
 
     const updateEmail = useCallback(
         async (newEmail: string) => {
+            setLoading(true);
+            setAuthError(undefined);
             try {
                 await axios.post(
                     `${DEVELOPMENT_API}/users/changeEmail`,
@@ -372,12 +399,16 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
                 } else {
                     setAuthError('Unknown Error Occurred. Try Again Later.');
                 }
+            } finally {
+                setLoading(false);
             }
         },
         [authData, updateAuthData]
     );
 
     const forgotPassword = useCallback(async (email: string) => {
+        setLoading(true);
+        setAuthError(undefined);
         try {
             await axios.post(`${DEVELOPMENT_API}/users/forgotPassword`, {
                 email,
@@ -388,6 +419,8 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             } else {
                 setAuthError('Unknown Error Occurred. Try Again Later.');
             }
+        } finally {
+            setLoading(false);
         }
     }, []);
 
