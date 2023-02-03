@@ -588,7 +588,7 @@ def reset_password(token):
         return string_response(INVALID_TOKEN_MESSAGE, 403)
 
     if request.method == 'GET':
-        return render_template("resetPasswordPage.html")
+        return render_template("pages/resetPasswordPage.html")
 
     elif request.method == 'POST':
         new_password = request.form['password']
