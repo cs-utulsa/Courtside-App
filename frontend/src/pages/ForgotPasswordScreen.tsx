@@ -47,6 +47,7 @@ export const ForgotPasswordScreen = () => {
                     isValid,
                 }) => (
                     <View style={styles.form}>
+                        <ErrorBox error={authError} />
                         <EmailInput
                             changeFn={handleChange('email')}
                             blurFn={handleBlur('email')}
@@ -55,7 +56,6 @@ export const ForgotPasswordScreen = () => {
                             value={values.email}
                             disabled={isSubmitting}
                         />
-                        <ErrorBox error={authError} />
                         <AuthSubmitButton
                             loading={isSubmitting}
                             submitFn={handleSubmit}
