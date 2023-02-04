@@ -1,5 +1,5 @@
 // external imports
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, StyleSheet, ActivityIndicator } from 'react-native';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -39,9 +39,13 @@ const authSchema = Yup.object().shape({
  * This component is the sign up form that displays when a new user launches the app and wants to join.
  */
 export const SignUp = () => {
-    const { signUp, authError, loading } = useAuth();
+    const { signUp, authError, loading, resetAuthError } = useAuth();
 
     const { navigate } = useNavigation<AuthNavigationProp>();
+
+    useEffect(() => {
+        resetAuthError();
+    }, [resetAuthError]);
 
     if (loading) {
         return (

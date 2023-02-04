@@ -41,6 +41,8 @@ type AuthContextData = {
     updateEmail: (newEmail: string) => Promise<void>;
     /** sends forgot password email to user */
     forgotPassword: (email: string) => Promise<void>;
+    /** reset the auth error */
+    resetAuthError: () => void;
 };
 
 type AuthData = {
@@ -424,6 +426,10 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         }
     }, []);
 
+    const resetAuthError = useCallback(() => {
+        setAuthError(undefined);
+    }, []);
+
     const contextData: AuthContextData = useMemo(() => {
         return {
             authData,
@@ -439,6 +445,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             updateAuthData,
             updateEmail,
             forgotPassword,
+            resetAuthError,
         };
     }, [
         authData,
@@ -454,6 +461,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         updateAuthData,
         updateEmail,
         forgotPassword,
+        resetAuthError,
     ]);
 
     return (

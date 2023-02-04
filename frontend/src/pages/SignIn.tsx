@@ -1,5 +1,5 @@
 // external imports
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, StyleSheet, ActivityIndicator } from 'react-native';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -32,7 +32,11 @@ const authSchema = Yup.object().shape({
  * This component displays when a user needs to sign back into the app.
  */
 export const SignIn = () => {
-    const { signIn, authError, loading } = useAuth();
+    const { signIn, authError, loading, resetAuthError } = useAuth();
+
+    useEffect(() => {
+        resetAuthError();
+    }, [resetAuthError]);
 
     const { navigate } = useNavigation<AuthNavigationProp>();
 

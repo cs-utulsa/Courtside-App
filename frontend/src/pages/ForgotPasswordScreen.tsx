@@ -9,7 +9,7 @@ import { useAuth } from '@hooks/useAuth';
 import { useNavigation } from '@react-navigation/native';
 import { AuthNavigationProp } from './../types/Navigation';
 import { Formik } from 'formik';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import * as Yup from 'yup';
 
@@ -20,8 +20,12 @@ const authSchema = Yup.object().shape({
 });
 
 export const ForgotPasswordScreen = () => {
-    const { authError, forgotPassword } = useAuth();
+    const { authError, forgotPassword, resetAuthError } = useAuth();
     const { goBack } = useNavigation<AuthNavigationProp>();
+
+    useEffect(() => {
+        resetAuthError();
+    }, [resetAuthError]);
 
     return (
         <View style={styles.container}>
