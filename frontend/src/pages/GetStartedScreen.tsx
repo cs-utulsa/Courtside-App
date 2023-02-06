@@ -8,11 +8,15 @@ import { AuthNavigationProp } from './../types/Navigation';
 const images: { image: any; text: string }[] = [
     {
         image: require('./../assets/images/basketball-player.png'),
-        text: 'Follow your favorite teams and players',
+        text: 'Follow your favorite teams and players!',
     },
     {
         image: require('./../assets/images/crowd.png'),
-        text: 'Customize your fan experience.',
+        text: 'Customize your fan experience!',
+    },
+    {
+        image: require('./../assets/images/tennis.png'),
+        text: 'Keep track of sports stats your way!',
     },
 ];
 
@@ -66,6 +70,8 @@ const styles = StyleSheet.create({
     itemText: {
         textAlign: 'center',
         fontSize: 25,
+        height: 60,
+        marginHorizontal: 10,
     },
     itemImage: {
         resizeMode: 'contain',
