@@ -29,6 +29,8 @@ export type AuthNavigatorParamList = {
     SignUp: undefined;
     /** screen that allows user to send email to reset password */
     ForgotPassword: undefined;
+    /** screen that introduces the user to the app */
+    GetStarted: undefined;
 };
 
 export type AuthNavigationProp =
