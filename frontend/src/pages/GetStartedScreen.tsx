@@ -1,9 +1,20 @@
 import Carousel from 'react-native-reanimated-carousel';
-import { Dimensions, View, Text, StyleSheet } from 'react-native';
+import { Dimensions, View, Text, StyleSheet, Image } from 'react-native';
 import React from 'react';
 import { AuthSubmitButton, LogoHeader, SmallLink } from '@components/index';
 import { useNavigation } from '@react-navigation/native';
 import { AuthNavigationProp } from './../types/Navigation';
+
+const images: { image: any; text: string }[] = [
+    {
+        image: require('./../assets/images/basketball-player.png'),
+        text: 'Follow your favorite teams and players',
+    },
+    {
+        image: require('./../assets/images/crowd.png'),
+        text: 'Customize your fan experience.',
+    },
+];
 
 export const GetStartedScreen = () => {
     const width = Dimensions.get('window').width;
@@ -15,12 +26,14 @@ export const GetStartedScreen = () => {
             <Carousel
                 loop
                 width={width}
-                height={width / 2}
+                height={width}
                 autoPlay={true}
-                data={[...new Array(6).keys()]}
-                renderItem={({ index }) => (
+                scrollAnimationDuration={2500}
+                data={images}
+                renderItem={({ item }) => (
                     <View style={styles.carouselItem}>
-                        <Text style={styles.text}>{index}</Text>
+                        <Image style={styles.itemImage} source={item.image} />
+                        <Text style={styles.itemText}>{item.text}</Text>
                     </View>
                 )}
             />
@@ -42,14 +55,23 @@ export const GetStartedScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     carouselItem: {
         flex: 1,
-        borderWidth: 1,
         justifyContent: 'center',
+        alignItems: 'center',
     },
-    text: {
+    itemText: {
         textAlign: 'center',
-        fontSize: 30,
+        fontSize: 25,
+    },
+    itemImage: {
+        resizeMode: 'contain',
+        width: 200,
+        height: 200,
+        borderRadius: 999,
+        marginBottom: 10,
     },
 });
