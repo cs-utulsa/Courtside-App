@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { LogoHeader } from '@components/index';
+import { MaterialIcons } from '@expo/vector-icons';
+import { FAB, LogoHeader } from '@components/index';
 import { ORANGE } from '@styles/colors';
 
 export const SportSelectScreen = () => {
@@ -32,6 +33,15 @@ export const SportSelectScreen = () => {
                     />
                 </Pressable>
             </View>
+            {selectedSports.length >= 1 && (
+                <FAB onPress={() => console.log('Press')}>
+                    <MaterialIcons
+                        name="navigate-next"
+                        size={50}
+                        color="black"
+                    />
+                </FAB>
+            )}
         </View>
     );
 };
@@ -40,7 +50,7 @@ const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 100,
+        flex: 1,
     },
     heading: {
         fontWeight: 'bold',

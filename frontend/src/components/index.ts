@@ -12,6 +12,7 @@ export { SelectCircle } from './buttons/SelectCircle';
 export { PrimaryButton } from './buttons/PrimaryButton';
 export { DirectionButton } from './buttons/DirectionButton';
 export { DangerButton } from './buttons/DangerButton';
+export { FAB } from './buttons/FAB';
 
 // Data
 export { GameDisplay } from './data/GameDisplay';
