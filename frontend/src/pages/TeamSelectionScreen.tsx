@@ -82,11 +82,11 @@ export const TeamSelectionScreen = () => {
                 <>
                     <PrimaryButton
                         onPress={submitTeamSelectionUpdates}
-                        text="Update Stats"
+                        text="Update Teams"
                         loading={submitting}
                     />
                     <SearchBox
-                        placeholder="Search for stats"
+                        placeholder="Search for teams"
                         onChange={handleSearchQueryChange}
                     />
                     <TeamsList
