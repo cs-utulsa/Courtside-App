@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
-import { SelectCircle } from '..';
+import { SelectCircle } from '../buttons/SelectCircle';
 import { TeamIcon } from './../../types/Team';
 
 type TeamListProps = {

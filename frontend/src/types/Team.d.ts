@@ -6,6 +6,9 @@ type TeamIcon = {
     id: string;
     /** link to the team's icon */
     icon: string;
+    name: string;
+    short: string;
+    abbr: string;
 };
 
 type Team = {
