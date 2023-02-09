@@ -21,6 +21,7 @@ export { StatList } from './data/StatList';
 export { RosterSection } from './data/RosterSection';
 export { PlayerSection } from './data/PlayerSection';
 export { PlayerView } from './data/PlayerView';
+export { TeamsList } from './data/TeamsList';
 
 // Error
 export { ErrorBox } from './error/ErrorBox';
