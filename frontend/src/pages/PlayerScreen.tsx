@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         textAlign: 'right',
         fontWeight: 'bold',
-        marginLeft: 60,
+        marginLeft: 40,
     }, 
     listtext: {
         fontSize: 20,
