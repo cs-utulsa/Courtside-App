@@ -70,7 +70,12 @@ export const SelectCircle: FC<SelectCircleProps> = ({
             ]}
         >
             <Pressable onPress={pressHandler} disabled={disabled}>
-                <Image source={{ uri: url }} style={[styles.img, imgSize()]} />
+                {url && (
+                    <Image
+                        source={{ uri: url }}
+                        style={[styles.img, imgSize()]}
+                    />
+                )}
             </Pressable>
         </View>
     );

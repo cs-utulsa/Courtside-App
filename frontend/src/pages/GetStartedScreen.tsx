@@ -46,7 +46,7 @@ export const GetStartedScreen = () => {
                 disabled={false}
                 loading={false}
                 text="Get Started"
-                submitFn={() => navigate('SignUp')}
+                submitFn={() => navigate('SportsSelect')}
             />
             <SmallLink
                 text="Already a User?"
