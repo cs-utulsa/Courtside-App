@@ -17,10 +17,6 @@ import { useAuth } from '@hooks/useAuth';
 import { useAllTeams } from '@hooks/index';
 import { TeamIcon } from '../types/Team';
 
-// const screenWidth = Dimensions.get('window').width - 20;
-// const numColumns = 3;
-// const tile = screenWidth / numColumns;
-
 /** This component lets the user choose what teams they want to follow */
 export const TeamSelectionScreen = () => {
     const { navigate } = useNavigation<RosterNavigationProp>();
@@ -35,28 +31,6 @@ export const TeamSelectionScreen = () => {
     const { data, isSuccess, isLoading, isError } = useAllTeams();
 
     const [result, setResult] = useState<TeamIcon[]>([]);
-
-    // const renderItem = useCallback(
-    //     ({ item }: { item: TeamIcon }) => {
-    //         const handleSelectChange = (newStatus: boolean) => {
-    //             if (newStatus) setSelectedTeams((prev) => [...prev, item.id]);
-    //             else
-    //                 setSelectedTeams((prev) =>
-    //                     prev.filter((oldListItem) => oldListItem !== item.id)
-    //                 );
-    //         };
-
-    //         return (
-    //             <SelectCircle
-    //                 initialState={selectedTeams.includes(item.id)}
-    //                 url={item.icon}
-    //                 size={tile}
-    //                 onSelectChanged={handleSelectChange}
-    //             />
-    //         );
-    //     },
-    //     [selectedTeams]
-    // );
 
     const submitTeamSelectionUpdates = async () => {
         setSubmitting(true);
@@ -101,27 +75,6 @@ export const TeamSelectionScreen = () => {
     if (isError) {
         return <FullError text="Cannot retrieve teams data. Try again later" />;
     }
-
-    // if (isSuccess) {
-    //     return (
-    //         <FlatList
-    //             data={data}
-    //             renderItem={renderItem}
-    //             numColumns={3}
-    //             ItemSeparatorComponent={Seperator}
-    //             ListHeaderComponent={
-    //                 <PrimaryButton
-    //                     text="Update Your Teams"
-    //                     onPress={submitTeamSelectionUpdates}
-    //                     loading={submitting}
-    //                 />
-    //             }
-    //             ListFooterComponent={Seperator}
-    //             contentContainerStyle={styles.container}
-    //             ListHeaderComponentStyle={styles.headerContainer}
-    //         />
-    //     );
-    // }
 
     return (
         <View style={styles.container}>
