@@ -1,14 +1,10 @@
 //external imports
 import React, { useCallback, useState } from 'react';
 import { StyleSheet, ActivityIndicator, View } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 
 //custom components
-import {
-    FullError,
-    PrimaryButton,
-    SearchBox,
-    TeamsList,
-} from '@components/index';
+import { FAB, FullError, SearchBox, TeamsList } from '@components/index';
 
 // constants
 import { useNavigation } from '@react-navigation/native';
@@ -80,11 +76,6 @@ export const TeamSelectionScreen = () => {
         <View style={styles.container}>
             {isSuccess && (
                 <>
-                    <PrimaryButton
-                        onPress={submitTeamSelectionUpdates}
-                        text="Update Teams"
-                        loading={submitting}
-                    />
                     <SearchBox
                         placeholder="Search for teams"
                         onChange={handleSearchQueryChange}
@@ -95,6 +86,17 @@ export const TeamSelectionScreen = () => {
                         addTeam={addTeam}
                         removeTeam={removeTeam}
                     />
+                    <FAB onPress={submitTeamSelectionUpdates}>
+                        {!submitting ? (
+                            <MaterialIcons
+                                name="check"
+                                size={40}
+                                color="black"
+                            />
+                        ) : (
+                            <ActivityIndicator color="black" />
+                        )}
+                    </FAB>
                 </>
             )}
         </View>
@@ -109,6 +111,8 @@ const styles = StyleSheet.create({
     },
     container: {
         alignItems: 'center',
+        flex: 1,
+        paddingTop: 30,
     },
     headerContainer: {
         width: '100%',
