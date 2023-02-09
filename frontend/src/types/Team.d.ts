@@ -21,6 +21,8 @@ type Team = {
     city: string;
     /** link to an image fo the team's icon */
     icon: string;
+    /** hex code of the team's color */
+    color: string;
     /** list of players on the team */
     players: Player[];
 };

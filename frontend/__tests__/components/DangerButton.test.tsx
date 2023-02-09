@@ -4,7 +4,7 @@ import { render, screen, fireEvent } from '@testing-library/react-native';
 import '@testing-library/jest-native';
 import { Alert } from 'react-native';
 
-describe('Testing Danger BUtton Component', () => {
+describe('Testing Danger Button Component', () => {
     beforeEach(() => jest.resetAllMocks());
 
     it('Displays the button text', () => {
