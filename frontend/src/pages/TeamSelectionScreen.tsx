@@ -16,7 +16,7 @@ import { ORANGE } from '@styles/colors';
 
 /** This component lets the user choose what teams they want to follow */
 export const TeamSelectionScreen = () => {
-    const { navigate } = useNavigation<RosterNavigationProp>();
+    const rosterNavigation = useNavigation<RosterNavigationProp>();
 
     const { authData, updateTeams } = useAuth();
     const [selectedTeams, setSelectedTeams] = useState<string[]>(
@@ -33,7 +33,7 @@ export const TeamSelectionScreen = () => {
         setSubmitting(true);
 
         await updateTeams(selectedTeams);
-        navigate('Dashboard');
+        rosterNavigation.navigate('Dashboard');
 
         setSubmitting(false);
     };
@@ -87,21 +87,23 @@ export const TeamSelectionScreen = () => {
                         addTeam={addTeam}
                         removeTeam={removeTeam}
                     />
-                    <FAB
-                        onPress={submitTeamSelectionUpdates}
-                        position="right"
-                        color={ORANGE}
-                    >
-                        {!submitting ? (
-                            <MaterialIcons
-                                name="check"
-                                size={40}
-                                color="black"
-                            />
-                        ) : (
-                            <ActivityIndicator color="black" />
-                        )}
-                    </FAB>
+                    {selectedTeams.length >= 1 && (
+                        <FAB
+                            onPress={submitTeamSelectionUpdates}
+                            position="right"
+                            color={ORANGE}
+                        >
+                            {!submitting ? (
+                                <MaterialIcons
+                                    name="check"
+                                    size={40}
+                                    color="black"
+                                />
+                            ) : (
+                                <ActivityIndicator color="black" />
+                            )}
+                        </FAB>
+                    )}
                 </>
             )}
         </View>
