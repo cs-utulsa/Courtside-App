@@ -31,7 +31,10 @@ export type AuthNavigatorParamList = {
     ForgotPassword: undefined;
     /** screen that introduces the user to the app */
     GetStarted: undefined;
+    /** Select sports to follow */
     SportsSelect: undefined;
+    /** Select teams to follow */
+    TeamSelect: undefined;
 };
 
 export type AuthNavigationProp =

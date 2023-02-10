@@ -6,6 +6,7 @@ import {
     SignIn,
     ForgotPasswordScreen,
     GetStartedScreen,
+    TeamSelectionScreen,
 } from '../pages/index';
 import { AuthNavigatorParamList } from './../types/Navigation';
 import { SportSelectScreen } from '@pages/SportSelectScreen';
@@ -20,6 +21,7 @@ export const AuthStack = () => {
         >
             <Stack.Screen name="GetStarted" component={GetStartedScreen} />
             <Stack.Screen name="SportsSelect" component={SportSelectScreen} />
+            <Stack.Screen name="TeamSelect" component={TeamSelectionScreen} />
             <Stack.Screen name="SignIn" component={SignIn} />
             <Stack.Screen name="SignUp" component={SignUp} />
             <Stack.Screen
