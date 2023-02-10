@@ -40,8 +40,7 @@ const authSchema = Yup.object().shape({
  * This component is the sign up form that displays when a new user launches the app and wants to join.
  */
 export const SignUp = () => {
-    const { signUp, authError, loading, resetAuthError, updateTeams } =
-        useAuth();
+    const { signUp, authError, loading, resetAuthError } = useAuth();
 
     const { navigate } = useNavigation<AuthNavigationProp>();
 
@@ -64,13 +63,13 @@ export const SignUp = () => {
             <Formik
                 initialValues={{ email: '', password: '', passwordRetype: '' }}
                 onSubmit={async (values) => {
-                    await signUp(values.email, values.password);
-
                     const teams = await SecureStore.getItemAsync(
                         'initialTeams'
                     );
 
-                    if (teams) await updateTeams(JSON.parse(teams));
+                    const teamsJSON = teams ? JSON.parse(teams) : [];
+
+                    await signUp(values.email, values.password, teamsJSON);
                 }}
                 validationSchema={authSchema}
             >

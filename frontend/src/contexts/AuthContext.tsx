@@ -24,7 +24,7 @@ type AuthContextData = {
     /** method to sign in the user with email and password */
     signIn(email: string, password: string): Promise<void>;
     /** method to register user with email and password */
-    signUp(email: string, password: string): Promise<void>;
+    signUp(email: string, password: string, teams: string[]): Promise<void>;
     /** method to sign out the current user */
     signOut(): Promise<void>;
     /** method to update the user's stats */
@@ -153,35 +153,39 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     }, []);
 
     // sign up the user and store their information on the device
-    const signUp = useCallback(async (email: string, password: string) => {
-        setLoading(true);
-        setAuthError(undefined);
+    const signUp = useCallback(
+        async (email: string, password: string, teams: string[]) => {
+            setLoading(true);
+            setAuthError(undefined);
 
-        try {
-            const response = await axios.post(
-                `${DEVELOPMENT_API}/users/register`,
-                {
-                    email,
-                    password,
+            try {
+                const response = await axios.post(
+                    `${DEVELOPMENT_API}/users/register`,
+                    {
+                        email,
+                        password,
+                        teams,
+                    }
+                );
+
+                const _authData = response.data;
+                await SecureStore.setItemAsync(
+                    'authData',
+                    JSON.stringify(_authData)
+                );
+                setAuthData(_authData);
+            } catch (err) {
+                if (axios.isAxiosError(err)) {
+                    setAuthError(err.response?.data);
+                } else {
+                    setAuthError('Unknown Error Occurred. Try Again Later.');
                 }
-            );
-
-            const _authData = response.data;
-            await SecureStore.setItemAsync(
-                'authData',
-                JSON.stringify(_authData)
-            );
-            setAuthData(_authData);
-        } catch (err) {
-            if (axios.isAxiosError(err)) {
-                setAuthError(err.response?.data);
-            } else {
-                setAuthError('Unknown Error Occurred. Try Again Later.');
             }
-        }
 
-        setLoading(false);
-    }, []);
+            setLoading(false);
+        },
+        []
+    );
 
     // sign out the user and remove their information from the device
     const signOut = useCallback(async () => {

@@ -24,6 +24,7 @@ def create_user():
         Body:
             email: user's email as a string
             password: user's password as a string
+            teams: a list of teams the user followed initially
 
     Returns:
         A Response object
@@ -58,6 +59,7 @@ def create_user():
     # get email and password from request
     email = request.get_json()["email"]
     password = request.get_json()["password"]
+    teams = request.get_json()["teams"]
 
     if (not email):
         return string_response(NO_EMAIL_MESSAGE, 400)
@@ -87,7 +89,7 @@ def create_user():
             "_id": user_id,
             "email": email,
             "stats": [],
-            "teams": []
+            "teams": teams
         }
 
         # create document in user_preferences for other user data
