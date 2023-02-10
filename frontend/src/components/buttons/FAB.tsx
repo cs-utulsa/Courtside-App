@@ -29,7 +29,7 @@ export const FAB: FC<FABProps> = ({
     }
 
     const colorStyles = {
-        color,
+        backgroundColor: color,
     };
 
     return (
