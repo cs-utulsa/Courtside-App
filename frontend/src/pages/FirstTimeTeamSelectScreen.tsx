@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import { TeamIcon } from './../types/Team';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { AuthNavigationProp } from './../types/Navigation';
 import { FullError, SearchBox, TeamsList, FAB } from '@components/index';
 import { useAllTeams } from '@hooks/index';
@@ -18,13 +18,32 @@ export const FirstTimeTeamSelectScreen = () => {
     const [submitting, setSubmitting] = useState<boolean>(false);
     const [result, setResult] = useState<TeamIcon[]>([]);
 
-    const submitTeamSelectionUpdates = async () => {
-        setSubmitting(true);
+    useEffect(() => {
+        (async () => {
+            const fromStorage = await SecureStore.getItemAsync('initialTeams');
 
+            if (fromStorage) {
+                setSelectedTeams(JSON.parse(fromStorage));
+            }
+        })();
+    }, []);
+
+    const storeTeams = async () => {
         await SecureStore.setItemAsync(
             'initialTeams',
             JSON.stringify(selectedTeams)
         );
+    };
+
+    const goPrev = async () => {
+        await storeTeams();
+        navigate('SportsSelect');
+    };
+
+    const goNext = async () => {
+        setSubmitting(true);
+
+        await storeTeams();
         navigate('SignUp');
 
         setSubmitting(false);
@@ -81,11 +100,7 @@ export const FirstTimeTeamSelectScreen = () => {
                         removeTeam={removeTeam}
                     />
                     {selectedTeams.length >= 1 && (
-                        <FAB
-                            onPress={submitTeamSelectionUpdates}
-                            position="right"
-                            color={ORANGE}
-                        >
+                        <FAB onPress={goNext} position="right" color={ORANGE}>
                             {!submitting ? (
                                 <MaterialIcons
                                     name="check"
@@ -97,6 +112,13 @@ export const FirstTimeTeamSelectScreen = () => {
                             )}
                         </FAB>
                     )}
+                    <FAB onPress={goPrev} position="left" color="grey">
+                        <MaterialIcons
+                            name="chevron-left"
+                            size={40}
+                            color="black"
+                        />
+                    </FAB>
                 </>
             )}
         </View>

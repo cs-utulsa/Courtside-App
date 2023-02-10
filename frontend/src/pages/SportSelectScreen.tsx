@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     View,
     Text,
@@ -19,6 +19,15 @@ export const SportSelectScreen = () => {
     const [selectedSports, setSelectedSports] = useState<string[]>([]);
     const [submitting, setSubmitting] = useState<boolean>(false);
 
+    useEffect(() => {
+        (async () => {
+            const fromStorage = await SecureStore.getItemAsync('initialSports');
+            if (fromStorage) {
+                setSelectedSports(JSON.parse(fromStorage));
+            }
+        })();
+    }, []);
+
     const toggleSport = (name: string) => {
         if (selectedSports.includes(name))
             setSelectedSports((prev) => prev.filter((sport) => sport !== name));
@@ -27,7 +36,7 @@ export const SportSelectScreen = () => {
         }
     };
 
-    const submitSports = async () => {
+    const goNext = async () => {
         setSubmitting(true);
 
         await SecureStore.setItemAsync(
@@ -57,7 +66,7 @@ export const SportSelectScreen = () => {
                 </Pressable>
             </View>
             {selectedSports.length >= 1 && (
-                <FAB onPress={submitSports} position="right" color={ORANGE}>
+                <FAB onPress={goNext} position="right" color={ORANGE}>
                     {!submitting ? (
                         <MaterialIcons
                             name="navigate-next"
