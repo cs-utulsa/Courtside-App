@@ -33,7 +33,11 @@ export const SportSelectScreen = () => {
                 </Pressable>
             </View>
             {selectedSports.length >= 1 && (
-                <FAB onPress={() => console.log('Press')}>
+                <FAB
+                    onPress={() => console.log('Press')}
+                    position="right"
+                    color={ORANGE}
+                >
                     <MaterialIcons
                         name="navigate-next"
                         size={50}

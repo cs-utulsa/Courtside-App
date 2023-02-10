@@ -12,6 +12,7 @@ import { RosterNavigationProp } from '../types/Navigation';
 import { useAuth } from '@hooks/useAuth';
 import { useAllTeams } from '@hooks/index';
 import { TeamIcon } from '../types/Team';
+import { ORANGE } from '@styles/colors';
 
 /** This component lets the user choose what teams they want to follow */
 export const TeamSelectionScreen = () => {
@@ -86,7 +87,11 @@ export const TeamSelectionScreen = () => {
                         addTeam={addTeam}
                         removeTeam={removeTeam}
                     />
-                    <FAB onPress={submitTeamSelectionUpdates}>
+                    <FAB
+                        onPress={submitTeamSelectionUpdates}
+                        position="right"
+                        color={ORANGE}
+                    >
                         {!submitting ? (
                             <MaterialIcons
                                 name="check"

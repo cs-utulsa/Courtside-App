@@ -1,15 +1,42 @@
-import { ORANGE } from '@styles/colors';
 import React, { FC, ReactNode } from 'react';
 import { Pressable, StyleSheet } from 'react-native';
 
 type FABProps = {
     children: ReactNode;
     onPress: () => void;
+    position?: 'left' | 'right';
+    color: string;
 };
 
-export const FAB: FC<FABProps> = ({ children, onPress }) => {
+export const FAB: FC<FABProps> = ({
+    children,
+    onPress,
+    position = 'right',
+    color,
+}) => {
+    let positionStyles = {};
+
+    if (position === 'left') {
+        positionStyles = {
+            bottom: 15,
+            left: 15,
+        };
+    } else if (position === 'right') {
+        positionStyles = {
+            bottom: 15,
+            right: 15,
+        };
+    }
+
+    const colorStyles = {
+        color,
+    };
+
     return (
-        <Pressable style={styles.btn} onPress={onPress}>
+        <Pressable
+            style={[styles.btn, positionStyles, colorStyles]}
+            onPress={onPress}
+        >
             {children}
         </Pressable>
     );
@@ -21,9 +48,6 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         width: 60,
         height: 60,
-        bottom: 10,
-        right: 10,
-        backgroundColor: ORANGE,
         alignItems: 'center',
         justifyContent: 'center',
     },
