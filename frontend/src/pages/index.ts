@@ -15,3 +15,4 @@ export { VerifyEmailScreen } from './VerifyEmailScreen';
 export { AccountScreen } from './AccountScreen';
 export { ForgotPasswordScreen } from './ForgotPasswordScreen';
 export { GetStartedScreen } from './GetStartedScreen';
+export { FirstTimeTeamSelectScreen } from './FirstTimeTeamSelectScreen';

@@ -4,6 +4,7 @@ import { View, StyleSheet, ActivityIndicator } from 'react-native';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useNavigation } from '@react-navigation/native';
+import * as SecureStore from 'expo-secure-store';
 
 // types
 import { AuthNavigationProp } from './../types/Navigation';
@@ -39,7 +40,8 @@ const authSchema = Yup.object().shape({
  * This component is the sign up form that displays when a new user launches the app and wants to join.
  */
 export const SignUp = () => {
-    const { signUp, authError, loading, resetAuthError } = useAuth();
+    const { signUp, authError, loading, resetAuthError, updateTeams } =
+        useAuth();
 
     const { navigate } = useNavigation<AuthNavigationProp>();
 
@@ -61,9 +63,15 @@ export const SignUp = () => {
             <LogoHeader />
             <Formik
                 initialValues={{ email: '', password: '', passwordRetype: '' }}
-                onSubmit={async (values) =>
-                    await signUp(values.email, values.password)
-                }
+                onSubmit={async (values) => {
+                    await signUp(values.email, values.password);
+
+                    const teams = await SecureStore.getItemAsync(
+                        'initialTeams'
+                    );
+
+                    if (teams) await updateTeams(JSON.parse(teams));
+                }}
                 validationSchema={authSchema}
             >
                 {({

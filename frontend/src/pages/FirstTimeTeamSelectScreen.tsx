@@ -7,6 +7,7 @@ import { useAllTeams } from '@hooks/index';
 import { ORANGE } from '@styles/colors';
 import { ActivityIndicator, View, StyleSheet, Text } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import * as SecureStore from 'expo-secure-store';
 
 export const FirstTimeTeamSelectScreen = () => {
     const { navigate } = useNavigation<AuthNavigationProp>();
@@ -20,6 +21,10 @@ export const FirstTimeTeamSelectScreen = () => {
     const submitTeamSelectionUpdates = async () => {
         setSubmitting(true);
 
+        await SecureStore.setItemAsync(
+            'initialTeams',
+            JSON.stringify(selectedTeams)
+        );
         navigate('SignUp');
 
         setSubmitting(false);

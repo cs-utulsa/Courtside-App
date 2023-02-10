@@ -1,11 +1,23 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Pressable } from 'react-native';
+import {
+    View,
+    Text,
+    StyleSheet,
+    Pressable,
+    ActivityIndicator,
+} from 'react-native';
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { FAB, LogoHeader } from '@components/index';
 import { ORANGE } from '@styles/colors';
+import * as SecureStore from 'expo-secure-store';
+import { useNavigation } from '@react-navigation/native';
+import { AuthNavigationProp } from './../types/Navigation';
 
 export const SportSelectScreen = () => {
+    const { navigate } = useNavigation<AuthNavigationProp>();
+
     const [selectedSports, setSelectedSports] = useState<string[]>([]);
+    const [submitting, setSubmitting] = useState<boolean>(false);
 
     const toggleSport = (name: string) => {
         if (selectedSports.includes(name))
@@ -13,6 +25,18 @@ export const SportSelectScreen = () => {
         else {
             setSelectedSports((prev) => prev.concat(name));
         }
+    };
+
+    const submitSports = async () => {
+        setSubmitting(true);
+
+        await SecureStore.setItemAsync(
+            'initialSports',
+            JSON.stringify(selectedSports)
+        );
+        navigate('TeamSelect');
+
+        setSubmitting(false);
     };
 
     return (
@@ -33,16 +57,16 @@ export const SportSelectScreen = () => {
                 </Pressable>
             </View>
             {selectedSports.length >= 1 && (
-                <FAB
-                    onPress={() => console.log('Press')}
-                    position="right"
-                    color={ORANGE}
-                >
-                    <MaterialIcons
-                        name="navigate-next"
-                        size={50}
-                        color="black"
-                    />
+                <FAB onPress={submitSports} position="right" color={ORANGE}>
+                    {!submitting ? (
+                        <MaterialIcons
+                            name="navigate-next"
+                            size={50}
+                            color="black"
+                        />
+                    ) : (
+                        <ActivityIndicator color="black" />
+                    )}
                 </FAB>
             )}
         </View>
