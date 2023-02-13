@@ -18,11 +18,6 @@ export const Settings = () => {
             <Text style={styles.heading}>Actions</Text>
             <DangerButton text="Clear Data" onPress={clearData} />
             <DangerButton text="Log Out" onPress={signOut} />
-            <DangerButton
-                text="test"
-                onPress={() => console.log('')}
-                disabled={true}
-            />
         </View>
     );
 };
