@@ -1,20 +1,45 @@
 import { PlayerScreenRouteProp } from '../types/Navigation';
 import React from 'react';
 import { useRoute } from '@react-navigation/native';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
 import { Player } from './../types/Player';
+import { Team } from './../types/Team';
 import { CircleImage } from '@components/index';
+import { useNavigation } from '@react-navigation/native';
+import { RosterNavigationProp } from './../types/Navigation';
+
+import {
+    StatLeaderboard,
+    PrimaryButton,
+    FullError,
+    Seperator,
+} from '@components/index';
+
 
 /**
  * This screen shows the data for one player.
  * The player data is passed through a navigation parameter
  */
+
+
 export const PlayerScreen = () => {
+    const { push } = useNavigation<RosterNavigationProp>();
     const route = useRoute<PlayerScreenRouteProp>();
     const player: Player = route.params.player;
+    const teamback: Team = route.params.team;
+    function navigateToSelectionScreen() {
+       // const navigation = useNavigation(); 
+      push('Team',{team: teamback});
 
+    }
+    
     return (
+        
         <View style={styles.container}>
+            <PrimaryButton
+                onPress={navigateToSelectionScreen}
+                text="Back"
+            />
             <CircleImage
                 url={player.headshot}
                 size={150}
@@ -79,6 +104,7 @@ const styles = StyleSheet.create({
     },  
       leaderboardBlock: {
         flexDirection: 'row',
+       // alignItems: 'center',
         backgroundColor: '#DEDEDE',
         paddingVertical: 8,
         paddingHorizontal: 20,

@@ -25,6 +25,7 @@ export const RosterSection: FC<RosterSectionProps> = ({ team }) => {
 
     function navigateToTeamScreen() {
         push('Team', { team });
+        
     }
 
     const screenWidth = Dimensions.get('window').width - 20;

@@ -9,22 +9,24 @@ import {
     Dimensions,
 } from 'react-native';
 import { Player } from './../../types/Player';
+import { Team } from './../../types/Team';
 import { CircleImage } from '@components/images/CircleImage';
 
 type PlayerSectionProps = {
     /** the player to be shown in this component */
     player: Player;
+    team: Team;
 };
 
 /**
  * This component shows a headshot of a player and their name. When clicked it navigates to the specific page for that team.
  * This component is meant to be included in a FlatList with others
  */
-export const PlayerSection: FC<PlayerSectionProps> = ({ player }) => {
+export const PlayerSection: FC<PlayerSectionProps> = ({ player,team }) => {
     const { push } = useNavigation<RosterNavigationProp>();
 
     function navigateToPlayerScreen() {
-        push('Player', { player });
+        push('Player', { player, team } );
     }
     /*
     
