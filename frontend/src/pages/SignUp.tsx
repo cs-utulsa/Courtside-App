@@ -67,7 +67,7 @@ export const SignUp = () => {
                         'initialTeams'
                     );
 
-                    const teamsJSON = teams ? JSON.parse(teams) : [];
+                    const teamsJSON: string[] = teams ? JSON.parse(teams) : [];
 
                     await signUp(values.email, values.password, teamsJSON);
                 }}

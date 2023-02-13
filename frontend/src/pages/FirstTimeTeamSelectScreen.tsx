@@ -4,7 +4,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { AuthNavigationProp } from './../types/Navigation';
 import { FullError, SearchBox, TeamsList, FAB } from '@components/index';
 import { useAllTeams } from '@hooks/index';
-import { ORANGE } from '@styles/colors';
+import { ORANGE, NAVY } from '@styles/colors';
 import { ActivityIndicator, View, StyleSheet, Text } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import * as SecureStore from 'expo-secure-store';
@@ -17,6 +17,9 @@ export const FirstTimeTeamSelectScreen = () => {
     const [selectedTeams, setSelectedTeams] = useState<string[]>([]);
     const [submitting, setSubmitting] = useState<boolean>(false);
     const [result, setResult] = useState<TeamIcon[]>([]);
+    const [resultStatus, setResultStatus] = useState<
+        'empty' | 'not found' | 'found'
+    >('empty');
 
     useEffect(() => {
         (async () => {
@@ -53,6 +56,7 @@ export const FirstTimeTeamSelectScreen = () => {
         (query: string) => {
             if (query === '') {
                 setResult([]);
+                setResultStatus('empty');
                 return;
             }
 
@@ -66,6 +70,9 @@ export const FirstTimeTeamSelectScreen = () => {
                 }
                 return false;
             });
+
+            if (_result.length > 0) setResultStatus('found');
+            else setResultStatus('not found');
 
             setResult(_result);
         },
@@ -88,17 +95,32 @@ export const FirstTimeTeamSelectScreen = () => {
         <View style={styles.container}>
             {isSuccess && (
                 <>
-                    <Text>Follow Your Favorite Teams!</Text>
+                    <Text style={styles.heading}>
+                        Follow Your Favorite Teams!
+                    </Text>
                     <SearchBox
                         placeholder="Search for teams"
                         onChange={handleSearchQueryChange}
                     />
-                    <TeamsList
-                        teams={result}
-                        selected={selectedTeams}
-                        addTeam={addTeam}
-                        removeTeam={removeTeam}
-                    />
+                    {resultStatus === 'found' && (
+                        <TeamsList
+                            teams={result}
+                            selected={selectedTeams}
+                            addTeam={addTeam}
+                            removeTeam={removeTeam}
+                        />
+                    )}
+                    {resultStatus === 'empty' && (
+                        <Text style={styles.message}>
+                            Select at least one team to continue!
+                        </Text>
+                    )}
+                    {resultStatus === 'not found' && (
+                        <Text style={styles.message}>
+                            Could not find a team with that query.
+                        </Text>
+                    )}
+
                     {selectedTeams.length >= 1 && (
                         <FAB onPress={goNext} position="right" color={ORANGE}>
                             {!submitting ? (
@@ -112,11 +134,11 @@ export const FirstTimeTeamSelectScreen = () => {
                             )}
                         </FAB>
                     )}
-                    <FAB onPress={goPrev} position="left" color="grey">
+                    <FAB onPress={goPrev} position="left" color={NAVY}>
                         <MaterialIcons
                             name="chevron-left"
                             size={40}
-                            color="black"
+                            color="#d5dcdc"
                         />
                     </FAB>
                 </>
@@ -126,10 +148,10 @@ export const FirstTimeTeamSelectScreen = () => {
 };
 
 const styles = StyleSheet.create({
-    header: {
+    heading: {
         fontWeight: 'bold',
-        fontSize: 22,
-        marginBottom: 20,
+        fontSize: 24,
+        marginVertical: 15,
     },
     container: {
         alignItems: 'center',
@@ -138,5 +160,10 @@ const styles = StyleSheet.create({
     },
     headerContainer: {
         width: '100%',
+    },
+    message: {
+        fontSize: 20,
+        maxWidth: '80%',
+        textAlign: 'center',
     },
 });

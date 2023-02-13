@@ -159,6 +159,9 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             setAuthError(undefined);
 
             try {
+                await SecureStore.deleteItemAsync('initialTeams');
+                await SecureStore.deleteItemAsync('initialSports');
+
                 const response = await axios.post(
                     `${DEVELOPMENT_API}/users/register`,
                     {
