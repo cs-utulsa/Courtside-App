@@ -13,7 +13,6 @@ export const Settings = () => {
         <View style={styles.pageContainer}>
             <View style={styles.pageContainer}>
                 <Text style={styles.heading}>Account Information</Text>
-                {/* <ChangeEmail /> */}
             </View>
             <Text style={styles.heading}>Actions</Text>
             <DangerButton text="Clear Data" onPress={clearData} />

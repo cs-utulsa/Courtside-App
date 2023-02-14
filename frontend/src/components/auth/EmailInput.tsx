@@ -19,6 +19,7 @@ export const EmailInput: FC<InputProps> = ({
     return (
         <View style={styles.container}>
             <TextInput
+                accessibilityHint="email-input"
                 style={[
                     styles.input,
                     error && touched ? styles.inputError : undefined,

@@ -36,6 +36,7 @@ export const FAB: FC<FABProps> = ({
         <Pressable
             style={[styles.btn, positionStyles, colorStyles]}
             onPress={onPress}
+            testID="FAB"
         >
             {children}
         </Pressable>

@@ -27,13 +27,13 @@ export const AuthSubmitButton: FC<AuthSubmitButtonProps> = ({
     text,
 }) => {
     const handleSubmit = () => {
-        if (!disabled) submitFn();
+        if (!disabled && !loading) submitFn();
     };
 
     if (loading) {
         return (
             <TouchableOpacity style={styles.submit} onPress={handleSubmit}>
-                <ActivityIndicator color="black" />
+                <ActivityIndicator color="black" accessibilityHint="loading" />
             </TouchableOpacity>
         );
     }

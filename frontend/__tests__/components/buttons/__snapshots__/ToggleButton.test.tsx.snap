@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing ToggleButton component shows as not toggled when button\` initial value is false 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Array [
+      Object {
+        "borderColor": "#EE6730",
+        "borderRadius": 5,
+        "borderWidth": 2,
+        "marginHorizontal": 5,
+        "marginVertical": 5,
+        "paddingHorizontal": 8,
+        "paddingVertical": 10,
+      },
+      Object {
+        "backgroundColor": "white",
+      },
+    ]
+  }
+  testID="not-selected"
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontSize": 14,
+          "fontWeight": "500",
+        },
+        Object {
+          "color": "#EE6730",
+        },
+      ]
+    }
+  >
+    Text
+  </Text>
+</View>
+`;
+
+exports[`Testing ToggleButton component shows as toggled when button's initial value is true 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Array [
+      Object {
+        "borderColor": "#EE6730",
+        "borderRadius": 5,
+        "borderWidth": 2,
+        "marginHorizontal": 5,
+        "marginVertical": 5,
+        "paddingHorizontal": 8,
+        "paddingVertical": 10,
+      },
+      Object {
+        "backgroundColor": "#EE6730",
+      },
+    ]
+  }
+  testID="selected"
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontSize": 14,
+          "fontWeight": "500",
+        },
+        Object {
+          "color": "white",
+        },
+      ]
+    }
+  >
+    Text
+  </Text>
+</View>
+`;

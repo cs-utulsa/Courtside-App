@@ -25,9 +25,12 @@ export const SearchBox: FC<SearchBoxProps> = ({ placeholder, onChange }) => {
 
     return (
         <TextInput
+            accessibilityHint="search box"
             style={styles.search}
             placeholder={placeholder}
             onChange={(e) => setQuery(e.nativeEvent.text)}
+            value={query}
+            onChangeText={(text) => setQuery(text)}
         />
     );
 };
