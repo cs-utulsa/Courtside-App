@@ -448,6 +448,8 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
                     email: authData?.email,
                     theme,
                 });
+
+                setAuthData({ ...authData!, theme });
             } catch (err) {
                 if (axios.isAxiosError(err)) {
                     setAuthError(err.response?.data);
@@ -456,7 +458,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
                 }
             }
         },
-        [authData?.email]
+        [authData]
     );
 
     const contextData: AuthContextData = useMemo(() => {

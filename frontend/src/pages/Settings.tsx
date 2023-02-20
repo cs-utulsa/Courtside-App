@@ -1,4 +1,4 @@
-import { DangerButton } from '@components/index';
+import { DangerButton, ThemeSwitcher } from '@components/index';
 import { useAuth } from '@hooks/index';
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
@@ -12,11 +12,14 @@ export const Settings = () => {
     return (
         <View style={styles.pageContainer}>
             <View style={styles.pageContainer}>
-                <Text style={styles.heading}>Account Information</Text>
+                <Text style={styles.heading}>Actions</Text>
+                <ThemeSwitcher />
             </View>
-            <Text style={styles.heading}>Actions</Text>
-            <DangerButton text="Clear Data" onPress={clearData} />
-            <DangerButton text="Log Out" onPress={signOut} />
+            <View style={styles.pageContainer}>
+                <Text style={styles.heading}>Danger Actions</Text>
+                <DangerButton text="Clear Data" onPress={clearData} />
+                <DangerButton text="Log Out" onPress={signOut} />
+            </View>
         </View>
     );
 };
