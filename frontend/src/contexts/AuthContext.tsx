@@ -43,6 +43,8 @@ type AuthContextData = {
     forgotPassword: (email: string) => Promise<void>;
     /** reset the auth error */
     resetAuthError: () => void;
+    /** update the user's theme */
+    setTheme: (theme: 'light' | 'dark') => void;
 };
 
 type AuthData = {
@@ -58,6 +60,8 @@ type AuthData = {
     teams?: string[];
     /** list of stat ids of the stats that the user follows */
     stats?: string[];
+    /** what theme the user prefers */
+    theme?: 'light' | 'dark';
 };
 
 export const AuthContext = createContext<AuthContextData>(
@@ -437,6 +441,24 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         setAuthError(undefined);
     }, []);
 
+    const setTheme = useCallback(
+        async (theme: 'light' | 'dark') => {
+            try {
+                await axios.patch(`${DEVELOPMENT_API}/users/theme`, {
+                    email: authData?.email,
+                    theme,
+                });
+            } catch (err) {
+                if (axios.isAxiosError(err)) {
+                    setAuthError(err.response?.data);
+                } else {
+                    setAuthError('Unknown Error Occurred. Try Again Later.');
+                }
+            }
+        },
+        [authData?.email]
+    );
+
     const contextData: AuthContextData = useMemo(() => {
         return {
             authData,
@@ -453,6 +475,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             updateEmail,
             forgotPassword,
             resetAuthError,
+            setTheme,
         };
     }, [
         authData,
@@ -469,6 +492,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         updateEmail,
         forgotPassword,
         resetAuthError,
+        setTheme,
     ]);
 
     return (

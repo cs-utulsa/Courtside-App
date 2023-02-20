@@ -112,3 +112,26 @@ def delete_user():
         return string_response("Cannot delete user", 500)
 
     return string_response("Deleted successfully", 200)
+
+@users.route('/users/theme', method=["PATCH"])
+def set_theme():
+    email = request.get_json()['email']
+    theme = request.get_json()['theme']
+
+    if not email:
+        return string_response(NO_EMAIL_MESSAGE, 400)
+
+    if not theme:
+        return string_response("Theme must be specified", 400)
+    elif theme != 'light' or theme != 'dark':
+        return string_response("Theme must be either light or dark")
+
+    try:
+        db.user_preferences.find_one_and_update(
+            { 'email': email },
+            { '$set' : { 'theme': theme } }
+        )
+
+        return string_response('Theme updated', 200)
+    except OperationFailure:
+        return string_response(SERVER_ERROR, 500)
