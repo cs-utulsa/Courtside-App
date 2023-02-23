@@ -1,10 +1,12 @@
 import { CircleImage, PlayerSection } from '@components/index';
 import { useRoute } from '@react-navigation/native';
 import { TeamScreenRouteProp } from '../types/Navigation';
-import { View, FlatList, StyleSheet, Text } from 'react-native';
+import { View, FlatList, StyleSheet, Text, SectionList } from 'react-native';
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { RosterNavigationProp } from './../types/Navigation';
+
+import { Player } from './../types/Player';
 import {
     PrimaryButton,
 } from '@components/index';
@@ -14,15 +16,38 @@ import { Animated, ScrollView } from 'react-native';
  * This screen shows the data for a specific team as well as a roster of the players.
  * The team data is passed through a navigation parameter.
  */
+
+
+
 export const TeamScreen = () => {
-    const { push } = useNavigation<RosterNavigationProp>();
-    const route = useRoute<TeamScreenRouteProp>();
-    const team = route.params.team;
+  const { push } = useNavigation<RosterNavigationProp>();
+  const route = useRoute<TeamScreenRouteProp>();
+  const team = route.params.team;
+  const guards: Player[] = [];
+  for(var i =0; i<team.players.length;i++){
+    if(team.players[i].position=="Guard" ){
+      guards.push(team.players[i]);
+    }
+  
+    
+    //
+    //split between guards and stuff.
+    //
+    //
+  
+  }
+  //guards arent being populated into list
+  const itemList = guards.map(item => (
+    
+    <View style={styles.item}>
+<PlayerSection player={item} team={team} /></View>
+  ));
     function navigateToSelectionScreen() {
         // const navigation = useNavigation(); 
        push('Dashboard');
  
      }
+     const AnimatedSectionList = Animated.createAnimatedComponent(SectionList);
      const scrolling = useRef(new Animated.Value(0)).current;
      const [headerShown, setHeaderShown] = useState(false);
    //  const translation = useRef(new Animated.Value(-100)).current;
@@ -46,8 +71,8 @@ export const TeamScreen = () => {
     return (
         
         <View>
-    
-            <Animated.FlatList
+
+            <Animated.ScrollView
      //       style={{transform: [
       //          { translateY: translation2 },
          //     ], }}
@@ -66,20 +91,27 @@ export const TeamScreen = () => {
                     }],
                     { useNativeDriver: true },
                   )}
-                data={team.players}
-                numColumns={3}
-                showsVerticalScrollIndicator={false}
-                showsHorizontalScrollIndicator={false}
-                renderItem={({ item }) => <PlayerSection player={item} team={team} />}
-                ListHeaderComponent={
-                    <>
+                
+                
+              //</View>  ListHeaderComponent={
+            //        <>
+            //            <CircleImage url={team.icon} size={150} />
+          //              <Text style={styles.headerText}>{team.name}</Text>
+          //          </>
+         //       }
+        //        ListHeaderComponentStyle={styles.headerContainer}
+       //         contentContainerStyle={styles.container}
+            > 
+                                <>
                         <CircleImage url={team.icon} size={150} />
                         <Text style={styles.headerText}>{team.name}</Text>
                     </>
-                }
-                ListHeaderComponentStyle={styles.headerContainer}
-                contentContainerStyle={styles.container}
-            />
+                    <Text>guards</Text>
+                    <View style={styles.container}>
+                    {itemList}
+                    </View>
+                   
+            </Animated.ScrollView>
 
 <Animated.View
          
@@ -89,7 +121,7 @@ export const TeamScreen = () => {
            left: 0,
            right: 0,
            height: 80,
-           backgroundColor: 'tomato',
+           backgroundColor: '#DEDEDE',
            transform: [
              { translateY: translation },
            ],
@@ -104,8 +136,24 @@ export const TeamScreen = () => {
 };
 
 const styles = StyleSheet.create({
+ 
+  item: {
+  //  backgroundColor: '#ccc',
+    height: 100,
+    width: '33.33%',
+   // paddingHorizontal: 10,
+    paddingVertical: 20,
+    marginVertical: 50,
+ //   justifyContent: 'center',
+ //   alignItems: 'center',
+ //   borderWidth: 1,
+ //   borderColor: '#000',
+  },
+
     container: {
         marginVertical: 10,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
     },
     headerText: {
         fontWeight: 'bold',
