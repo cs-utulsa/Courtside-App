@@ -1,5 +1,6 @@
 import { DangerButton, ThemeSelector } from '@components/index';
 import { useAuth } from '@hooks/index';
+import { useTheme } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
@@ -8,15 +9,22 @@ import { StyleSheet, View, Text } from 'react-native';
  */
 export const Settings = () => {
     const { signOut, clearData } = useAuth();
+    const { colors } = useTheme();
 
     return (
         <View style={styles.pageContainer}>
             <View style={styles.pageContainer}>
-                <Text style={styles.heading}>Account Information</Text>
+                <Text style={[styles.heading, { color: colors.text }]}>
+                    Account Information
+                </Text>
             </View>
-            <Text style={styles.heading}>Appearance</Text>
+            <Text style={[styles.heading, { color: colors.text }]}>
+                Appearance
+            </Text>
             <ThemeSelector />
-            <Text style={styles.heading}>Actions</Text>
+            <Text style={[styles.heading, { color: colors.text }]}>
+                Actions
+            </Text>
             <DangerButton text="Clear Data" onPress={clearData} />
             <DangerButton text="Log Out" onPress={signOut} />
         </View>
