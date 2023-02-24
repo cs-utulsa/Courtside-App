@@ -1,13 +1,16 @@
 import React from 'react';
-import { ORANGE } from '@styles/colors';
+import { ORANGE, PRIMARY } from '@styles/colors';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
-import { useSelectedScheme } from '@hooks/useSelectedScheme';
+import { useSelectedTheme } from '@hooks/useSelectedTheme';
+import { useTheme } from '@react-navigation/native';
 
 export const ThemeSelector = () => {
-    const { theme, updateTheme } = useSelectedScheme();
+    const { theme, updateTheme } = useSelectedTheme();
+
+    const { colors } = useTheme();
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, { backgroundColor: colors.card }]}>
             <View style={styles.themesContainer}>
                 <Pressable
                     style={[
@@ -30,6 +33,22 @@ export const ThemeSelector = () => {
                     <Text style={styles.lightText}>Dark</Text>
                 </Pressable>
             </View>
+
+            <Pressable
+                style={[
+                    styles.systemDefaultBtn,
+                    {
+                        borderColor: colors.border,
+                        backgroundColor: colors.background,
+                    },
+                    theme === 'system' && styles.btnSelected,
+                ]}
+                onPress={() => updateTheme('system')}
+            >
+                <Text style={styles.systemDefaultBtnText}>
+                    Use System Default
+                </Text>
+            </Pressable>
         </View>
     );
 };
@@ -42,10 +61,12 @@ const styles = StyleSheet.create({
         width: '80%',
         borderRadius: 10,
         marginVertical: 10,
+        alignItems: 'center',
     },
     themesContainer: {
         flexDirection: 'row',
         justifyContent: 'space-around',
+        width: '100%',
     },
     modeButton: {
         width: '40%',
@@ -72,5 +93,17 @@ const styles = StyleSheet.create({
     },
     btnSelected: {
         borderColor: ORANGE,
+    },
+    systemDefaultBtn: {
+        width: '90%',
+        alignItems: 'center',
+        padding: 10,
+        borderColor: 'white',
+        borderWidth: 2,
+        borderRadius: 5,
+        marginTop: 10,
+    },
+    systemDefaultBtnText: {
+        color: PRIMARY,
     },
 });
