@@ -1,13 +1,10 @@
+import React from 'react';
 import { ORANGE } from '@styles/colors';
-import React, { useState } from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { useSelectedScheme } from '@hooks/useSelectedScheme';
 
 export const ThemeSelector = () => {
-    const [selectedTheme, setSelectedTheme] = useState<string>('light');
-
-    const changeTheme = (newTheme: 'light' | 'dark') => {
-        setSelectedTheme(newTheme);
-    };
+    const { theme, updateTheme } = useSelectedScheme();
 
     return (
         <View style={styles.container}>
@@ -16,9 +13,9 @@ export const ThemeSelector = () => {
                     style={[
                         styles.modeButton,
                         styles.lightModeButton,
-                        selectedTheme === 'light' && styles.btnSelected,
+                        theme === 'light' && styles.btnSelected,
                     ]}
-                    onPress={() => changeTheme('light')}
+                    onPress={() => updateTheme('light')}
                 >
                     <Text style={styles.darkText}>Light</Text>
                 </Pressable>
@@ -26,9 +23,9 @@ export const ThemeSelector = () => {
                     style={[
                         styles.modeButton,
                         styles.darkModeButton,
-                        selectedTheme === 'dark' && styles.btnSelected,
+                        theme === 'dark' && styles.btnSelected,
                     ]}
-                    onPress={() => changeTheme('dark')}
+                    onPress={() => updateTheme('dark')}
                 >
                     <Text style={styles.lightText}>Dark</Text>
                 </Pressable>
