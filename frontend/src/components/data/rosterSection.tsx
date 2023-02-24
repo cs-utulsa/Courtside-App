@@ -1,4 +1,4 @@
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useTheme } from '@react-navigation/native';
 import { RosterNavigationProp } from '../../types/Navigation';
 import React, { FC } from 'react';
 import {
@@ -22,10 +22,10 @@ type RosterSectionProps = {
  */
 export const RosterSection: FC<RosterSectionProps> = ({ team }) => {
     const { push } = useNavigation<RosterNavigationProp>();
+    const { colors } = useTheme();
 
     function navigateToTeamScreen() {
         push('Team', { team });
-        
     }
 
     const screenWidth = Dimensions.get('window').width - 20;
@@ -40,7 +40,9 @@ export const RosterSection: FC<RosterSectionProps> = ({ team }) => {
             >
                 <CircleImage url={team.icon} size={tile} />
             </TouchableOpacity>
-            <Text style={styles.text}>{team.abbr}</Text>
+            <Text style={[styles.text, { color: colors.text }]}>
+                {team.abbr}
+            </Text>
         </View>
     );
 };
