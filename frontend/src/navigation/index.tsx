@@ -7,12 +7,16 @@ import { useAuth } from '../hooks/useAuth';
 import { MainNavigation } from './MainNavigation';
 import { AuthStack } from './AuthStack';
 import { VerifyEmailScreen } from '@pages/index';
+import { useSelectedScheme } from '@hooks/useSelectedScheme';
+import { DARK_THEME, LIGHT_THEME } from '@styles/colors';
 
 const ref = createNavigationContainerRef();
 
 const RootNavigator = () => {
     const { authData } = useAuth();
     const [routeName, setRouteName] = useState<string | undefined>();
+
+    const { theme } = useSelectedScheme();
 
     const handleNavReady = useCallback(() => {
         setRouteName(ref.getCurrentRoute()?.name);
@@ -26,6 +30,7 @@ const RootNavigator = () => {
     if (authData?.token && authData?.emailVerified) {
         return (
             <NavigationContainer
+                theme={theme === 'dark' ? DARK_THEME : LIGHT_THEME}
                 ref={ref}
                 onReady={handleNavReady}
                 onStateChange={handleNavStateChange}
@@ -38,7 +43,9 @@ const RootNavigator = () => {
     }
 
     return (
-        <NavigationContainer>
+        <NavigationContainer
+            theme={theme === 'dark' ? DARK_THEME : LIGHT_THEME}
+        >
             <AuthStack />
         </NavigationContainer>
     );
