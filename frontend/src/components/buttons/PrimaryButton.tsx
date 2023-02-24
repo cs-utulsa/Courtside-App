@@ -1,4 +1,4 @@
-import { ORANGE } from '@styles/colors';
+import { useTheme } from '@react-navigation/native';
 import React, { FC } from 'react';
 import {
     View,
@@ -29,10 +29,15 @@ export const PrimaryButton: FC<PrimaryButtonProps> = ({
     text,
     loading = false,
 }) => {
+    const { colors } = useTheme();
+
     return (
         <View style={styles.container}>
-            <Pressable style={styles.btn} onPress={onPress}>
-                <Text style={styles.btnText}>
+            <Pressable
+                style={[styles.btn, { backgroundColor: colors.card }]}
+                onPress={onPress}
+            >
+                <Text style={[styles.btnText, { color: colors.primary }]}>
                     {loading ? <ActivityIndicator /> : text}
                 </Text>
             </Pressable>
@@ -50,14 +55,12 @@ const styles = StyleSheet.create({
     btn: {
         width: '90%',
         paddingVertical: 15,
-        backgroundColor: 'white',
         borderRadius: 10,
         marginVertical: 10,
     },
     /** Styles for the text on the button */
     btnText: {
         textAlign: 'center',
-        color: ORANGE,
         fontSize: 16,
     },
 });
