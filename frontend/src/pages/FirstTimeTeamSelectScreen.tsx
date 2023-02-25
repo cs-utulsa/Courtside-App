@@ -1,17 +1,16 @@
-import { useNavigation, useTheme } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { TeamIcon } from './../types/Team';
 import React, { useCallback, useEffect, useState } from 'react';
 import { AuthNavigationProp } from './../types/Navigation';
 import { FullError, SearchBox, TeamsList, FAB } from '@components/index';
 import { useAllTeams } from '@hooks/index';
-import { NAVY } from '@styles/colors';
+import { NAVY, ORANGE } from '@styles/colors';
 import { ActivityIndicator, View, StyleSheet, Text } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import * as SecureStore from 'expo-secure-store';
 
 export const FirstTimeTeamSelectScreen = () => {
     const { navigate } = useNavigation<AuthNavigationProp>();
-    const { colors } = useTheme();
 
     const { data, isSuccess, isLoading, isError } = useAllTeams();
 
@@ -96,7 +95,7 @@ export const FirstTimeTeamSelectScreen = () => {
         <View style={styles.container}>
             {isSuccess && (
                 <>
-                    <Text style={[styles.heading, { color: colors.text }]}>
+                    <Text style={[styles.heading]}>
                         Follow Your Favorite Teams!
                     </Text>
                     <SearchBox
@@ -112,22 +111,18 @@ export const FirstTimeTeamSelectScreen = () => {
                         />
                     )}
                     {resultStatus === 'empty' && (
-                        <Text style={[styles.message, { color: colors.text }]}>
+                        <Text style={[styles.message]}>
                             Select at least one team to continue!
                         </Text>
                     )}
                     {resultStatus === 'not found' && (
-                        <Text style={[styles.message, { color: colors.text }]}>
+                        <Text style={[styles.message]}>
                             Could not find a team with that query.
                         </Text>
                     )}
 
                     {selectedTeams.length >= 1 && (
-                        <FAB
-                            onPress={goNext}
-                            position="right"
-                            color={colors.primary}
-                        >
+                        <FAB onPress={goNext} position="right" color={ORANGE}>
                             {!submitting ? (
                                 <MaterialIcons
                                     name="check"

@@ -10,12 +10,11 @@ import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { FAB, LogoHeader } from '@components/index';
 import { ORANGE } from '@styles/colors';
 import * as SecureStore from 'expo-secure-store';
-import { useNavigation, useTheme } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { AuthNavigationProp } from './../types/Navigation';
 
 export const SportSelectScreen = () => {
     const { navigate } = useNavigation<AuthNavigationProp>();
-    const { colors } = useTheme();
 
     const [selectedSports, setSelectedSports] = useState<string[]>([]);
     const [submitting, setSubmitting] = useState<boolean>(false);
@@ -52,9 +51,7 @@ export const SportSelectScreen = () => {
     return (
         <View style={styles.container}>
             <LogoHeader />
-            <Text style={[styles.heading, { color: colors.text }]}>
-                Follow Your Favorite Sports
-            </Text>
+            <Text style={[styles.heading]}>Follow Your Favorite Sports</Text>
             <View style={styles.sportsContainer}>
                 <Pressable onPress={() => toggleSport('basketball')}>
                     <MaterialCommunityIcons

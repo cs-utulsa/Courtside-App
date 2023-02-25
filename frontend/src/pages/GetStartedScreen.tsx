@@ -2,7 +2,7 @@ import Carousel from 'react-native-reanimated-carousel';
 import { Dimensions, View, Text, StyleSheet, Image } from 'react-native';
 import React from 'react';
 import { AuthSubmitButton, LogoHeader, SmallLink } from '@components/index';
-import { useNavigation, useTheme } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { AuthNavigationProp } from './../types/Navigation';
 
 const images: { image: any; text: string }[] = [
@@ -22,7 +22,6 @@ const images: { image: any; text: string }[] = [
 
 export const GetStartedScreen = () => {
     const width = Dimensions.get('window').width;
-    const { colors } = useTheme();
 
     const { navigate } = useNavigation<AuthNavigationProp>();
 
@@ -38,9 +37,7 @@ export const GetStartedScreen = () => {
                 renderItem={({ item }) => (
                     <View style={styles.carouselItem}>
                         <Image style={styles.itemImage} source={item.image} />
-                        <Text style={[styles.itemText, { color: colors.text }]}>
-                            {item.text}
-                        </Text>
+                        <Text style={[styles.itemText]}>{item.text}</Text>
                     </View>
                 )}
             />
