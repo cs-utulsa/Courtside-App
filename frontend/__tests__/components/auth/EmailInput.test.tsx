@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 import React from 'react';
 import { EmailInput } from '@components/auth/EmailInput';
 import { render, screen } from '@testing-library/react-native';
@@ -36,3 +37,4 @@ describe('Testing EmailInput Component', () => {
         expect(error).not.toBeOnTheScreen();
     });
 });
+/* jshint ignore:end */

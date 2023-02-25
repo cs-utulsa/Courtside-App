@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 import React from 'react';
 import { AuthSubmitButton } from '@components/auth/AuthSubmitButton';
 import { render, screen, fireEvent } from '@testing-library/react-native';
@@ -99,3 +100,4 @@ describe('Testing AuthSubmitButton Component', () => {
         expect(mockFn).not.toHaveBeenCalled();
     });
 });
+/* jshint ignore:end*/

@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 import React from 'react';
 import { FAB } from '@components/buttons/FAB';
 import { ActivityIndicator, Text } from 'react-native';
@@ -113,3 +114,4 @@ describe('Testing FAB component', () => {
         expect(btn).toHaveStyle({ bottom: 15, right: 15 });
     });
 });
+/* jshint ignore:end */

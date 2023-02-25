@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 import React from 'react';
 import { FullError } from '@components/error/FullError';
 import { render, screen } from '@testing-library/react-native';
@@ -11,3 +12,4 @@ describe('Testing FullError component', () => {
         expect(component).toBeOnTheScreen();
     });
 });
+/* jshint ignore:end */

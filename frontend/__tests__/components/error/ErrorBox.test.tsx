@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 import React from 'react';
 import { ErrorBox } from '@components/error/ErrorBox';
 import { render, screen } from '@testing-library/react-native';
@@ -11,3 +12,4 @@ describe('Testing ErrorBox Component', () => {
         expect(box).toBeOnTheScreen();
     });
 });
+/* jshint ignore:end */
