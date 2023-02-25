@@ -7,13 +7,12 @@ import { Settings } from '@pages/index';
 import { Ionicons, FontAwesome, FontAwesome5 } from '@expo/vector-icons';
 import { StatsStack } from './StatsStack';
 import { RosterStack } from './RosterStack';
-import { ORANGE } from '../styles/colors';
-import { ParamListBase, RouteProp } from '@react-navigation/native';
+import { ParamListBase, RouteProp, useTheme } from '@react-navigation/native';
 import { ScheduleStack } from './ScheduleStack';
 
 const Tab = createBottomTabNavigator();
 
-const screenOptions = (routeName: string | undefined) => {
+const screenOptions = (routeName: string | undefined, iconColor: string) => {
     const hideBar = routeName === 'Selection';
 
     return ({
@@ -22,7 +21,7 @@ const screenOptions = (routeName: string | undefined) => {
         route: RouteProp<ParamListBase, string>;
         navigation: any;
     }) => ({
-        tabBarActiveTintColor: ORANGE,
+        tabBarActiveTintColor: iconColor,
         tabBarInactiveTintColor: 'gray',
         tabBarIconStyle: {
             transform: [{ scale: 1.3 }],
@@ -70,7 +69,11 @@ type MainNavigationProps = {
 };
 
 export const MainNavigation: FC<MainNavigationProps> = ({ routeName }) => {
-    const options = screenOptions(routeName) as BottomTabNavigationOptions;
+    const { colors } = useTheme();
+    const options = screenOptions(
+        routeName,
+        colors.primary
+    ) as BottomTabNavigationOptions;
 
     return (
         <Tab.Navigator initialRouteName="Stats" screenOptions={options}>

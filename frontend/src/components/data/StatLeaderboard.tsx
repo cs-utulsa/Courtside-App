@@ -24,7 +24,7 @@ export const StatLeaderboard: FC<LeaderboardProps> = ({ stat }) => {
             onPress={() => push('Stat', { stat })}
         >
             <View style={styles.titleBlock}>
-                <Text style={[styles.statTitle, { color: colors.text }]}>
+                <Text style={[styles.statTitle, { color: colors.primary }]}>
                     {stat.name}
                 </Text>
             </View>
