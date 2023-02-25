@@ -14,7 +14,7 @@ export const StatScreen = () => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.heading}>Stat Screen</Text>
+            <Text style={[styles.heading]}>Stat Screen</Text>
             <Text>Stat Data</Text>
         </View>
     );

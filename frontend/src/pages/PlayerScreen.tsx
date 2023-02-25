@@ -4,7 +4,7 @@ import { useRoute } from '@react-navigation/native';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { Player } from './../types/Player';
 import { Team } from './../types/Team';
-import { CircleImage } from '@components/index';
+import { Card, CircleImage } from '@components/index';
 import { useNavigation } from '@react-navigation/native';
 import { RosterNavigationProp } from './../types/Navigation';
 
@@ -37,29 +37,34 @@ export const PlayerScreen = () => {
             <Text style={styles.text}>{player.name}</Text>
             <Text style={styles.text}>{player.team}</Text>
 
-            <View style={styles.leaderboardBlock}>
-                <View>
-                    <Text style={styles.text}>Position:</Text>
-                    <Text style={styles.listtext}>{player.position}</Text>
-                    <Text style={styles.text}>Height:</Text>
-                    <Text style={styles.listtext}> {player.height}</Text>
-                    <Text style={styles.text}>Weight:</Text>
-                    <Text style={styles.listtext}> {player.weight}</Text>
-                    <Text style={styles.text}>Age:</Text>
-                    <Text style={styles.listtext}> {player.age}</Text>
-                </View>
+            <Card>
+                <View style={styles.leaderboardBlock}>
+                    <View>
+                        <Text style={styles.text}>Position:</Text>
+                        <Text style={styles.listtext}>{player.position}</Text>
+                        <Text style={styles.text}>Height:</Text>
+                        <Text style={styles.listtext}> {player.height}</Text>
+                        <Text style={styles.text}>Weight:</Text>
+                        <Text style={styles.listtext}> {player.weight}</Text>
+                        <Text style={styles.text}>Age:</Text>
+                        <Text style={styles.listtext}> {player.age}</Text>
+                    </View>
 
-                <View style={styles.statstwo}>
-                    <Text style={styles.text}>Jersey No. : </Text>
-                    <Text style={styles.listtext}> {player.number}</Text>
-                    <Text style={styles.text}>Career: </Text>
-                    <Text style={styles.listtext}> {player.experience}</Text>
-                    <Text style={styles.text}>Draft Pick:</Text>
-                    <Text style={styles.listtext}> {player.draft}</Text>
-                    <Text style={styles.text}>Country:</Text>
-                    <Text style={styles.listtext}> {player.country}</Text>
+                    <View style={styles.statstwo}>
+                        <Text style={styles.text}>Jersey No. : </Text>
+                        <Text style={styles.listtext}> {player.number}</Text>
+                        <Text style={styles.text}>Career: </Text>
+                        <Text style={styles.listtext}>
+                            {' '}
+                            {player.experience}
+                        </Text>
+                        <Text style={styles.text}>Draft Pick:</Text>
+                        <Text style={styles.listtext}> {player.draft}</Text>
+                        <Text style={styles.text}>Country:</Text>
+                        <Text style={styles.listtext}> {player.country}</Text>
+                    </View>
                 </View>
-            </View>
+            </Card>
         </ScrollView>
     );
 };
@@ -89,13 +94,5 @@ const styles = StyleSheet.create({
     },
     leaderboardBlock: {
         flexDirection: 'row',
-        // alignItems: 'center',
-        backgroundColor: '#DEDEDE',
-        paddingVertical: 8,
-        paddingHorizontal: 20,
-        marginHorizontal: 20,
-        borderRadius: 15,
-        width: '90%',
-        marginVertical: 15,
     },
 });
