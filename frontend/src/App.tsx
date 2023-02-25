@@ -11,6 +11,7 @@ import { AuthProvider } from '@contexts/AuthContext';
 import { RootSiblingParent } from 'react-native-root-siblings';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ThemeProvider } from '@contexts/ThemeContext';
 
 function cacheImages(images: string[]) {
     return images.map((image: string) => {
@@ -60,9 +61,11 @@ export default function App() {
         <>
             <QueryClientProvider client={queryClient}>
                 <RootSiblingParent>
-                    <AuthProvider>
-                        <RootNavigator />
-                    </AuthProvider>
+                    <ThemeProvider>
+                        <AuthProvider>
+                            <RootNavigator />
+                        </AuthProvider>
+                    </ThemeProvider>
                 </RootSiblingParent>
             </QueryClientProvider>
             <StatusBar style="auto" />

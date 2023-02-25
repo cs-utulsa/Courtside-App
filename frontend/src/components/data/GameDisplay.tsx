@@ -4,7 +4,7 @@ import React, { FC } from 'react';
 import { SelectCircle } from '../buttons/SelectCircle';
 import { ICONS } from '../../constants';
 import { Game } from './../../types/Game';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useTheme } from '@react-navigation/native';
 import { ScheduleNavigationProp } from './../../types/Navigation';
 
 type GameProps = {
@@ -21,6 +21,7 @@ type GameProps = {
  */
 export const GameDisplay: FC<GameProps> = ({ game }) => {
     const { push } = useNavigation<ScheduleNavigationProp>();
+    const { colors } = useTheme();
 
     const awayIconUrl = ICONS.find(
         (icon) => icon.code === game.away_code
@@ -32,12 +33,14 @@ export const GameDisplay: FC<GameProps> = ({ game }) => {
 
     return (
         <Pressable
-            style={styles.gameBlock}
+            style={[styles.gameBlock, { backgroundColor: colors.card }]}
             onPress={() => push('Game', { game })}
         >
             <SelectCircle url={awayIconUrl} size={100} disabled={true} />
             <View style={styles.gameData}>
-                <Text style={styles.gameTime}>{game.game_time}</Text>
+                <Text style={[styles.gameTime, { color: colors.text }]}>
+                    {game.game_time}
+                </Text>
             </View>
             <SelectCircle url={homeIconUrl} size={100} disabled={true} />
         </Pressable>
@@ -49,7 +52,6 @@ const styles = StyleSheet.create({
     gameBlock: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        backgroundColor: '#DEDEDE',
         borderRadius: 20,
         padding: 10,
         marginHorizontal: 20,

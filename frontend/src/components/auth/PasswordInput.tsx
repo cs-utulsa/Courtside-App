@@ -3,6 +3,7 @@ import React, { FC } from 'react';
 
 import { InputProps } from '../../types/InputTypes';
 import { inputStyles as styles } from '../../styles/inputStyles';
+import { useTheme } from '@react-navigation/native';
 
 type PasswordInputProps = InputProps & {
     /** The text that will be displayed when the value of the input is an empty string */
@@ -21,15 +22,19 @@ export const PasswordInput: FC<PasswordInputProps> = ({
     disabled,
     placeholder,
 }) => {
+    const { colors } = useTheme();
+
     return (
         <View style={styles.container}>
             <TextInput
                 style={[
                     styles.input,
                     error && touched ? styles.inputError : undefined,
+                    { borderColor: colors.text, color: colors.text },
                 ]}
                 secureTextEntry={true}
                 placeholder={placeholder}
+                placeholderTextColor={colors.text}
                 textContentType="password"
                 onChangeText={changeFn}
                 onBlur={blurFn}

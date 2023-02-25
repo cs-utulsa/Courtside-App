@@ -1,6 +1,6 @@
+import { useTheme } from '@react-navigation/native';
 import React, { FC, useState } from 'react';
 import { View, Image, StyleSheet, Pressable } from 'react-native';
-import { ORANGE } from '../../styles/colors';
 
 type SelectCircleProps = {
     /** Whether or not the button is selected initially */
@@ -31,6 +31,8 @@ export const SelectCircle: FC<SelectCircleProps> = ({
     onSelectChanged = () => {},
 }) => {
     const [selected, setSelected] = useState<boolean>(initialState);
+
+    const { colors } = useTheme();
 
     /**
      * Derives the size of the containing circle and the margins based on the size of the component
@@ -66,7 +68,7 @@ export const SelectCircle: FC<SelectCircleProps> = ({
             style={[
                 styles.circle,
                 circleSize(),
-                selected ? styles.selected : styles.notSelected,
+                selected ? { borderColor: colors.primary } : styles.notSelected,
             ]}
         >
             <Pressable onPress={pressHandler} disabled={disabled}>
@@ -93,10 +95,6 @@ const styles = StyleSheet.create({
     /** Styles for the containing View when the button is in the not selected state */
     notSelected: {
         borderColor: '#808080',
-    },
-    /** Styles for the containing View when the button is in the selected state */
-    selected: {
-        borderColor: ORANGE,
     },
     /** Styles for the image that is displayed inside the button */
     img: {

@@ -1,26 +1,21 @@
 import React, { useCallback, useState } from 'react';
 import {
     createNavigationContainerRef,
-    DefaultTheme,
     NavigationContainer,
 } from '@react-navigation/native';
 import { useAuth } from '../hooks/useAuth';
 import { MainNavigation } from './MainNavigation';
 import { AuthStack } from './AuthStack';
 import { VerifyEmailScreen } from '@pages/index';
-
-const Theme = {
-    ...DefaultTheme,
-    colors: {
-        ...DefaultTheme.colors,
-    },
-};
+import { useSelectedTheme } from '@hooks/useSelectedTheme';
 
 const ref = createNavigationContainerRef();
 
 const RootNavigator = () => {
     const { authData } = useAuth();
     const [routeName, setRouteName] = useState<string | undefined>();
+
+    const { themeObject } = useSelectedTheme();
 
     const handleNavReady = useCallback(() => {
         setRouteName(ref.getCurrentRoute()?.name);
@@ -34,7 +29,7 @@ const RootNavigator = () => {
     if (authData?.token && authData?.emailVerified) {
         return (
             <NavigationContainer
-                theme={Theme}
+                theme={themeObject}
                 ref={ref}
                 onReady={handleNavReady}
                 onStateChange={handleNavStateChange}
@@ -47,7 +42,7 @@ const RootNavigator = () => {
     }
 
     return (
-        <NavigationContainer theme={Theme}>
+        <NavigationContainer theme={themeObject}>
             <AuthStack />
         </NavigationContainer>
     );

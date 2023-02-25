@@ -1,3 +1,4 @@
+import { useTheme } from '@react-navigation/native';
 import React, { FC } from 'react';
 import { Pressable, Text, StyleSheet } from 'react-native';
 
@@ -16,9 +17,11 @@ type SmallLinkProps = {
  * return <SmallLink text={text} onPress={onPress} />
  */
 export const SmallLink: FC<SmallLinkProps> = ({ onPress, text }) => {
+    const { colors } = useTheme();
+
     return (
         <Pressable onPress={onPress} style={styles.pressable}>
-            <Text style={styles.text}>{text}</Text>
+            <Text style={[styles.text, { color: colors.text }]}>{text}</Text>
         </Pressable>
     );
 };

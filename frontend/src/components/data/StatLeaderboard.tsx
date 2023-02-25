@@ -1,7 +1,7 @@
 import { Stat } from './../../types/Stat';
 import React, { FC } from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useTheme } from '@react-navigation/native';
 import { StatsNavigationProp } from './../../types/Navigation';
 
 export type LeaderboardProps = {
@@ -16,26 +16,39 @@ export const StatLeaderboard: FC<LeaderboardProps> = ({ stat }) => {
     const topFivePlayers = stat.total.players.slice(0, 5);
 
     const { push } = useNavigation<StatsNavigationProp>();
+    const { colors } = useTheme();
 
     return (
         <Pressable
-            style={styles.leaderboardBlock}
+            style={[styles.leaderboardBlock, { backgroundColor: colors.card }]}
             onPress={() => push('Stat', { stat })}
         >
             <View style={styles.titleBlock}>
-                <Text style={styles.statTitle}>{stat.name}</Text>
+                <Text style={[styles.statTitle, { color: colors.primary }]}>
+                    {stat.name}
+                </Text>
             </View>
             <View style={styles.row}>
-                <Text style={styles.colHeading}>Rank</Text>
-                <Text style={styles.colHeading}>Player</Text>
-                <Text style={styles.colHeading}>Value</Text>
+                <Text style={[styles.colHeading, { color: colors.text }]}>
+                    Rank
+                </Text>
+                <Text style={[styles.colHeading, { color: colors.text }]}>
+                    Player
+                </Text>
+                <Text style={[styles.colHeading, { color: colors.text }]}>
+                    Value
+                </Text>
             </View>
             <View>
                 {topFivePlayers.map((player, index) => (
                     <View style={styles.row} key={`${player.id}-${stat.id}`}>
-                        <Text>{index}</Text>
-                        <Text>{player.name}</Text>
-                        <Text>{player.value}</Text>
+                        <Text style={[{ color: colors.text }]}>{index}</Text>
+                        <Text style={[{ color: colors.text }]}>
+                            {player.name}
+                        </Text>
+                        <Text style={[{ color: colors.text }]}>
+                            {player.value}
+                        </Text>
                     </View>
                 ))}
             </View>
@@ -46,7 +59,6 @@ export const StatLeaderboard: FC<LeaderboardProps> = ({ stat }) => {
 const styles = StyleSheet.create({
     /** Styles for the element containing the rest of the component */
     leaderboardBlock: {
-        backgroundColor: '#DEDEDE',
         paddingVertical: 8,
         paddingHorizontal: 20,
         marginHorizontal: 20,

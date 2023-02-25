@@ -38,5 +38,9 @@ export { LogoHeader } from './logo/LogoHeader';
 export { SearchBox } from './misc/SearchBox';
 export { Seperator } from './misc/Seperator';
 
+//Appearance
+export { ThemeSelector } from './appearance/ThemeSelector';
+export { PrimaryColorSelector } from './appearance/PrimaryColorSelector';
+
 //  Navigation
 export { SmallLink } from './navigation/SmallLink';
