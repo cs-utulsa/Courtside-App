@@ -11,9 +11,10 @@ import {
     Pressable,
     ActivityIndicator,
 } from 'react-native';
-import { ErrorBox } from '..';
+import { ErrorBox } from '../error/ErrorBox';
 import { CircleImage } from '../images/CircleImage';
 import { MaterialIcons } from '@expo/vector-icons';
+import { Card } from '../misc/Card';
 
 export const PrimaryColorSelector = () => {
     const { colors } = useTheme();
@@ -26,7 +27,7 @@ export const PrimaryColorSelector = () => {
     );
 
     return (
-        <View style={[styles.container, { backgroundColor: colors.card }]}>
+        <Card>
             <Text style={[styles.heading, { color: colors.text }]}>
                 Primary Color
             </Text>
@@ -84,21 +85,11 @@ export const PrimaryColorSelector = () => {
             >
                 <Text style={[{ color: ORANGE }]}>Use Courtside Orange</Text>
             </Pressable>
-        </View>
+        </Card>
     );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        backgroundColor: 'white',
-        paddingHorizontal: 10,
-        paddingTop: 10,
-        paddingBottom: 20,
-        width: '80%',
-        borderRadius: 10,
-        marginVertical: 10,
-        alignItems: 'center',
-    },
     heading: {
         fontSize: 20,
         fontWeight: 'bold',
@@ -106,7 +97,7 @@ const styles = StyleSheet.create({
     },
     selectContainer: {
         paddingVertical: 10,
-        height: 120,
+        maxHeight: 120,
         alignItems: 'center',
         justifyContent: 'center',
         position: 'relative',

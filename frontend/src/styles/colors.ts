@@ -1,5 +1,4 @@
 const BASKETBALL = '#EE6730';
-
 export const ORANGE = BASKETBALL;
 
 export const NAVY = '#374151';
@@ -44,3 +43,6 @@ export const DARK_THEME = {
         notification: DARK_NOTIFICATION,
     },
 };
+
+export const ERROR_BACKGROUND = '#ffcfcd';
+export const ERROR_TEXT = 'red';

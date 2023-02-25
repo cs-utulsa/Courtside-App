@@ -1,3 +1,4 @@
+import { ERROR_BACKGROUND, ERROR_TEXT } from '@styles/colors';
 import React, { FC } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
@@ -28,13 +29,13 @@ export const ErrorBox: FC<ErrorBoxProps> = ({ error }) => {
 
 const styles = StyleSheet.create({
     authErrorBox: {
-        backgroundColor: '#ffcfcd',
+        backgroundColor: ERROR_BACKGROUND,
         width: '75%',
         paddingVertical: 10,
         alignItems: 'center',
         borderRadius: 5,
     },
     errorText: {
-        color: 'red',
+        color: ERROR_TEXT,
     },
 });
