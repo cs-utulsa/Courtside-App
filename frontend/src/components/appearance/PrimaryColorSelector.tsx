@@ -1,6 +1,7 @@
-import { useTeams } from '@hooks/index';
+import { useSelectedTheme, useTeams } from '@hooks/index';
 import { useAuth } from '@hooks/useAuth';
 import { useTheme } from '@react-navigation/native';
+import { ORANGE } from '@styles/colors';
 import React from 'react';
 import {
     View,
@@ -15,6 +16,8 @@ import { CircleImage } from '../images/CircleImage';
 
 export const PrimaryColorSelector = () => {
     const { colors } = useTheme();
+
+    const { primaryColor, updatePrimaryColor } = useSelectedTheme();
 
     const { authData } = useAuth();
     const { data, isLoading, isError, isSuccess } = useTeams(
@@ -43,7 +46,10 @@ export const PrimaryColorSelector = () => {
                     horizontal
                     data={data}
                     renderItem={({ item }) => (
-                        <Pressable style={styles.teamBox}>
+                        <Pressable
+                            style={styles.teamBox}
+                            onPress={() => updatePrimaryColor(item.color)}
+                        >
                             <CircleImage
                                 url={item.icon}
                                 size={100}
@@ -62,7 +68,9 @@ export const PrimaryColorSelector = () => {
                         borderColor: colors.border,
                         backgroundColor: colors.background,
                     },
+                    primaryColor === ORANGE && { borderColor: ORANGE },
                 ]}
+                onPress={() => updatePrimaryColor(ORANGE)}
             >
                 <Text style={[{ color: colors.primary }]}>
                     Use Courtside Orange
