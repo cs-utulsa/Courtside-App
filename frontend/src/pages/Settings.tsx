@@ -1,37 +1,30 @@
 import {
     DangerButton,
     PrimaryColorSelector,
+    Seperator,
     ThemeSelector,
+    ThemeText,
 } from '@components/index';
 import { useAuth } from '@hooks/index';
-import { useTheme } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, View, Text, ScrollView } from 'react-native';
+import { StyleSheet, ScrollView } from 'react-native';
 
 /**
  * This component allows the user to access settings about the app and to log out of the app.
  */
 export const Settings = () => {
     const { signOut, clearData } = useAuth();
-    const { colors } = useTheme();
 
     return (
         <ScrollView contentContainerStyle={styles.pageContainer}>
-            <View style={styles.pageContainer}>
-                <Text style={[styles.heading, { color: colors.text }]}>
-                    Account Information
-                </Text>
-            </View>
-            <Text style={[styles.heading, { color: colors.text }]}>
-                Appearance
-            </Text>
+            <ThemeText style={styles.heading}>Account Info</ThemeText>
+            <ThemeText style={styles.heading}>Appearance</ThemeText>
             <ThemeSelector />
             <PrimaryColorSelector />
-            <Text style={[styles.heading, { color: colors.text }]}>
-                Actions
-            </Text>
+            <ThemeText style={styles.heading}>Actions</ThemeText>
             <DangerButton text="Clear Data" onPress={clearData} />
             <DangerButton text="Log Out" onPress={signOut} />
+            <Seperator height={40} />
         </ScrollView>
     );
 };

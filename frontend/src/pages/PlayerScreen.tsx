@@ -1,10 +1,10 @@
 import { PlayerScreenRouteProp } from '../types/Navigation';
 import React from 'react';
 import { useRoute } from '@react-navigation/native';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import { Player } from './../types/Player';
 import { Team } from './../types/Team';
-import { Card, CircleImage } from '@components/index';
+import { Card, CircleImage, ThemeText } from '@components/index';
 import { useNavigation } from '@react-navigation/native';
 import { RosterNavigationProp } from './../types/Navigation';
 
@@ -34,34 +34,54 @@ export const PlayerScreen = () => {
                 resizeMode="cover"
                 imageRatio={0.9}
             />
-            <Text style={styles.text}>{player.name}</Text>
-            <Text style={styles.text}>{player.team}</Text>
+            <ThemeText style={styles.text}>{player.name}</ThemeText>
+            <ThemeText style={styles.text}>{player.team}</ThemeText>
 
             <Card>
                 <View style={styles.leaderboardBlock}>
                     <View>
-                        <Text style={styles.text}>Position:</Text>
-                        <Text style={styles.listtext}>{player.position}</Text>
-                        <Text style={styles.text}>Height:</Text>
-                        <Text style={styles.listtext}> {player.height}</Text>
-                        <Text style={styles.text}>Weight:</Text>
-                        <Text style={styles.listtext}> {player.weight}</Text>
-                        <Text style={styles.text}>Age:</Text>
-                        <Text style={styles.listtext}> {player.age}</Text>
+                        <ThemeText style={styles.text}>Position:</ThemeText>
+                        <ThemeText style={styles.listtext}>
+                            {player.position}
+                        </ThemeText>
+                        <ThemeText style={styles.text}>Height:</ThemeText>
+                        <ThemeText style={styles.listtext}>
+                            {' '}
+                            {player.height}
+                        </ThemeText>
+                        <ThemeText style={styles.text}>Weight:</ThemeText>
+                        <ThemeText style={styles.listtext}>
+                            {' '}
+                            {player.weight}
+                        </ThemeText>
+                        <ThemeText style={styles.text}>Age:</ThemeText>
+                        <ThemeText style={styles.listtext}>
+                            {' '}
+                            {player.age}
+                        </ThemeText>
                     </View>
 
                     <View style={styles.statstwo}>
-                        <Text style={styles.text}>Jersey No. : </Text>
-                        <Text style={styles.listtext}> {player.number}</Text>
-                        <Text style={styles.text}>Career: </Text>
-                        <Text style={styles.listtext}>
+                        <ThemeText style={styles.text}>Jersey No. : </ThemeText>
+                        <ThemeText style={styles.listtext}>
+                            {' '}
+                            {player.number}
+                        </ThemeText>
+                        <ThemeText style={styles.text}>Career: </ThemeText>
+                        <ThemeText style={styles.listtext}>
                             {' '}
                             {player.experience}
-                        </Text>
-                        <Text style={styles.text}>Draft Pick:</Text>
-                        <Text style={styles.listtext}> {player.draft}</Text>
-                        <Text style={styles.text}>Country:</Text>
-                        <Text style={styles.listtext}> {player.country}</Text>
+                        </ThemeText>
+                        <ThemeText style={styles.text}>Draft Pick:</ThemeText>
+                        <ThemeText style={styles.listtext}>
+                            {' '}
+                            {player.draft}
+                        </ThemeText>
+                        <ThemeText style={styles.text}>Country:</ThemeText>
+                        <ThemeText style={styles.listtext}>
+                            {' '}
+                            {player.country}
+                        </ThemeText>
                     </View>
                 </View>
             </Card>

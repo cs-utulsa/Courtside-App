@@ -244,7 +244,6 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 
                 setAuthData({ ...authData!, stats: data });
             } catch (err) {
-                console.log(err);
                 if (axios.isAxiosError(err)) {
                     setAuthError(err.response?.data);
                 } else {

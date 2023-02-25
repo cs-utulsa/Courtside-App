@@ -1,11 +1,12 @@
 import { addDays, startOfToday, format } from 'date-fns';
 import React, { FC, useMemo } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { useDaySchedule } from '@hooks/index';
 
 import { ErrorBox } from './../error/ErrorBox';
 import { GameDisplay } from './GameDisplay';
 import { useTheme } from '@react-navigation/native';
+import { ThemeText } from '../misc/ThemeText';
 
 type DayScheduleProps = {
     /** the date of this schedule represented by how many days away it is from today */
@@ -33,9 +34,9 @@ export const DaySchedule: FC<DayScheduleProps> = ({ ahead }) => {
 
     return (
         <View style={[styles.section, { borderColor: colors.primary }]}>
-            <Text style={[styles.sectionTitle, { color: colors.primary }]}>
+            <ThemeText style={[styles.sectionTitle]} primary>
                 {dateString}
-            </Text>
+            </ThemeText>
             {isSuccess &&
                 data.map((game) => {
                     return (

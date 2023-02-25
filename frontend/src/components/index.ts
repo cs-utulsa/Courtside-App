@@ -38,6 +38,7 @@ export { LogoHeader } from './logo/LogoHeader';
 export { SearchBox } from './misc/SearchBox';
 export { Seperator } from './misc/Seperator';
 export { Card } from './misc/Card';
+export { ThemeText } from './misc/ThemeText';
 
 //Appearance
 export { ThemeSelector } from './appearance/ThemeSelector';

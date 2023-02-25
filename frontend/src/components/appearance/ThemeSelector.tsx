@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { useSelectedTheme } from '@hooks/useSelectedTheme';
 import { useTheme } from '@react-navigation/native';
 import { Card } from '@components/misc/Card';
+import { ThemeText } from '../misc/ThemeText';
 
 export const ThemeSelector = () => {
     const { theme, updateTheme } = useSelectedTheme();
@@ -11,7 +12,7 @@ export const ThemeSelector = () => {
 
     return (
         <Card>
-            <Text style={[styles.header, { color: colors.text }]}>Theme</Text>
+            <ThemeText style={styles.header}>Theme</ThemeText>
             <View style={styles.themesContainer}>
                 <Pressable
                     style={[

@@ -1,4 +1,4 @@
-import { CircleImage, PlayerSection } from '@components/index';
+import { CircleImage, PlayerSection, ThemeText } from '@components/index';
 import { useRoute } from '@react-navigation/native';
 import { TeamScreenRouteProp } from '../types/Navigation';
 import { View, StyleSheet, Text, SectionList } from 'react-native';
@@ -94,7 +94,7 @@ export const TeamScreen = () => {
             >
                 <>
                     <CircleImage url={team.icon} size={150} />
-                    <Text style={styles.headerText}>{team.name}</Text>
+                    <ThemeText style={styles.headerText}>{team.name}</ThemeText>
                 </>
                 <Text>guards</Text>
                 <View style={styles.container}>{itemList}</View>

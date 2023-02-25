@@ -1,9 +1,10 @@
 import { Stat } from './../../types/Stat';
 import React, { FC } from 'react';
-import { View, Text, StyleSheet, Pressable } from 'react-native';
-import { useNavigation, useTheme } from '@react-navigation/native';
+import { View, StyleSheet, Pressable } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { StatsNavigationProp } from './../../types/Navigation';
 import { Card } from '../misc/Card';
+import { ThemeText } from '../misc/ThemeText';
 
 export type LeaderboardProps = {
     /** the stat to be displayed on this leaderboard */
@@ -17,44 +18,25 @@ export const StatLeaderboard: FC<LeaderboardProps> = ({ stat }) => {
     const topFivePlayers = stat.total.players.slice(0, 5);
 
     const { push } = useNavigation<StatsNavigationProp>();
-    const { colors } = useTheme();
 
     return (
         <Pressable onPress={() => push('Stat', { stat })}>
             <Card>
                 <View style={styles.titleBlock}>
-                    <Text style={[styles.statTitle, { color: colors.primary }]}>
+                    <ThemeText style={[styles.statTitle]} primary>
                         {stat.name}
-                    </Text>
+                    </ThemeText>
                 </View>
                 <View style={styles.row}>
-                    <Text
-                        style={[
-                            styles.colHeading,
-                            styles.rowText,
-                            { color: colors.text },
-                        ]}
-                    >
+                    <ThemeText style={[styles.colHeading, styles.rowText]}>
                         Rank
-                    </Text>
-                    <Text
-                        style={[
-                            styles.colHeading,
-                            styles.nameText,
-                            { color: colors.text },
-                        ]}
-                    >
+                    </ThemeText>
+                    <ThemeText style={[styles.colHeading, styles.nameText]}>
                         Player
-                    </Text>
-                    <Text
-                        style={[
-                            styles.colHeading,
-                            styles.rowText,
-                            { color: colors.text },
-                        ]}
-                    >
+                    </ThemeText>
+                    <ThemeText style={[styles.colHeading, styles.rowText]}>
                         Value
-                    </Text>
+                    </ThemeText>
                 </View>
                 <View>
                     {topFivePlayers.map((player, index) => (
@@ -62,24 +44,15 @@ export const StatLeaderboard: FC<LeaderboardProps> = ({ stat }) => {
                             style={styles.row}
                             key={`${player.id}-${stat.id}`}
                         >
-                            <Text
-                                style={[styles.rowText, { color: colors.text }]}
-                            >
+                            <ThemeText style={[styles.rowText]}>
                                 {index}
-                            </Text>
-                            <Text
-                                style={[
-                                    styles.nameText,
-                                    { color: colors.text },
-                                ]}
-                            >
+                            </ThemeText>
+                            <ThemeText style={[styles.nameText]}>
                                 {player.name}
-                            </Text>
-                            <Text
-                                style={[styles.rowText, { color: colors.text }]}
-                            >
+                            </ThemeText>
+                            <ThemeText style={[styles.rowText]}>
                                 {player.value}
-                            </Text>
+                            </ThemeText>
                         </View>
                     ))}
                 </View>
