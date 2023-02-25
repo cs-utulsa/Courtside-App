@@ -1,4 +1,8 @@
-import { DangerButton, ThemeSelector } from '@components/index';
+import {
+    DangerButton,
+    PrimaryColorSelector,
+    ThemeSelector,
+} from '@components/index';
 import { useAuth } from '@hooks/index';
 import { useTheme } from '@react-navigation/native';
 import React from 'react';
@@ -22,6 +26,7 @@ export const Settings = () => {
                 Appearance
             </Text>
             <ThemeSelector />
+            <PrimaryColorSelector />
             <Text style={[styles.heading, { color: colors.text }]}>
                 Actions
             </Text>

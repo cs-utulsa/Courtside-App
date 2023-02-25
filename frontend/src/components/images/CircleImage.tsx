@@ -17,6 +17,8 @@ type CircleImageProps = {
     imageRatio?: number;
     /** The resizeMode of the image */
     resizeMode?: 'cover' | 'contain';
+    /** the color of the border */
+    borderColor?: string;
 };
 
 /**
@@ -27,12 +29,14 @@ export const CircleImage: FC<CircleImageProps> = ({
     size,
     imageRatio = 0.6,
     resizeMode = 'contain',
+    borderColor = 'black',
 }) => {
     // calculate the size of the circle
     const circleSize: StyleProp<ViewStyle> = {
         height: size - 6,
         width: size - 6,
         borderRadius: size / 2,
+        borderColor,
         marginHorizontal: 3,
     };
     // calculate the size of the image
