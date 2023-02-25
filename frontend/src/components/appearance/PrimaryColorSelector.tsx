@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import { ErrorBox } from '..';
 import { CircleImage } from '../images/CircleImage';
+import { MaterialIcons } from '@expo/vector-icons';
 
 export const PrimaryColorSelector = () => {
     const { colors } = useTheme();
@@ -55,6 +56,15 @@ export const PrimaryColorSelector = () => {
                                 size={100}
                                 borderColor={item.color}
                             />
+                            {item.color === colors.primary && (
+                                <View style={[styles.selectedIconContainer]}>
+                                    <MaterialIcons
+                                        name="check"
+                                        size={60}
+                                        color={colors.primary}
+                                    />
+                                </View>
+                            )}
                         </Pressable>
                     )}
                     contentContainerStyle={styles.selectContainer}
@@ -97,7 +107,21 @@ const styles = StyleSheet.create({
     selectContainer: {
         paddingVertical: 10,
         height: 120,
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'relative',
     },
+    selectedIconContainer: {
+        position: 'absolute',
+        top: 0,
+        backgroundColor: 'rgba(0,0,0,.8)',
+        width: '95%',
+        height: '100%',
+        borderRadius: 9999,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    selectedIcon: {},
     systemDefaultBtn: {
         width: '90%',
         alignItems: 'center',
