@@ -72,9 +72,7 @@ export const PrimaryColorSelector = () => {
                 ]}
                 onPress={() => updatePrimaryColor(ORANGE)}
             >
-                <Text style={[{ color: colors.primary }]}>
-                    Use Courtside Orange
-                </Text>
+                <Text style={[{ color: ORANGE }]}>Use Courtside Orange</Text>
             </Pressable>
         </View>
     );

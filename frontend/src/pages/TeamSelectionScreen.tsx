@@ -7,16 +7,16 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { FAB, FullError, SearchBox, TeamsList } from '@components/index';
 
 // constants
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useTheme } from '@react-navigation/native';
 import { RosterNavigationProp } from '../types/Navigation';
 import { useAuth } from '@hooks/useAuth';
 import { useAllTeams } from '@hooks/index';
 import { TeamIcon } from '../types/Team';
-import { ORANGE } from '@styles/colors';
 
 /** This component lets the user choose what teams they want to follow */
 export const TeamSelectionScreen = () => {
     const rosterNavigation = useNavigation<RosterNavigationProp>();
+    const { colors } = useTheme();
 
     const { authData, updateTeams } = useAuth();
     const [selectedTeams, setSelectedTeams] = useState<string[]>(
@@ -91,16 +91,16 @@ export const TeamSelectionScreen = () => {
                         <FAB
                             onPress={submitTeamSelectionUpdates}
                             position="right"
-                            color={ORANGE}
+                            color={colors.primary}
                         >
                             {!submitting ? (
                                 <MaterialIcons
                                     name="check"
                                     size={40}
-                                    color="black"
+                                    color={colors.text}
                                 />
                             ) : (
-                                <ActivityIndicator color="black" />
+                                <ActivityIndicator color={colors.text} />
                             )}
                         </FAB>
                     )}

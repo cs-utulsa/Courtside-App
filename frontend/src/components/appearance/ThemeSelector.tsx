@@ -1,5 +1,4 @@
 import React from 'react';
-import { ORANGE, PRIMARY } from '@styles/colors';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { useSelectedTheme } from '@hooks/useSelectedTheme';
 import { useTheme } from '@react-navigation/native';
@@ -17,7 +16,7 @@ export const ThemeSelector = () => {
                     style={[
                         styles.modeButton,
                         styles.lightModeButton,
-                        theme === 'light' && styles.btnSelected,
+                        theme === 'light' && { borderColor: colors.primary },
                     ]}
                     onPress={() => updateTheme('light')}
                 >
@@ -27,7 +26,7 @@ export const ThemeSelector = () => {
                     style={[
                         styles.modeButton,
                         styles.darkModeButton,
-                        theme === 'dark' && styles.btnSelected,
+                        theme === 'dark' && { borderColor: colors.primary },
                     ]}
                     onPress={() => updateTheme('dark')}
                 >
@@ -42,11 +41,11 @@ export const ThemeSelector = () => {
                         borderColor: colors.border,
                         backgroundColor: colors.background,
                     },
-                    theme === 'system' && styles.btnSelected,
+                    theme === 'system' && { borderColor: colors.primary },
                 ]}
                 onPress={() => updateTheme('system')}
             >
-                <Text style={styles.systemDefaultBtnText}>
+                <Text style={[{ color: colors.primary }]}>
                     Use System Default
                 </Text>
             </Pressable>
@@ -98,9 +97,6 @@ const styles = StyleSheet.create({
         color: '#1e293b',
         fontSize: 20,
     },
-    btnSelected: {
-        borderColor: ORANGE,
-    },
     systemDefaultBtn: {
         width: '90%',
         alignItems: 'center',
@@ -109,8 +105,5 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderRadius: 5,
         marginTop: 10,
-    },
-    systemDefaultBtnText: {
-        color: PRIMARY,
     },
 });

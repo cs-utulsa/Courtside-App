@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     /** styles for the container surrounding the image */
     container: {
         borderRadius: 40,
-        borderWidth: 3,
+        borderWidth: 4,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: 'white',

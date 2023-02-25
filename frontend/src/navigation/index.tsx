@@ -8,8 +8,6 @@ import { MainNavigation } from './MainNavigation';
 import { AuthStack } from './AuthStack';
 import { VerifyEmailScreen } from '@pages/index';
 import { useSelectedTheme } from '@hooks/useSelectedTheme';
-import { DARK_THEME, LIGHT_THEME } from '@styles/colors';
-import { ColorSchemeName, useColorScheme } from 'react-native';
 
 const ref = createNavigationContainerRef();
 
@@ -17,12 +15,7 @@ const RootNavigator = () => {
     const { authData } = useAuth();
     const [routeName, setRouteName] = useState<string | undefined>();
 
-    const { theme } = useSelectedTheme();
-    const systemTheme = useColorScheme();
-
-    let appliedTheme: ColorSchemeName;
-    if (theme === 'system') appliedTheme = systemTheme;
-    else appliedTheme = theme;
+    const { themeObject } = useSelectedTheme();
 
     const handleNavReady = useCallback(() => {
         setRouteName(ref.getCurrentRoute()?.name);
@@ -36,7 +29,7 @@ const RootNavigator = () => {
     if (authData?.token && authData?.emailVerified) {
         return (
             <NavigationContainer
-                theme={appliedTheme === 'dark' ? DARK_THEME : LIGHT_THEME}
+                theme={themeObject}
                 ref={ref}
                 onReady={handleNavReady}
                 onStateChange={handleNavStateChange}
@@ -49,9 +42,7 @@ const RootNavigator = () => {
     }
 
     return (
-        <NavigationContainer
-            theme={appliedTheme === 'dark' ? DARK_THEME : LIGHT_THEME}
-        >
+        <NavigationContainer theme={themeObject}>
             <AuthStack />
         </NavigationContainer>
     );
