@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         alignItems: 'center',
         borderRadius: 5,
+        alignSelf: 'center',
     },
     errorText: {
         color: ERROR_TEXT,

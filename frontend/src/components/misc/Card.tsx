@@ -39,8 +39,9 @@ const styles = StyleSheet.create({
     },
     shadow: {
         alignItems: 'center',
-        width: '80%',
+        width: '85%',
         justifyContent: 'center',
         marginVertical: 10,
+        alignSelf: 'center',
     },
 });

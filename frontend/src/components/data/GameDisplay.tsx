@@ -6,6 +6,7 @@ import { ICONS } from '../../constants';
 import { Game } from './../../types/Game';
 import { useNavigation, useTheme } from '@react-navigation/native';
 import { ScheduleNavigationProp } from './../../types/Navigation';
+import { Card } from '../misc/Card';
 
 type GameProps = {
     /** The data for the game represented by this display */
@@ -32,17 +33,26 @@ export const GameDisplay: FC<GameProps> = ({ game }) => {
     )?.logo;
 
     return (
-        <Pressable
-            style={[styles.gameBlock, { backgroundColor: colors.card }]}
-            onPress={() => push('Game', { game })}
-        >
-            <SelectCircle url={awayIconUrl} size={100} disabled={true} />
-            <View style={styles.gameData}>
-                <Text style={[styles.gameTime, { color: colors.text }]}>
-                    {game.game_time}
-                </Text>
-            </View>
-            <SelectCircle url={homeIconUrl} size={100} disabled={true} />
+        <Pressable onPress={() => push('Game', { game })}>
+            <Card>
+                <View style={styles.gameBlock}>
+                    <SelectCircle
+                        url={awayIconUrl}
+                        size={100}
+                        disabled={true}
+                    />
+                    <View style={styles.gameData}>
+                        <Text style={[styles.gameTime, { color: colors.text }]}>
+                            {game.game_time}
+                        </Text>
+                    </View>
+                    <SelectCircle
+                        url={homeIconUrl}
+                        size={100}
+                        disabled={true}
+                    />
+                </View>
+            </Card>
         </Pressable>
     );
 };
@@ -52,10 +62,6 @@ const styles = StyleSheet.create({
     gameBlock: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        borderRadius: 20,
-        padding: 10,
-        marginHorizontal: 20,
-        marginVertical: 10,
     },
     /** Styles for the column of data between the icons for the two teams */
     gameData: {

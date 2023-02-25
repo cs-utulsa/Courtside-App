@@ -3,6 +3,7 @@ import React, { FC } from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { useNavigation, useTheme } from '@react-navigation/native';
 import { StatsNavigationProp } from './../../types/Navigation';
+import { Card } from '../misc/Card';
 
 export type LeaderboardProps = {
     /** the stat to be displayed on this leaderboard */
@@ -19,53 +20,77 @@ export const StatLeaderboard: FC<LeaderboardProps> = ({ stat }) => {
     const { colors } = useTheme();
 
     return (
-        <Pressable
-            style={[styles.leaderboardBlock, { backgroundColor: colors.card }]}
-            onPress={() => push('Stat', { stat })}
-        >
-            <View style={styles.titleBlock}>
-                <Text style={[styles.statTitle, { color: colors.primary }]}>
-                    {stat.name}
-                </Text>
-            </View>
-            <View style={styles.row}>
-                <Text style={[styles.colHeading, { color: colors.text }]}>
-                    Rank
-                </Text>
-                <Text style={[styles.colHeading, { color: colors.text }]}>
-                    Player
-                </Text>
-                <Text style={[styles.colHeading, { color: colors.text }]}>
-                    Value
-                </Text>
-            </View>
-            <View>
-                {topFivePlayers.map((player, index) => (
-                    <View style={styles.row} key={`${player.id}-${stat.id}`}>
-                        <Text style={[{ color: colors.text }]}>{index}</Text>
-                        <Text style={[{ color: colors.text }]}>
-                            {player.name}
-                        </Text>
-                        <Text style={[{ color: colors.text }]}>
-                            {player.value}
-                        </Text>
-                    </View>
-                ))}
-            </View>
+        <Pressable onPress={() => push('Stat', { stat })}>
+            <Card>
+                <View style={styles.titleBlock}>
+                    <Text style={[styles.statTitle, { color: colors.primary }]}>
+                        {stat.name}
+                    </Text>
+                </View>
+                <View style={styles.row}>
+                    <Text
+                        style={[
+                            styles.colHeading,
+                            styles.rowText,
+                            { color: colors.text },
+                        ]}
+                    >
+                        Rank
+                    </Text>
+                    <Text
+                        style={[
+                            styles.colHeading,
+                            styles.nameText,
+                            { color: colors.text },
+                        ]}
+                    >
+                        Player
+                    </Text>
+                    <Text
+                        style={[
+                            styles.colHeading,
+                            styles.rowText,
+                            { color: colors.text },
+                        ]}
+                    >
+                        Value
+                    </Text>
+                </View>
+                <View>
+                    {topFivePlayers.map((player, index) => (
+                        <View
+                            style={styles.row}
+                            key={`${player.id}-${stat.id}`}
+                        >
+                            <Text
+                                style={[styles.rowText, { color: colors.text }]}
+                            >
+                                {index}
+                            </Text>
+                            <Text
+                                style={[
+                                    styles.nameText,
+                                    { color: colors.text },
+                                ]}
+                            >
+                                {player.name}
+                            </Text>
+                            <Text
+                                style={[styles.rowText, { color: colors.text }]}
+                            >
+                                {player.value}
+                            </Text>
+                        </View>
+                    ))}
+                </View>
+            </Card>
         </Pressable>
     );
 };
 
 const styles = StyleSheet.create({
     /** Styles for the element containing the rest of the component */
-    leaderboardBlock: {
-        paddingVertical: 8,
-        paddingHorizontal: 20,
-        marginHorizontal: 20,
-        borderRadius: 15,
-        width: '80%',
-        marginVertical: 15,
-    },
+    leaderboardBlock: {},
     /** Styles for the container of the stat title text */
     titleBlock: {
         alignItems: 'center',
@@ -80,9 +105,19 @@ const styles = StyleSheet.create({
     row: {
         flexDirection: 'row',
         justifyContent: 'space-between',
+        width: '100%',
     },
     /** styles for the text that heads each column of data */
     colHeading: {
         fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    rowText: {
+        width: '15%',
+        textAlign: 'center',
+    },
+    nameText: {
+        width: '70%',
+        textAlign: 'center',
     },
 });

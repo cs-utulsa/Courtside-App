@@ -8,7 +8,7 @@ export const PRIMARY = ORANGE;
 export const LIGHT_BACKGROUND = '#f8fafc';
 export const DARK_BACKGROUND = '#1e293b';
 
-export const LIGHT_CARD = '#e5e5e5';
+export const LIGHT_CARD = '#fff';
 export const DARK_CARD = '#334155';
 
 export const LIGHT_TEXT = '#f8fafc';

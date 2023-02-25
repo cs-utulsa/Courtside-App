@@ -34,7 +34,13 @@ export const PrimaryButton: FC<PrimaryButtonProps> = ({
     return (
         <View style={styles.container}>
             <Pressable
-                style={[styles.btn, { backgroundColor: colors.card }]}
+                style={[
+                    styles.btn,
+                    {
+                        backgroundColor: colors.card,
+                        borderColor: colors.border,
+                    },
+                ]}
                 onPress={onPress}
             >
                 <Text style={[styles.btnText, { color: colors.primary }]}>
@@ -57,6 +63,7 @@ const styles = StyleSheet.create({
         paddingVertical: 15,
         borderRadius: 10,
         marginVertical: 10,
+        borderWidth: 2,
     },
     /** Styles for the text on the button */
     btnText: {

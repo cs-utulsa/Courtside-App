@@ -3,7 +3,7 @@ import React, { FC, useMemo } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { useDaySchedule } from '@hooks/index';
 
-import { FullError } from './../error/FullError';
+import { ErrorBox } from './../error/ErrorBox';
 import { GameDisplay } from './GameDisplay';
 import { useTheme } from '@react-navigation/native';
 
@@ -28,7 +28,7 @@ export const DaySchedule: FC<DayScheduleProps> = ({ ahead }) => {
     const { data, isError, isSuccess } = useDaySchedule(date);
 
     if (isError) {
-        return <FullError text="Cannot get game data. Try again later" />;
+        return <ErrorBox error={`Cannot get game data for ${date}`} />;
     }
 
     return (
