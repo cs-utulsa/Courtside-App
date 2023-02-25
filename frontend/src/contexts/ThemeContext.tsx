@@ -47,14 +47,20 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
 
     useEffect(() => {
         (async () => {
-            const stored = await SecureStore.getItemAsync('theme');
+            const storedTheme = await SecureStore.getItemAsync('theme');
 
             if (
-                stored &&
-                (stored === 'light' || stored === 'dark' || stored === 'system')
+                storedTheme &&
+                (storedTheme === 'light' ||
+                    storedTheme === 'dark' ||
+                    storedTheme === 'system')
             ) {
-                setTheme(stored);
+                setTheme(storedTheme);
             }
+
+            const storedColor = await SecureStore.getItemAsync('color');
+
+            setPrimaryColor(storedColor ? storedColor : ORANGE);
         })();
     }, []);
 
@@ -64,8 +70,10 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
         );
     }, []);
 
-    const updatePrimaryColor = useCallback((newColor: string) => {
-        setPrimaryColor(newColor);
+    const updatePrimaryColor = useCallback(async (newColor: string) => {
+        await SecureStore.setItemAsync('theme', newColor).then(() =>
+            setPrimaryColor(newColor)
+        );
     }, []);
 
     const darkTheme = useMemo(() => {
