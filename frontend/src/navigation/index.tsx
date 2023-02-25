@@ -8,6 +8,7 @@ import { MainNavigation } from './MainNavigation';
 import { AuthStack } from './AuthStack';
 import { VerifyEmailScreen } from '@pages/index';
 import { useSelectedTheme } from '@hooks/useSelectedTheme';
+import { LIGHT_THEME } from '@styles/colors';
 
 const ref = createNavigationContainerRef();
 
@@ -42,7 +43,7 @@ const RootNavigator = () => {
     }
 
     return (
-        <NavigationContainer theme={themeObject}>
+        <NavigationContainer theme={LIGHT_THEME}>
             <AuthStack />
         </NavigationContainer>
     );
