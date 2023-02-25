@@ -11,6 +11,7 @@ export const ThemeSelector = () => {
 
     return (
         <View style={[styles.container, { backgroundColor: colors.card }]}>
+            <Text style={[styles.header, { color: colors.text }]}>Theme</Text>
             <View style={styles.themesContainer}>
                 <Pressable
                     style={[
@@ -57,11 +58,17 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: 'white',
         paddingHorizontal: 10,
-        paddingVertical: 20,
+        paddingTop: 10,
+        paddingBottom: 20,
         width: '80%',
         borderRadius: 10,
         marginVertical: 10,
         alignItems: 'center',
+    },
+    header: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginBottom: 10,
     },
     themesContainer: {
         flexDirection: 'row',
