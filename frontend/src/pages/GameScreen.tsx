@@ -22,8 +22,6 @@ export const GameScreen = () => {
         (icon) => icon.code === params.game.home_code
     )?.logo;
 
-    var date = JSON.stringify(params.game.game_date);
-    date = date.substring(2, date.length - 1);
     return (
         <View style={styles.container}>
             <ThemeText style={styles.arena}>{params.game.arena}</ThemeText>
@@ -39,7 +37,7 @@ export const GameScreen = () => {
                     </ThemeText>
                 </View>
                 <ThemeText style={styles.time}>
-                    {date}
+                    {params.game.game_date}
                     {'\n'}
                     {params.game.game_time}
                 </ThemeText>

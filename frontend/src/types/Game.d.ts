@@ -19,4 +19,6 @@ type Game = {
     away_link: string;
 };
 
-export { Game };
+type ScorePrediction = Record<string, { score: number; stdev: number }>;
+
+export { Game, ScorePrediction };
