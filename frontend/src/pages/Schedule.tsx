@@ -17,7 +17,7 @@ export const Schedule = () => {
                 }}
                 ItemSeparatorComponent={Seperator}
                 onEndReached={() => setDays(days + 3)}
-                initialNumToRender={3}
+                initialNumToRender={2}
             />
         </View>
     );
