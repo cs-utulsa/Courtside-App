@@ -7,7 +7,7 @@ import {
     ViewStyle,
     ImageStyle,
 } from 'react-native';
-
+//import { useTheme } from '@react-navigation/native';
 type CircleImageProps = {
     /** Url of the image to display */
     url: string;
@@ -25,6 +25,7 @@ type CircleImageProps = {
  * A circular image with a border around it
  */
 export const CircleImage: FC<CircleImageProps> = ({
+
     url,
     size,
     imageRatio = 0.6,
@@ -57,10 +58,11 @@ const styles = StyleSheet.create({
     /** styles for the container surrounding the image */
     container: {
         borderRadius: 40,
-        borderWidth: 4,
+        borderWidth: 3,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: 'white',
         overflow: 'hidden',
+       // borderColor:'orange',
     },
 });
