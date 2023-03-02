@@ -4,6 +4,7 @@ from utils.data_utils import schedule_key
 from dotenv import load_dotenv
 from flask_cors import CORS
 from flask import Flask
+from scipy import stats
 from db import db
 import pandas as pd
 import pickle
@@ -169,7 +170,7 @@ def get_team(id):
     return json.dumps(team)
 
 gpr = pickle.load(open('models/gpr_model_xs.pkl', 'rb'))
-league_stats = pd.read_csv('data/league_stats.csv')
+league_stats = pd.read_csv('data/league_stats2.csv')
 
 # Return predicted scores for a specified matchup
 @app.route('/score/<team1>/<team2>', methods=['GET'])
@@ -193,14 +194,20 @@ def get_score(team1, team2):
     
     team1_preds = gpr.predict(team1_input, return_std=True)
     team2_preds = gpr.predict(team2_input, return_std=True)
+
+    team1_win_prob = stats.norm.cdf(team1_preds[0][0], loc=team2_preds[0][0], scale=team2_preds[1][0])
+    team2_win_prob = stats.norm.cdf(team2_preds[0][0], loc=team1_preds[0][0], scale=team1_preds[1][0])
+
     json_output = {
         team1: {
             'score': round(team1_preds[0][0], 3),
-            'stdev': round(team1_preds[1][0], 3)
+            'stdev': round(team1_preds[1][0], 3),
+            'win_pct': round(team1_win_prob, 3),
         },
         team2: {
             'score': round(team2_preds[0][0], 3),
-            'stdev': round(team2_preds[1][0], 3)
+            'stdev': round(team2_preds[1][0], 3),
+            'win_pct': round(team2_win_prob, 3),
         }
     }
     return json_output
