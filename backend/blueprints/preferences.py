@@ -133,10 +133,22 @@ def change_stats():
     except OperationFailure:
         return string_response("Cannot add stats to user", 500)
 
-@preferences.route('/users/settings', methods=["PUT"])
-def change_settings():
-    # settings not implemented yet
-    pass
+# @preferences.route('/users/settings', methods=["PUT"])
+# def change_settings():
+#     token = is_valid_jwt(request)
+
+#     if (not token): 
+#         return string_response(INVALID_TOKEN_MESSAGE, 403)
+    
+#     setting = request.get_json()['setting']
+
+#     if setting != 'darkMode' or setting != 'primaryColor':
+#         return string_response(f"{setting} is not a valid setting", 400)
+    
+#     try:
+
+#     except OperationFailure:
+#         return string_response("Cannot add stats to user", 500)
 
 @preferences.route('/users/clear', methods=["POST"])
 def clear_data():
