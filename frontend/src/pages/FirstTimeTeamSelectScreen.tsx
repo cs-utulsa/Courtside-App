@@ -4,7 +4,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { AuthNavigationProp } from './../types/Navigation';
 import { FullError, SearchBox, TeamsList, FAB } from '@components/index';
 import { useAllTeams } from '@hooks/index';
-import { ORANGE, NAVY } from '@styles/colors';
+import { NAVY, ORANGE } from '@styles/colors';
 import { ActivityIndicator, View, StyleSheet, Text } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import * as SecureStore from 'expo-secure-store';
@@ -95,7 +95,7 @@ export const FirstTimeTeamSelectScreen = () => {
         <View style={styles.container}>
             {isSuccess && (
                 <>
-                    <Text style={styles.heading}>
+                    <Text style={[styles.heading]}>
                         Follow Your Favorite Teams!
                     </Text>
                     <SearchBox
@@ -111,12 +111,12 @@ export const FirstTimeTeamSelectScreen = () => {
                         />
                     )}
                     {resultStatus === 'empty' && (
-                        <Text style={styles.message}>
+                        <Text style={[styles.message]}>
                             Select at least one team to continue!
                         </Text>
                     )}
                     {resultStatus === 'not found' && (
-                        <Text style={styles.message}>
+                        <Text style={[styles.message]}>
                             Could not find a team with that query.
                         </Text>
                     )}

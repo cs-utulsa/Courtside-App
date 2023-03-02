@@ -19,7 +19,7 @@ export { GameDisplay } from './data/GameDisplay';
 export { StatLeaderboard } from './data/StatLeaderboard';
 export { DaySchedule } from './data/DaySchedule';
 export { StatList } from './data/StatList';
-export { RosterSection } from './data/rosterSection';
+export { RosterSection } from './data/RosterSection';
 export { PlayerSection } from './data/PlayerSection';
 export { PlayerView } from './data/PlayerView';
 export { TeamsList } from './data/TeamsList';
@@ -37,6 +37,12 @@ export { LogoHeader } from './logo/LogoHeader';
 // Misc
 export { SearchBox } from './misc/SearchBox';
 export { Seperator } from './misc/Seperator';
+export { Card } from './misc/Card';
+export { ThemeText } from './misc/ThemeText';
+
+//Appearance
+export { ThemeSelector } from './appearance/ThemeSelector';
+export { PrimaryColorSelector } from './appearance/PrimaryColorSelector';
 
 //  Navigation
 export { SmallLink } from './navigation/SmallLink';

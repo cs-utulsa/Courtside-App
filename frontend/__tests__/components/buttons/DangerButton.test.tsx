@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 import React from 'react';
 import { DangerButton } from '@components/buttons/DangerButton';
 import { render, screen, fireEvent } from '@testing-library/react-native';
@@ -36,3 +37,4 @@ describe('Testing Danger Button Component', () => {
         expect(Alert.alert).not.toHaveBeenCalled();
     });
 });
+/* jshint ignore:end */

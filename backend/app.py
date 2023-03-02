@@ -4,6 +4,7 @@ from blueprints.test import test as test_blueprint
 from blueprints.forgot_password import forgot_password as forgot_pass_blueprint
 from blueprints.email import email as email_blueprint
 from blueprints.users import users as user_blueprint
+from utils.response_utils import string_response
 
 from utils.data_utils import schedule_key
 from dotenv import load_dotenv
@@ -12,6 +13,7 @@ from flask import Flask
 from db import db
 import pandas as pd
 import pickle
+from pymongo.errors import OperationFailure
 import json
 
 app = Flask(__name__)
@@ -129,10 +131,15 @@ def get_schedule(month, day):
         check_str = f"{str(month).rjust(2,'0')}{str(day).rjust(2, '0')}{2022}"
     else:
         check_str = f"{str(month).rjust(2,'0')}{str(day).rjust(2, '0')}{2023}"
-    games = db.schedule.find({'_id': {'$regex': '.*' + check_str}})
-    res = [x['schedule'] for x in games]
-    res.sort(key=schedule_key)
-    return res
+
+    try:
+        games = db.schedule.find({'_id': {'$regex': '.*' + check_str}})
+        res = [x['schedule'] for x in games]
+        res.sort(key=schedule_key)
+        return res
+    except OperationFailure:
+        return string_response("Cannot get schedule for date", 500)
+
 
 # Return bio data for a specified player
 @app.route('/player/<int:player_id>', methods=['GET'])

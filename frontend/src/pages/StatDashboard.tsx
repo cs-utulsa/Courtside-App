@@ -18,9 +18,6 @@ import {
     Seperator,
 } from '@components/index';
 
-// constants
-import { ORANGE } from '@styles/colors';
-
 /**
  * This component allows user to view the leaderboards for the stats that they are following.
  */
@@ -68,25 +65,6 @@ export const StatDashboard = () => {
 };
 
 const styles = StyleSheet.create({
-    modalHeader: {
-        fontWeight: 'bold',
-        fontSize: 24,
-        textAlign: 'center',
-        color: ORANGE,
-        marginTop: 20,
-    },
-    followBtn: {
-        width: '90%',
-        paddingVertical: 15,
-        backgroundColor: 'white',
-        borderRadius: 10,
-        marginBottom: 10,
-    },
-    followBtnText: {
-        textAlign: 'center',
-        color: ORANGE,
-        fontSize: 16,
-    },
     pageContainer: {
         alignItems: 'center',
         marginVertical: 15,

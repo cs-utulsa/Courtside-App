@@ -37,7 +37,7 @@ export const GetStartedScreen = () => {
                 renderItem={({ item }) => (
                     <View style={styles.carouselItem}>
                         <Image style={styles.itemImage} source={item.image} />
-                        <Text style={styles.itemText}>{item.text}</Text>
+                        <Text style={[styles.itemText]}>{item.text}</Text>
                     </View>
                 )}
             />

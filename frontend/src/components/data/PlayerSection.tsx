@@ -1,16 +1,11 @@
 import { useNavigation } from '@react-navigation/native';
 import { RosterNavigationProp } from './../../types/Navigation';
 import React, { FC } from 'react';
-import {
-    View,
-    TouchableOpacity,
-    Text,
-    StyleSheet,
-    Dimensions,
-} from 'react-native';
+import { View, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import { Player } from './../../types/Player';
 import { Team } from './../../types/Team';
-import { CircleImage } from '@components/images/CircleImage';
+import { CircleImage } from '../images/CircleImage';
+import { ThemeText } from '../misc/ThemeText';
 
 type PlayerSectionProps = {
     /** the player to be shown in this component */
@@ -22,11 +17,11 @@ type PlayerSectionProps = {
  * This component shows a headshot of a player and their name. When clicked it navigates to the specific page for that team.
  * This component is meant to be included in a FlatList with others
  */
-export const PlayerSection: FC<PlayerSectionProps> = ({ player,team }) => {
+export const PlayerSection: FC<PlayerSectionProps> = ({ player, team }) => {
     const { push } = useNavigation<RosterNavigationProp>();
 
     function navigateToPlayerScreen() {
-        push('Player', { player, team } );
+        push('Player', { player, team });
     }
     /*
     
@@ -59,7 +54,7 @@ export const PlayerSection: FC<PlayerSectionProps> = ({ player,team }) => {
                 />
             </TouchableOpacity>
             <View style={styles.textContainer}>
-                <Text style={styles.text}>{player.name}</Text>
+                <ThemeText style={styles.text}>{player.name}</ThemeText>
             </View>
         </View>
     );

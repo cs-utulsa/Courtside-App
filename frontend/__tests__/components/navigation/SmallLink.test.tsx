@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 import React from 'react';
 import { SmallLink } from '@components/navigation/SmallLink';
 import { render, screen, fireEvent } from '@testing-library/react-native';
@@ -21,3 +22,4 @@ describe('Testing SmallLink component', () => {
         expect(mock).toHaveBeenCalled();
     });
 });
+/* jshint ignore:end */

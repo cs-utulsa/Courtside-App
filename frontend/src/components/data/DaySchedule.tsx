@@ -1,11 +1,12 @@
 import { addDays, startOfToday, format } from 'date-fns';
 import React, { FC, useMemo } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
-import { NAVY, ORANGE } from '@styles/colors';
+import { View, StyleSheet } from 'react-native';
 import { useDaySchedule } from '@hooks/index';
 
-import { FullError } from './../error/FullError';
+import { ErrorBox } from './../error/ErrorBox';
 import { GameDisplay } from './GameDisplay';
+import { useTheme } from '@react-navigation/native';
+import { ThemeText } from '../misc/ThemeText';
 
 type DayScheduleProps = {
     /** the date of this schedule represented by how many days away it is from today */
@@ -23,16 +24,19 @@ type DayScheduleProps = {
 export const DaySchedule: FC<DayScheduleProps> = ({ ahead }) => {
     const date = useMemo(() => addDays(startOfToday(), ahead), [ahead]);
     const dateString = format(date, 'yyyy-MM-dd');
+    const { colors } = useTheme();
 
     const { data, isError, isSuccess } = useDaySchedule(date);
 
     if (isError) {
-        return <FullError text="Cannot get game data. Try again later" />;
+        return <ErrorBox error={`Cannot get game data for ${date}`} />;
     }
 
     return (
-        <View style={styles.section}>
-            <Text style={styles.sectionTitle}>{dateString}</Text>
+        <View style={[styles.section, { borderColor: colors.primary }]}>
+            <ThemeText style={[styles.sectionTitle]} primary>
+                {dateString}
+            </ThemeText>
             {isSuccess &&
                 data.map((game) => {
                     return (
@@ -53,12 +57,10 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 30,
         textDecorationLine: 'underline',
-        color: ORANGE,
     },
     /** Styles for the View that contains all of the section information */
     section: {
         borderWidth: 3,
-        borderColor: NAVY,
         marginHorizontal: 10,
         borderRadius: 10,
         paddingVertical: 5,

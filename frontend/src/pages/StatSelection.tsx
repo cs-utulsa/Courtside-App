@@ -1,18 +1,22 @@
 import { STATS } from '@constants/stats';
 import { LimitedStat } from '../types/Stat';
 import React, { useCallback, useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ActivityIndicator } from 'react-native';
 import { useAuth } from '@hooks/useAuth';
-import { PrimaryButton, StatList, SearchBox } from '@components/index';
-import { useNavigation } from '@react-navigation/native';
+import { StatList, SearchBox, FAB } from '@components/index';
+import { useNavigation, useTheme } from '@react-navigation/native';
 import { StatsNavigationProp } from '../types/Navigation';
+import { MaterialIcons } from '@expo/vector-icons';
 
 export const StatSelection = () => {
     // get user data and the method to update user stats
     const { authData, updateStats } = useAuth();
+    const { colors } = useTheme();
 
     // get the navigate method
     const { navigate } = useNavigation<StatsNavigationProp>();
+
+    const [submitting, setSubmitting] = useState<boolean>(false);
 
     // create state for the stats that the user currently has selected
     const [selectedStats, setSelectedStats] = useState<string[]>(
@@ -50,13 +54,16 @@ export const StatSelection = () => {
 
     // method to update stats on server when user updates
     const handleSubmit = async () => {
+        setSubmitting(true);
+
         await updateStats(selectedStats);
         navigate('Dashboard');
+
+        setSubmitting(false);
     };
 
     return (
         <View style={styles.container}>
-            <PrimaryButton onPress={handleSubmit} text="Update Stats" />
             <SearchBox
                 placeholder="Search for stats"
                 onChange={handleSearchQueryChange}
@@ -67,6 +74,23 @@ export const StatSelection = () => {
                 addStat={addStat}
                 removeStat={removeStat}
             />
+            {selectedStats.length >= 1 && (
+                <FAB
+                    onPress={handleSubmit}
+                    position="right"
+                    color={colors.primary}
+                >
+                    {!submitting ? (
+                        <MaterialIcons
+                            name="check"
+                            size={40}
+                            color={colors.text}
+                        />
+                    ) : (
+                        <ActivityIndicator color={colors.text} />
+                    )}
+                </FAB>
+            )}
         </View>
     );
 };
@@ -74,5 +98,7 @@ export const StatSelection = () => {
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
+        flex: 1,
+        paddingTop: 30,
     },
 });

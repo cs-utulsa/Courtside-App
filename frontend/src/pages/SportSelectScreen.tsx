@@ -51,7 +51,7 @@ export const SportSelectScreen = () => {
     return (
         <View style={styles.container}>
             <LogoHeader />
-            <Text style={styles.heading}>Follow Your Favorite Sports</Text>
+            <Text style={[styles.heading]}>Follow Your Favorite Sports</Text>
             <View style={styles.sportsContainer}>
                 <Pressable onPress={() => toggleSport('basketball')}>
                     <MaterialCommunityIcons

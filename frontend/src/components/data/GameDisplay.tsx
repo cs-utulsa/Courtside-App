@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { View, StyleSheet, Pressable } from 'react-native';
 import React, { FC } from 'react';
 
 import { SelectCircle } from '../buttons/SelectCircle';
@@ -6,6 +6,8 @@ import { ICONS } from '../../constants';
 import { Game } from './../../types/Game';
 import { useNavigation } from '@react-navigation/native';
 import { ScheduleNavigationProp } from './../../types/Navigation';
+import { Card } from '../misc/Card';
+import { ThemeText } from '../misc/ThemeText';
 
 type GameProps = {
     /** The data for the game represented by this display */
@@ -31,15 +33,26 @@ export const GameDisplay: FC<GameProps> = ({ game }) => {
     )?.logo;
 
     return (
-        <Pressable
-            style={styles.gameBlock}
-            onPress={() => push('Game', { game })}
-        >
-            <SelectCircle url={awayIconUrl} size={100} disabled={true} />
-            <View style={styles.gameData}>
-                <Text style={styles.gameTime}>{game.game_time}</Text>
-            </View>
-            <SelectCircle url={homeIconUrl} size={100} disabled={true} />
+        <Pressable onPress={() => push('Game', { game })}>
+            <Card>
+                <View style={styles.gameBlock}>
+                    <SelectCircle
+                        url={awayIconUrl}
+                        size={100}
+                        disabled={true}
+                    />
+                    <View style={styles.gameData}>
+                        <ThemeText style={[styles.gameTime]}>
+                            {game.game_time}
+                        </ThemeText>
+                    </View>
+                    <SelectCircle
+                        url={homeIconUrl}
+                        size={100}
+                        disabled={true}
+                    />
+                </View>
+            </Card>
         </Pressable>
     );
 };
@@ -49,11 +62,6 @@ const styles = StyleSheet.create({
     gameBlock: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        backgroundColor: '#DEDEDE',
-        borderRadius: 20,
-        padding: 10,
-        marginHorizontal: 20,
-        marginVertical: 10,
     },
     /** Styles for the column of data between the icons for the two teams */
     gameData: {

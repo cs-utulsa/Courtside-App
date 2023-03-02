@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 import React from 'react';
 import { ToggleButton } from '@components/buttons/ToggleButton';
 import { render, screen, fireEvent } from '@testing-library/react-native';
@@ -62,3 +63,4 @@ describe('Testing ToggleButton component', () => {
         expect(screen.getByTestId('not-selected')).toBeOnTheScreen();
     });
 });
+/* jshint ignore:end */
