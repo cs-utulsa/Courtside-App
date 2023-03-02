@@ -1,7 +1,7 @@
 import { useRoute } from '@react-navigation/native';
 import { GameScreenRouteProp } from './../types/Navigation';
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import { SelectCircle, ThemeText } from '@components/index';
 import { ICONS } from '../constants';
 import { GameScorePrediction } from '@components/data/GameScorePrediction';
@@ -26,7 +26,7 @@ export const GameScreen = () => {
     const date = params.game.game_date as string;
 
     return (
-        <View style={styles.container}>
+        <ScrollView>
             <ThemeText style={styles.arena}>{params.game.arena}</ThemeText>
             <View style={styles.gameBlock}>
                 <View style={styles.codeGame}>
@@ -58,7 +58,7 @@ export const GameScreen = () => {
             <GameScorePrediction
                 teams={[params.game.home_code, params.game.away_code]}
             />
-        </View>
+        </ScrollView>
     );
 };
 
