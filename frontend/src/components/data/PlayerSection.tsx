@@ -1,4 +1,4 @@
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useTheme } from '@react-navigation/native';
 import { RosterNavigationProp } from './../../types/Navigation';
 import React, { FC } from 'react';
 import { View, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
@@ -6,7 +6,7 @@ import { Player } from './../../types/Player';
 import { Team } from './../../types/Team';
 import { CircleImage } from '../images/CircleImage';
 import { ThemeText } from '../misc/ThemeText';
-import { useTheme } from '@react-navigation/native';
+
 type PlayerSectionProps = {
     /** the player to be shown in this component */
     player: Player;
@@ -23,18 +23,6 @@ export const PlayerSection: FC<PlayerSectionProps> = ({ player, team }) => {
     function navigateToPlayerScreen() {
         push('Player', { player, team });
     }
-    /*
-    
-    const rotate = new Animated.Value(0);
-    const ExpandOut = () => {
-        // Will change fadeAnim value to 0 in 3 seconds
-        Animated.timing(rotate, {
-            toValue: 500,
-            duration: 3000,
-            useNativeDriver: true,
-        }).start();
-    };
-      */
 
     const screenWidth = Dimensions.get('window').width - 20;
     const numColumns = 3;
