@@ -122,6 +122,6 @@ const styles = StyleSheet.create({
     imageContainer: {
         position: 'absolute',
         top: 28,
-        left: 66,
+        left: 65,
     },
 });
