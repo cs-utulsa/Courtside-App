@@ -33,14 +33,14 @@ export const LIGHT_THEME = {
 };
 
 export const DARK_THEME = {
-    dark: true,
+    dark: true, // whether or not this theme is a dark mode
     colors: {
-        primary: PRIMARY,
-        background: DARK_BACKGROUND,
-        card: DARK_CARD,
-        text: LIGHT_TEXT,
-        border: DARK_BORDER,
-        notification: DARK_NOTIFICATION,
+        primary: PRIMARY, // the primary color of the app
+        background: DARK_BACKGROUND, // the color for the background
+        card: DARK_CARD, // the color for cards and headers
+        text: LIGHT_TEXT, // the standard text color
+        border: DARK_BORDER, // the color of borders
+        notification: DARK_NOTIFICATION, // the colors of popups
     },
 };
 
