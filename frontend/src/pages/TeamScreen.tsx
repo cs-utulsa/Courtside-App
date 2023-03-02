@@ -10,6 +10,8 @@ import { Player } from './../types/Player';
 import { PrimaryButton } from '@components/index';
 import { useRef } from 'react';
 import { Animated } from 'react-native';
+import renderIf from '../hooks/renderIf'
+import { useTheme } from '@react-navigation/native';
 /**
  * This screen shows the data for a specific team as well as a roster of the players.
  * The team data is passed through a navigation parameter.
@@ -20,9 +22,25 @@ export const TeamScreen = () => {
     const route = useRoute<TeamScreenRouteProp>();
     const team = route.params.team;
     const guards: Player[] = [];
+    const forward: Player[] = [];
+    const center: Player[] = [];
+    const forwardguard: Player[] = [];
+    const forwardcenter: Player[] = [];
+    const noposition: Player[] = [];
+    
     for (var i = 0; i < team.players.length; i++) {
         if (team.players[i].position == 'Guard') {
             guards.push(team.players[i]);
+        } else if (team.players[i].position == 'Forward') {
+          forward.push(team.players[i]);
+        } else if (team.players[i].position == 'Center') {
+          center.push(team.players[i]);
+        } else if (team.players[i].position == 'Forward-Center' ||team.players[i].position == 'Center-Forward' ) {
+          forwardcenter.push(team.players[i]);
+        } else if (team.players[i].position == 'Forward-Guard' ||team.players[i].position == 'Guard-Forward'){
+          forwardguard.push(team.players[i]);
+        } else {
+          noposition.push(team.players[i]);
         }
 
         //
@@ -31,11 +49,36 @@ export const TeamScreen = () => {
         //
     }
     //guards arent being populated into list
-    const itemList = guards.map((item) => (
+    const guardlist = guards.map((item) => (
         <View style={styles.item}>
             <PlayerSection player={item} team={team} />
         </View>
     ));
+    const forwardlist = forward.map((item) => (
+      <View style={styles.item}>
+          <PlayerSection player={item} team={team} />
+      </View>
+  ));   
+   const centerlist = center.map((item) => (
+    <View style={styles.item}>
+        <PlayerSection player={item} team={team} />
+    </View>
+));
+  const forwardguardlist = forwardguard.map((item) => (
+    <View style={styles.item}>
+        <PlayerSection player={item} team={team} />
+    </View>
+));
+const forwardcenterlist = forwardcenter.map((item) => (
+  <View style={styles.item}>
+      <PlayerSection player={item} team={team} />
+  </View>
+));
+const nonelist = noposition.map((item) => (
+  <View style={styles.item}>
+      <PlayerSection player={item} team={team} />
+  </View>
+));
     function navigateToSelectionScreen() {
         // const navigation = useNavigation();
         push('Dashboard');
@@ -55,6 +98,8 @@ export const TeamScreen = () => {
         outputRange: [0, 100],
         extrapolate: 'clamp',
     });
+
+    const { colors } = useTheme();
     //attempt at Animated scrollbar at the top
     //  const [isFlatListBeingTouched, setIsFlatListBeingTouched] = useState(false);
     //  const removeHighliteWithDelay = () => {setTimeout(function(){setIsFlatListBeingTouched(false);}, 200)};
@@ -92,12 +137,24 @@ export const TeamScreen = () => {
                 //        ListHeaderComponentStyle={styles.headerContainer}
                 //         contentContainerStyle={styles.container}
             >
-                <>
-                    <CircleImage url={team.icon} size={150} />
+                <View style={{alignItems: 'center',}}>
+                    <CircleImage url={team.icon} size={150} borderColor={colors.border} />
                     <ThemeText style={styles.headerText}>{team.name}</ThemeText>
-                </>
-                <Text>guards</Text>
-                <View style={styles.container}>{itemList}</View>
+                </View>
+                {renderIf(guardlist.length !=0, <ThemeText style={styles.mediumText}>Guards</ThemeText>)}
+                <View style={styles.container}>{renderIf(guardlist,guardlist)}</View>
+                {renderIf(forwardguard.length !=0, <ThemeText style={styles.mediumText} >Forward-Guards</ThemeText>)}
+                <View style={styles.container}>{forwardguardlist}</View>
+                {renderIf(forwardlist.length !=0, <ThemeText style={styles.mediumText}>Forwards</ThemeText>)}
+                <View style={styles.container}>{forwardlist}</View>
+                {renderIf(forwardcenter.length !=0, <ThemeText style={styles.mediumText}>Forward-Centers</ThemeText>)}
+                <View style={styles.container}>{forwardcenterlist}</View>
+                {renderIf(centerlist.length !=0, <ThemeText style={styles.mediumText}>Centers</ThemeText>)}
+                <View style={styles.container}>{centerlist}</View>
+                {renderIf(nonelist.length !=0, <ThemeText style={styles.mediumText}>No Position</ThemeText>)}
+                <View style={styles.container}>{nonelist}</View>
+                
+
             </Animated.ScrollView>
 
             <Animated.View
@@ -147,4 +204,11 @@ const styles = StyleSheet.create({
     headerContainer: {
         alignItems: 'center',
     },
+    mediumText:{
+      fontWeight: 'bold',
+      fontSize: 18,
+      textAlign: 'left',
+    //  borderWidth: 2,
+    //  borderColor: 'black'
+    }
 });

@@ -6,7 +6,7 @@ import { Player } from './../../types/Player';
 import { Team } from './../../types/Team';
 import { CircleImage } from '../images/CircleImage';
 import { ThemeText } from '../misc/ThemeText';
-
+import { useTheme } from '@react-navigation/native';
 type PlayerSectionProps = {
     /** the player to be shown in this component */
     player: Player;
@@ -39,7 +39,7 @@ export const PlayerSection: FC<PlayerSectionProps> = ({ player, team }) => {
     const screenWidth = Dimensions.get('window').width - 20;
     const numColumns = 3;
     const tile = screenWidth / numColumns;
-
+    const { colors } = useTheme();
     return (
         <View style={styles.container}>
             <TouchableOpacity
@@ -51,6 +51,7 @@ export const PlayerSection: FC<PlayerSectionProps> = ({ player, team }) => {
                     size={tile}
                     imageRatio={0.9}
                     resizeMode="cover"
+                    borderColor={colors.border}
                 />
             </TouchableOpacity>
             <View style={styles.textContainer}>
