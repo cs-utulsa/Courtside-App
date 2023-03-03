@@ -1,9 +1,10 @@
 import { useRoute } from '@react-navigation/native';
 import { GameScreenRouteProp } from './../types/Navigation';
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import { SelectCircle, ThemeText } from '@components/index';
 import { ICONS } from '../constants';
+import { GameScorePrediction } from '@components/data/GameScorePrediction';
 
 /**
  * This screen shows information for a specific game.
@@ -22,10 +23,10 @@ export const GameScreen = () => {
         (icon) => icon.code === params.game.home_code
     )?.logo;
 
-    var date = JSON.stringify(params.game.game_date);
-    date = date.substring(2, date.length - 1);
+    const date = params.game.game_date as string;
+
     return (
-        <View style={styles.container}>
+        <ScrollView>
             <ThemeText style={styles.arena}>{params.game.arena}</ThemeText>
             <View style={styles.gameBlock}>
                 <View style={styles.codeGame}>
@@ -39,7 +40,7 @@ export const GameScreen = () => {
                     </ThemeText>
                 </View>
                 <ThemeText style={styles.time}>
-                    {date}
+                    {date.replace(/[=]/g, '')}
                     {'\n'}
                     {params.game.game_time}
                 </ThemeText>
@@ -54,7 +55,10 @@ export const GameScreen = () => {
                     </ThemeText>
                 </View>
             </View>
-        </View>
+            <GameScorePrediction
+                teams={[params.game.home_code, params.game.away_code]}
+            />
+        </ScrollView>
     );
 };
 
@@ -72,8 +76,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         borderRadius: 20,
         padding: 10,
-        marginHorizontal: 20,
-        marginVertical: 10,
+        alignItems: 'center',
     },
     time: {
         fontSize: 24,

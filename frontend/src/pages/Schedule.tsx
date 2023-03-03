@@ -6,7 +6,7 @@ import { View, FlatList, StyleSheet } from 'react-native';
 import { Seperator, DaySchedule } from '@components/index';
 
 export const Schedule = () => {
-    const [days, setDays] = useState<number>(7);
+    const [days, setDays] = useState<number>(2);
 
     return (
         <View style={styles.container}>
@@ -16,7 +16,8 @@ export const Schedule = () => {
                     return <DaySchedule key={`date-${index}`} ahead={item} />;
                 }}
                 ItemSeparatorComponent={Seperator}
-                onEndReached={() => setDays(days + 7)}
+                onEndReached={() => setDays(days + 3)}
+                initialNumToRender={2}
             />
         </View>
     );

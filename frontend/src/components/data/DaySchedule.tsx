@@ -1,6 +1,6 @@
 import { addDays, startOfToday, format } from 'date-fns';
 import React, { FC, useMemo } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ActivityIndicator } from 'react-native';
 import { useDaySchedule } from '@hooks/index';
 
 import { ErrorBox } from './../error/ErrorBox';
@@ -26,7 +26,7 @@ export const DaySchedule: FC<DayScheduleProps> = ({ ahead }) => {
     const dateString = format(date, 'yyyy-MM-dd');
     const { colors } = useTheme();
 
-    const { data, isError, isSuccess } = useDaySchedule(date);
+    const { data, isError, isSuccess, isLoading } = useDaySchedule(date);
 
     if (isError) {
         return <ErrorBox error={`Cannot get game data for ${date}`} />;
@@ -46,6 +46,9 @@ export const DaySchedule: FC<DayScheduleProps> = ({ ahead }) => {
                         />
                     );
                 })}
+            {isLoading && (
+                <ActivityIndicator color={colors.primary} size={50} />
+            )}
         </View>
     );
 };
