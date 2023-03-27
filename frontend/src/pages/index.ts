@@ -13,3 +13,6 @@ export { GameScreen } from './GameScreen';
 export { StatScreen } from './StatScreen';
 export { VerifyEmailScreen } from './VerifyEmailScreen';
 export { AccountScreen } from './AccountScreen';
+export { ForgotPasswordScreen } from './ForgotPasswordScreen';
+export { GetStartedScreen } from './GetStartedScreen';
+export { FirstTimeTeamSelectScreen } from './FirstTimeTeamSelectScreen';

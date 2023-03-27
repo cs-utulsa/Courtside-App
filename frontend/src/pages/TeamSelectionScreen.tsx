@@ -1,35 +1,22 @@
 //external imports
 import React, { useCallback, useState } from 'react';
-import {
-    StyleSheet,
-    FlatList,
-    Dimensions,
-    ActivityIndicator,
-    View,
-} from 'react-native';
+import { StyleSheet, ActivityIndicator, View } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 
 //custom components
-import {
-    FullError,
-    PrimaryButton,
-    SelectCircle,
-    Seperator,
-} from '@components/index';
+import { FAB, FullError, SearchBox, TeamsList } from '@components/index';
 
 // constants
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useTheme } from '@react-navigation/native';
 import { RosterNavigationProp } from '../types/Navigation';
 import { useAuth } from '@hooks/useAuth';
 import { useAllTeams } from '@hooks/index';
 import { TeamIcon } from '../types/Team';
 
-const screenWidth = Dimensions.get('window').width - 20;
-const numColumns = 3;
-const tile = screenWidth / numColumns;
-
 /** This component lets the user choose what teams they want to follow */
 export const TeamSelectionScreen = () => {
-    const { navigate } = useNavigation<RosterNavigationProp>();
+    const rosterNavigation = useNavigation<RosterNavigationProp>();
+    const { colors } = useTheme();
 
     const { authData, updateTeams } = useAuth();
     const [selectedTeams, setSelectedTeams] = useState<string[]>(
@@ -40,36 +27,43 @@ export const TeamSelectionScreen = () => {
 
     const { data, isSuccess, isLoading, isError } = useAllTeams();
 
-    const renderItem = useCallback(
-        ({ item }: { item: TeamIcon }) => {
-            const handleSelectChange = (newStatus: boolean) => {
-                if (newStatus) setSelectedTeams((prev) => [...prev, item.id]);
-                else
-                    setSelectedTeams((prev) =>
-                        prev.filter((oldListItem) => oldListItem !== item.id)
-                    );
-            };
-
-            return (
-                <SelectCircle
-                    initialState={selectedTeams.includes(item.id)}
-                    url={item.icon}
-                    size={tile}
-                    onSelectChanged={handleSelectChange}
-                />
-            );
-        },
-        [selectedTeams]
-    );
+    const [result, setResult] = useState<TeamIcon[]>([]);
 
     const submitTeamSelectionUpdates = async () => {
         setSubmitting(true);
 
         await updateTeams(selectedTeams);
-        navigate('Dashboard');
+        rosterNavigation.navigate('Dashboard');
 
         setSubmitting(false);
     };
+
+    const handleSearchQueryChange = useCallback(
+        (query: string) => {
+            if (query === '') {
+                setResult([]);
+                return;
+            }
+
+            const _result = data!.filter((team) => {
+                if (
+                    team.abbr.toLowerCase().includes(query.toLowerCase()) ||
+                    team.name.toLowerCase().includes(query.toLowerCase()) ||
+                    team.short.toLowerCase().includes(query.toLowerCase())
+                ) {
+                    return true;
+                }
+                return false;
+            });
+
+            setResult(_result);
+        },
+        [data]
+    );
+
+    const addTeam = (id: string) => setSelectedTeams((prev) => prev.concat(id));
+    const removeTeam = (id: string) =>
+        setSelectedTeams((prev) => prev.filter((team) => team !== id));
 
     if (isLoading) {
         return <ActivityIndicator />;
@@ -79,28 +73,41 @@ export const TeamSelectionScreen = () => {
         return <FullError text="Cannot retrieve teams data. Try again later" />;
     }
 
-    if (isSuccess) {
-        return (
-            <FlatList
-                data={data}
-                renderItem={renderItem}
-                numColumns={3}
-                ItemSeparatorComponent={Seperator}
-                ListHeaderComponent={
-                    <PrimaryButton
-                        text="Update Your Teams"
-                        onPress={submitTeamSelectionUpdates}
-                        loading={submitting}
+    return (
+        <View style={styles.container}>
+            {isSuccess && (
+                <>
+                    <SearchBox
+                        placeholder="Search for teams"
+                        onChange={handleSearchQueryChange}
                     />
-                }
-                ListFooterComponent={Seperator}
-                contentContainerStyle={styles.container}
-                ListHeaderComponentStyle={styles.headerContainer}
-            />
-        );
-    }
-
-    return <View />;
+                    <TeamsList
+                        teams={result}
+                        selected={selectedTeams}
+                        addTeam={addTeam}
+                        removeTeam={removeTeam}
+                    />
+                    {selectedTeams.length >= 1 && (
+                        <FAB
+                            onPress={submitTeamSelectionUpdates}
+                            position="right"
+                            color={colors.primary}
+                        >
+                            {!submitting ? (
+                                <MaterialIcons
+                                    name="check"
+                                    size={40}
+                                    color={colors.text}
+                                />
+                            ) : (
+                                <ActivityIndicator color={colors.text} />
+                            )}
+                        </FAB>
+                    )}
+                </>
+            )}
+        </View>
+    );
 };
 
 const styles = StyleSheet.create({
@@ -111,6 +118,8 @@ const styles = StyleSheet.create({
     },
     container: {
         alignItems: 'center',
+        flex: 1,
+        paddingTop: 30,
     },
     headerContainer: {
         width: '100%',

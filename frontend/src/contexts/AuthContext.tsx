@@ -24,7 +24,7 @@ type AuthContextData = {
     /** method to sign in the user with email and password */
     signIn(email: string, password: string): Promise<void>;
     /** method to register user with email and password */
-    signUp(email: string, password: string): Promise<void>;
+    signUp(email: string, password: string, teams: string[]): Promise<void>;
     /** method to sign out the current user */
     signOut(): Promise<void>;
     /** method to update the user's stats */
@@ -39,6 +39,10 @@ type AuthContextData = {
     updateAuthData: () => Promise<void>;
     /** updates the user's email on the server */
     updateEmail: (newEmail: string) => Promise<void>;
+    /** sends forgot password email to user */
+    forgotPassword: (email: string) => Promise<void>;
+    /** reset the auth error */
+    resetAuthError: () => void;
 };
 
 type AuthData = {
@@ -118,6 +122,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     // sign in the user and store their information on the device
     const signIn = useCallback(async (email: string, password: string) => {
         setLoading(true);
+        setAuthError(undefined);
         try {
             const response = await axios.post(
                 `${DEVELOPMENT_API}/users/login`,
@@ -148,39 +153,48 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     }, []);
 
     // sign up the user and store their information on the device
-    const signUp = useCallback(async (email: string, password: string) => {
-        setLoading(true);
+    const signUp = useCallback(
+        async (email: string, password: string, teams: string[]) => {
+            setLoading(true);
+            setAuthError(undefined);
 
-        try {
-            const response = await axios.post(
-                `${DEVELOPMENT_API}/users/register`,
-                {
-                    email,
-                    password,
+            try {
+                await SecureStore.deleteItemAsync('initialTeams');
+                await SecureStore.deleteItemAsync('initialSports');
+
+                const response = await axios.post(
+                    `${DEVELOPMENT_API}/users/register`,
+                    {
+                        email,
+                        password,
+                        teams,
+                    }
+                );
+
+                const _authData = response.data;
+                await SecureStore.setItemAsync(
+                    'authData',
+                    JSON.stringify(_authData)
+                );
+                setAuthData(_authData);
+            } catch (err) {
+                if (axios.isAxiosError(err)) {
+                    setAuthError(err.response?.data);
+                } else {
+                    setAuthError('Unknown Error Occurred. Try Again Later.');
                 }
-            );
-
-            const _authData = response.data;
-            await SecureStore.setItemAsync(
-                'authData',
-                JSON.stringify(_authData)
-            );
-            setAuthData(_authData);
-        } catch (err) {
-            if (axios.isAxiosError(err)) {
-                setAuthError(err.response?.data);
-            } else {
-                setAuthError('Unknown Error Occurred. Try Again Later.');
             }
-        }
 
-        setLoading(false);
-    }, []);
+            setLoading(false);
+        },
+        []
+    );
 
     // sign out the user and remove their information from the device
     const signOut = useCallback(async () => {
         setAuthData(undefined);
         setAuthError(undefined);
+        setLoading(true);
 
         try {
             await axios.post(
@@ -196,12 +210,17 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             await SecureStore.deleteItemAsync('authData');
         } catch (err) {
             console.log('Error logging out');
+        } finally {
+            setLoading(false);
         }
     }, [authData?.token]);
 
     // update the user's stats
     const updateStats = useCallback(
         async (newStats: string[]) => {
+            setLoading(true);
+            setAuthError(undefined);
+
             try {
                 const data = await axios
                     .patch(
@@ -225,12 +244,13 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 
                 setAuthData({ ...authData!, stats: data });
             } catch (err) {
-                console.log(err);
                 if (axios.isAxiosError(err)) {
                     setAuthError(err.response?.data);
                 } else {
                     setAuthError('Unknown Error Occurred. Try Again Later.');
                 }
+            } finally {
+                setLoading(false);
             }
         },
         [authData]
@@ -239,6 +259,9 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     // update the user's teams
     const updateTeams = useCallback(
         async (newTeams: string[]) => {
+            setLoading(true);
+            setAuthError(undefined);
+
             try {
                 const data = await axios
                     .patch(
@@ -275,6 +298,9 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     // clear the user's data
     const clearData = useCallback(async () => {
         setAuthData(undefined);
+        setLoading(true);
+        setAuthError(undefined);
+
         try {
             await axios.post(
                 `${DEVELOPMENT_API}/users/clear`,
@@ -298,10 +324,13 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             } else {
                 setAuthError('Unknown Error Occurred. Try Again Later.');
             }
+        } finally {
+            setLoading(false);
         }
     }, [authData]);
 
     const resendEmailVerification = useCallback(async () => {
+        setLoading(true);
         setAuthError(undefined);
         try {
             await axios.post(
@@ -322,10 +351,14 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             } else {
                 setAuthError('Unknown Error Occurred. Try Again Later.');
             }
+        } finally {
+            setLoading(false);
         }
     }, [authData?.email, authData?._id, authData?.token]);
 
     const updateAuthData = useCallback(async () => {
+        setLoading(true);
+        setAuthError(undefined);
         try {
             const data = await axios
                 .get(`${DEVELOPMENT_API}/users/${authData?.token}`)
@@ -344,11 +377,15 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             } else {
                 setAuthError('Unknown Error Occurred. Try Again Later.');
             }
+        } finally {
+            setLoading(false);
         }
     }, [authData?.token]);
 
     const updateEmail = useCallback(
         async (newEmail: string) => {
+            setLoading(true);
+            setAuthError(undefined);
             try {
                 await axios.post(
                     `${DEVELOPMENT_API}/users/changeEmail`,
@@ -370,10 +407,34 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
                 } else {
                     setAuthError('Unknown Error Occurred. Try Again Later.');
                 }
+            } finally {
+                setLoading(false);
             }
         },
         [authData, updateAuthData]
     );
+
+    const forgotPassword = useCallback(async (email: string) => {
+        setLoading(true);
+        setAuthError(undefined);
+        try {
+            await axios.post(`${DEVELOPMENT_API}/users/forgotPassword`, {
+                email,
+            });
+        } catch (err) {
+            if (axios.isAxiosError(err)) {
+                setAuthError(err.response?.data);
+            } else {
+                setAuthError('Unknown Error Occurred. Try Again Later.');
+            }
+        } finally {
+            setLoading(false);
+        }
+    }, []);
+
+    const resetAuthError = useCallback(() => {
+        setAuthError(undefined);
+    }, []);
 
     const contextData: AuthContextData = useMemo(() => {
         return {
@@ -389,6 +450,8 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             resendEmailVerification,
             updateAuthData,
             updateEmail,
+            forgotPassword,
+            resetAuthError,
         };
     }, [
         authData,
@@ -403,6 +466,8 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         resendEmailVerification,
         updateAuthData,
         updateEmail,
+        forgotPassword,
+        resetAuthError,
     ]);
 
     return (

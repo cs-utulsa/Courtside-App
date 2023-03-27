@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
+import { ERROR_TEXT } from '@styles/colors';
 
 type FullErrorProps = {
     /** The error message that will be displayed on the screen */
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
     },
     /** Styles for the text of the error message */
     text: {
-        color: 'red',
+        color: ERROR_TEXT,
         fontSize: 16,
         marginTop: 10,
     },

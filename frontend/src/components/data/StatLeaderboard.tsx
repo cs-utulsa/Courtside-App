@@ -1,8 +1,10 @@
 import { Stat } from './../../types/Stat';
 import React, { FC } from 'react';
-import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { View, StyleSheet, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StatsNavigationProp } from './../../types/Navigation';
+import { Card } from '../misc/Card';
+import { ThemeText } from '../misc/ThemeText';
 
 export type LeaderboardProps = {
     /** the stat to be displayed on this leaderboard */
@@ -18,42 +20,50 @@ export const StatLeaderboard: FC<LeaderboardProps> = ({ stat }) => {
     const { push } = useNavigation<StatsNavigationProp>();
 
     return (
-        <Pressable
-            style={styles.leaderboardBlock}
-            onPress={() => push('Stat', { stat })}
-        >
-            <View style={styles.titleBlock}>
-                <Text style={styles.statTitle}>{stat.name}</Text>
-            </View>
-            <View style={styles.row}>
-                <Text style={styles.colHeading}>Rank</Text>
-                <Text style={styles.colHeading}>Player</Text>
-                <Text style={styles.colHeading}>Value</Text>
-            </View>
-            <View>
-                {topFivePlayers.map((player, index) => (
-                    <View style={styles.row} key={`${player.id}-${stat.id}`}>
-                        <Text>{index}</Text>
-                        <Text>{player.name}</Text>
-                        <Text>{player.value}</Text>
-                    </View>
-                ))}
-            </View>
+        <Pressable onPress={() => push('Stat', { stat })}>
+            <Card>
+                <View style={styles.titleBlock}>
+                    <ThemeText style={[styles.statTitle]} primary>
+                        {stat.name}
+                    </ThemeText>
+                </View>
+                <View style={styles.row}>
+                    <ThemeText style={[styles.colHeading, styles.rowText]}>
+                        Rank
+                    </ThemeText>
+                    <ThemeText style={[styles.colHeading, styles.nameText]}>
+                        Player
+                    </ThemeText>
+                    <ThemeText style={[styles.colHeading, styles.rowText]}>
+                        Value
+                    </ThemeText>
+                </View>
+                <View>
+                    {topFivePlayers.map((player, index) => (
+                        <View
+                            style={styles.row}
+                            key={`${player.id}-${stat.id}`}
+                        >
+                            <ThemeText style={[styles.rowText]}>
+                                {index}
+                            </ThemeText>
+                            <ThemeText style={[styles.nameText]}>
+                                {player.name}
+                            </ThemeText>
+                            <ThemeText style={[styles.rowText]}>
+                                {player.value}
+                            </ThemeText>
+                        </View>
+                    ))}
+                </View>
+            </Card>
         </Pressable>
     );
 };
 
 const styles = StyleSheet.create({
     /** Styles for the element containing the rest of the component */
-    leaderboardBlock: {
-        backgroundColor: '#DEDEDE',
-        paddingVertical: 8,
-        paddingHorizontal: 20,
-        marginHorizontal: 20,
-        borderRadius: 15,
-        width: '80%',
-        marginVertical: 15,
-    },
+    leaderboardBlock: {},
     /** Styles for the container of the stat title text */
     titleBlock: {
         alignItems: 'center',
@@ -68,9 +78,19 @@ const styles = StyleSheet.create({
     row: {
         flexDirection: 'row',
         justifyContent: 'space-between',
+        width: '100%',
     },
     /** styles for the text that heads each column of data */
     colHeading: {
         fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    rowText: {
+        width: '15%',
+        textAlign: 'center',
+    },
+    nameText: {
+        width: '70%',
+        textAlign: 'center',
     },
 });

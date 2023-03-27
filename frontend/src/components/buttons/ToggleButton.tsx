@@ -46,6 +46,7 @@ export const ToggleButton: FC<ToggleButtonProps> = ({
                 styles.button,
                 selected ? styles.btnSelected : styles.btnNotSelected,
             ]}
+            testID={selected ? 'selected' : 'not-selected'}
         >
             <Text
                 style={[

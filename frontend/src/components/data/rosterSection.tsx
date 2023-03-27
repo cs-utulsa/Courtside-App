@@ -1,4 +1,4 @@
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useTheme } from '@react-navigation/native';
 import { RosterNavigationProp } from '../../types/Navigation';
 import React, { FC } from 'react';
 import {
@@ -22,6 +22,7 @@ type RosterSectionProps = {
  */
 export const RosterSection: FC<RosterSectionProps> = ({ team }) => {
     const { push } = useNavigation<RosterNavigationProp>();
+    const { colors } = useTheme();
 
     function navigateToTeamScreen() {
         push('Team', { team });
@@ -37,9 +38,29 @@ export const RosterSection: FC<RosterSectionProps> = ({ team }) => {
                 activeOpacity={0.5}
                 onPress={navigateToTeamScreen}
             >
-                <CircleImage url={team.icon} size={tile} />
+                <CircleImage
+                    url={team.icon}
+                    size={tile}
+                    borderColor={
+                        colors.primary === team.color
+                            ? team.color
+                            : colors.border
+                    }
+                />
             </TouchableOpacity>
-            <Text style={styles.text}>{team.abbr}</Text>
+            <Text
+                style={[
+                    styles.text,
+                    {
+                        color:
+                            colors.primary === team.color
+                                ? team.color
+                                : colors.text,
+                    },
+                ]}
+            >
+                {team.abbr}
+            </Text>
         </View>
     );
 };
@@ -54,8 +75,9 @@ const styles = StyleSheet.create({
     },
     /** styles for the text displayed below the image */
     text: {
-        fontSize: 16,
+        fontSize: 20,
         textAlign: 'center',
         margin: 5,
+        fontWeight: '500',
     },
 });

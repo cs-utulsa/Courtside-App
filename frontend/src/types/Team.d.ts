@@ -6,6 +6,9 @@ type TeamIcon = {
     id: string;
     /** link to the team's icon */
     icon: string;
+    name: string;
+    short: string;
+    abbr: string;
 };
 
 type Team = {
@@ -21,6 +24,8 @@ type Team = {
     city: string;
     /** link to an image fo the team's icon */
     icon: string;
+    /** hex code of the team's color */
+    color: string;
     /** list of players on the team */
     players: Player[];
 };

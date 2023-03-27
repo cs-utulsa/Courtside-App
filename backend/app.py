@@ -1,5 +1,11 @@
-from preferences import preferences as preferences_blueprint
-from auth import auth as auth_blueprint
+from blueprints.preferences import preferences as preferences_blueprint
+from blueprints.auth import auth as auth_blueprint
+from blueprints.test import test as test_blueprint
+from blueprints.forgot_password import forgot_password as forgot_pass_blueprint
+from blueprints.email import email as email_blueprint
+from blueprints.users import users as user_blueprint
+from utils.response_utils import string_response
+
 from utils.data_utils import schedule_key
 from dotenv import load_dotenv
 from flask_cors import CORS
@@ -8,6 +14,7 @@ from scipy import stats
 from db import db
 import pandas as pd
 import pickle
+from pymongo.errors import OperationFailure
 import json
 
 app = Flask(__name__)
@@ -15,6 +22,10 @@ CORS(app)
 
 app.register_blueprint(auth_blueprint)
 app.register_blueprint(preferences_blueprint)
+app.register_blueprint(test_blueprint)
+app.register_blueprint(forgot_pass_blueprint)
+app.register_blueprint(email_blueprint)
+app.register_blueprint(user_blueprint)
 
 # Return roster of player id's for specified team
 @app.route('/roster/<team_code>', methods=['GET'])
@@ -121,10 +132,15 @@ def get_schedule(month, day):
         check_str = f"{str(month).rjust(2,'0')}{str(day).rjust(2, '0')}{2022}"
     else:
         check_str = f"{str(month).rjust(2,'0')}{str(day).rjust(2, '0')}{2023}"
-    games = db.schedule.find({'_id': {'$regex': '.*' + check_str}})
-    res = [x['schedule'] for x in games]
-    res.sort(key=schedule_key)
-    return res
+
+    try:
+        games = db.schedule.find({'_id': {'$regex': '.*' + check_str}})
+        res = [x['schedule'] for x in games]
+        res.sort(key=schedule_key)
+        return res
+    except OperationFailure:
+        return string_response("Cannot get schedule for date", 500)
+
 
 # Return bio data for a specified player
 @app.route('/player/<int:player_id>', methods=['GET'])
@@ -139,7 +155,7 @@ def get_all_teams():
     Returns:
         A Response object with an array of team data, each team has an id, name, and code
     """
-    teams = list(db.teams.find({}, { '_id': 1, 'icon': 1 }))
+    teams = list(db.teams.find({}, { '_id': 1, 'icon': 1, 'short': 1, 'name': 1, 'abbr': 1 }))
 
     for team in teams:
         team["id"] = str(team["_id"])

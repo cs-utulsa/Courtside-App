@@ -1,30 +1,27 @@
 import { useNavigation } from '@react-navigation/native';
 import { RosterNavigationProp } from './../../types/Navigation';
 import React, { FC } from 'react';
-import {
-    View,
-    TouchableOpacity,
-    Text,
-    StyleSheet,
-    Dimensions,
-} from 'react-native';
+import { View, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import { Player } from './../../types/Player';
-import { CircleImage } from '@components/images/CircleImage';
-
+import { Team } from './../../types/Team';
+import { CircleImage } from '../images/CircleImage';
+import { ThemeText } from '../misc/ThemeText';
+import { useTheme } from '@react-navigation/native';
 type PlayerSectionProps = {
     /** the player to be shown in this component */
     player: Player;
+    team: Team;
 };
 
 /**
  * This component shows a headshot of a player and their name. When clicked it navigates to the specific page for that team.
  * This component is meant to be included in a FlatList with others
  */
-export const PlayerSection: FC<PlayerSectionProps> = ({ player }) => {
+export const PlayerSection: FC<PlayerSectionProps> = ({ player, team }) => {
     const { push } = useNavigation<RosterNavigationProp>();
 
     function navigateToPlayerScreen() {
-        push('Player', { player });
+        push('Player', { player, team });
     }
     /*
     
@@ -42,7 +39,7 @@ export const PlayerSection: FC<PlayerSectionProps> = ({ player }) => {
     const screenWidth = Dimensions.get('window').width - 20;
     const numColumns = 3;
     const tile = screenWidth / numColumns;
-
+    const { colors } = useTheme();
     return (
         <View style={styles.container}>
             <TouchableOpacity
@@ -54,10 +51,11 @@ export const PlayerSection: FC<PlayerSectionProps> = ({ player }) => {
                     size={tile}
                     imageRatio={0.9}
                     resizeMode="cover"
+                    borderColor={colors.border}
                 />
             </TouchableOpacity>
             <View style={styles.textContainer}>
-                <Text style={styles.text}>{player.name}</Text>
+                <ThemeText style={styles.text}>{player.name}</ThemeText>
             </View>
         </View>
     );

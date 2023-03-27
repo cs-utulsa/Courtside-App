@@ -1,4 +1,5 @@
 import useDebounce from '@hooks/useDebounce';
+import { useTheme } from '@react-navigation/native';
 import React, { FC, useState, useEffect } from 'react';
 import { StyleSheet, TextInput } from 'react-native';
 
@@ -15,6 +16,7 @@ type SearchBoxProps = {
  * return <SearchBox placeholder={placeholder} />
  */
 export const SearchBox: FC<SearchBoxProps> = ({ placeholder, onChange }) => {
+    const { colors } = useTheme();
     const [query, setQuery] = useState<string>('');
 
     const debouncedQuery = useDebounce(query, 100);
@@ -25,9 +27,16 @@ export const SearchBox: FC<SearchBoxProps> = ({ placeholder, onChange }) => {
 
     return (
         <TextInput
-            style={styles.search}
+            accessibilityHint="search box"
+            style={[
+                styles.search,
+                { borderColor: colors.primary, color: colors.text },
+            ]}
             placeholder={placeholder}
             onChange={(e) => setQuery(e.nativeEvent.text)}
+            value={query}
+            onChangeText={(text) => setQuery(text)}
+            placeholderTextColor={colors.text}
         />
     );
 };
@@ -41,7 +50,6 @@ const styles = StyleSheet.create({
         fontSize: 20,
         borderRadius: 10,
         borderWidth: 1,
-        borderColor: '#dfdfdf',
         marginBottom: 20,
     },
 });

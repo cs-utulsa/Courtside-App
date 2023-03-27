@@ -15,7 +15,7 @@ type AuthSubmitButtonProps = {
     /** Whether or not the form is in a disabled state, i.e., users cannot interact with the button */
     disabled: boolean;
     /** The text that is displayed on the button */
-    text: 'Sign In' | 'Sign Up';
+    text: string;
 };
 /**
  * This component is used for users to submit auth forms.
@@ -27,13 +27,13 @@ export const AuthSubmitButton: FC<AuthSubmitButtonProps> = ({
     text,
 }) => {
     const handleSubmit = () => {
-        if (!disabled) submitFn();
+        if (!disabled && !loading) submitFn();
     };
 
     if (loading) {
         return (
             <TouchableOpacity style={styles.submit} onPress={handleSubmit}>
-                <ActivityIndicator color="black" />
+                <ActivityIndicator color="black" accessibilityHint="loading" />
             </TouchableOpacity>
         );
     }
@@ -48,7 +48,7 @@ export const AuthSubmitButton: FC<AuthSubmitButtonProps> = ({
 const styles = StyleSheet.create({
     /** Styles for the button */
     submit: {
-        width: '60%',
+        width: '75%',
         borderRadius: 10,
         padding: 10,
         backgroundColor: ORANGE,

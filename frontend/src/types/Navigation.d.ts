@@ -27,6 +27,14 @@ export type AuthNavigatorParamList = {
     SignIn: undefined;
     /** screen that allows user to register for the app */
     SignUp: undefined;
+    /** screen that allows user to send email to reset password */
+    ForgotPassword: undefined;
+    /** screen that introduces the user to the app */
+    GetStarted: undefined;
+    /** Select sports to follow */
+    SportsSelect: undefined;
+    /** Select teams to follow */
+    TeamSelect: undefined;
 };
 
 export type AuthNavigationProp =
@@ -56,7 +64,7 @@ export type RosterNavigatorParamList = {
     /** screen where user can change the teams they follow */
     Selection: undefined;
     /** screen that shows the data for a specific player */
-    Player: { player: Player };
+    Player: { player: Player, team:Team };
 };
 
 export type RosterNavigationProp =
