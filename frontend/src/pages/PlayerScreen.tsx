@@ -1,7 +1,7 @@
 import { PlayerScreenRouteProp } from '../types/Navigation';
 import React from 'react';
 import { useRoute, useTheme } from '@react-navigation/native';
-import { View, StyleSheet, ScrollView } from 'react-native';
+import { View, StyleSheet, ScrollView, Button } from 'react-native';
 import { Player } from './../types/Player';
 import { Team } from './../types/Team';
 import { Card, CircleImage, ThemeText } from '@components/index';
@@ -9,7 +9,7 @@ import { useNavigation } from '@react-navigation/native';
 import { RosterNavigationProp } from './../types/Navigation';
 import { MaterialIcons } from '@expo/vector-icons'; 
 import { PrimaryButton } from '@components/index';
-
+import { ButtonHeart } from '../animations/transition';
 /**
  * This screen shows the data for one player.
  * The player data is passed through a navigation parameter
@@ -29,9 +29,11 @@ export const PlayerScreen = () => {
 
 
     return (
+        
         <ScrollView contentContainerStyle={styles.container}>
+            
             <PrimaryButton onPress={navigateToSelectionScreen} text="Back" />
-            <View style={{flexDirection: 'row'}}> 
+            <View style={{flexDirection: 'row', marginLeft:105}}> 
            <CircleImage
                 url={player.headshot}
                 size={150}
@@ -39,9 +41,8 @@ export const PlayerScreen = () => {
                 imageRatio={0.9}
                 borderColor={colors.border}
             />
-            <MaterialIcons name="star" size={50} color= {colors.primary} />
-            <MaterialIcons name="star-border" size={50} color={colors.primary} />
-            <ThemeText style={styles.text}>Follow Player</ThemeText>
+            <ButtonHeart/>
+            
             </View>
             <ThemeText style={styles.text}>{player.name}</ThemeText>
             <ThemeText style={styles.text}>{player.team}</ThemeText>

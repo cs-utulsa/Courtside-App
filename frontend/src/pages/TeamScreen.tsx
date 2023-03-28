@@ -12,6 +12,7 @@ import { useRef } from 'react';
 import { Animated } from 'react-native';
 import renderIf from '../hooks/renderIf'
 import { useTheme } from '@react-navigation/native';
+import { ButtonHeart } from '../animations/transition';
 /**
  * This screen shows the data for a specific team as well as a roster of the players.
  * The team data is passed through a navigation parameter.
@@ -137,10 +138,12 @@ const nonelist = noposition.map((item) => (
                 //        ListHeaderComponentStyle={styles.headerContainer}
                 //         contentContainerStyle={styles.container}
             >
-                <View style={{alignItems: 'center',}}>
+                <View style={{alignItems: 'center', flexDirection: 'row', marginLeft:125}}>
                     <CircleImage url={team.icon} size={150} borderColor={colors.border} />
-                    <ThemeText style={styles.headerText}>{team.name}</ThemeText>
+                    <ButtonHeart/>
                 </View>
+                    <ThemeText style={styles.headerText}>{team.name}</ThemeText>
+                
                 {renderIf(guardlist.length !=0, <ThemeText style={styles.mediumText}>Guards</ThemeText>)}
                 <View style={styles.container}>{renderIf(guardlist,guardlist)}</View>
                 {renderIf(forwardguard.length !=0, <ThemeText style={styles.mediumText} >Forward-Guards</ThemeText>)}
