@@ -141,6 +141,10 @@ def get_schedule(month, day):
     except OperationFailure:
         return string_response("Cannot get schedule for date", 500)
 
+# Return all players
+@app.route('/player', methods=['GET'])
+def get_all_players():
+    return json.dumps([player["_id"] for player in db.players.find()])
 
 # Return bio data for a specified player
 @app.route('/player/<int:player_id>', methods=['GET'])
