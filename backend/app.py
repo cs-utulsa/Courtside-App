@@ -31,22 +31,22 @@ app.register_blueprint(user_blueprint)
 @app.route('/roster/<team_code>', methods=['GET'])
 def get_roster(team_code):
     if type(team_code) == str:
-        return db.teams.find_one({'abbr': team_code})['roster']
+        return db.nba_teams.find_one({'abbr': team_code})['roster']
     else:
-        return db.teams.find_one({'_id': team_code})['roster']
+        return db.nba_teams.find_one({'_id': team_code})['roster']
 
 # Return leaderboard for specified stat
 # --- per_mode can be either tot, pg, or p48
 @app.route('/leaderboard/<stat>/<per_mode>', methods=['GET'])
 def get_leaderboard(stat, per_mode):
-    leaderboard = db.leaderboards.find_one({'_id': f'{stat}_{per_mode}'})
+    leaderboard = db.nba_leaderboards.find_one({'_id': f'{stat}_{per_mode}'})
 
     # only return first 5 values
     leaderboard["player_id"] = leaderboard["player_id"][0:5]
     leaderboard["value"] = leaderboard["value"][0:5]
 
     # get players in the leaderboard
-    player_names_cursor = db.players.find(
+    player_names_cursor = db.nba_players.find(
         { "_id": { "$in": leaderboard["player_id"]}},
         { "_id": 1, "name": 1 }
     )
@@ -64,7 +64,7 @@ def get_leaderboard(stat, per_mode):
 
 @app.route('/leaderboard/<stat>', methods=['GET'])
 def get_all_leaderboards(stat):
-    leaderboard_cursor = db.leaderboards.aggregate([
+    leaderboard_cursor = db.nba_leaderboards.aggregate([
         {
             '$match': { '$or': [
                 {'_id': f'{stat}_tot'},
@@ -134,7 +134,7 @@ def get_schedule(month, day):
         check_str = f"{str(month).rjust(2,'0')}{str(day).rjust(2, '0')}{2023}"
 
     try:
-        games = db.schedule.find({'_id': {'$regex': '.*' + check_str}})
+        games = db.nba_schedule.find({'_id': {'$regex': '.*' + check_str}})
         res = [x['schedule'] for x in games]
         res.sort(key=schedule_key)
         return res
@@ -144,22 +144,17 @@ def get_schedule(month, day):
 # Return all players
 @app.route('/player', methods=['GET'])
 def get_all_players():
-    return json.dumps([player["_id"] for player in db.players.find()])
+    return json.dumps([player["_id"] for player in db.nba_players.find()])
 
 # Return bio data for a specified player
 @app.route('/player/<int:player_id>', methods=['GET'])
 def get_player_data(player_id):
-    return json.dumps(db.players.find_one({'_id': player_id}))
+    return json.dumps(db.nba_players.find_one({'_id': player_id}))
 
 # Return all teams
 @app.route('/team', methods=['GET'])
 def get_all_teams():
-    """Returns all teams
-
-    Returns:
-        A Response object with an array of team data, each team has an id, name, and code
-    """
-    teams = list(db.teams.find({}, { '_id': 1, 'icon': 1, 'short': 1, 'name': 1, 'abbr': 1 }))
+    teams = list(db.nba_teams.find({}, { '_id': 1, 'icon': 1, 'short': 1, 'name': 1, 'abbr': 1 }))
 
     for team in teams:
         team["id"] = str(team["_id"])
@@ -170,7 +165,7 @@ def get_all_teams():
 # return one team
 @app.route('/team/<id>', methods=['GET'])
 def get_team(id):
-    team_cursor = db.teams.aggregate([
+    team_cursor = db.nba_teams.aggregate([
         { '$match': { '_id': int(id) }},
         { '$lookup': {
             "from": "players",
@@ -195,14 +190,14 @@ league_stats = pd.read_csv('data/league_stats.csv')
 # Return predicted scores for a specified matchup
 @app.route('/score/<team1>/<team2>', methods=['GET'])
 def get_score(team1, team2):
-    team1_id = db.teams.find_one({'abbr': team1})['_id']
+    team1_id = db.nba_teams.find_one({'abbr': team1})['_id']
     team1_stats = league_stats[league_stats['team_id'] == team1_id]
     team1_stats.reset_index(drop=True, inplace=True)
     team1_off = team1_stats[['off_rtg','off_rtg_10','pace','pace_10']]
     team1_def = team1_stats[['def_rtg','def_rtg_10','pace','pace_10']]
     team1_def.columns = ['opp_def_rtg','opp_def_rtg_10','opp_pace','opp_pace_10']
     
-    team2_id = db.teams.find_one({'abbr': team2})['_id']
+    team2_id = db.nba_teams.find_one({'abbr': team2})['_id']
     team2_stats = league_stats[league_stats['team_id'] == team2_id]
     team2_stats.reset_index(drop=True, inplace=True)
     team2_off = team2_stats[['off_rtg','off_rtg_10','pace','pace_10']]
