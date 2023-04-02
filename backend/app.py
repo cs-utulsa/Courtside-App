@@ -73,7 +73,7 @@ def get_all_leaderboards(stat):
             ]}
         }, {
             '$lookup': {
-                'from': 'players', 
+                'from': 'nba_players', 
                 'localField': 'player_id', 
                 'foreignField': '_id', 
                 'as': 'players',
@@ -112,8 +112,6 @@ def get_all_leaderboards(stat):
 
     leaderboards = list(leaderboard_cursor)
     name = leaderboards[0]['name']
-    for leaderboard in leaderboards:
-        del leaderboard['name']
 
     leaderboards_json = {
         'id': stat,
@@ -176,8 +174,6 @@ def get_team(id):
     ])
 
     team = list(team_cursor)[0]
-
-    del team["roster"]
     
     team["id"] = str(team["_id"])
     del team["_id"]
