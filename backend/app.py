@@ -166,7 +166,7 @@ def get_team(id):
     team_cursor = db.nba_teams.aggregate([
         { '$match': { '_id': int(id) }},
         { '$lookup': {
-            "from": "players",
+            "from": "nba_players",
             "localField": "roster",
             "foreignField": "_id",
             "as": "players"
@@ -174,6 +174,8 @@ def get_team(id):
     ])
 
     team = list(team_cursor)[0]
+    
+    del team["roster"]
     
     team["id"] = str(team["_id"])
     del team["_id"]
