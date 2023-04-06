@@ -275,3 +275,32 @@ nhl_team_ids = [
     54,
     55
 ]
+
+nba_player_stats = [
+    'games_played',
+    'wins',
+    'losses',
+    'win_pct',
+    'min',
+    'fgm',
+    'fga',
+    'fg_pct',
+    'fg3m',
+    'fg3a',
+    'fg3_pct',
+    'ftm',
+    'fta',
+    'ft_pct',
+    'oreb',
+    'dreb',
+    'reb',
+    'ast',
+    'tov',
+    'stl',
+    'blk',
+    'blka',
+    'pf',
+    'pfd',
+    'pts',
+    'plus_minus',
+]
