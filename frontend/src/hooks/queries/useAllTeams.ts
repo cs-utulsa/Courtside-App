@@ -8,7 +8,7 @@ export const useAllTeams = () => {
         queryKey: ['teams'],
         queryFn: async () => {
             const data: TeamIcon[] = await axios
-                .get(`${DEVELOPMENT_API}/team`)
+                .get(`${DEVELOPMENT_API}/nba/team`)
                 .then((res) => res.data);
 
             return data;

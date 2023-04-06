@@ -268,8 +268,11 @@ gpr = pickle.load(open('models/gpr_model_xs.pkl', 'rb'))
 league_stats = pd.read_csv('data/league_stats.csv')
 
 # Return predicted scores for a specified matchup
-@app.route('/score/<team1>/<team2>', methods=['GET'])
-def get_score(team1, team2):
+@app.route('/<league>/score/<team1>/<team2>', methods=['GET'])
+def get_score(team1, team2, league):
+    if league != 'nba':
+        return string_response("NBA is only supported league for score prediction")
+
     team1_id = db.teams.find_one({'abbr': team1})['_id']
     team1_stats = league_stats[league_stats['team_id'] == team1_id]
     team1_stats.reset_index(drop=True, inplace=True)

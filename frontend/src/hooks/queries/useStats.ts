@@ -12,7 +12,7 @@ export const useStats = (stats: string[] | undefined) => {
             const _statsData: Stat[] = [];
             for (let stat of stats) {
                 const { data } = await axios.get<Stat>(
-                    `${DEVELOPMENT_API}/leaderboard/${stat}`
+                    `${DEVELOPMENT_API}/nba/leaderboard/${stat}`
                 );
                 // get stat name
                 _statsData.push(data);

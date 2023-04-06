@@ -10,7 +10,7 @@ export const useDaySchedule = (date: Date) => {
         queryFn: async () => {
             return await axios
                 .get(
-                    `${DEVELOPMENT_API}/schedule/${
+                    `${DEVELOPMENT_API}/nba/schedule/${
                         getMonth(date) + 1
                     }/${getDate(date)}`
                 )
