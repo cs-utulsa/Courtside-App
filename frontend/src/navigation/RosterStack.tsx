@@ -3,6 +3,7 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {
     TeamSelectionScreen,
+    PlayerSelectionScreen,
     RostersScreen,
     PlayerScreen,
     TeamScreen,
@@ -17,7 +18,8 @@ export const RosterStack = () => {
             screenOptions={{ headerShown: false }}
         >
             <Stack.Screen name="Dashboard" component={RostersScreen} />
-            <Stack.Screen name="Selection" component={TeamSelectionScreen} />
+            <Stack.Screen name="Tselection" component={TeamSelectionScreen} />
+            <Stack.Screen name="Pselection" component={PlayerSelectionScreen} />
             <Stack.Screen name="Team" component={TeamScreen} />
             <Stack.Screen name="Player" component={PlayerScreen} />
         </Stack.Navigator>

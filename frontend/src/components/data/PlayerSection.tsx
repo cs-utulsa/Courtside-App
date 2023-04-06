@@ -19,7 +19,7 @@ type PlayerSectionProps = {
  */
 export const PlayerSection: FC<PlayerSectionProps> = ({ player, team }) => {
     const { push } = useNavigation<RosterNavigationProp>();
-
+   // var isLiked:boolean;
     function navigateToPlayerScreen() {
         push('Player', { player, team });
     }
