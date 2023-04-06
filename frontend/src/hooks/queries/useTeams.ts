@@ -12,7 +12,7 @@ export const useTeams = (teams: string[]) => {
             const _teamData: Team[] = [];
             for (let team of teams) {
                 const data: Team = await axios
-                    .get(`${DEVELOPMENT_API}/team/${team}`)
+                    .get(`${DEVELOPMENT_API}/nba/team/${team}`)
                     .then((res) => res.data);
 
                 _teamData.push(data);
