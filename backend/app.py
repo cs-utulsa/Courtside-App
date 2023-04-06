@@ -62,72 +62,133 @@ def get_leaderboard(stat, per_mode):
 
     return json.dumps(leaderboard)
 
-@app.route('/leaderboard/<stat>', methods=['GET'])
-def get_all_leaderboards(stat):
-    leaderboard_cursor = db.leaderboards.aggregate([
-        {
-            '$match': { '$or': [
-                {'_id': f'{stat}_tot'},
-                {'_id': f'{stat}_p48'},
-                {'_id': f'{stat}_pg' }
-            ]}
-        }, {
-            '$lookup': {
-                'from': 'players', 
-                'localField': 'player_id', 
-                'foreignField': '_id', 
-                'as': 'players',
-                'let': { 'player_values': '$value', 'player_ids': '$player_id'},
-                'pipeline': [
-                    { '$project': {
-                        'id': '$_id',
-                        '_id': 0,
-                        'name': 1,
-                        'headshot': 1,
-                        'value': { 
-                            '$arrayElemAt': [
-                                '$$player_values',
-                                { '$indexOfArray': [
-                                '$$player_ids',
-                                '$_id',
-                                ]}
-                            ]
+@app.route('/<league>/leaderboard/<stat>', methods=['GET'])
+def get_all_leaderboards(stat, league):
+    if league == 'nba':
+        leaderboard_cursor = db.nba_leaderboards.aggregate([
+            {
+                '$match': { '$or': [
+                    {'_id': f'{stat}_tot'},
+                    {'_id': f'{stat}_p48'},
+                    {'_id': f'{stat}_pg' }
+                ]}
+            }, {
+                '$lookup': {
+                    'from': 'nba_players', 
+                    'localField': 'player_id', 
+                    'foreignField': '_id', 
+                    'as': 'players',
+                    'let': { 'player_values': '$value', 'player_ids': '$player_id'},
+                    'pipeline': [
+                        { '$project': {
+                            'id': '$_id',
+                            '_id': 0,
+                            'name': 1,
+                            'headshot': 1,
+                            'value': { 
+                                '$arrayElemAt': [
+                                    '$$player_values',
+                                    { '$indexOfArray': [
+                                    '$$player_ids',
+                                    '$_id',
+                                    ]}
+                                ]
+                            }
+                        }},
+                        { 
+                            '$sort': { 'value': -1 },
                         }
-                    }},
-                    { 
-                        '$sort': { 'value': -1 },
-                    }
-                ]
-            }
-        }, {
-            '$project': {
-                'id': '$_id',
-                '_id': 0,
-                'players': 1,
-                'per_mode': 1,
-                'name': 1,
-            }
-        }, { '$sort': { 'id': 1 }}
-    ])
-
+                    ]
+                }
+            }, {
+                '$project': {
+                    'id': '$_id',
+                    '_id': 0,
+                    'players': 1,
+                    'per_mode': 1,
+                    'name': 1,
+                }
+            }, { '$sort': { 'id': 1 }}
+        ])
+    elif league == 'nhl':
+        leaderboard_cursor = db.nhl_leaderboards.aggregate([
+            {
+                '$match': { '$or': [
+                    {'_id': f'{stat}_tot'},
+                ]}
+            }, {
+                '$lookup': {
+                    'from': 'nhl_players', 
+                    'localField': 'player_id', 
+                    'foreignField': '_id', 
+                    'as': 'players',
+                    'let': { 'player_values': '$value', 'player_ids': '$player_id'},
+                    'pipeline': [
+                        { '$project': {
+                            'id': '$_id',
+                            '_id': 0,
+                            'name': 1,
+                            'headshot': 1,
+                            'value': { 
+                                '$arrayElemAt': [
+                                    '$$player_values',
+                                    { '$indexOfArray': [
+                                    '$$player_ids',
+                                    '$_id',
+                                    ]}
+                                ]
+                            }
+                        }},
+                        { 
+                            '$sort': { 'value': -1 },
+                        }
+                    ]
+                }
+            }, {
+                '$project': {
+                    'id': '$_id',
+                    '_id': 0,
+                    'players': 1,
+                    'per_mode': 1,
+                    'name': 1,
+                }
+            }, { '$sort': { 'id': 1 }}
+        ])
+    else:
+        return string_response(f'{league} is not a valid league. Only "nhl" and "nba" are accepted', 400)
+    
     leaderboards = list(leaderboard_cursor)
+    
+    if (len(leaderboards) == 0):
+        return string_response(f"Stat {stat} was not found for the {league.upper()}")
+
     name = leaderboards[0]['name']
     for leaderboard in leaderboards:
         del leaderboard['name']
 
-    leaderboards_json = {
-        'id': stat,
-        'name': name,
-        'per48': leaderboards[0],
-        'perGame': leaderboards[1],
-        'total': leaderboards[2]
-    }
+    if league == 'nba':
+        leaderboards_json = {
+            'id': stat,
+            'name': name,
+            'per48': leaderboards[0],
+            'perGame': leaderboards[1],
+            'total': leaderboards[2]
+        }
+    elif league == 'nhl':
+        leaderboards_json = {
+            'id': stat,
+            'name': name,
+            'total': leaderboards[0]
+        }
 
     return json.dumps(leaderboards_json)
 
 # Return schedule for a requested day
-@app.route('/schedule/<int:month>/<int:day>', methods=['GET'])
-def get_schedule(month, day):
+@app.route('/<league>/schedule/<int:month>/<int:day>', methods=['GET'])
+def get_schedule(month, day, league):
+    if league != 'nba':
+        return string_response("NBA is the only supported league for game schedules", 400)
+
     if month in [10,11,12]:
         check_str = f"{str(month).rjust(2,'0')}{str(day).rjust(2, '0')}{2022}"
     else:
@@ -148,33 +209,51 @@ def get_player_data(player_id):
     return json.dumps(db.players.find_one({'_id': player_id}))
 
 # Return all teams
-@app.route('/team', methods=['GET'])
-def get_all_teams():
-    """Returns all teams
-
-    Returns:
-        A Response object with an array of team data, each team has an id, name, and code
-    """
-    teams = list(db.teams.find({}, { '_id': 1, 'icon': 1, 'short': 1, 'name': 1, 'abbr': 1 }))
+@app.route('/<league>/team', methods=['GET'])
+def get_all_teams(league):
+    if (league == 'nba'):
+        teams = list(db.nba_teams.find({}, { '_id': 1, 'icon': 1, 'short': 1, 'name': 1, 'abbr': 1 }))
+    elif (league == 'nhl'):
+        teams = list(db.nhl_teams.find({}, { '_id': 1, 'icon': 1, 'short': 1, 'name': 1, 'abbr': 1 }))
+    else:
+        return string_response(f'{league} is not a valid league. Only "nhl" and "nba" are accepted', 400)
 
     for team in teams:
         team["id"] = str(team["_id"])
+
+        # add empty icon string to nhl
+        if league == 'nhl':
+            team["icon"] = ""
+
         del team["_id"]
 
     return json.dumps(teams)
 
 # return one team
-@app.route('/team/<id>', methods=['GET'])
-def get_team(id):
-    team_cursor = db.teams.aggregate([
-        { '$match': { '_id': int(id) }},
-        { '$lookup': {
-            "from": "players",
-            "localField": "roster",
-            "foreignField": "_id",
-            "as": "players"
-        }}
-    ])
+@app.route('/<league>/team/<id>', methods=['GET'])
+def get_team(id, league):
+    if (league == 'nba'):
+        team_cursor = db.nba_teams.aggregate([
+            { '$match': { '_id': int(id) }},
+            { '$lookup': {
+                "from": "nba_players",
+                "localField": "roster",
+                "foreignField": "_id",
+                "as": "players"
+            }}
+        ])
+    elif (league == 'nhl'):
+        team_cursor = db.nhl_teams.aggregate([
+            { '$match': { '_id': int(id) }},
+            { '$lookup': {
+                "from": "nhl_players",
+                "localField": "roster",
+                "foreignField": "_id",
+                "as": "players"
+            }}
+        ])
+    else:
+        return string_response(f'{league} is not a valid league. Only "nhl" and "nba" are accepted', 400)
 
     team = list(team_cursor)[0]
 
