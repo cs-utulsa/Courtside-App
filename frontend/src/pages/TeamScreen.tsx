@@ -144,29 +144,6 @@ export const TeamScreen = () => {
                 //        ListHeaderComponentStyle={styles.headerContainer}
                 //         contentContainerStyle={styles.container}
             >
-<<<<<<< HEAD
-                <View style={{ alignItems: 'center' }}>
-                    <CircleImage
-                        url={team.icon}
-                        size={150}
-                        borderColor={colors.border}
-                    />
-                    <ThemeText style={styles.headerText}>{team.name}</ThemeText>
-                </View>
-                {renderIf(
-                    guardlist.length !== 0,
-                    <ThemeText style={styles.mediumText}>Guards</ThemeText>
-                )}
-                <View style={styles.container}>
-                    {renderIf(guardlist, guardlist)}
-                </View>
-                {renderIf(
-                    forwardguard.length !== 0,
-                    <ThemeText style={styles.mediumText}>
-                        Forward-Guards
-                    </ThemeText>
-                )}
-=======
                 <View style={{alignItems: 'center', flexDirection: 'row', marginLeft:125}}>
                     <CircleImage url={team.icon} size={150} borderColor={colors.border} />
                     <ButtonHeart/>
@@ -176,7 +153,6 @@ export const TeamScreen = () => {
                 {renderIf(guardlist.length !=0, <ThemeText style={styles.mediumText}>Guards</ThemeText>)}
                 <View style={styles.container}>{renderIf(guardlist,guardlist)}</View>
                 {renderIf(forwardguard.length !=0, <ThemeText style={styles.mediumText} >Forward-Guards</ThemeText>)}
->>>>>>> 33e51bcb95cbf5f209db2e43f5ad2892c85227ba
                 <View style={styles.container}>{forwardguardlist}</View>
                 {renderIf(
                     forwardlist.length !== 0,
