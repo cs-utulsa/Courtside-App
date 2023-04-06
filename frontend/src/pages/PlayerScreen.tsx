@@ -22,7 +22,9 @@ export const PlayerScreen = () => {
     const teamback: Team = route.params.team;
     function navigateToSelectionScreen() {
         // const navigation = useNavigation();
-        push('Team', { team: teamback });
+
+            push('Team', { team: teamback });
+
     }
 
     const { colors } = useTheme();

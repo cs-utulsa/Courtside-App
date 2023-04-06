@@ -1,5 +1,6 @@
 export { FavoritePlayers } from './FavoritePlayers';
 export { TeamSelectionScreen } from './TeamSelectionScreen';
+export { PlayerSelectionScreen} from './PlayerSelectionScreen';
 export { StatSelection } from './StatSelection';
 export { Schedule } from './Schedule';
 export { RostersScreen } from './RostersScreen';

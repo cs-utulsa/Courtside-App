@@ -11,11 +11,11 @@ import { useNavigation, useTheme } from '@react-navigation/native';
 import { RosterNavigationProp } from '../types/Navigation';
 import { useAuth } from '@hooks/useAuth';
 import { useAllTeams } from '@hooks/index';
-import { TeamIcon } from '../types/Team';
-import { id } from 'date-fns/locale';
+import { playerIcon } from '../types/Player';
+import { useAllPlayers } from '@hooks/queries/useAllPlayers';
 
 /** This component lets the user choose what teams they want to follow */
-export const TeamSelectionScreen = () => {
+export const PlayerSelectionScreen = () => {
     const rosterNavigation = useNavigation<RosterNavigationProp>();
     const { colors } = useTheme();
 
@@ -26,8 +26,17 @@ export const TeamSelectionScreen = () => {
 
     const [submitting, setSubmitting] = useState<boolean>(false);
     
-    const { data, isSuccess, isLoading, isError } = useAllTeams();
-    const [result, setResult] = useState<TeamIcon[]>([]);
+
+    const teams = useAllPlayers();
+
+    for(let i in teams){
+       
+        console.log(i);
+
+    }
+
+    const { data, isSuccess, isLoading, isError } = useAllPlayers();
+    const [result, setResult] = useState<playerIcon[]>([]);
 
     const submitTeamSelectionUpdates = async () => {
         setSubmitting(true);
@@ -45,11 +54,9 @@ export const TeamSelectionScreen = () => {
                 return;
             }
 
-            const _result = data!.filter((team) => {
-                if (
-                    team.abbr.toLowerCase().includes(query.toLowerCase()) ||
-                    team.name.toLowerCase().includes(query.toLowerCase()) ||
-                    team.short.toLowerCase().includes(query.toLowerCase())
+            const _result = data!.filter((player) => {
+                if ( 
+                    player.name.toLowerCase().includes(query.toLowerCase()) 
                 ) {
                     return true;
                 }
@@ -61,7 +68,7 @@ export const TeamSelectionScreen = () => {
         [data]
     );
 
-    const addTeam = (id: string) => setSelectedTeams((prev) => prev.concat(id)); 
+    const addTeam = (id: string) => setSelectedTeams((prev) => prev.concat(id));
     const removeTeam = (id: string) =>
         setSelectedTeams((prev) => prev.filter((team) => team !== id));
 
@@ -87,6 +94,7 @@ export const TeamSelectionScreen = () => {
                         addTeam={addTeam}
                         removeTeam={removeTeam}
                     />
+                    
                     {selectedTeams.length >= 1 && (
                         <FAB
                             onPress={submitTeamSelectionUpdates}
