@@ -65,8 +65,16 @@ const screenOptions = (routeName: string | undefined, iconColor: string) => {
     });
 };
 
-const individualScreenOptions: BottomTabNavigationOptions = {
-    headerRight: () => <SwitchLeagues />,
+const individualScreenOptions = (
+    routeName: string | undefined
+): BottomTabNavigationOptions => {
+    if (routeName === 'Game') {
+        return {};
+    } else {
+        return {
+            headerRight: () => <SwitchLeagues />,
+        };
+    }
 };
 
 type MainNavigationProps = {
@@ -85,23 +93,15 @@ export const MainNavigation: FC<MainNavigationProps> = ({ routeName }) => {
             <Tab.Screen
                 name="Stats"
                 component={StatsStack}
-                options={individualScreenOptions}
+                options={individualScreenOptions(routeName)}
             />
             <Tab.Screen
                 name="Games"
                 component={ScheduleStack}
-                options={individualScreenOptions}
+                options={individualScreenOptions(routeName)}
             />
-            <Tab.Screen
-                name="Rosters"
-                component={RosterStack}
-                options={individualScreenOptions}
-            />
-            <Tab.Screen
-                name="Settings"
-                component={Settings}
-                options={individualScreenOptions}
-            />
+            <Tab.Screen name="Rosters" component={RosterStack} />
+            <Tab.Screen name="Settings" component={Settings} />
         </Tab.Navigator>
     );
 };
