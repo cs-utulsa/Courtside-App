@@ -6,11 +6,13 @@ def schedule_key(e):
     hour = int(split[0])
     minute = split[1]
 
-    if ('p' in minute):
+    if ('p' in minute or 'PM' in minute):
         minute = minute.replace('p', '')
+        minute = minute.replace('PM', '')
         hour += 12
-    elif ('a' in minute):
+    elif ('a' in minute or 'AM' in minute):
         minute = minute.replace('a', '')
+        minute = minute.replace('AM', '')
 
     day = datetime.now().replace(hour=hour, minute=int(minute))
 
