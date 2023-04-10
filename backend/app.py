@@ -184,21 +184,29 @@ def get_all_leaderboards(stat, league):
 # Return schedule for a requested day
 @app.route('/<league>/schedule/<int:month>/<int:day>', methods=['GET'])
 def get_schedule(month, day, league):
-    if league != 'nba':
-        return string_response("NBA is the only supported league for game schedules", 400)
-
     if month in [10,11,12]:
         check_str = f"{str(month).rjust(2,'0')}{str(day).rjust(2, '0')}{2022}"
     else:
         check_str = f"{str(month).rjust(2,'0')}{str(day).rjust(2, '0')}{2023}"
-
-    try:
-        games = db.nba_schedule.find({'_id': {'$regex': '.*' + check_str}})
-        res = [x['schedule'] for x in games]
-        res.sort(key=schedule_key)
-        return res
-    except OperationFailure:
-        return string_response("Cannot get schedule for date", 500)
+    
+    if league == 'nba':
+        try:
+            games = db.nba_schedule.find({'_id': {'$regex': '.*' + check_str}})
+            res = [x['schedule'] for x in games]
+            res.sort(key=schedule_key)
+            return res
+        except OperationFailure:
+            return string_response("Cannot get schedule for date", 500)
+    elif league == 'nhl':
+        try:
+            games = db.nhl_schedule.find({'_id': {'$regex': '.*' + check_str}})
+            res = [x['schedule'] for x in games]
+            res.sort(key=schedule_key)
+            return res
+        except OperationFailure:
+            return string_response("Cannot get schedule for date", 500)
+    else:
+        return string_response("NBA and NHL are the only leagues supported at this point.", 400)
 
 # Return all players
 @app.route('/player', methods=['GET'])
