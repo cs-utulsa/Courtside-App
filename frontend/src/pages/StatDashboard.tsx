@@ -1,7 +1,7 @@
 // external imports
-import { Text, StyleSheet, ScrollView, ActivityIndicator } from 'react-native';
+import { StyleSheet, ScrollView, ActivityIndicator } from 'react-native';
 import React from 'react';
-import { useNavigation, useTheme } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 //custom hooks
 import { useAuth, useRefreshOnFocus, useStats } from '@hooks/index';
@@ -10,17 +10,13 @@ import { useAuth, useRefreshOnFocus, useStats } from '@hooks/index';
 import { StatsNavigationProp } from './../types/Navigation';
 import { Stat } from './../types/Stat';
 
-import { MaterialIcons } from '@expo/vector-icons';
-
 // custom components
 import {
     StatLeaderboard,
     PrimaryButton,
     FullError,
     Seperator,
-    FAB,
 } from '@components/index';
-import { useLeague } from '@hooks/useLeague';
 
 /**
  * This component allows user to view the leaderboards for the stats that they are following.
@@ -28,8 +24,6 @@ import { useLeague } from '@hooks/useLeague';
 export const StatDashboard = () => {
     const { authData } = useAuth();
     const { push } = useNavigation<StatsNavigationProp>();
-    const { colors } = useTheme();
-    const { league, setLeague } = useLeague();
 
     const { data, isError, isLoading, isSuccess, isRefetching, refetch } =
         useStats(authData?.stats);
@@ -55,7 +49,6 @@ export const StatDashboard = () => {
                 onPress={navigateToSelectionScreen}
                 text="Follow More Stats"
             />
-            <Text>{league}</Text>
 
             {/* if data was fetched successfully, create a leaderboard for each stat */}
             {isSuccess &&
@@ -67,18 +60,6 @@ export const StatDashboard = () => {
             {isFetchingData && <ActivityIndicator color="black" size="large" />}
             <Seperator />
             <Seperator />
-            <FAB
-                color={colors.primary}
-                onPress={() => {
-                    if (league === 'nba') {
-                        setLeague('nhl');
-                    } else {
-                        setLeague('nba');
-                    }
-                }}
-            >
-                <MaterialIcons name="check" size={40} color={colors.text} />
-            </FAB>
         </ScrollView>
     );
 };
