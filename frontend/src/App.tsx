@@ -5,7 +5,7 @@ import { Image } from 'react-native';
 import { Asset } from 'expo-asset';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import { ICONS } from './constants';
+import { NBA_ICONS } from './constants';
 import { registerRootComponent } from 'expo';
 import { AuthProvider } from '@contexts/AuthContext';
 import { RootSiblingParent } from 'react-native-root-siblings';
@@ -39,7 +39,7 @@ export default function App() {
                 SplashScreen.preventAutoHideAsync();
 
                 const imageAssets = cacheImages(
-                    ICONS.map((icon: any) => icon.logo)
+                    NBA_ICONS.map((icon: any) => icon.logo)
                 );
 
                 await Promise.all([...imageAssets]);

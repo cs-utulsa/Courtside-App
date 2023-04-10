@@ -3,8 +3,10 @@ import { GameScreenRouteProp } from './../types/Navigation';
 import React from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import { SelectCircle, ThemeText } from '@components/index';
-import { ICONS } from '../constants';
+import { NBA_ICONS } from '../constants';
 import { GameScorePrediction } from '@components/data/GameScorePrediction';
+import { useLeague } from '@hooks/useLeague';
+import { NHL_ICONS } from '@constants/icons';
 
 /**
  * This screen shows information for a specific game.
@@ -15,11 +17,15 @@ export const GameScreen = () => {
     const { params } = useRoute<GameScreenRouteProp>();
     // params.game has all the data on the games
 
-    const awayIconUrl = ICONS.find(
+    const { league } = useLeague();
+
+    const iconsList = league === 'nba' ? NBA_ICONS : NHL_ICONS;
+
+    const awayIconUrl = iconsList.find(
         (icon) => icon.code === params.game.away_code
     )?.logo;
 
-    const homeIconUrl = ICONS.find(
+    const homeIconUrl = iconsList.find(
         (icon) => icon.code === params.game.home_code
     )?.logo;
 
@@ -55,9 +61,11 @@ export const GameScreen = () => {
                     </ThemeText>
                 </View>
             </View>
-            <GameScorePrediction
-                teams={[params.game.home_code, params.game.away_code]}
-            />
+            {league === 'nba' && (
+                <GameScorePrediction
+                    teams={[params.game.home_code, params.game.away_code]}
+                />
+            )}
         </ScrollView>
     );
 };
