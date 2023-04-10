@@ -160,7 +160,7 @@ def get_all_leaderboards(stat, league):
     leaderboards = list(leaderboard_cursor)
     
     if (len(leaderboards) == 0):
-        return string_response(f"Stat {stat} was not found for the {league.upper()}")
+        return string_response(f"Stat {stat} was not found for the {league.upper()}", 404)
 
     name = leaderboards[0]['name']
 

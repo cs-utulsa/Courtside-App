@@ -17,9 +17,9 @@ type Stat = {
     /** the name of the stat */
     name: string;
     /** the leaderboard of the stat per 48 minutes of game time */
-    per48: StatPerMode;
+    per48?: StatPerMode;
     /** the leaderboard of the stat per game */
-    perGame: StatPerMode;
+    perGame?: StatPerMode;
     /** the leaderbaord of the stat for the whole season */
     total: StatPerMode;
 };

@@ -1,2 +1,2 @@
 export { ICONS } from './icons';
-export { STATS } from './stats';
+export { NBA_STATS } from './stats';
