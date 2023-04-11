@@ -28,39 +28,69 @@ app.register_blueprint(email_blueprint)
 app.register_blueprint(user_blueprint)
 
 # Return roster of player id's for specified team
-@app.route('/roster/<team_code>', methods=['GET'])
-def get_roster(team_code):
-    if type(team_code) == str:
-        return db.nba_teams.find_one({'abbr': team_code})['roster']
-    else:
-        return db.nba_teams.find_one({'_id': team_code})['roster']
+@app.route('/<league>/roster/<team_code>', methods=['GET'])
+def get_roster(team_code, league):
+    if league == 'nba':
+        if type(team_code) == str:
+            return db.nba_teams.find_one({'abbr': team_code})['roster']
+        else:
+            return db.nba_teams.find_one({'_id': team_code})['roster']
+    elif league == 'nhl':
+        if type(team_code) == str:
+            return db.nhl_teams.find_one({'abbr': team_code})['roster']
+        else:
+            return db.nhl_teams.find_one({'_id': team_code})['roster']
 
 # Return leaderboard for specified stat
 # --- per_mode can be either tot, pg, or p48
-@app.route('/leaderboard/<stat>/<per_mode>', methods=['GET'])
-def get_leaderboard(stat, per_mode):
-    leaderboard = db.nba_leaderboards.find_one({'_id': f'{stat}_{per_mode}'})
+@app.route('/<league>/leaderboard/<stat>/<per_mode>', methods=['GET'])
+def get_leaderboard(stat, per_mode, league):
+    if league == 'nba':
+        leaderboard = db.nba_leaderboards.find_one({'_id': f'{stat}_{per_mode}'})
 
-    # only return first 5 values
-    leaderboard["player_id"] = leaderboard["player_id"][0:5]
-    leaderboard["value"] = leaderboard["value"][0:5]
+        # only return first 5 values
+        leaderboard["player_id"] = leaderboard["player_id"][0:5]
+        leaderboard["value"] = leaderboard["value"][0:5]
 
-    # get players in the leaderboard
-    player_names_cursor = db.nba_players.find(
-        { "_id": { "$in": leaderboard["player_id"]}},
-        { "_id": 1, "name": 1 }
-    )
+        # get players in the leaderboard
+        player_names_cursor = db.nba_players.find(
+            { "_id": { "$in": leaderboard["player_id"]}},
+            { "_id": 1, "name": 1 }
+        )
 
-    player_document = list(player_names_cursor)
+        player_document = list(player_names_cursor)
 
-    leaderboard["player_names"] = [None] * 5
+        leaderboard["player_names"] = [None] * 5
 
-    # Line up player ids with the player's name
-    for i in range(0, len(player_document)):
-        index = leaderboard["player_id"].index(player_document[i]['_id'])
-        leaderboard["player_names"][index] = player_document[i]['name']
+        # Line up player ids with the player's name
+        for i in range(0, len(player_document)):
+            index = leaderboard["player_id"].index(player_document[i]['_id'])
+            leaderboard["player_names"][index] = player_document[i]['name']
 
-    return json.dumps(leaderboard)
+        return json.dumps(leaderboard)
+    elif league == 'nhl':
+        leaderboard = db.nhl_leaderboards.find_one({'_id': f'{stat}_tot'})
+
+        # only return first 5 values
+        leaderboard["player_id"] = leaderboard["player_id"][0:5]
+        leaderboard["value"] = leaderboard["value"][0:5]
+
+        # get players in the leaderboard
+        player_names_cursor = db.nhl_players.find(
+            { "_id": { "$in": leaderboard["player_id"]}},
+            { "_id": 1, "name": 1 }
+        )
+
+        player_document = list(player_names_cursor)
+
+        leaderboard["player_names"] = [None] * 5
+
+        # Line up player ids with the player's name
+        for i in range(0, len(player_document)):
+            index = leaderboard["player_id"].index(player_document[i]['_id'])
+            leaderboard["player_names"][index] = player_document[i]['name']
+
+        return json.dumps(leaderboard)
 
 @app.route('/<league>/leaderboard/<stat>', methods=['GET'])
 def get_all_leaderboards(stat, league):
@@ -209,14 +239,20 @@ def get_schedule(month, day, league):
         return string_response("NBA and NHL are the only leagues supported at this point.", 400)
 
 # Return all players
-@app.route('/player', methods=['GET'])
-def get_all_players():
-    return json.dumps([player["_id"] for player in db.nba_players.find()])
+@app.route('/<league>/player', methods=['GET'])
+def get_all_players(league):
+    if league == 'nba':
+        return json.dumps([player["_id"] for player in db.nba_players.find()])
+    elif league == 'nhl':
+        return json.dumps([player["_id"] for player in db.nhl_players.find()])
 
 # Return bio data for a specified player
-@app.route('/player/<int:player_id>', methods=['GET'])
-def get_player_data(player_id):
-    return json.dumps(db.nba_players.find_one({'_id': player_id}))
+@app.route('/<league>/player/<int:player_id>', methods=['GET'])
+def get_player_data(player_id, league):
+    if league == 'nba':
+        return json.dumps(db.nba_players.find_one({'_id': player_id}))
+    elif league == 'nhl':
+        return json.dumps(db.nhl_players.find_one({'_id': player_id}))
 
 # Return all teams
 @app.route('/<league>/team', methods=['GET'])
