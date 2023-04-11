@@ -35,6 +35,17 @@ def get_roster(team_code):
     else:
         return db.nba_teams.find_one({'_id': team_code})['roster']
 
+@app.route('/<league>/player/<query>', methods=['GET'])
+def get_players_by_query(league, query):
+    if league != 'nba':
+        return string_response("Only NBA is supported for player search.", 500)
+    
+    players = db.nba_players.find({
+        "name": query
+    })
+
+    return json.dumps(list(players))
+
 # Return leaderboard for specified stat
 # --- per_mode can be either tot, pg, or p48
 @app.route('/leaderboard/<stat>/<per_mode>', methods=['GET'])
