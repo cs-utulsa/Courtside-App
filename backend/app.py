@@ -225,7 +225,7 @@ def get_schedule(month, day, league):
             res = [x['schedule'] for x in games]
             res.sort(key=schedule_key)
             return res
-        except OperationFailure:
+        except:
             return string_response("Cannot get schedule for date", 500)
     elif league == 'nhl':
         try:
@@ -233,7 +233,7 @@ def get_schedule(month, day, league):
             res = [x['schedule'] for x in games]
             res.sort(key=schedule_key)
             return res
-        except OperationFailure:
+        except:
             return string_response("Cannot get schedule for date", 500)
     else:
         return string_response("NBA and NHL are the only leagues supported at this point.", 400)
