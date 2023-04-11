@@ -6,7 +6,7 @@ from blueprints.email import email as email_blueprint
 from blueprints.users import users as user_blueprint
 from utils.response_utils import string_response
 
-from utils.data_utils import schedule_key, schedule_key_nhl
+from utils.data_utils import schedule_key
 from dotenv import load_dotenv
 from flask_cors import CORS
 from flask import Flask
@@ -28,14 +28,14 @@ app.register_blueprint(email_blueprint)
 app.register_blueprint(user_blueprint)
 
 # Return roster of player id's for specified team
-@app.route('/roster/<team_code>/<sport>', methods=['GET'])
-def get_roster(team_code, sport):
-    if sport == 'NBA':
+@app.route('/<league>/roster/<team_code>', methods=['GET'])
+def get_roster(team_code, league):
+    if league == 'nba':
         if type(team_code) == str:
             return db.nba_teams.find_one({'abbr': team_code})['roster']
         else:
             return db.nba_teams.find_one({'_id': team_code})['roster']
-    elif sport == 'NHL':
+    elif league == 'nhl':
         if type(team_code) == str:
             return db.nhl_teams.find_one({'abbr': team_code})['roster']
         else:
@@ -43,9 +43,9 @@ def get_roster(team_code, sport):
 
 # Return leaderboard for specified stat
 # --- per_mode can be either tot, pg, or p48
-@app.route('/leaderboard/<stat>/<per_mode>/<sport>', methods=['GET'])
-def get_leaderboard(stat, per_mode, sport):
-    if sport == 'NBA':
+@app.route('/<league>/leaderboard/<stat>/<per_mode>', methods=['GET'])
+def get_leaderboard(stat, per_mode, league):
+    if league == 'nba':
         leaderboard = db.nba_leaderboards.find_one({'_id': f'{stat}_{per_mode}'})
 
         # only return first 5 values
@@ -68,7 +68,7 @@ def get_leaderboard(stat, per_mode, sport):
             leaderboard["player_names"][index] = player_document[i]['name']
 
         return json.dumps(leaderboard)
-    elif sport == 'NHL':
+    elif league == 'nhl':
         leaderboard = db.nhl_leaderboards.find_one({'_id': f'{stat}_tot'})
 
         # only return first 5 values
@@ -92,9 +92,9 @@ def get_leaderboard(stat, per_mode, sport):
 
         return json.dumps(leaderboard)
 
-@app.route('/leaderboard/<stat>/<sport>', methods=['GET'])
-def get_all_leaderboards(stat, sport):
-    if sport == 'NBA':
+@app.route('/<league>/leaderboard/<stat>', methods=['GET'])
+def get_all_leaderboards(stat, league):
+    if league == 'nba':
         leaderboard_cursor = db.nba_leaderboards.aggregate([
             {
                 '$match': { '$or': [
@@ -140,10 +140,61 @@ def get_all_leaderboards(stat, sport):
                 }
             }, { '$sort': { 'id': 1 }}
         ])
+    elif league == 'nhl':
+        leaderboard_cursor = db.nhl_leaderboards.aggregate([
+            {
+                '$match': { '$or': [
+                    {'_id': f'{stat}_tot'},
+                ]}
+            }, {
+                '$lookup': {
+                    'from': 'nhl_players', 
+                    'localField': 'player_id', 
+                    'foreignField': '_id', 
+                    'as': 'players',
+                    'let': { 'player_values': '$value', 'player_ids': '$player_id'},
+                    'pipeline': [
+                        { '$project': {
+                            'id': '$_id',
+                            '_id': 0,
+                            'name': 1,
+                            'headshot': 1,
+                            'value': { 
+                                '$arrayElemAt': [
+                                    '$$player_values',
+                                    { '$indexOfArray': [
+                                    '$$player_ids',
+                                    '$_id',
+                                    ]}
+                                ]
+                            }
+                        }},
+                        { 
+                            '$sort': { 'value': -1 },
+                        }
+                    ]
+                }
+            }, {
+                '$project': {
+                    'id': '$_id',
+                    '_id': 0,
+                    'players': 1,
+                    'per_mode': 1,
+                    'name': 1,
+                }
+            }, { '$sort': { 'id': 1 }}
+        ])
+    else:
+        return string_response(f'{league} is not a valid league. Only "nhl" and "nba" are accepted', 400)
+    
+    leaderboards = list(leaderboard_cursor)
+    
+    if (len(leaderboards) == 0):
+        return string_response(f"Stat {stat} was not found for the {league.upper()}", 404)
 
-        leaderboards = list(leaderboard_cursor)
-        name = leaderboards[0]['name']
+    name = leaderboards[0]['name']
 
+    if league == 'nba':
         leaderboards_json = {
             'id': stat,
             'name': name,
@@ -151,41 +202,24 @@ def get_all_leaderboards(stat, sport):
             'perGame': leaderboards[1],
             'total': leaderboards[2]
         }
+    elif league == 'nhl':
+        leaderboards_json = {
+            'id': stat,
+            'name': name,
+            'total': leaderboards[0]
+        }
 
-        return json.dumps(leaderboards_json)
-    elif sport == 'NHL':
-        leaderboard = db.nhl_leaderboards.find_one({'_id': f'{stat}_tot'})
-
-        # only return first 5 values
-        leaderboard["player_id"] = leaderboard["player_id"][0:5]
-        leaderboard["value"] = leaderboard["value"][0:5]
-
-        # get players in the leaderboard
-        player_names_cursor = db.nhl_players.find(
-            { "_id": { "$in": leaderboard["player_id"]}},
-            { "_id": 1, "name": 1 }
-        )
-
-        player_document = list(player_names_cursor)
-
-        leaderboard["player_names"] = [None] * 5
-
-        # Line up player ids with the player's name
-        for i in range(0, len(player_document)):
-            index = leaderboard["player_id"].index(player_document[i]['_id'])
-            leaderboard["player_names"][index] = player_document[i]['name']
-
-        return json.dumps(leaderboard)
+    return json.dumps(leaderboards_json)
 
 # Return schedule for a requested day
-@app.route('/schedule/<int:month>/<int:day>/<sport>', methods=['GET'])
-def get_schedule(month, day, sport):
-    if sport == 'NBA':
-        if month in [10,11,12]:
-            check_str = f"{str(month).rjust(2,'0')}{str(day).rjust(2, '0')}{2022}"
-        else:
-            check_str = f"{str(month).rjust(2,'0')}{str(day).rjust(2, '0')}{2023}"
-
+@app.route('/<league>/schedule/<int:month>/<int:day>', methods=['GET'])
+def get_schedule(month, day, league):
+    if month in [10,11,12]:
+        check_str = f"{str(month).rjust(2,'0')}{str(day).rjust(2, '0')}{2022}"
+    else:
+        check_str = f"{str(month).rjust(2,'0')}{str(day).rjust(2, '0')}{2023}"
+    
+    if league == 'nba':
         try:
             games = db.nba_schedule.find({'_id': {'$regex': '.*' + check_str}})
             res = [x['schedule'] for x in games]
@@ -193,60 +227,58 @@ def get_schedule(month, day, sport):
             return res
         except OperationFailure:
             return string_response("Cannot get schedule for date", 500)
-    elif sport == 'NHL':
-        if month in [10,11,12]:
-            check_str = f"{str(month).rjust(2,'0')}{str(day).rjust(2, '0')}{2022}"
-        else:
-            check_str = f"{str(month).rjust(2,'0')}{str(day).rjust(2, '0')}{2023}"
-
+    elif league == 'nhl':
         try:
             games = db.nhl_schedule.find({'_id': {'$regex': '.*' + check_str}})
             res = [x['schedule'] for x in games]
-            res.sort(key=schedule_key_nhl)
+            res.sort(key=schedule_key)
             return res
         except OperationFailure:
             return string_response("Cannot get schedule for date", 500)
+    else:
+        return string_response("NBA and NHL are the only leagues supported at this point.", 400)
 
 # Return all players
-@app.route('/player/<sport>', methods=['GET'])
-def get_all_players(sport):
-    if sport == 'NHA':
+@app.route('/<league>/player', methods=['GET'])
+def get_all_players(league):
+    if league == 'nba':
         return json.dumps([player["_id"] for player in db.nba_players.find()])
-    elif sport == 'NHL':
+    elif league == 'nhl':
         return json.dumps([player["_id"] for player in db.nhl_players.find()])
 
 # Return bio data for a specified player
-@app.route('/player/<int:player_id>/<sport>', methods=['GET'])
-def get_player_data(player_id, sport):
-    if sport == 'NBA':
+@app.route('/<league>/player/<int:player_id>', methods=['GET'])
+def get_player_data(player_id, league):
+    if league == 'nba':
         return json.dumps(db.nba_players.find_one({'_id': player_id}))
-    elif sport == 'NHL':
+    elif league == 'nhl':
         return json.dumps(db.nhl_players.find_one({'_id': player_id}))
 
 # Return all teams
-@app.route('/team/<sport>', methods=['GET'])
-def get_all_teams(sport):
-    if sport == 'NBA':
+@app.route('/<league>/team', methods=['GET'])
+def get_all_teams(league):
+    if (league == 'nba'):
         teams = list(db.nba_teams.find({}, { '_id': 1, 'icon': 1, 'short': 1, 'name': 1, 'abbr': 1 }))
+    elif (league == 'nhl'):
+        teams = list(db.nhl_teams.find({}, { '_id': 1, 'icon': 1, 'short': 1, 'name': 1, 'abbr': 1 }))
+    else:
+        return string_response(f'{league} is not a valid league. Only "nhl" and "nba" are accepted', 400)
 
-        for team in teams:
-            team["id"] = str(team["_id"])
-            del team["_id"]
+    for team in teams:
+        team["id"] = str(team["_id"])
 
-        return json.dumps(teams)
-    elif sport == 'NHL':
-        teams = list(db.nhl_teams.find({}, { '_id': 1, 'short': 1, 'name': 1, 'abbr': 1 }))
+        # add empty icon string to nhl
+        if league == 'nhl':
+            team["icon"] = ""
 
-        for team in teams:
-            team["id"] = str(team["_id"])
-            del team["_id"]
+        del team["_id"]
 
-        return json.dumps(teams)
+    return json.dumps(teams)
 
 # return one team
-@app.route('/team/<id>/<sport>', methods=['GET'])
-def get_team(id, sport):
-    if sport == 'NBA':
+@app.route('/<league>/team/<id>', methods=['GET'])
+def get_team(id, league):
+    if (league == 'nba'):
         team_cursor = db.nba_teams.aggregate([
             { '$match': { '_id': int(id) }},
             { '$lookup': {
@@ -256,16 +288,7 @@ def get_team(id, sport):
                 "as": "players"
             }}
         ])
-
-        team = list(team_cursor)[0]
-        
-        del team["roster"]
-        
-        team["id"] = str(team["_id"])
-        del team["_id"]
-
-        return json.dumps(team)
-    elif sport == 'NHL':
+    elif (league == 'nhl'):
         team_cursor = db.nhl_teams.aggregate([
             { '$match': { '_id': int(id) }},
             { '$lookup': {
@@ -275,23 +298,28 @@ def get_team(id, sport):
                 "as": "players"
             }}
         ])
+    else:
+        return string_response(f'{league} is not a valid league. Only "nhl" and "nba" are accepted', 400)
 
-        team = list(team_cursor)[0]
-        
-        del team["roster"]
-        
-        team["id"] = str(team["_id"])
-        del team["_id"]
+    team = list(team_cursor)[0]
+    
+    del team["roster"]
+    
+    team["id"] = str(team["_id"])
+    del team["_id"]
 
-        return json.dumps(team)
+    return json.dumps(team)
 
 gpr = pickle.load(open('models/gpr_model_xs.pkl', 'rb'))
 league_stats = pd.read_csv('data/league_stats.csv')
 
 # Return predicted scores for a specified matchup
-@app.route('/score/<team1>/<team2>', methods=['GET'])
-def get_score(team1, team2):
-    team1_id = db.nba_teams.find_one({'abbr': team1})['_id']
+@app.route('/<league>/score/<team1>/<team2>', methods=['GET'])
+def get_score(team1, team2, league):
+    if league != 'nba':
+        return string_response("NBA is only supported league for score prediction")
+
+    team1_id = db.teams.find_one({'abbr': team1})['_id']
     team1_stats = league_stats[league_stats['team_id'] == team1_id]
     team1_stats.reset_index(drop=True, inplace=True)
     team1_off = team1_stats[['off_rtg','off_rtg_10','pace','pace_10']]
