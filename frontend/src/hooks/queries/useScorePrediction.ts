@@ -9,7 +9,7 @@ export const useScorePrediction = (teamOne: string, teamTwo: string) => {
         queryFn: async () => {
             return await axios
                 .get<ScorePrediction>(
-                    `${DEVELOPMENT_API}/score/${teamOne}/${teamTwo}`
+                    `${DEVELOPMENT_API}/nba/score/${teamOne}/${teamTwo}`
                 )
                 .then((response) => response.data);
         },

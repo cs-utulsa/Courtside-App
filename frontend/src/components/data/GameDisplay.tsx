@@ -2,12 +2,14 @@ import { View, StyleSheet, Pressable } from 'react-native';
 import React, { FC } from 'react';
 
 import { SelectCircle } from '../buttons/SelectCircle';
-import { ICONS } from '../../constants';
+import { NBA_ICONS } from '../../constants';
 import { Game } from './../../types/Game';
 import { useNavigation } from '@react-navigation/native';
 import { ScheduleNavigationProp } from './../../types/Navigation';
 import { Card } from '../misc/Card';
 import { ThemeText } from '../misc/ThemeText';
+import { useLeague } from '@hooks/useLeague';
+import { NHL_ICONS } from '@constants/icons';
 
 type GameProps = {
     /** The data for the game represented by this display */
@@ -23,12 +25,15 @@ type GameProps = {
  */
 export const GameDisplay: FC<GameProps> = ({ game }) => {
     const { push } = useNavigation<ScheduleNavigationProp>();
+    const { league } = useLeague();
 
-    const awayIconUrl = ICONS.find(
+    const iconsList = league === 'nba' ? NBA_ICONS : NHL_ICONS;
+
+    const awayIconUrl = iconsList.find(
         (icon) => icon.code === game.away_code
     )?.logo;
 
-    const homeIconUrl = ICONS.find(
+    const homeIconUrl = iconsList.find(
         (icon) => icon.code === game.home_code
     )?.logo;
 
@@ -36,21 +41,13 @@ export const GameDisplay: FC<GameProps> = ({ game }) => {
         <Pressable onPress={() => push('Game', { game })}>
             <Card>
                 <View style={styles.gameBlock}>
-                    <SelectCircle
-                        url={awayIconUrl}
-                        size={100}
-                        disabled={true}
-                    />
+                    <SelectCircle url={awayIconUrl} size={90} disabled={true} />
                     <View style={styles.gameData}>
                         <ThemeText style={[styles.gameTime]}>
                             {game.game_time}
                         </ThemeText>
                     </View>
-                    <SelectCircle
-                        url={homeIconUrl}
-                        size={100}
-                        disabled={true}
-                    />
+                    <SelectCircle url={homeIconUrl} size={90} disabled={true} />
                 </View>
             </Card>
         </Pressable>

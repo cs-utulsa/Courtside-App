@@ -9,6 +9,7 @@ import { StatsStack } from './StatsStack';
 import { RosterStack } from './RosterStack';
 import { ParamListBase, RouteProp, useTheme } from '@react-navigation/native';
 import { ScheduleStack } from './ScheduleStack';
+import { SwitchLeagues } from '@components/index';
 
 const Tab = createBottomTabNavigator();
 
@@ -64,6 +65,18 @@ const screenOptions = (routeName: string | undefined, iconColor: string) => {
     });
 };
 
+const individualScreenOptions = (
+    routeName: string | undefined
+): BottomTabNavigationOptions => {
+    if (routeName === 'Game') {
+        return {};
+    } else {
+        return {
+            headerRight: () => <SwitchLeagues />,
+        };
+    }
+};
+
 type MainNavigationProps = {
     routeName: string | undefined;
 };
@@ -77,8 +90,16 @@ export const MainNavigation: FC<MainNavigationProps> = ({ routeName }) => {
 
     return (
         <Tab.Navigator initialRouteName="Stats" screenOptions={options}>
-            <Tab.Screen name="Stats" component={StatsStack} />
-            <Tab.Screen name="Games" component={ScheduleStack} />
+            <Tab.Screen
+                name="Stats"
+                component={StatsStack}
+                options={individualScreenOptions(routeName)}
+            />
+            <Tab.Screen
+                name="Games"
+                component={ScheduleStack}
+                options={individualScreenOptions(routeName)}
+            />
             <Tab.Screen name="Rosters" component={RosterStack} />
             <Tab.Screen name="Settings" component={Settings} />
         </Tab.Navigator>

@@ -1,14 +1,14 @@
 import { DEVELOPMENT_API } from '@constants/urls';
 import { useQuery } from '@tanstack/react-query';
-import { TeamIcon } from './../../types/Team';
+import { playerIcon } from './../../types/Player';
 import axios from 'axios';
 
-export const useAllTeams = () => {
-    return useQuery<TeamIcon[]>({
-        queryKey: ['teams'],
+export const useAllPlayers = () => {
+    return useQuery<playerIcon[]>({
+        queryKey: [''],
         queryFn: async () => {
-            const data: TeamIcon[] = await axios
-                .get(`${DEVELOPMENT_API}/nba/team`)
+            const data: playerIcon[] = await axios
+                .get(`${DEVELOPMENT_API}/`)
                 .then((res) => res.data);
 
             return data;

@@ -23,3 +23,12 @@ export type Player = {
     /** the weight of the player in pounds */
     weight: string;
 };
+
+// type representing just the players headshot (used for team selection)
+export type playerIcon = {
+    /** the players id */
+    id: string;
+    /** link to the players headshot */
+    headshot: string;
+    name: string;
+};

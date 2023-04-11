@@ -1,4 +1,4 @@
-export const STATS = [
+export const NBA_STATS = [
     { id: 'GP', name: 'Games Played' },
     { id: 'MIN', name: 'Minutes' },
     { id: 'FGM', name: 'Field Goals Made' },
@@ -19,4 +19,15 @@ export const STATS = [
     { id: 'TOV', name: 'Turnovers' },
     { id: 'PTS', name: 'Points' },
     { id: 'EFF', name: 'Efficiency' },
+];
+
+export const NHL_STATS = [
+    { id: 'assists', name: 'Assists' },
+    { id: 'goals', name: 'Goals' },
+    { id: 'pim', name: 'Penalty Infraction Minutes' },
+    { id: 'shots', name: 'Shots' },
+    { id: 'games', name: 'Games Played' },
+    { id: 'hits', name: 'Hits' },
+    { id: 'powerPlayGoals', name: 'Power Play Goals' },
+    { id: 'powerPlayPoints', name: 'Power Play Points' },
 ];

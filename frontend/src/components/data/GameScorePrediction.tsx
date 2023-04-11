@@ -8,7 +8,7 @@ import { useTheme } from '@react-navigation/native';
 import { ThemeText } from '@components/misc/ThemeText';
 import hexToRgba from 'hex-to-rgba';
 import { ScorePrediction } from './../../types/Game';
-import { ICONS } from '@constants/icons';
+import { NBA_ICONS } from '@constants/icons';
 import { CircleImage } from '@components/images/CircleImage';
 
 type GameScorePredictionProps = {
@@ -91,7 +91,7 @@ export const GameScorePrediction: FC<GameScorePredictionProps> = ({
                         <View style={styles.imageContainer}>
                             <CircleImage
                                 url={
-                                    ICONS.find(
+                                    NBA_ICONS.find(
                                         (icon) => icon.code === getWinner(data)
                                     )?.logo ?? ''
                                 }

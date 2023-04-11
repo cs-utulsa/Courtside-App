@@ -62,9 +62,13 @@ export type RosterNavigatorParamList = {
     /** screen that shows the roster and data for a specific team */
     Team: { team: Team };
     /** screen where user can change the teams they follow */
-    Selection: undefined;
+    Tselection: undefined;
+
+    /** screen where user can change the players they follow */
+    Pselection: undefined;
+
     /** screen that shows the data for a specific player */
-    Player: { player: Player, team:Team };
+    Player: { player: Player; team: Team };
 };
 
 export type RosterNavigationProp =
