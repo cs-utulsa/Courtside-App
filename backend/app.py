@@ -319,7 +319,7 @@ def get_score(team1, team2, league):
     if league != 'nba':
         return string_response("NBA is only supported league for score prediction")
 
-    team1_id = db.teams.find_one({'abbr': team1})['_id']
+    team1_id = db.nba_teams.find_one({'abbr': team1})['_id']
     team1_stats = league_stats[league_stats['team_id'] == team1_id]
     team1_stats.reset_index(drop=True, inplace=True)
     team1_off = team1_stats[['off_rtg','off_rtg_10','pace','pace_10']]
