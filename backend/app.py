@@ -310,51 +310,105 @@ def get_team(id, league):
 
     return json.dumps(team)
 
-gpr = pickle.load(open('models/gpr_model_xs.pkl', 'rb'))
-league_stats = pd.read_csv('data/league_stats.csv')
+nba_gpr = pickle.load(open('models/nba_gpr_model_xs.pkl', 'rb'))
+nba_league_stats = pd.read_csv('data/nba_league_stats.csv')
+
+nhl_gpr = pickle.load(open('models/nhl_gpr_model_xs.pkl', 'rb'))
+nhl_league_stats = pd.read_csv('data/nhl_league_stats.csv')
 
 # Return predicted scores for a specified matchup
 @app.route('/<league>/score/<team1>/<team2>', methods=['GET'])
 def get_score(team1, team2, league):
-    if league != 'nba':
-        return string_response("NBA is only supported league for score prediction")
+    if league == 'nba':
+        # Get stats for team 1
+        team1_id = db.nba_teams.find_one({'abbr': team1})['_id']
+        team1_stats = nba_league_stats[nba_league_stats['team_id'] == team1_id]
+        team1_stats.reset_index(drop=True, inplace=True)
+        team1_off = team1_stats[['off_rtg','off_rtg_10','pace','pace_10']]
+        team1_def = team1_stats[['def_rtg','def_rtg_10','pace','pace_10']]
+        team1_def.columns = ['opp_def_rtg','opp_def_rtg_10','opp_pace','opp_pace_10']
+        
+        # Get stats for team 2
+        team2_id = db.nba_teams.find_one({'abbr': team2})['_id']
+        team2_stats = nba_league_stats[nba_league_stats['team_id'] == team2_id]
+        team2_stats.reset_index(drop=True, inplace=True)
+        team2_off = team2_stats[['off_rtg','off_rtg_10','pace','pace_10']]
+        team2_def = team2_stats[['def_rtg','def_rtg_10','pace','pace_10']]
+        team2_def.columns = ['opp_def_rtg','opp_def_rtg_10','opp_pace','opp_pace_10']
+        
+        # Concatenate team 1 and team 2 stats
+        team1_input = pd.concat([team1_off, team2_def], axis=1)
+        team2_input = pd.concat([team2_off, team1_def], axis=1)
+        
+        # Get predictions
+        team1_preds = nba_gpr.predict(team1_input, return_std=True)
+        team2_preds = nba_gpr.predict(team2_input, return_std=True)
 
-    team1_id = db.nba_teams.find_one({'abbr': team1})['_id']
-    team1_stats = league_stats[league_stats['team_id'] == team1_id]
-    team1_stats.reset_index(drop=True, inplace=True)
-    team1_off = team1_stats[['off_rtg','off_rtg_10','pace','pace_10']]
-    team1_def = team1_stats[['def_rtg','def_rtg_10','pace','pace_10']]
-    team1_def.columns = ['opp_def_rtg','opp_def_rtg_10','opp_pace','opp_pace_10']
-    
-    team2_id = db.nba_teams.find_one({'abbr': team2})['_id']
-    team2_stats = league_stats[league_stats['team_id'] == team2_id]
-    team2_stats.reset_index(drop=True, inplace=True)
-    team2_off = team2_stats[['off_rtg','off_rtg_10','pace','pace_10']]
-    team2_def = team2_stats[['def_rtg','def_rtg_10','pace','pace_10']]
-    team2_def.columns = ['opp_def_rtg','opp_def_rtg_10','opp_pace','opp_pace_10']
-    
-    team1_input = pd.concat([team1_off, team2_def], axis=1)
-    team2_input = pd.concat([team2_off, team1_def], axis=1)
-    
-    team1_preds = gpr.predict(team1_input, return_std=True)
-    team2_preds = gpr.predict(team2_input, return_std=True)
+        # Get win probabilities
+        team1_win_prob = stats.norm.cdf(team1_preds[0][0], loc=team2_preds[0][0], scale=team2_preds[1][0])
+        team2_win_prob = stats.norm.cdf(team2_preds[0][0], loc=team1_preds[0][0], scale=team1_preds[1][0])
 
-    team1_win_prob = stats.norm.cdf(team1_preds[0][0], loc=team2_preds[0][0], scale=team2_preds[1][0])
-    team2_win_prob = stats.norm.cdf(team2_preds[0][0], loc=team1_preds[0][0], scale=team1_preds[1][0])
-
-    json_output = {
-        team1: {
-            'score': round(team1_preds[0][0], 3),
-            'stdev': round(team1_preds[1][0], 3),
-            'win_pct': round(team1_win_prob, 3),
-        },
-        team2: {
-            'score': round(team2_preds[0][0], 3),
-            'stdev': round(team2_preds[1][0], 3),
-            'win_pct': round(team2_win_prob, 3),
+        # Create json output
+        json_output = {
+            team1: {
+                'score': round(team1_preds[0][0], 3),
+                'stdev': round(team1_preds[1][0], 3),
+                'win_pct': round(team1_win_prob, 3),
+            },
+            team2: {
+                'score': round(team2_preds[0][0], 3),
+                'stdev': round(team2_preds[1][0], 3),
+                'win_pct': round(team2_win_prob, 3),
+            }
         }
-    }
-    return json_output
+        return json_output
+    elif league == 'nhl':
+        # Team and opponent stats for inference
+        team_stats = ['evGGARatio', 'shotsPerGame', 'shootingPctg']
+        opp_stats = ['shotsAllowed', 'savePctg']
+        
+        # Get stats for team 1
+        team1_id = db.nhl_teams.find_one({'abbr': team1})['_id']
+        team1_stats = nhl_league_stats[nhl_league_stats['team_id']==team1_id]
+        team1_stats.reset_index(inplace=True, drop=True)
+        team1_off = team1_stats[team_stats]
+        team1_def = team1_stats[opp_stats]
+        team1_def.columns = ['oppShotsAllowed', 'oppSavePctg']
+        
+        # Get stats for team 2
+        team2_id = db.nhl_teams.find_one({'abbr': team2})['_id']
+        team2_stats = nhl_league_stats[nhl_league_stats['team_id']==team2_id]
+        team2_stats.reset_index(inplace=True, drop=True)
+        team2_off = team2_stats[team_stats]
+        team2_def = team2_stats[opp_stats]
+        team2_def.columns = ['oppShotsAllowed', 'oppSavePctg']
+
+        # Concatenate team and opponent stats
+        team1_input = pd.concat([team1_off, team2_def], axis=1)
+        team2_input = pd.concat([team2_off, team1_def], axis=1)
+
+        # Predict score for each team
+        team1_preds = nhl_gpr.predict(team1_input, return_std=True)
+        team2_preds = nhl_gpr.predict(team2_input, return_std=True)
+
+        # Calculate win probability for each team
+        team1_win_prob = stats.norm.cdf(team1_preds[0][0], loc=team2_preds[0][0], scale=team2_preds[1][0])
+        team2_win_prob = stats.norm.cdf(team2_preds[0][0], loc=team1_preds[0][0], scale=team1_preds[1][0])
+
+        # Create JSON output
+        json_output = {
+            team1: {
+                'score': round(team1_preds[0][0], 3),
+                'stdev': round(team1_preds[1][0], 3),
+                'win_pct': round(team1_win_prob, 3),
+            },
+            team2: {
+                'score': round(team2_preds[0][0], 3),
+                'stdev': round(team2_preds[1][0], 3),
+                'win_pct': round(team2_win_prob, 3),
+            }
+        }
+        return json_output
 
 # Main method
 if __name__ == "__main__":
