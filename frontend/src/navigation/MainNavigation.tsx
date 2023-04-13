@@ -101,7 +101,11 @@ export const MainNavigation: FC<MainNavigationProps> = ({ routeName }) => {
                 options={individualScreenOptions(routeName)}
             />
             <Tab.Screen name="Rosters" component={RosterStack} />
-            <Tab.Screen name="Settings" component={Settings} />
+            <Tab.Screen
+                name="Settings"
+                component={Settings}
+                options={individualScreenOptions(routeName)}
+            />
         </Tab.Navigator>
     );
 };
