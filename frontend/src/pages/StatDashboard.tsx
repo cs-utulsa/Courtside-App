@@ -27,7 +27,6 @@ export const StatDashboard = () => {
 
     const { data, isError, isLoading, isSuccess, isRefetching, refetch } =
         useStats(authData?.stats);
-
     // refetch the data when user returns to screen (stale data is still displayed during refetch)
     useRefreshOnFocus(refetch);
 

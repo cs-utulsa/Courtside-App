@@ -1,10 +1,10 @@
 //external imports
 import React, { useCallback, useState } from 'react';
-import { StyleSheet, ActivityIndicator, View } from 'react-native';
+import { StyleSheet, ActivityIndicator, View, TextInput, Text,TextInputChangeEventData } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
 //custom components
-import { FAB, FullError, SearchBox, TeamsList } from '@components/index';
+import { FAB, FullError, SearchBox, PlayersList } from '@components/index';
 
 // constants
 import { useNavigation, useTheme } from '@react-navigation/native';
@@ -12,8 +12,10 @@ import { RosterNavigationProp } from '../types/Navigation';
 import { useAuth } from '@hooks/useAuth';
 import { useAllTeams } from '@hooks/index';
 import { playerIcon } from '../types/Player';
-import { useAllPlayers } from '@hooks/queries/useAllPlayers';
-
+import { DEVELOPMENT_API } from '@constants/urls';
+import { useQuery } from '@tanstack/react-query';
+import { useDebounce } from '@dwarvesf/react-hooks';
+import axios from 'axios';
 /** This component lets the user choose what teams they want to follow */
 export const PlayerSelectionScreen = () => {
     const rosterNavigation = useNavigation<RosterNavigationProp>();
@@ -25,18 +27,12 @@ export const PlayerSelectionScreen = () => {
     );
 
     const [submitting, setSubmitting] = useState<boolean>(false);
-    
 
-    const teams = useAllPlayers();
-
-    for(let i in teams){
-       
-        console.log(i);
-
-    }
-
-    const { data, isSuccess, isLoading, isError } = useAllPlayers();
     const [result, setResult] = useState<playerIcon[]>([]);
+   
+ 
+      
+
 
     const submitTeamSelectionUpdates = async () => {
         setSubmitting(true);
@@ -47,49 +43,35 @@ export const PlayerSelectionScreen = () => {
         setSubmitting(false);
     };
 
-    const handleSearchQueryChange = useCallback(
-        (query: string) => {
-            if (query === '') {
-                setResult([]);
-                return;
-            }
-
-            const _result = data!.filter((player) => {
-                if ( 
-                    player.name.toLowerCase().includes(query.toLowerCase()) 
-                ) {
-                    return true;
-                }
-                return false;
-            });
-
-            setResult(_result);
-        },
-        [data]
-    );
+   
 
     const addTeam = (id: string) => setSelectedTeams((prev) => prev.concat(id));
     const removeTeam = (id: string) =>
         setSelectedTeams((prev) => prev.filter((team) => team !== id));
-
-    if (isLoading) {
-        return <ActivityIndicator />;
-    }
-
-    if (isError) {
-        return <FullError text="Cannot retrieve teams data. Try again later" />;
-    }
-
-    return (
+   
+   
+   
+        const [query, setQuery] = useState<string>("");
+        // basically just sets a 300ms delay on debouncedQuery updaing
+        const debouncedQuery = useDebounce(query, 300);
+      
+        const { data } = useQuery({ //maybe queryKey does do something and thats why the search sucks...
+          queryKey: ['players', debouncedQuery], //what does queryKey actually do...
+          queryFn: () => {
+            return axios.get(`${DEVELOPMENT_API}/nba/player/${debouncedQuery}`).then(res => res.data);
+          }
+        })
+        return (    //<Text>{JSON.stringify(data)}</Text>
+        
+           
         <View style={styles.container}>
-            {isSuccess && (
+            {
                 <>
-                    <SearchBox
-                        placeholder="Search for teams"
-                        onChange={handleSearchQueryChange}
-                    />
-                    <TeamsList
-                        teams={result}
+                        <TextInput  onChangeText={setQuery} />
+         <Text>{JSON.stringify(data)}</Text>
+                    <Text>deezs</Text> 
+                    <PlayersList
+                        players={data}
                         selected={selectedTeams}
                         addTeam={addTeam}
                         removeTeam={removeTeam}
@@ -113,7 +95,7 @@ export const PlayerSelectionScreen = () => {
                         </FAB>
                     )}
                 </>
-            )}
+}
         </View>
     );
 };

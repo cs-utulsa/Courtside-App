@@ -22,6 +22,7 @@ export type Player = {
     team: string;
     /** the weight of the player in pounds */
     weight: string;
+    ast: int;
 };
 
 // type representing just the players headshot (used for team selection)

@@ -10,7 +10,6 @@ export const useAllTeams = () => {
             const data: TeamIcon[] = await axios
                 .get(`${DEVELOPMENT_API}/nba/team`)
                 .then((res) => res.data);
-
             return data;
         },
     });
