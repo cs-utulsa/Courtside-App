@@ -31,12 +31,12 @@ export const RostersScreen = () => {
                         text="Follow Teams"
                         onPress={() => navigate('Tselection')}
                     />
-                    {(isLoading || isRefetching) && <ActivityIndicator />}
-                    {isError && <ErrorBox error="Error" />}
                     <PrimaryButton
                         text="Follow Players"
                         onPress={() => navigate('Pselection')}
                     />
+                    {(isLoading || isRefetching) && <ActivityIndicator />}
+                    {isError && <ErrorBox error="Error" />}
                 </>
             }
             ListHeaderComponentStyle={styles.headerContainer}
