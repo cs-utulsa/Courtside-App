@@ -12,7 +12,7 @@ export const RostersScreen = () => {
     const { navigate } = useNavigation<RosterNavigationProp>();
     const { authData } = useAuth();
 
-    const { data, isLoading, isError, refetch } = useTeams(
+    const { data, isLoading, isError, isRefetching, refetch } = useTeams(
         authData?.teams ?? []
     );
 
@@ -31,7 +31,7 @@ export const RostersScreen = () => {
                         text="Follow Teams"
                         onPress={() => navigate('Tselection')}
                     />
-                    {isLoading && <ActivityIndicator />}
+                    {(isLoading || isRefetching) && <ActivityIndicator />}
                     {isError && <ErrorBox error="Error" />}
                     <PrimaryButton
                         text="Follow Players"

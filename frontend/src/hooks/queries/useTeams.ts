@@ -18,7 +18,7 @@ export const useTeams = (teams: string[], options?: Options) => {
     }
 
     return useQuery<Team[]>({
-        queryKey: ['userTeams'],
+        queryKey: ['userTeams', league],
         queryFn: async () => {
             if (!teams) return [];
 
