@@ -4,7 +4,7 @@ interface LeagueProviderProps {
     children: ReactNode;
 }
 
-type League = 'nba' | 'nhl';
+export type League = 'nba' | 'nhl';
 
 type LeagueContextData = {
     league: League;
