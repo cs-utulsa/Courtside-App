@@ -232,12 +232,10 @@ def get_player_data(player_id):
 # Return all teams
 @app.route('/<league>/team', methods=['GET'])
 def get_all_teams(league):
-
-    teams = []
-    if (league == 'nba' or league == 'all'):
-        teams = teams + list(db.nba_teams.find({}, { '_id': 1, 'icon': 1, 'short': 1, 'name': 1, 'abbr': 1 }))
-    elif (league == 'nhl' or league == 'all'):
-        teams = teams + list(db.nhl_teams.find({}, { '_id': 1, 'icon': 1, 'short': 1, 'name': 1, 'abbr': 1 }))
+    if (league == 'nba'):
+        teams = list(db.nba_teams.find({}, { '_id': 1, 'icon': 1, 'short': 1, 'name': 1, 'abbr': 1 }))
+    elif (league == 'nhl'):
+        teams = list(db.nhl_teams.find({}, { '_id': 1, 'icon': 1, 'short': 1, 'name': 1, 'abbr': 1 }))
     else:
         return string_response(f'{league} is not a valid league. Only "nhl" and "nba" are accepted', 400)
 
