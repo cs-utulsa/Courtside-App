@@ -18,7 +18,7 @@ export const useTeams = (teams: string[], options?: Options) => {
     }
 
     return useQuery<Team[]>({
-        queryKey: ['userTeams', league],
+        queryKey: ['userTeams', finalLeague],
         queryFn: async () => {
             if (!teams) return [];
 
@@ -37,6 +37,7 @@ export const useTeams = (teams: string[], options?: Options) => {
                         }
                     })
                     .then((res) => res.data);
+
                 if (Object.keys(data).length > 0) _teamData.push(data);
             }
 

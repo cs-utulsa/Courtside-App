@@ -250,7 +250,7 @@ def get_all_teams(league):
 @app.route('/<league>/team/<id>', methods=['GET'])
 def get_team(id, league):
     if (league == 'nba'):
-        team_cursor = db.nba_teams.aggregate([
+        team_cursor = list(db.nba_teams.aggregate([
             { '$match': { '_id': int(id) }},
             { '$lookup': {
                 "from": "nba_players",
@@ -258,9 +258,9 @@ def get_team(id, league):
                 "foreignField": "_id",
                 "as": "players"
             }}
-        ])
+        ]))
     elif (league == 'nhl'):
-        team_cursor = db.nhl_teams.aggregate([
+        team_cursor = list(db.nhl_teams.aggregate([
             { '$match': { '_id': int(id) }},
             { '$lookup': {
                 "from": "nhl_players",
@@ -268,9 +268,9 @@ def get_team(id, league):
                 "foreignField": "_id",
                 "as": "players"
             }}
-        ])
+        ]))
     elif league == 'all':
-        team_cursor = db.nba_teams.aggregate([
+        team_cursor = list(db.nba_teams.aggregate([
             { '$match': { '_id': int(id) }},
             { '$lookup': {
                 "from": "nba_players",
@@ -278,9 +278,10 @@ def get_team(id, league):
                 "foreignField": "_id",
                 "as": "players"
             }}
-        ])
-        if (not team_cursor):
-            team_cursor = db.nhl_teams.aggregate([
+        ]))
+
+        if (len(team_cursor) <= 0):
+            team_cursor = list(db.nhl_teams.aggregate([
                     { '$match': { '_id': int(id) }},
                     { '$lookup': {
                         "from": "nhl_players",
@@ -288,16 +289,14 @@ def get_team(id, league):
                         "foreignField": "_id",
                         "as": "players"
                     }}
-                ])
+                ]))
     else:
         return string_response(f'{league} is not a valid league. Only "nhl" and "nba" are accepted', 400)
 
-    result = list(team_cursor)
-    print(len(result))
-    if (len(result) == 0):
+    if (len(team_cursor) == 0):
         return string_response('Team not found', 404)
 
-    team = result[0]
+    team = team_cursor[0]
     
     del team["roster"]
     
