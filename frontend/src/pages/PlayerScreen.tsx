@@ -57,7 +57,7 @@ export const PlayerScreen = () => {
             <ThemeText style={styles.text}>{player.team}</ThemeText>
 
             <Card>
-            <Toggler onPress={handleToggle}/>
+            <Toggler onPress={handleToggle} isToggled={isToggled}/>
             {isToggled &&
                 <View style={styles.leaderboardBlock}>
                     
@@ -107,6 +107,68 @@ export const PlayerScreen = () => {
                     </View>
                 </View>
 }
+
+{!isToggled &&  <View style={styles.leaderboardBlock}>
+                    
+<View>
+                        
+                        <ThemeText style={styles.listtext}>
+                        Points: {player.pts}
+                        </ThemeText>
+            
+                        <ThemeText style={styles.listtext}>
+                            
+                           Rebounds: {player.reb}
+                        </ThemeText>
+                        <ThemeText style={styles.listtext}>
+                            
+                        Assists:  {player.ast}
+                        </ThemeText>
+                    
+                        <ThemeText style={styles.listtext}>
+                       
+                        Steals:  {player.stl}
+                        </ThemeText>
+
+                        <ThemeText style={styles.listtext}>
+                        Turnovers: {player.tov}
+                        </ThemeText>
+            
+                        <ThemeText style={styles.listtext}>
+                            
+                           Blocks: {player.blk}
+                        </ThemeText>
+                    
+                       
+                    </View>
+
+                    <View style={styles.statstwo}>
+
+                    <ThemeText style={styles.listtext}>
+                            
+                            Games Played:  {player.games_played}
+                            </ThemeText>
+                        
+                            <ThemeText style={styles.listtext}>
+                           
+                            Plus Minus:  {player.plus_minus}
+                            </ThemeText>
+                    <ThemeText style={styles.listtext}>
+                        3 point %: {player.fg3_pct}
+                        </ThemeText>
+            
+                        <ThemeText style={styles.listtext}>
+                            
+                        free throw %: {player.ft_pct}
+                        </ThemeText>
+               
+                        <ThemeText style={styles.listtext}>
+                       
+                       field goal %:  {player.fg_pct}
+                        </ThemeText>
+
+                    </View>
+                </View>}
             </Card>
         </ScrollView>
     );
@@ -130,10 +192,10 @@ const styles = StyleSheet.create({
         marginLeft: 40,
     },
     listtext: {
-        fontSize: 20,
+        fontSize: 18,
         // textAlign: '',
         //  fontWeight: 'bold',
-        margin: 5,
+        margin: 8,
     },
     leaderboardBlock: {
         flexDirection: 'row',

@@ -22,7 +22,35 @@ export type Player = {
     team: string;
     /** the weight of the player in pounds */
     weight: string;
+    //stats
+    pts: int;
+    reb: int;
+    stl: int;
+    tov: int;
     ast: int;
+    blk: int;
+   // dreb: int;
+//blcka who needs block assists
+//blcka: int; // just in case
+    fg3_pct: float;
+   // fg3a: int;
+   // fg3m: int;
+
+    fg_pct: float;
+ //   fga: int;
+ //   fgm: int;
+
+    ft_pct: float;
+   // fta: int;
+    //ftm: int;
+
+    games_played: int;
+    plus_minus: int;
+    //pf and pfd and oreb? ask rylee...
+
+
+
+
 };
 
 // type representing just the players headshot (used for team selection)
