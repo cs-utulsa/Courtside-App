@@ -1,20 +1,25 @@
 //external imports
-import React, { useCallback, useState } from 'react';
-import { StyleSheet, ActivityIndicator, View, TextInput, Text,TextInputChangeEventData } from 'react-native';
+import React, { useState } from 'react';
+import {
+    StyleSheet,
+    ActivityIndicator,
+    View,
+    TextInput,
+    Text,
+} from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
 //custom components
-import { FAB, FullError, SearchBox, PlayersList } from '@components/index';
+import { FAB, PlayersList } from '@components/index';
 
 // constants
 import { useNavigation, useTheme } from '@react-navigation/native';
 import { RosterNavigationProp } from '../types/Navigation';
 import { useAuth } from '@hooks/useAuth';
-import { useAllTeams } from '@hooks/index';
 import { playerIcon } from '../types/Player';
 import { DEVELOPMENT_API } from '@constants/urls';
 import { useQuery } from '@tanstack/react-query';
-import { useDebounce } from '@dwarvesf/react-hooks';
+import useDebounce from '@hooks/useDebounce';
 import axios from 'axios';
 /** This component lets the user choose what teams they want to follow */
 export const PlayerSelectionScreen = () => {
@@ -29,10 +34,6 @@ export const PlayerSelectionScreen = () => {
     const [submitting, setSubmitting] = useState<boolean>(false);
 
     const [result, setResult] = useState<playerIcon[]>([]);
-   
- 
-      
-
 
     const submitTeamSelectionUpdates = async () => {
         setSubmitting(true);
@@ -43,40 +44,39 @@ export const PlayerSelectionScreen = () => {
         setSubmitting(false);
     };
 
-   
-
     const addTeam = (id: string) => setSelectedTeams((prev) => prev.concat(id));
     const removeTeam = (id: string) =>
         setSelectedTeams((prev) => prev.filter((team) => team !== id));
-   
-   
-   
-        const [query, setQuery] = useState<string>("");
-        // basically just sets a 300ms delay on debouncedQuery updaing
-        const debouncedQuery = useDebounce(query, 300);
-      
-        const { data } = useQuery({ //maybe queryKey does do something and thats why the search sucks...
-          queryKey: ['players', debouncedQuery], //what does queryKey actually do...
-          queryFn: () => {
-            return axios.get(`${DEVELOPMENT_API}/nba/player/${debouncedQuery}`).then(res => res.data);
-          }
-        })
-        return (    //<Text>{JSON.stringify(data)}</Text>
-        
-           
+
+    const [query, setQuery] = useState<string>('');
+    // basically just sets a 300ms delay on debouncedQuery updaing
+    const debouncedQuery = useDebounce(query, 300);
+
+    const { data } = useQuery({
+        //maybe queryKey does do something and thats why the search sucks...
+        queryKey: ['players', debouncedQuery], //what does queryKey actually do...
+        queryFn: () => {
+            return axios
+                .get(`${DEVELOPMENT_API}/nba/player/${debouncedQuery}`)
+                .then((res) => res.data);
+        },
+    });
+    return (
+        //<Text>{JSON.stringify(data)}</Text>
+
         <View style={styles.container}>
             {
                 <>
-                        <TextInput  onChangeText={setQuery} />
-         <Text>{JSON.stringify(data)}</Text>
-                    <Text>deezs</Text> 
+                    <TextInput onChangeText={setQuery} />
+                    <Text>{JSON.stringify(data)}</Text>
+                    <Text>deezs</Text>
                     <PlayersList
                         players={data}
                         selected={selectedTeams}
                         addTeam={addTeam}
                         removeTeam={removeTeam}
                     />
-                    
+
                     {selectedTeams.length >= 1 && (
                         <FAB
                             onPress={submitTeamSelectionUpdates}
@@ -95,7 +95,7 @@ export const PlayerSelectionScreen = () => {
                         </FAB>
                     )}
                 </>
-}
+            }
         </View>
     );
 };

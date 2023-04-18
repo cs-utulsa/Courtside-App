@@ -68,7 +68,15 @@ const screenOptions = (routeName: string | undefined, iconColor: string) => {
 const individualScreenOptions = (
     routeName: string | undefined
 ): BottomTabNavigationOptions => {
-    if (routeName === 'Game') {
+    const toggleBlacklist = [
+        'Game',
+        'Team',
+        'Player',
+        'TSelection',
+        'Pselection',
+    ];
+
+    if (routeName && toggleBlacklist.includes(routeName)) {
         return {};
     } else {
         return {
@@ -100,12 +108,12 @@ export const MainNavigation: FC<MainNavigationProps> = ({ routeName }) => {
                 component={ScheduleStack}
                 options={individualScreenOptions(routeName)}
             />
-            <Tab.Screen name="Rosters" component={RosterStack} />
             <Tab.Screen
-                name="Settings"
-                component={Settings}
+                name="Rosters"
+                component={RosterStack}
                 options={individualScreenOptions(routeName)}
             />
+            <Tab.Screen name="Settings" component={Settings} />
         </Tab.Navigator>
     );
 };

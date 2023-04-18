@@ -23,7 +23,8 @@ export const PrimaryColorSelector = () => {
 
     const { authData } = useAuth();
     const { data, isLoading, isError, isSuccess } = useTeams(
-        authData?.teams ?? []
+        authData?.teams ?? [],
+        { allLeagues: true }
     );
 
     return (

@@ -38,6 +38,7 @@ export const DaySchedule: FC<DayScheduleProps> = ({ ahead }) => {
                 {dateString}
             </ThemeText>
             {isSuccess &&
+                data.length > 0 &&
                 data.map((game) => {
                     return (
                         <GameDisplay
@@ -46,6 +47,9 @@ export const DaySchedule: FC<DayScheduleProps> = ({ ahead }) => {
                         />
                     );
                 })}
+            {data && data.length === 0 && (
+                <ThemeText style={styles.text}>No Games Today!</ThemeText>
+            )}
             {isLoading && (
                 <ActivityIndicator color={colors.primary} size={50} />
             )}
@@ -60,6 +64,9 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 30,
         textDecorationLine: 'underline',
+    },
+    text: {
+        textAlign: 'center',
     },
     /** Styles for the View that contains all of the section information */
     section: {
