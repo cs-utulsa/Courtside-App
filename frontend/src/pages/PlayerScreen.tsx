@@ -31,15 +31,15 @@ export const PlayerScreen = () => {
     const { colors } = useTheme();
     const { authData, updatePlayers } = useAuth();
 
-    const playerIsLiked = authData?.players?.includes(player.id);
+    const playerIsLiked = authData?.players?.includes(player._id);
 
     const onPress = async () => {
         if (!authData?.players) return;
         if (!playerIsLiked) {
-            await updatePlayers([...authData.players, player.id]);
+            await updatePlayers([...authData.players, player._id]);
         } else {
             await updatePlayers(
-                authData.players.filter((p) => p !== player.id)
+                authData.players.filter((p) => p !== player._id)
             );
         }
     };
