@@ -64,7 +64,7 @@ export const PlayerScreen = () => {
                     <View>
                         <ThemeText style={styles.text}>Position:</ThemeText>
                         <ThemeText style={styles.listtext}>
-                            {player.position}
+                            {player.position} {player.pos_name}
                         </ThemeText>
                         <ThemeText style={styles.text}>Height:</ThemeText>
                         <ThemeText style={styles.listtext}>

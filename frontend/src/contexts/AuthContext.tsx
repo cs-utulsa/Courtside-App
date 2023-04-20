@@ -31,6 +31,8 @@ type AuthContextData = {
     updateStats(newStats: string[]): Promise<void>;
     /** method to update the teams the user follows */
     updateTeams(newTeams: string[]): Promise<void>;
+    //method to update the players the user follows
+    updatePlayers(newPlayers: string[]): Promise<void>;
     /** method to clear user data from the device and the server */
     clearData: () => Promise<void>;
     /** resend the verification email to the user's provided email address */
@@ -58,6 +60,8 @@ type AuthData = {
     teams?: string[];
     /** list of stat ids of the stats that the user follows */
     stats?: string[];
+    //list of player ids that the user follows
+    players?: string[];
 };
 
 export const AuthContext = createContext<AuthContextData>(
@@ -295,6 +299,45 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         [authData]
     );
 
+
+    const updatePlayers = useCallback(
+        async (newPlayers: string[]) => {
+            setLoading(true);
+            setAuthError(undefined);
+
+            try {
+                const data = await axios
+                    .patch(
+                        `${DEVELOPMENT_API}/users/teams`,
+                        {
+                            email: authData?.email,
+                            players: newPlayers,
+                        },
+                        {
+                            headers: {
+                                Authorization: `Bearer ${authData?.token}`,
+                            },
+                        }
+                    )
+                    .then((res) => res.data);
+
+                await SecureStore.setItemAsync(
+                    'authData',
+                    JSON.stringify({ ...authData, players: data })
+                );
+
+                setAuthData({ ...authData!, players: data });
+            } catch (err) {
+                if (axios.isAxiosError(err)) {
+                    setAuthError(err.response?.data);
+                } else {
+                    setAuthError('Unknown Error Occurred. Try Again Later.');
+                }
+            }
+        },
+        [authData]
+    );
+
     // clear the user's data
     const clearData = useCallback(async () => {
         setAuthData(undefined);
@@ -446,6 +489,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             signOut,
             updateStats,
             updateTeams,
+            updatePlayers,
             clearData,
             resendEmailVerification,
             updateAuthData,
@@ -462,6 +506,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         signOut,
         updateStats,
         updateTeams,
+        updatePlayers,
         clearData,
         resendEmailVerification,
         updateAuthData,

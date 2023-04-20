@@ -48,6 +48,9 @@ export type Player = {
     plus_minus: int;
     //pf and pfd and oreb? ask rylee...
 
+    //nhl this is going to be JANK
+    pos_name: string;
+
 
 
 
