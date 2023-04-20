@@ -31,7 +31,7 @@ const ButtonHeartWrapper = () => {
   const [isLiked, setIsLiked] = useState(false);
   const route = useRoute<TeamScreenRouteProp>(); //variable also declared in teamScreen
   const team = route.params.team;
-  const { authData, updateTeams } = useAuth();
+  const { authData, updateTeams, updatePlayers } = useAuth();
   const [selectedTeams, setSelectedTeams] = useState<string[]>(
     authData?.teams ?? []
   );
@@ -75,6 +75,17 @@ const ButtonHeartWrapper = () => {
       const updatedTeams = selectedTeams.filter((team) => team !== teamid);
       setSelectedTeams(updatedTeams); //idk if this line works.
       updateTeams(updatedTeams);
+      //in here add a function grab a player frmo the team an see how it works!!!.
+      //or add this into the player section if I cant grab a player
+
+
+
+
+
+
+
+
+      
       setMessage("BRUH");
       setShow(true);
       //I clikced it relatively fast, but may want the async function!!!

@@ -68,7 +68,7 @@ export const ButtonHeart: React.FC<CustomButtonProps> = ({onPress, isLiked}) => 
     );
 };
 
-export const Toggler = ({onPress}) => {
+export const Toggler = ({onPress, isToggled}) => {
   const [selectedOption, setSelectedOption] = useState('option1');
 
   const handleOptionSelect = (option) => {
@@ -83,10 +83,11 @@ export const Toggler = ({onPress}) => {
           styles.optionButton,
           selectedOption === 'option1' && styles.selectedOptionButton,
         ]}
+        disabled={isToggled}
         onPress={() => handleOptionSelect('option1')}
       >
          
-        <Text style={styles.optionButtonText}>Bio</Text>
+        <Text style={styles.optionButtonText}>Biodata</Text>
 
       </TouchableOpacity>
       <TouchableOpacity
@@ -95,8 +96,9 @@ export const Toggler = ({onPress}) => {
           selectedOption === 'option2' && styles.selectedOptionButton,
         ]}
         onPress={() => handleOptionSelect('option2')}
+        disabled={!isToggled}
       >
-         <Text style={styles.optionButtonText2}>Stats</Text>
+         <Text style={styles.optionButtonText2}> Season Stats</Text>
 
       </TouchableOpacity>
     </View>
@@ -125,14 +127,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: '#f5f5f5',
-    width:144,
+    width:284,
     height:34,
     borderWidth: 2,
     borderColor: 'lightgrey',
     
   },
   optionButton: {
-    width: 70,
+    width: 140,
     paddingVertical: 0,
     marginLeft:0,
     marginRight:0,
