@@ -11,6 +11,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { PrimaryButton } from '@components/index';
 import { ButtonHeart } from '../animations/transition';
 import { Toggler } from '../animations/transition';
+import { useAuth } from '@hooks/useAuth';
 /**
  * This screen shows the data for one player.
  * The player data is passed through a navigation parameter
@@ -29,12 +30,28 @@ export const PlayerScreen = () => {
     }
 
     const { colors } = useTheme();
+    const { authData, updatePlayers } = useAuth();
+
+    const playerIsLiked = authData?.players?.includes(player.id);
+
+    const onPress = async () => {
+        if (!authData?.players) return;
+
+        if (!playerIsLiked) {
+            updatePlayers([...authData.players, player.id]);
+        } else {
+            updatePlayers(authData.players.filter(p => p !== player.id));
+        }
+    }
 
     const [isToggled, setIsToggled] = useState(true);
 
     const handleToggle = () => {
       setIsToggled(!isToggled);
     };
+
+    //idk how to comment in the tag view block but some data wasn't transferring for nhl, so I just put some booleans to get rid of the field
+    //if continuing to work on the app, could continue to do this!
     return (
         
         <ScrollView contentContainerStyle={styles.container}>
@@ -50,7 +67,7 @@ export const PlayerScreen = () => {
                 borderColor={colors.border}
             />
             <View style={{marginLeft:-35, marginTop:-20}}>
-            <ButtonHeart/>
+            <ButtonHeart isLiked={!!playerIsLiked} onPress={onPress} />
             </View>
             </View>
             <ThemeText style={styles.text}>{player.name}</ThemeText>
@@ -89,17 +106,19 @@ export const PlayerScreen = () => {
                             {' '}
                             {player.number}
                         </ThemeText>
-                        <ThemeText style={styles.text}>Career: </ThemeText>
+
+                    
+                       {player.experience && <ThemeText style={styles.text}>Career: </ThemeText>}
                         <ThemeText style={styles.listtext}>
                             {' '}
                             {player.experience}
                         </ThemeText>
-                        <ThemeText style={styles.text}>Draft Pick:</ThemeText>
+                       { player.draft && <ThemeText style={styles.text}>Draft Pick:</ThemeText> }
                         <ThemeText style={styles.listtext}>
                             {' '}
                             {player.draft}
                         </ThemeText>
-                        <ThemeText style={styles.text}>Country:</ThemeText>
+                      { player.country && <ThemeText style={styles.text}>Country:</ThemeText> }
                         <ThemeText style={styles.listtext}>
                             {' '}
                             {player.country}

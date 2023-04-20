@@ -150,10 +150,13 @@ export const TeamScreen = () => {
       noposition.push(team.players[i]);
     }
 
+
+
     //
     //split between guards and stuff.
     //
     //
+    //nhl 
   }
   //guards arent being populated into list
   const guardlist = guards.map((item) => (
@@ -299,6 +302,10 @@ export const TeamScreen = () => {
       updateTeams(updatedTeams);
       setMessage(team.name + " removed");
       setShow(true);
+
+
+
+      team.players[0]
       //I clikced it relatively fast, but may want the async function!!!
       //could end up removing and adding too fast...
       //submitTeamSelectionUpdates();

@@ -308,7 +308,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             try {
                 const data = await axios
                     .patch(
-                        `${DEVELOPMENT_API}/users/teams`,
+                        `${DEVELOPMENT_API}/users/players`,
                         {
                             email: authData?.email,
                             players: newPlayers,
