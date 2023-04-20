@@ -55,6 +55,7 @@ def get_user(token):
         result["emailVerified"] = user["emailVerified"]
         result["stats"] = preferences["stats"]
         result["teams"] = preferences["teams"]
+        result["players"] = preferences["players"]
 
         response = make_response()
         response.data = json.dumps(result)
