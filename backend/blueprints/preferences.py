@@ -133,7 +133,7 @@ def change_stats():
     except OperationFailure:
         return string_response("Cannot add stats to user", 500)
 
-@preferences.route('/users/players', methods=["POST"])
+@preferences.route('/users/players', methods=["PATCH"])
 def change_players():
     token = is_valid_jwt(request)
 

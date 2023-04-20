@@ -299,7 +299,6 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         [authData]
     );
 
-
     const updatePlayers = useCallback(
         async (newPlayers: string[]) => {
             setLoading(true);
