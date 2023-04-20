@@ -41,8 +41,8 @@ def get_players_by_query(league, query):
         return string_response("Only NBA is supported for player search.", 500)
     
     players = db.nba_players.find({
-        "name": query
-    })
+        "$text": { "$search": query}
+    }).limit(10);
 
     return json.dumps(list(players))
 

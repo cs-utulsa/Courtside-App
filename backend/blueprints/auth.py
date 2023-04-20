@@ -89,7 +89,8 @@ def create_user():
             "_id": user_id,
             "email": email,
             "stats": [],
-            "teams": teams
+            "teams": teams,
+            "players": [],
         }
 
         # create document in user_preferences for other user data
