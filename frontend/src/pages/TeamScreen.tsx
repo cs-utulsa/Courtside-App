@@ -21,9 +21,9 @@ import { useAuth } from '@hooks/useAuth';
 import {useState} from 'react';
 import { useEffect } from 'react';
 import { useFocusEffect } from '@react-navigation/native';
-import {SectionList, Text} from 'react-native';
+import {SectionList, Text, LogBox} from 'react-native';
 import { FavoritePlayers } from './FavoritePlayers';
-
+LogBox.ignoreAllLogs();
 //may need to get rid of this wrapper to include alert inthe bigger view
 
 //wrapper for teams, a second wrapper will be made for favoriting players
@@ -149,7 +149,6 @@ export const TeamScreen = () => {
   
   for (var i = 0; i < team.players.length; i++) { // I did not need to add playerIsliked so many times whatever though
     const playerIsLiked = authData?.players?.includes(team.players[i]._id);
-    console.log(team.players[i].pos_name);
   if(playerIsLiked){
     liked.push(team.players[i]);
   }else if (team.players[i].position == 'Guard' && !playerIsLiked) {
@@ -447,24 +446,23 @@ export const TeamScreen = () => {
         <ThemeText style={styles.headerText}>{team.name}</ThemeText>
 
 
-        {renderIf(liked.length != 0, <ThemeText style={styles.mediumText} >Favorites</ThemeText>)}
-        <View style={styles.container}>{renderIf(likedlist, likedlist)}</View>
+        {renderIf(liked.length != 0,<ThemeText style={styles.mediumText} >Favorites</ThemeText>)}
+        {renderIf(likedlist,<View style={styles.container}>{renderIf(likedlist, likedlist)}</View>)}
 
-        {renderIf(Goalielist.length != 0, <ThemeText style={styles.mediumText}>Goalie</ThemeText>)}
-        <View style={styles.container}>{renderIf(Goalielist, Goalielist)}</View>
+        {Goalielist.length!=0 ? <ThemeText style={styles.mediumText}>Goalie</ThemeText> : <></>}
+        {Goalielist.length!=0 ? <View style={styles.container}>{Goalielist}</View>: <></>}
 
-        {renderIf(Defensemanlist.length != 0, <ThemeText style={styles.mediumText}>Defenseman</ThemeText>)}
-        <View style={styles.container}>{renderIf(Defensemanlist, Defensemanlist)}</View>
+        {Defensemanlist.length!=0 ? <ThemeText style={styles.mediumText}>Defenseman</ThemeText> : <></>}
+        {Defensemanlist.length!=0 ? <View style={styles.container}>{Defensemanlist}</View>: <></>}
 
-        {renderIf(Centerlist.length != 0, <ThemeText style={styles.mediumText}>Center</ThemeText>)}
-        <View style={styles.container}>{renderIf(Centerlist, Centerlist)}</View>
+        {Centerlist.length!=0 ? <ThemeText style={styles.mediumText}>Centers</ThemeText> : <></>}
+        {Centerlist.length!=0 ? <View style={styles.container}>{Centerlist}</View>: <></>}
 
-        {renderIf(trump.length != 0, <ThemeText style={styles.mediumText}>Right Wing</ThemeText>)}
-        <View style={styles.container}>{renderIf(trumplist, trumplist)}</View>
+        {trumplist.length!=0 ? <ThemeText style={styles.mediumText}>Right Wing</ThemeText> : <></>}
+        {trumplist.length!=0 ? <View style={styles.container}>{trumplist}</View>: <></>}
 
-        {renderIf(obama.length != 0, <ThemeText style={styles.mediumText}>Left Wing</ThemeText>)}
-        <View style={styles.container}>{renderIf(obamalist, obamalist)}</View>
-
+        {obama.length!=0 ? <ThemeText style={styles.mediumText}>Left Wing</ThemeText> : <></>}
+        {obama.length!=0 ? <View style={styles.container}>{obamalist}</View>: <></>}
 
         {renderIf(guardlist.length != 0, <ThemeText style={styles.mediumText}>Guards</ThemeText>)}
         <View style={styles.container}>{renderIf(guardlist, guardlist)}</View>

@@ -1,7 +1,7 @@
 import { PlayerScreenRouteProp } from '../types/Navigation';
 import React, { useState } from 'react';
 import { useRoute, useTheme } from '@react-navigation/native';
-import { View, StyleSheet, ScrollView, Button } from 'react-native';
+import { View, StyleSheet, ScrollView, Button, LogBox } from 'react-native';
 import { Player } from './../types/Player';
 import { Team } from './../types/Team';
 import { Card, CircleImage, ThemeText } from '@components/index';
@@ -13,6 +13,7 @@ import { ButtonHeart } from '../animations/transition';
 import { Toggler } from '../animations/transition';
 import { useAuth } from '@hooks/useAuth';
 import renderIf from '../hooks/renderIf';
+LogBox.ignoreAllLogs();
 /**
  * This screen shows the data for one player.
  * The player data is passed through a navigation parameter
@@ -69,7 +70,7 @@ export const PlayerScreen = () => {
                 </View>
             </View>
             <ThemeText style={styles.text}>{player.name}</ThemeText>
-            <ThemeText style={styles.text}>{player.team}</ThemeText>
+            <ThemeText style={styles.text}>{teamback.name}</ThemeText>
 
             <Card>
                 <Toggler onPress={handleToggle} isToggled={isToggled} />
@@ -106,7 +107,7 @@ export const PlayerScreen = () => {
                                 {player.number}
                             </ThemeText>
 
-                            {renderIf(player.experience,
+                            {player.experience ?
                             <View>
                                 <ThemeText style={styles.text}>
                                     Career:
@@ -117,8 +118,9 @@ export const PlayerScreen = () => {
                                 {player.experience}
                             </ThemeText>
                             </View>
-                            )}
-                            {renderIf(player.draft,
+                            : <></>}
+
+                            {player.draft ? 
                             <View>
                                 <ThemeText style={styles.text}>
                                     Draft Pick:
@@ -129,7 +131,7 @@ export const PlayerScreen = () => {
                                 {player.draft}
                             </ThemeText>
                             </View>
-                            )}
+                            : <></>}
                             {renderIf(player.country,
                             <View>
                                 <ThemeText style={styles.text}>
@@ -143,19 +145,22 @@ export const PlayerScreen = () => {
                             </View>
                             )}
 
-                            {player.nationality && (
+                            {player.nationality ?
+                                <View>
                                 <ThemeText style={styles.text}>
                                     Country:
                                 </ThemeText>
                                 
-                            )}
+                        
                             <ThemeText style={styles.listtext}>
                                 {' '}
                                 {player.nationality}
                             </ThemeText>
+</View>
+: <></>}
 
 
-                            {renderIf(player.shoots == "L",
+                            {player.shoots == "L"?
                             <View>
                                 <ThemeText style={styles.text}>
                                     Shoots: 
@@ -166,8 +171,8 @@ export const PlayerScreen = () => {
                                 Left Handed
                             </ThemeText>
                             </View>
-                            )}
-                            {renderIf(player.shoots == "R",
+                            : <></>}
+                            {player.shoots == "R" ?
                             <View>
                                 <ThemeText style={styles.text}>
                                     Shoots: 
@@ -178,7 +183,7 @@ export const PlayerScreen = () => {
                                 Right Handed
                             </ThemeText>
                             </View>
-                            )}
+                            : <></>}
 
 
                             
@@ -229,6 +234,9 @@ export const PlayerScreen = () => {
                             {renderIf(player.timeOnIcePerGame, <ThemeText style={styles.listtext}>
                                time on ice: {player.timeOnIcePerGame}
                             </ThemeText>)}
+                            {renderIf(player.gameWinningGoals, <ThemeText style={styles.listtext}>
+                                game winners: {player.gameWinningGoals}
+                            </ThemeText>)}
                         </View>
 
                         <View style={styles.statstwo}>
@@ -263,9 +271,7 @@ export const PlayerScreen = () => {
                             {renderIf(player.shots, <ThemeText style={styles.listtext}>
                                 Shots: {player.shots}
                             </ThemeText>)}
-                            {renderIf(player.gameWinningGoals, <ThemeText style={styles.listtext}>
-                                game winners: {player.gameWinningGoals}
-                            </ThemeText>)}
+                            
 
 
                             
@@ -305,7 +311,8 @@ const styles = StyleSheet.create({
         fontSize: 18,
         // textAlign: '',
         //  fontWeight: 'bold',
-        margin: 8,
+        marginLeft: -10,
+        marginBottom: 15,
     },
     leaderboardBlock: {
         flexDirection: 'row',
