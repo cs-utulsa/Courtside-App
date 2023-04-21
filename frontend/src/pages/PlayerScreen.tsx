@@ -233,6 +233,9 @@ export const PlayerScreen = () => {
                             {renderIf(player.timeOnIcePerGame, <ThemeText style={styles.listtext}>
                                time on ice: {player.timeOnIcePerGame}
                             </ThemeText>)}
+                            {renderIf(player.gameWinningGoals, <ThemeText style={styles.listtext}>
+                                game winners: {player.gameWinningGoals}
+                            </ThemeText>)}
                         </View>
 
                         <View style={styles.statstwo}>
@@ -267,9 +270,7 @@ export const PlayerScreen = () => {
                             {renderIf(player.shots, <ThemeText style={styles.listtext}>
                                 Shots: {player.shots}
                             </ThemeText>)}
-                            {renderIf(player.gameWinningGoals, <ThemeText style={styles.listtext}>
-                                game winners: {player.gameWinningGoals}
-                            </ThemeText>)}
+                            
 
 
                             

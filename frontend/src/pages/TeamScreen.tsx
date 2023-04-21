@@ -21,9 +21,9 @@ import { useAuth } from '@hooks/useAuth';
 import {useState} from 'react';
 import { useEffect } from 'react';
 import { useFocusEffect } from '@react-navigation/native';
-import {SectionList, Text} from 'react-native';
+import {SectionList, Text, LogBox} from 'react-native';
 import { FavoritePlayers } from './FavoritePlayers';
-
+LogBox.ignoreAllLogs();
 //may need to get rid of this wrapper to include alert inthe bigger view
 
 //wrapper for teams, a second wrapper will be made for favoriting players
