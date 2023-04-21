@@ -149,7 +149,6 @@ export const TeamScreen = () => {
   
   for (var i = 0; i < team.players.length; i++) { // I did not need to add playerIsliked so many times whatever though
     const playerIsLiked = authData?.players?.includes(team.players[i]._id);
-    console.log(team.players[i].pos_name);
   if(playerIsLiked){
     liked.push(team.players[i]);
   }else if (team.players[i].position == 'Guard' && !playerIsLiked) {
