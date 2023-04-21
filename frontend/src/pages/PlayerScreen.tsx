@@ -217,6 +217,18 @@ export const PlayerScreen = () => {
                             {renderIf(player.games, <ThemeText style={styles.listtext}>
                                 Games Played: {player.games}
                             </ThemeText>)}
+
+                            {renderIf(player.penaltyMinutes, <ThemeText style={styles.listtext}>
+                                Penalty Minutes: {player.penaltyMinutes}
+                            </ThemeText>)}
+
+                            {renderIf(player.blocked, <ThemeText style={styles.listtext}>
+                                Blocked Shots: {player.blocked}
+                            </ThemeText>)}
+
+                            {renderIf(player.timeOnIcePerGame, <ThemeText style={styles.listtext}>
+                               time on ice: {player.timeOnIcePerGame}
+                            </ThemeText>)}
                         </View>
 
                         <View style={styles.statstwo}>
@@ -251,17 +263,19 @@ export const PlayerScreen = () => {
                             {renderIf(player.shots, <ThemeText style={styles.listtext}>
                                 Shots: {player.shots}
                             </ThemeText>)}
-                            {renderIf(player.GameWinningGoals, <ThemeText style={styles.listtext}>
-                                game winners: {player.GameWInningGoals}
+                            {renderIf(player.gameWinningGoals, <ThemeText style={styles.listtext}>
+                                game winners: {player.gameWinningGoals}
                             </ThemeText>)}
 
-                            {renderIf(player.shots, <ThemeText style={styles.listtext}>
-                                Shots: {player.shots}
+
+                            
+
+
+                            {renderIf(player.plusMinus, <ThemeText style={styles.listtext}>
+                                Plus Minus: {player.plusMinus}
                             </ThemeText>)}
 
-                            {renderIf(player.blocked, <ThemeText style={styles.listtext}>
-                                Blocked Shots: {player.blocked}
-                            </ThemeText>)}
+                            
                         </View>
                     </View>
                 )}

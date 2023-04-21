@@ -56,6 +56,11 @@ export type Player = {
     goals: int;
     shots: int;
     games: int;
+    plusMinus: int;
+    blocked: int;
+    timeOnIcePerGame: string;
+    gameWinningGoals: string;
+    penaltyMinutes: string;
 };
 
 // type representing just the players headshot (used for team selection)
