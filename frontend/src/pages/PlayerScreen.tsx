@@ -311,7 +311,8 @@ const styles = StyleSheet.create({
         fontSize: 18,
         // textAlign: '',
         //  fontWeight: 'bold',
-        margin: 8,
+        marginLeft: -10,
+        marginBottom: 15,
     },
     leaderboardBlock: {
         flexDirection: 'row',
