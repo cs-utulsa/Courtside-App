@@ -12,6 +12,7 @@ import { PrimaryButton } from '@components/index';
 import { ButtonHeart } from '../animations/transition';
 import { Toggler } from '../animations/transition';
 import { useAuth } from '@hooks/useAuth';
+import renderIf from '../hooks/renderIf';
 /**
  * This screen shows the data for one player.
  * The player data is passed through a navigation parameter
@@ -105,33 +106,84 @@ export const PlayerScreen = () => {
                                 {player.number}
                             </ThemeText>
 
-                            {player.experience && (
+                            {renderIf(player.experience,
+                            <View>
                                 <ThemeText style={styles.text}>
-                                    Career:{' '}
+                                    Career:
                                 </ThemeText>
-                            )}
+                            
                             <ThemeText style={styles.listtext}>
                                 {' '}
                                 {player.experience}
                             </ThemeText>
-                            {player.draft && (
+                            </View>
+                            )}
+                            {renderIf(player.draft,
+                            <View>
                                 <ThemeText style={styles.text}>
                                     Draft Pick:
                                 </ThemeText>
-                            )}
+                            
                             <ThemeText style={styles.listtext}>
                                 {' '}
                                 {player.draft}
                             </ThemeText>
-                            {player.country && (
-                                <ThemeText style={styles.text}>
-                                    Country:
-                                </ThemeText>
+                            </View>
                             )}
+                            {renderIf(player.country,
+                            <View>
+                                <ThemeText style={styles.text}>
+                                    Draft Pick:
+                                </ThemeText>
+                            
                             <ThemeText style={styles.listtext}>
                                 {' '}
                                 {player.country}
                             </ThemeText>
+                            </View>
+                            )}
+
+                            {player.nationality && (
+                                <ThemeText style={styles.text}>
+                                    Country:
+                                </ThemeText>
+                                
+                            )}
+                            <ThemeText style={styles.listtext}>
+                                {' '}
+                                {player.nationality}
+                            </ThemeText>
+
+
+                            {renderIf(player.shoots == "L",
+                            <View>
+                                <ThemeText style={styles.text}>
+                                    Shoots: 
+                                </ThemeText>
+                            
+                            <ThemeText style={styles.listtext}>
+                                {' '}
+                                Left Handed
+                            </ThemeText>
+                            </View>
+                            )}
+                            {renderIf(player.shoots == "R",
+                            <View>
+                                <ThemeText style={styles.text}>
+                                    Shoots: 
+                                </ThemeText>
+                            
+                            <ThemeText style={styles.listtext}>
+                                {' '}
+                                Right Handed
+                            </ThemeText>
+                            </View>
+                            )}
+
+
+                            
+                            
+
                         </View>
                     </View>
                 )}
@@ -139,49 +191,77 @@ export const PlayerScreen = () => {
                 {!isToggled && (
                     <View style={styles.leaderboardBlock}>
                         <View>
-                            <ThemeText style={styles.listtext}>
+                            {renderIf(player.pts, <ThemeText style={styles.listtext}>
                                 Points: {player.pts}
-                            </ThemeText>
+                            </ThemeText>)}
 
-                            <ThemeText style={styles.listtext}>
+                            {renderIf(player.reb, <ThemeText style={styles.listtext}>
                                 Rebounds: {player.reb}
-                            </ThemeText>
-                            <ThemeText style={styles.listtext}>
+                            </ThemeText>)}
+                            {renderIf(player.ast, <ThemeText style={styles.listtext}>
                                 Assists: {player.ast}
-                            </ThemeText>
+                            </ThemeText>)}
 
-                            <ThemeText style={styles.listtext}>
+                            {renderIf(player.stl, <ThemeText style={styles.listtext}>
                                 Steals: {player.stl}
-                            </ThemeText>
+                            </ThemeText>)}
 
-                            <ThemeText style={styles.listtext}>
+                            {renderIf(player.tov, <ThemeText style={styles.listtext}>
                                 Turnovers: {player.tov}
-                            </ThemeText>
+                            </ThemeText>)}
 
-                            <ThemeText style={styles.listtext}>
+                            {renderIf(player.blk, <ThemeText style={styles.listtext}>
                                 Blocks: {player.blk}
-                            </ThemeText>
+                            </ThemeText>)}
+
+                            {renderIf(player.games, <ThemeText style={styles.listtext}>
+                                Games Played: {player.games}
+                            </ThemeText>)}
                         </View>
 
                         <View style={styles.statstwo}>
-                            <ThemeText style={styles.listtext}>
+                        {renderIf(player.games_played, <ThemeText style={styles.listtext}>
                                 Games Played: {player.games_played}
-                            </ThemeText>
+                            </ThemeText>)}
 
-                            <ThemeText style={styles.listtext}>
+                            {renderIf(player.plus_minus, <ThemeText style={styles.listtext}>
                                 Plus Minus: {player.plus_minus}
-                            </ThemeText>
-                            <ThemeText style={styles.listtext}>
+                            </ThemeText>)}
+                            {renderIf(player.fg3_pct, <ThemeText style={styles.listtext}>
                                 3 point %: {player.fg3_pct}
-                            </ThemeText>
+                            </ThemeText>)}
 
-                            <ThemeText style={styles.listtext}>
-                                free throw %: {player.ft_pct}
-                            </ThemeText>
+                            {renderIf(player.ft_pct, <ThemeText style={styles.listtext}>
+                                Free Throw %: {player.ft_pct}
+                            </ThemeText>)}
 
-                            <ThemeText style={styles.listtext}>
-                                field goal %: {player.fg_pct}
-                            </ThemeText>
+                            {renderIf(player.fg_pct, <ThemeText style={styles.listtext}>
+                                Feild Goal %: {player.fg_pct}
+                            </ThemeText>)}
+
+
+                            {renderIf(player.pts, <ThemeText style={styles.listtext}>
+                                Points: {player.pts}
+                            </ThemeText>)}
+
+                            {renderIf(player.goals, <ThemeText style={styles.listtext}>
+                                Goals: {player.goals}
+                            </ThemeText>)}
+
+                            {renderIf(player.shots, <ThemeText style={styles.listtext}>
+                                Shots: {player.shots}
+                            </ThemeText>)}
+                            {renderIf(player.GameWinningGoals, <ThemeText style={styles.listtext}>
+                                game winners: {player.GameWInningGoals}
+                            </ThemeText>)}
+
+                            {renderIf(player.shots, <ThemeText style={styles.listtext}>
+                                Shots: {player.shots}
+                            </ThemeText>)}
+
+                            {renderIf(player.blocked, <ThemeText style={styles.listtext}>
+                                Blocked Shots: {player.blocked}
+                            </ThemeText>)}
                         </View>
                     </View>
                 )}

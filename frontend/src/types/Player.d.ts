@@ -50,6 +50,12 @@ export type Player = {
 
     //nhl this is going to be JANK
     pos_name: string;
+    nationality: string;
+    shoots: string;
+
+    goals: int;
+    shots: int;
+    games: int;
 };
 
 // type representing just the players headshot (used for team selection)
