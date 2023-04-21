@@ -28,13 +28,20 @@ app.register_blueprint(email_blueprint)
 app.register_blueprint(user_blueprint)
 
 # Return roster of player id's for specified team
-@app.route('/roster/<team_code>', methods=['GET'])
-def get_roster(team_code):
-    if type(team_code) == str:
-        return db.nba_teams.find_one({'abbr': team_code})['roster']
-    else:
-        return db.nba_teams.find_one({'_id': team_code})['roster']
+@app.route('/<league>/roster/<team_code>', methods=['GET'])
+def get_roster(team_code, league):
+    if league == 'nba':
+        if type(team_code) == str:
+            return db.nba_teams.find_one({'abbr': team_code})['roster']
+        else:
+            return db.nba_teams.find_one({'_id': team_code})['roster']
+    elif league == 'nhl':
+        if type(team_code) == str:
+            return db.nhl_teams.find_one({'abbr': team_code})['roster']
+        else:
+            return db.nhl_teams.find_one({'_id': team_code})['roster']
 
+# Return player based on query
 @app.route('/<league>/player/<query>', methods=['GET'])
 def get_players_by_query(league, query):
     if league != 'nba':
@@ -42,36 +49,60 @@ def get_players_by_query(league, query):
     
     players = db.nba_players.find({
         "$text": { "$search": query}
-    }).limit(10);
+    }).limit(10)
 
     return json.dumps(list(players))
 
 # Return leaderboard for specified stat
 # --- per_mode can be either tot, pg, or p48
-@app.route('/leaderboard/<stat>/<per_mode>', methods=['GET'])
-def get_leaderboard(stat, per_mode):
-    leaderboard = db.nba_leaderboards.find_one({'_id': f'{stat}_{per_mode}'})
+@app.route('/<league>/leaderboard/<stat>/<per_mode>', methods=['GET'])
+def get_leaderboard(stat, per_mode, league):
+    if league == 'nba':
+        leaderboard = db.nba_leaderboards.find_one({'_id': f'{stat}_{per_mode}'})
 
-    # only return first 5 values
-    leaderboard["player_id"] = leaderboard["player_id"][0:5]
-    leaderboard["value"] = leaderboard["value"][0:5]
+        # only return first 5 values
+        leaderboard["player_id"] = leaderboard["player_id"][0:5]
+        leaderboard["value"] = leaderboard["value"][0:5]
 
-    # get players in the leaderboard
-    player_names_cursor = db.nba_players.find(
-        { "_id": { "$in": leaderboard["player_id"]}},
-        { "_id": 1, "name": 1 }
-    )
+        # get players in the leaderboard
+        player_names_cursor = db.nba_players.find(
+            { "_id": { "$in": leaderboard["player_id"]}},
+            { "_id": 1, "name": 1 }
+        )
 
-    player_document = list(player_names_cursor)
+        player_document = list(player_names_cursor)
 
-    leaderboard["player_names"] = [None] * 5
+        leaderboard["player_names"] = [None] * 5
 
-    # Line up player ids with the player's name
-    for i in range(0, len(player_document)):
-        index = leaderboard["player_id"].index(player_document[i]['_id'])
-        leaderboard["player_names"][index] = player_document[i]['name']
+        # Line up player ids with the player's name
+        for i in range(0, len(player_document)):
+            index = leaderboard["player_id"].index(player_document[i]['_id'])
+            leaderboard["player_names"][index] = player_document[i]['name']
 
-    return json.dumps(leaderboard)
+        return json.dumps(leaderboard)
+    elif league == 'nhl':
+        leaderboard = db.nhl_leaderboards.find_one({'_id': f'{stat}_tot'})
+
+        # only return first 5 values
+        leaderboard["player_id"] = leaderboard["player_id"][0:5]
+        leaderboard["value"] = leaderboard["value"][0:5]
+
+        # get players in the leaderboard
+        player_names_cursor = db.nhl_players.find(
+            { "_id": { "$in": leaderboard["player_id"]}},
+            { "_id": 1, "name": 1 }
+        )
+
+        player_document = list(player_names_cursor)
+
+        leaderboard["player_names"] = [None] * 5
+
+        # Line up player ids with the player's name
+        for i in range(0, len(player_document)):
+            index = leaderboard["player_id"].index(player_document[i]['_id'])
+            leaderboard["player_names"][index] = player_document[i]['name']
+
+        return json.dumps(leaderboard)
 
 @app.route('/<league>/leaderboard/<stat>', methods=['GET'])
 def get_all_leaderboards(stat, league):
@@ -206,7 +237,7 @@ def get_schedule(month, day, league):
             res = [x['schedule'] for x in games]
             res.sort(key=schedule_key)
             return res
-        except OperationFailure:
+        except:
             return string_response("Cannot get schedule for date", 500)
     elif league == 'nhl':
         try:
@@ -214,20 +245,26 @@ def get_schedule(month, day, league):
             res = [x['schedule'] for x in games]
             res.sort(key=schedule_key)
             return res
-        except OperationFailure:
+        except:
             return string_response("Cannot get schedule for date", 500)
     else:
         return string_response("NBA and NHL are the only leagues supported at this point.", 400)
 
 # Return all players
-@app.route('/player', methods=['GET'])
-def get_all_players():
-    return json.dumps([player["_id"] for player in db.nba_players.find()])
+@app.route('/<league>/player', methods=['GET'])
+def get_all_players(league):
+    if league == 'nba':
+        return json.dumps([player["_id"] for player in db.nba_players.find()])
+    elif league == 'nhl':
+        return json.dumps([player["_id"] for player in db.nhl_players.find()])
 
 # Return bio data for a specified player
-@app.route('/player/<int:player_id>', methods=['GET'])
-def get_player_data(player_id):
-    return json.dumps(db.nba_players.find_one({'_id': player_id}))
+@app.route('/<league>/player/<int:player_id>', methods=['GET'])
+def get_player_data(player_id, league):
+    if league == 'nba':
+        return json.dumps(db.nba_players.find_one({'_id': player_id}))
+    elif league == 'nhl':
+        return json.dumps(db.nhl_players.find_one({'_id': player_id}))
 
 # Return all teams
 @app.route('/<league>/team', methods=['GET'])
@@ -305,51 +342,105 @@ def get_team(id, league):
 
     return json.dumps(team)
 
-gpr = pickle.load(open('models/gpr_model_xs.pkl', 'rb'))
-league_stats = pd.read_csv('data/league_stats.csv')
+nba_gpr = pickle.load(open('models/nba_gpr_model_xs.pkl', 'rb'))
+nba_league_stats = pd.read_csv('data/nba_league_stats.csv')
+
+nhl_gpr = pickle.load(open('models/nhl_gpr_model_xs.pkl', 'rb'))
+nhl_league_stats = pd.read_csv('data/nhl_league_stats.csv')
 
 # Return predicted scores for a specified matchup
 @app.route('/<league>/score/<team1>/<team2>', methods=['GET'])
 def get_score(team1, team2, league):
-    if league != 'nba':
-        return string_response("NBA is only supported league for score prediction")
+    if league == 'nba':
+        # Get stats for team 1
+        team1_id = db.nba_teams.find_one({'abbr': team1})['_id']
+        team1_stats = nba_league_stats[nba_league_stats['team_id'] == team1_id]
+        team1_stats.reset_index(drop=True, inplace=True)
+        team1_off = team1_stats[['off_rtg','off_rtg_10','pace','pace_10']]
+        team1_def = team1_stats[['def_rtg','def_rtg_10','pace','pace_10']]
+        team1_def.columns = ['opp_def_rtg','opp_def_rtg_10','opp_pace','opp_pace_10']
+        
+        # Get stats for team 2
+        team2_id = db.nba_teams.find_one({'abbr': team2})['_id']
+        team2_stats = nba_league_stats[nba_league_stats['team_id'] == team2_id]
+        team2_stats.reset_index(drop=True, inplace=True)
+        team2_off = team2_stats[['off_rtg','off_rtg_10','pace','pace_10']]
+        team2_def = team2_stats[['def_rtg','def_rtg_10','pace','pace_10']]
+        team2_def.columns = ['opp_def_rtg','opp_def_rtg_10','opp_pace','opp_pace_10']
+        
+        # Concatenate team 1 and team 2 stats
+        team1_input = pd.concat([team1_off, team2_def], axis=1)
+        team2_input = pd.concat([team2_off, team1_def], axis=1)
+        
+        # Get predictions
+        team1_preds = nba_gpr.predict(team1_input, return_std=True)
+        team2_preds = nba_gpr.predict(team2_input, return_std=True)
 
-    team1_id = db.teams.find_one({'abbr': team1})['_id']
-    team1_stats = league_stats[league_stats['team_id'] == team1_id]
-    team1_stats.reset_index(drop=True, inplace=True)
-    team1_off = team1_stats[['off_rtg','off_rtg_10','pace','pace_10']]
-    team1_def = team1_stats[['def_rtg','def_rtg_10','pace','pace_10']]
-    team1_def.columns = ['opp_def_rtg','opp_def_rtg_10','opp_pace','opp_pace_10']
-    
-    team2_id = db.nba_teams.find_one({'abbr': team2})['_id']
-    team2_stats = league_stats[league_stats['team_id'] == team2_id]
-    team2_stats.reset_index(drop=True, inplace=True)
-    team2_off = team2_stats[['off_rtg','off_rtg_10','pace','pace_10']]
-    team2_def = team2_stats[['def_rtg','def_rtg_10','pace','pace_10']]
-    team2_def.columns = ['opp_def_rtg','opp_def_rtg_10','opp_pace','opp_pace_10']
-    
-    team1_input = pd.concat([team1_off, team2_def], axis=1)
-    team2_input = pd.concat([team2_off, team1_def], axis=1)
-    
-    team1_preds = gpr.predict(team1_input, return_std=True)
-    team2_preds = gpr.predict(team2_input, return_std=True)
+        # Get win probabilities
+        team1_win_prob = stats.norm.cdf(team1_preds[0][0], loc=team2_preds[0][0], scale=team2_preds[1][0])
+        team2_win_prob = stats.norm.cdf(team2_preds[0][0], loc=team1_preds[0][0], scale=team1_preds[1][0])
 
-    team1_win_prob = stats.norm.cdf(team1_preds[0][0], loc=team2_preds[0][0], scale=team2_preds[1][0])
-    team2_win_prob = stats.norm.cdf(team2_preds[0][0], loc=team1_preds[0][0], scale=team1_preds[1][0])
-
-    json_output = {
-        team1: {
-            'score': round(team1_preds[0][0], 3),
-            'stdev': round(team1_preds[1][0], 3),
-            'win_pct': round(team1_win_prob, 3),
-        },
-        team2: {
-            'score': round(team2_preds[0][0], 3),
-            'stdev': round(team2_preds[1][0], 3),
-            'win_pct': round(team2_win_prob, 3),
+        # Create json output
+        json_output = {
+            team1: {
+                'score': round(team1_preds[0][0], 3),
+                'stdev': round(team1_preds[1][0], 3),
+                'win_pct': round(team1_win_prob, 3),
+            },
+            team2: {
+                'score': round(team2_preds[0][0], 3),
+                'stdev': round(team2_preds[1][0], 3),
+                'win_pct': round(team2_win_prob, 3),
+            }
         }
-    }
-    return json_output
+        return json_output
+    elif league == 'nhl':
+        # Team and opponent stats for inference
+        team_stats = ['evGGARatio', 'shotsPerGame', 'shootingPctg']
+        opp_stats = ['shotsAllowed', 'savePctg']
+        
+        # Get stats for team 1
+        team1_id = db.nhl_teams.find_one({'abbr': team1})['_id']
+        team1_stats = nhl_league_stats[nhl_league_stats['team_id']==team1_id]
+        team1_stats.reset_index(inplace=True, drop=True)
+        team1_off = team1_stats[team_stats]
+        team1_def = team1_stats[opp_stats]
+        team1_def.columns = ['oppShotsAllowed', 'oppSavePctg']
+        
+        # Get stats for team 2
+        team2_id = db.nhl_teams.find_one({'abbr': team2})['_id']
+        team2_stats = nhl_league_stats[nhl_league_stats['team_id']==team2_id]
+        team2_stats.reset_index(inplace=True, drop=True)
+        team2_off = team2_stats[team_stats]
+        team2_def = team2_stats[opp_stats]
+        team2_def.columns = ['oppShotsAllowed', 'oppSavePctg']
+
+        # Concatenate team and opponent stats
+        team1_input = pd.concat([team1_off, team2_def], axis=1)
+        team2_input = pd.concat([team2_off, team1_def], axis=1)
+
+        # Predict score for each team
+        team1_preds = nhl_gpr.predict(team1_input, return_std=True)
+        team2_preds = nhl_gpr.predict(team2_input, return_std=True)
+
+        # Calculate win probability for each team
+        team1_win_prob = stats.norm.cdf(team1_preds[0][0], loc=team2_preds[0][0], scale=team2_preds[1][0])
+        team2_win_prob = stats.norm.cdf(team2_preds[0][0], loc=team1_preds[0][0], scale=team1_preds[1][0])
+
+        # Create JSON output
+        json_output = {
+            team1: {
+                'score': round(team1_preds[0][0], 3),
+                'stdev': round(team1_preds[1][0], 3),
+                'win_pct': round(team1_win_prob, 3),
+            },
+            team2: {
+                'score': round(team2_preds[0][0], 3),
+                'stdev': round(team2_preds[1][0], 3),
+                'win_pct': round(team2_win_prob, 3),
+            }
+        }
+        return json_output
 
 # Main method
 if __name__ == "__main__":
