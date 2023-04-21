@@ -41,6 +41,18 @@ def get_roster(team_code, league):
         else:
             return db.nhl_teams.find_one({'_id': team_code})['roster']
 
+# Return player based on query
+@app.route('/<league>/player/<query>', methods=['GET'])
+def get_players_by_query(league, query):
+    if league != 'nba':
+        return string_response("Only NBA is supported for player search.", 500)
+    
+    players = db.nba_players.find({
+        "$text": { "$search": query}
+    }).limit(10)
+
+    return json.dumps(list(players))
+
 # Return leaderboard for specified stat
 # --- per_mode can be either tot, pg, or p48
 @app.route('/<league>/leaderboard/<stat>/<per_mode>', methods=['GET'])
@@ -267,10 +279,6 @@ def get_all_teams(league):
     for team in teams:
         team["id"] = str(team["_id"])
 
-        # add empty icon string to nhl
-        if league == 'nhl':
-            team["icon"] = ""
-
         del team["_id"]
 
     return json.dumps(teams)
@@ -279,7 +287,7 @@ def get_all_teams(league):
 @app.route('/<league>/team/<id>', methods=['GET'])
 def get_team(id, league):
     if (league == 'nba'):
-        team_cursor = db.nba_teams.aggregate([
+        team_cursor = list(db.nba_teams.aggregate([
             { '$match': { '_id': int(id) }},
             { '$lookup': {
                 "from": "nba_players",
@@ -287,9 +295,9 @@ def get_team(id, league):
                 "foreignField": "_id",
                 "as": "players"
             }}
-        ])
+        ]))
     elif (league == 'nhl'):
-        team_cursor = db.nhl_teams.aggregate([
+        team_cursor = list(db.nhl_teams.aggregate([
             { '$match': { '_id': int(id) }},
             { '$lookup': {
                 "from": "nhl_players",
@@ -297,11 +305,35 @@ def get_team(id, league):
                 "foreignField": "_id",
                 "as": "players"
             }}
-        ])
+        ]))
+    elif league == 'all':
+        team_cursor = list(db.nba_teams.aggregate([
+            { '$match': { '_id': int(id) }},
+            { '$lookup': {
+                "from": "nba_players",
+                "localField": "roster",
+                "foreignField": "_id",
+                "as": "players"
+            }}
+        ]))
+
+        if (len(team_cursor) <= 0):
+            team_cursor = list(db.nhl_teams.aggregate([
+                    { '$match': { '_id': int(id) }},
+                    { '$lookup': {
+                        "from": "nhl_players",
+                        "localField": "roster",
+                        "foreignField": "_id",
+                        "as": "players"
+                    }}
+                ]))
     else:
         return string_response(f'{league} is not a valid league. Only "nhl" and "nba" are accepted', 400)
 
-    team = list(team_cursor)[0]
+    if (len(team_cursor) == 0):
+        return string_response('Team not found', 404)
+
+    team = team_cursor[0]
     
     del team["roster"]
     
