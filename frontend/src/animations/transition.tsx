@@ -22,7 +22,6 @@ type CustomButtonProps = {
 
 export const ButtonHeart: React.FC<CustomButtonProps> = ({onPress, isLiked}) => {
   const { colors } = useTheme();
-  console.log(isLiked+"propbool");
   const [iconName, setIconName] = useState(isLiked ? 'star' : 'star-border');
   useEffect(() => {
     setIconName(isLiked ? 'star' : 'star-border');
