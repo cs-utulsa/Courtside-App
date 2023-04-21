@@ -235,7 +235,6 @@ def get_schedule(month, day, league):
         try:
             games = db.nba_schedule.find({'_id': {'$regex': '.*' + check_str}})
             res = [x['schedule'] for x in games]
-            res.sort(key=schedule_key)
             return res
         except:
             return string_response("Cannot get schedule for date", 500)
