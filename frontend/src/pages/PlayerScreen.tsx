@@ -1,7 +1,7 @@
 import { PlayerScreenRouteProp } from '../types/Navigation';
 import React, { useState } from 'react';
 import { useRoute, useTheme } from '@react-navigation/native';
-import { View, StyleSheet, ScrollView, Button } from 'react-native';
+import { View, StyleSheet, ScrollView, Button, LogBox } from 'react-native';
 import { Player } from './../types/Player';
 import { Team } from './../types/Team';
 import { Card, CircleImage, ThemeText } from '@components/index';
@@ -13,6 +13,7 @@ import { ButtonHeart } from '../animations/transition';
 import { Toggler } from '../animations/transition';
 import { useAuth } from '@hooks/useAuth';
 import renderIf from '../hooks/renderIf';
+LogBox.ignoreAllLogs();
 /**
  * This screen shows the data for one player.
  * The player data is passed through a navigation parameter
