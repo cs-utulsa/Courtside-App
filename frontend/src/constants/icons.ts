@@ -151,4 +151,110 @@ export const NBA_ICONS: { name: string; logo: string; code: string }[] = [
     },
 ];
 
-export const NHL_ICONS: { name: string; logo: string; code: string }[] = [];
+export const NHL_ICONS: { name: string; logo: string; code: string }[] = [
+
+
+    {
+        name: 'New Jersey Devils',
+        logo: 'https://content.sportslogos.net/logos/1/18/thumbs/32tfs723a3bes0p0hb4hgcy1u.gif',
+        code: 'NJD',
+    },
+    {
+        name: 'New York Islanders',
+        logo: 'https://content.sportslogos.net/logos/1/19/thumbs/1939112018.gif',
+        code: 'NYI',
+    },
+    {
+        name: 'New York Rangers',
+        logo: 'https://content.sportslogos.net/logos/1/20/thumbs/144.gif',
+        code: 'NYR',
+    },
+    {
+        name: 'Boston Bruins',
+        logo: 'https://content.sportslogos.net/logos/1/3/thumbs/venf9fmhgnsawnxxvehf.gif',
+        code: 'BOS',
+    },
+    {
+        name: 'Toronto Maple Leafs',
+        logo: 'https://content.sportslogos.net/logos/1/28/thumbs/2887612017.gif',
+        code: 'TOR',
+    },
+    {
+        name: 'Carolina Hurricanes',
+        logo: 'https://content.sportslogos.net/logos/1/6/thumbs/fotih31tn5r345nufo5xxayh3.gif',
+        code: 'CAR',
+    },
+
+    {
+        name: 'Florida Panthers',
+        logo: 'https://content.sportslogos.net/logos/1/13/thumbs/1380782017.gif',
+        code: 'FLA',
+    },
+
+    {
+        name: 'Tampa Bay Lightning',
+        logo: 'https://content.sportslogos.net/logos/1/27/thumbs/97hhvk8e5if0riesnex30etgz.gif',
+        code: 'TBL',
+    },
+
+    {
+        name: 'Washington Capitals',
+        logo: 'https://content.sportslogos.net/logos/1/30/thumbs/llrs2zxi127vkqgcsvfb.gif',
+        code: 'WSH',
+    },
+
+    {
+        name: 'Colorado Avalanche',
+        logo: 'https://content.sportslogos.net/logos/1/8/thumbs/64.gif',
+        code: 'COL',
+    },
+
+
+    {
+        name: 'Edmonton Oilers',
+        logo: 'https://content.sportslogos.net/logos/1/12/thumbs/1229852023.gif',
+        code: 'EDM',
+    },
+
+    {
+        name: 'Dallas Stars',
+        logo: 'https://content.sportslogos.net/logos/1/10/thumbs/1043322022.gif',
+        code: 'DAL',
+    },
+
+    {
+        name: 'Los Angeles Kings',
+        logo: 'https://content.sportslogos.net/logos/1/14/thumbs/1422202020.gif',
+        code: 'LAK',
+    },
+
+
+    {
+        name: 'Minnesota Wild',
+        logo: 'https://content.sportslogos.net/logos/1/15/thumbs/1588102014.gif',
+        code: 'MIN',
+    },
+
+    {
+        name: 'Winnipeg Jets',
+        logo: 'https://content.sportslogos.net/logos/1/3050/thumbs/z9qyy9xqoxfjn0njxgzoy2rwk.gif',
+        code: 'WPG',
+    },
+
+    {
+        name: 'Vegas Golden Knights',
+        logo: 'https://content.sportslogos.net/logos/1/6114/thumbs/611426842018.gif',
+        code: 'VGK',
+    },
+
+    {
+        name: 'Seattle Kraken',
+        logo: 'https://content.sportslogos.net/logos/1/6740/thumbs/674079522022.gif',
+        code: 'SEA',
+    },
+
+
+
+
+    
+];
