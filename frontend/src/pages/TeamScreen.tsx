@@ -447,24 +447,23 @@ export const TeamScreen = () => {
         <ThemeText style={styles.headerText}>{team.name}</ThemeText>
 
 
-        {renderIf(liked.length != 0, <ThemeText style={styles.mediumText} >Favorites</ThemeText>)}
-        <View style={styles.container}>{renderIf(likedlist, likedlist)}</View>
+        {renderIf(liked.length != 0,<ThemeText style={styles.mediumText} >Favorites</ThemeText>)}
+        {renderIf(likedlist,<View style={styles.container}>{renderIf(likedlist, likedlist)}</View>)}
 
-        {renderIf(Goalielist.length != 0, <ThemeText style={styles.mediumText}>Goalie</ThemeText>)}
-        <View style={styles.container}>{renderIf(Goalielist, Goalielist)}</View>
+        {Goalielist.length!=0 ? <ThemeText style={styles.mediumText}>Goalie</ThemeText> : <></>}
+        {Goalielist.length!=0 ? <View style={styles.container}>{Goalielist}</View>: <></>}
 
-        {renderIf(Defensemanlist.length != 0, <ThemeText style={styles.mediumText}>Defenseman</ThemeText>)}
-        <View style={styles.container}>{renderIf(Defensemanlist, Defensemanlist)}</View>
+        {Defensemanlist.length!=0 ? <ThemeText style={styles.mediumText}>Defenseman</ThemeText> : <></>}
+        {Defensemanlist.length!=0 ? <View style={styles.container}>{Defensemanlist}</View>: <></>}
 
-        {renderIf(Centerlist.length != 0, <ThemeText style={styles.mediumText}>Center</ThemeText>)}
-        <View style={styles.container}>{renderIf(Centerlist, Centerlist)}</View>
+        {Centerlist.length!=0 ? <ThemeText style={styles.mediumText}>Centers</ThemeText> : <></>}
+        {Centerlist.length!=0 ? <View style={styles.container}>{Centerlist}</View>: <></>}
 
-        {renderIf(trump.length != 0, <ThemeText style={styles.mediumText}>Right Wing</ThemeText>)}
-        <View style={styles.container}>{renderIf(trumplist, trumplist)}</View>
+        {trumplist.length!=0 ? <ThemeText style={styles.mediumText}>Right Wing</ThemeText> : <></>}
+        {trumplist.length!=0 ? <View style={styles.container}>{trumplist}</View>: <></>}
 
-        {renderIf(obama.length != 0, <ThemeText style={styles.mediumText}>Left Wing</ThemeText>)}
-        <View style={styles.container}>{renderIf(obamalist, obamalist)}</View>
-
+        {obama.length!=0 ? <ThemeText style={styles.mediumText}>Left Wing</ThemeText> : <></>}
+        {obama.length!=0 ? <View style={styles.container}>{obamalist}</View>: <></>}
 
         {renderIf(guardlist.length != 0, <ThemeText style={styles.mediumText}>Guards</ThemeText>)}
         <View style={styles.container}>{renderIf(guardlist, guardlist)}</View>

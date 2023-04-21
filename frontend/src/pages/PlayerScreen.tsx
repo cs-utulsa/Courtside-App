@@ -69,7 +69,7 @@ export const PlayerScreen = () => {
                 </View>
             </View>
             <ThemeText style={styles.text}>{player.name}</ThemeText>
-            <ThemeText style={styles.text}>{player.team}</ThemeText>
+            <ThemeText style={styles.text}>{teamback.name}</ThemeText>
 
             <Card>
                 <Toggler onPress={handleToggle} isToggled={isToggled} />
@@ -106,7 +106,7 @@ export const PlayerScreen = () => {
                                 {player.number}
                             </ThemeText>
 
-                            {renderIf(player.experience,
+                            {player.experience ?
                             <View>
                                 <ThemeText style={styles.text}>
                                     Career:
@@ -117,8 +117,9 @@ export const PlayerScreen = () => {
                                 {player.experience}
                             </ThemeText>
                             </View>
-                            )}
-                            {renderIf(player.draft,
+                            : <></>}
+
+                            {player.draft ? 
                             <View>
                                 <ThemeText style={styles.text}>
                                     Draft Pick:
@@ -129,7 +130,7 @@ export const PlayerScreen = () => {
                                 {player.draft}
                             </ThemeText>
                             </View>
-                            )}
+                            : <></>}
                             {renderIf(player.country,
                             <View>
                                 <ThemeText style={styles.text}>
@@ -143,19 +144,22 @@ export const PlayerScreen = () => {
                             </View>
                             )}
 
-                            {player.nationality && (
+                            {player.nationality ?
+                                <View>
                                 <ThemeText style={styles.text}>
                                     Country:
                                 </ThemeText>
                                 
-                            )}
+                        
                             <ThemeText style={styles.listtext}>
                                 {' '}
                                 {player.nationality}
                             </ThemeText>
+</View>
+: <></>}
 
 
-                            {renderIf(player.shoots == "L",
+                            {player.shoots == "L"?
                             <View>
                                 <ThemeText style={styles.text}>
                                     Shoots: 
@@ -166,8 +170,8 @@ export const PlayerScreen = () => {
                                 Left Handed
                             </ThemeText>
                             </View>
-                            )}
-                            {renderIf(player.shoots == "R",
+                            : <></>}
+                            {player.shoots == "R" ?
                             <View>
                                 <ThemeText style={styles.text}>
                                     Shoots: 
@@ -178,7 +182,7 @@ export const PlayerScreen = () => {
                                 Right Handed
                             </ThemeText>
                             </View>
-                            )}
+                            : <></>}
 
 
                             
