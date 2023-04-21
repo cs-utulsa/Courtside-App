@@ -1,6 +1,6 @@
 export type Player = {
     /** the player's id */
-    id: string;
+    _id: string;
     /** the player's name */
     name: string;
     /** the player's age in the form <number> years */
@@ -22,6 +22,45 @@ export type Player = {
     team: string;
     /** the weight of the player in pounds */
     weight: string;
+    //stats
+    pts: int;
+    reb: int;
+    stl: int;
+    tov: int;
+    ast: int;
+    blk: int;
+    // dreb: int;
+    //blcka who needs block assists
+    //blcka: int; // just in case
+    fg3_pct: float;
+    // fg3a: int;
+    // fg3m: int;
+
+    fg_pct: float;
+    //   fga: int;
+    //   fgm: int;
+
+    ft_pct: float;
+    // fta: int;
+    //ftm: int;
+
+    games_played: int;
+    plus_minus: int;
+    //pf and pfd and oreb? ask rylee...
+
+    //nhl this is going to be JANK
+    pos_name: string;
+    nationality: string;
+    shoots: string;
+
+    goals: int;
+    shots: int;
+    games: int;
+    plusMinus: int;
+    blocked: int;
+    timeOnIcePerGame: string;
+    gameWinningGoals: string;
+    penaltyMinutes: string;
 };
 
 // type representing just the players headshot (used for team selection)

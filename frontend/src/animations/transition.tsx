@@ -5,7 +5,7 @@ import {
   TransitioningView,
 } from 'react-native-reanimated';
 import { MaterialIcons } from '@expo/vector-icons'; 
-import { Animated, ButtonProps, Image, StyleSheet, View } from 'react-native';
+import { Animated, ButtonProps, Image, StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 //import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { TouchableWithoutFeedback } from 'react-native';
 import { ThemeText } from '@components/index';
@@ -22,7 +22,6 @@ type CustomButtonProps = {
 
 export const ButtonHeart: React.FC<CustomButtonProps> = ({onPress, isLiked}) => {
   const { colors } = useTheme();
-  console.log(isLiked+"propbool");
   const [iconName, setIconName] = useState(isLiked ? 'star' : 'star-border');
   useEffect(() => {
     setIconName(isLiked ? 'star' : 'star-border');
@@ -68,6 +67,43 @@ export const ButtonHeart: React.FC<CustomButtonProps> = ({onPress, isLiked}) => 
     );
 };
 
+export const Toggler = ({onPress, isToggled}) => {
+  const [selectedOption, setSelectedOption] = useState('option1');
+
+  const handleOptionSelect = (option) => {
+    setSelectedOption(option);
+    onPress();
+  };
+
+  return (
+    <View style={styles.container}>
+      <TouchableOpacity
+        style={[
+          styles.optionButton,
+          selectedOption === 'option1' && styles.selectedOptionButton,
+        ]}
+        disabled={isToggled}
+        onPress={() => handleOptionSelect('option1')}
+      >
+         
+        <Text style={styles.optionButtonText}>Biodata</Text>
+
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={[
+          styles.optionButton,
+          selectedOption === 'option2' && styles.selectedOptionButton,
+        ]}
+        onPress={() => handleOptionSelect('option2')}
+        disabled={!isToggled}
+      >
+         <Text style={styles.optionButtonText2}> Season Stats</Text>
+
+      </TouchableOpacity>
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
   iconContainer: {
     height: 70,
@@ -84,6 +120,57 @@ const styles = StyleSheet.create({
     margin: 5,
     textAlign: 'center',
     marginLeft: 27,
+  },
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#f5f5f5',
+    width:284,
+    height:34,
+    borderWidth: 2,
+    borderColor: 'lightgrey',
+    
+  },
+  optionButton: {
+    width: 140,
+    paddingVertical: 0,
+    marginLeft:0,
+    marginRight:0,
+    height:30,
+    backgroundColor: 'white',
+    alignItems: 'center',
+  },
+  selectedOptionButton: {
+    backgroundColor: 'orange',
+    borderColor: '#4a90e2',
+  },
+  optionButtonText: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    textAlign: 'center',
+    marginLeft:-80,
+    marginRight:-80,
+    
+  },
+  optionButtonText2: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    textAlign: 'center',
+    marginLeft:-80,
+    marginRight:-80,
+   
+  },
+
+  debugBox: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: 50,
+    height: 50,
+    backgroundColor: 'red',
+    opacity: 0.5,
+    zIndex: 9999,
   },
 });
 

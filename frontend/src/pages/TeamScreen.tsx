@@ -22,6 +22,7 @@ import {useState} from 'react';
 import { useEffect } from 'react';
 import { useFocusEffect } from '@react-navigation/native';
 import {SectionList, Text} from 'react-native';
+import { FavoritePlayers } from './FavoritePlayers';
 
 //may need to get rid of this wrapper to include alert inthe bigger view
 
@@ -31,7 +32,7 @@ const ButtonHeartWrapper = () => {
   const [isLiked, setIsLiked] = useState(false);
   const route = useRoute<TeamScreenRouteProp>(); //variable also declared in teamScreen
   const team = route.params.team;
-  const { authData, updateTeams } = useAuth();
+  const { authData, updateTeams, updatePlayers } = useAuth();
   const [selectedTeams, setSelectedTeams] = useState<string[]>(
     authData?.teams ?? []
   );
@@ -75,6 +76,17 @@ const ButtonHeartWrapper = () => {
       const updatedTeams = selectedTeams.filter((team) => team !== teamid);
       setSelectedTeams(updatedTeams); //idk if this line works.
       updateTeams(updatedTeams);
+      //in here add a function grab a player frmo the team an see how it works!!!.
+      //or add this into the player section if I cant grab a player
+
+
+
+
+
+
+
+
+      
       setMessage("BRUH");
       setShow(true);
       //I clikced it relatively fast, but may want the async function!!!
@@ -117,34 +129,98 @@ export const TeamScreen = () => {
   const { push } = useNavigation<RosterNavigationProp>();
   const route = useRoute<TeamScreenRouteProp>();
   const team = route.params.team;
+  const liked: Player[] = [];
   const guards: Player[] = [];
   const forward: Player[] = [];
   const center: Player[] = [];
   const forwardguard: Player[] = [];
   const forwardcenter: Player[] = [];
   const noposition: Player[] = [];
+  var hockey: boolean = false;
 
-  for (var i = 0; i < team.players.length; i++) {
-    if (team.players[i].position == 'Guard') {
+  const Defenseman: Player[] = [];
+  const Center: Player[] = [];
+  const trump: Player[] = [];
+  const obama: Player[] = [];
+  const Goalie: Player[] = [];
+
+  const { authData, updatePlayers } = useAuth();
+
+  
+  for (var i = 0; i < team.players.length; i++) { // I did not need to add playerIsliked so many times whatever though
+    const playerIsLiked = authData?.players?.includes(team.players[i]._id);
+    console.log(team.players[i].pos_name);
+  if(playerIsLiked){
+    liked.push(team.players[i]);
+  }else if (team.players[i].position == 'Guard' && !playerIsLiked) {
       guards.push(team.players[i]);
-    } else if (team.players[i].position == 'Forward') {
+    } else if (team.players[i].position == 'Forward' && !playerIsLiked) {
       forward.push(team.players[i]);
-    } else if (team.players[i].position == 'Center') {
+    } else if (team.players[i].position == 'Center' && !playerIsLiked) {
       center.push(team.players[i]);
-    } else if (team.players[i].position == 'Forward-Center' || team.players[i].position == 'Center-Forward') {
+    } else if ((team.players[i].position == 'Forward-Center' || team.players[i].position == 'Center-Forward') && !playerIsLiked) {
       forwardcenter.push(team.players[i]);
-    } else if (team.players[i].position == 'Forward-Guard' || team.players[i].position == 'Guard-Forward') {
+    } else if ((team.players[i].position == 'Forward-Guard' || team.players[i].position == 'Guard-Forward') && !playerIsLiked) {
       forwardguard.push(team.players[i]);
-    } else {
+
+    }  else if (team.players[i].pos_name == 'Defenseman'){
+      Defenseman.push(team.players[i]);
+
+    }else if (team.players[i].pos_name == "Center"){
+      Center.push(team.players[i]);
+
+    }else if (team.players[i].pos_name == 'Right Wing'){
+      trump.push(team.players[i]);
+
+    }else if (team.players[i].pos_name == 'Left Wing'){
+      obama.push(team.players[i]);
+
+    }else if (team.players[i].pos_name == 'Goalie'){
+      Goalie.push(team.players[i]);
+
+    }else if (!playerIsLiked){
       noposition.push(team.players[i]);
     }
-
-    //
-    //split between guards and stuff.
-    //
-    //
   }
+
+  //nhl
+  const Centerlist = Center.map((item) => (
+    <View style={styles.item}>
+      <PlayerSection player={item} team={team} />
+    </View>
+  ));
+  const obamalist = obama.map((item) => (
+    <View style={styles.item}>
+      <PlayerSection player={item} team={team} />
+    </View>
+  ));
+  const trumplist = trump.map((item) => (
+    <View style={styles.item}>
+      <PlayerSection player={item} team={team} />
+    </View>
+  ));
+
+  const Goalielist = Goalie.map((item) => (
+    <View style={styles.item}>
+      <PlayerSection player={item} team={team} />
+    </View>
+  ));
+
+  const Defensemanlist = Defenseman.map((item) => (
+    <View style={styles.item}>
+      <PlayerSection player={item} team={team} />
+    </View>
+  ));
+
+
+  //nba
+
   //guards arent being populated into list
+  const likedlist = liked.map((item) => (
+    <View style={styles.item}>
+      <PlayerSection player={item} team={team} />
+    </View>
+  ));
   const guardlist = guards.map((item) => (
     <View style={styles.item}>
       <PlayerSection player={item} team={team} />
@@ -203,7 +279,7 @@ export const TeamScreen = () => {
   //ICON AND ALERT ANIMATION
   const [isLiked, setIsLiked] = useState(false);
 
-  const { authData, updateTeams } = useAuth();
+  const { updateTeams } = useAuth();
   const [selectedTeams, setSelectedTeams] = useState<string[]>(
     authData?.teams ?? []
   );
@@ -288,6 +364,10 @@ export const TeamScreen = () => {
       updateTeams(updatedTeams);
       setMessage(team.name + " removed");
       setShow(true);
+
+
+
+      team.players[0]
       //I clikced it relatively fast, but may want the async function!!!
       //could end up removing and adding too fast...
       //submitTeamSelectionUpdates();
@@ -366,17 +446,37 @@ export const TeamScreen = () => {
         </View>
         <ThemeText style={styles.headerText}>{team.name}</ThemeText>
 
+
+        {renderIf(liked.length != 0, <ThemeText style={styles.mediumText} >Favorites</ThemeText>)}
+        <View style={styles.container}>{renderIf(likedlist, likedlist)}</View>
+
+        {renderIf(Goalielist.length != 0, <ThemeText style={styles.mediumText}>Goalie</ThemeText>)}
+        <View style={styles.container}>{renderIf(Goalielist, Goalielist)}</View>
+
+        {renderIf(Defensemanlist.length != 0, <ThemeText style={styles.mediumText}>Defenseman</ThemeText>)}
+        <View style={styles.container}>{renderIf(Defensemanlist, Defensemanlist)}</View>
+
+        {renderIf(Centerlist.length != 0, <ThemeText style={styles.mediumText}>Center</ThemeText>)}
+        <View style={styles.container}>{renderIf(Centerlist, Centerlist)}</View>
+
+        {renderIf(trump.length != 0, <ThemeText style={styles.mediumText}>Right Wing</ThemeText>)}
+        <View style={styles.container}>{renderIf(trumplist, trumplist)}</View>
+
+        {renderIf(obama.length != 0, <ThemeText style={styles.mediumText}>Left Wing</ThemeText>)}
+        <View style={styles.container}>{renderIf(obamalist, obamalist)}</View>
+
+
         {renderIf(guardlist.length != 0, <ThemeText style={styles.mediumText}>Guards</ThemeText>)}
         <View style={styles.container}>{renderIf(guardlist, guardlist)}</View>
         {renderIf(forwardguard.length != 0, <ThemeText style={styles.mediumText} >Forward-Guards</ThemeText>)}
-        <View style={styles.container}>{forwardguardlist}</View>
+        <View style={styles.container}>{renderIf(forwardguardlist, forwardguardlist)}</View>
         {renderIf(forwardlist.length != 0, <ThemeText style={styles.mediumText}>Forwards</ThemeText>)}
-        <View style={styles.container}>{forwardlist}</View>
+        <View style={styles.container}>{renderIf(forwardlist, forwardlist)}</View>
         {renderIf(forwardcenter.length != 0, <ThemeText style={styles.mediumText}>Forward-Centers</ThemeText>)}
-        <View style={styles.container}>{forwardcenterlist}</View>
+        <View style={styles.container}>{renderIf(forwardcenterlist, forwardcenterlist)}</View>
         {renderIf(centerlist.length != 0, <ThemeText style={styles.mediumText}>Centers</ThemeText>)}
-        <View style={styles.container}>{centerlist}</View>
-        {renderIf(nonelist.length != 0, <ThemeText style={styles.mediumText}>No Position</ThemeText>)}
+        <View style={styles.container}>{renderIf(centerlist, centerlist)}</View>
+        {renderIf(nonelist.length != 0 && !hockey, <ThemeText style={styles.mediumText}>No Position</ThemeText>)}
         <View style={styles.container}>{nonelist}</View>
 
 

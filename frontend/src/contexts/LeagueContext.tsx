@@ -4,7 +4,7 @@ interface LeagueProviderProps {
     children: ReactNode;
 }
 
-type League = 'nba' | 'nhl';
+export type League = 'nba' | 'nhl';
 
 type LeagueContextData = {
     league: League;
@@ -16,7 +16,11 @@ export const LeagueContext = createContext<LeagueContextData>(
 );
 
 export const LeagueProvider: FC<LeagueProviderProps> = ({ children }) => {
-    const [league, setLeague] = useState<League>('nba');
+    const [league, setRawLeague] = useState<League>('nba');
+
+    const setLeague = (league: League) => {
+        setRawLeague(league);
+    };
 
     const contextData: LeagueContextData = useMemo(() => {
         return {

@@ -1,7 +1,7 @@
 import { ErrorBox, PrimaryButton, RosterSection } from '@components/index';
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, FlatList, ActivityIndicator } from 'react-native';
+import { StyleSheet, FlatList, ActivityIndicator, View } from 'react-native';
 
 import { useAuth } from '@hooks/useAuth';
 import { RosterNavigationProp } from '../types/Navigation';
@@ -12,13 +12,14 @@ export const RostersScreen = () => {
     const { navigate } = useNavigation<RosterNavigationProp>();
     const { authData } = useAuth();
 
-    const { data, isLoading, isError, refetch } = useTeams(
+    const { data, isLoading, isError, isRefetching, refetch } = useTeams(
         authData?.teams ?? []
     );
 
     useRefreshOnFocus(refetch);
 
     return (
+        <View>
         <FlatList
             data={data}
             numColumns={3}
@@ -31,16 +32,18 @@ export const RostersScreen = () => {
                         text="Follow Teams"
                         onPress={() => navigate('Tselection')}
                     />
-                    {isLoading && <ActivityIndicator />}
-                    {isError && <ErrorBox error="Error" />}
-                    <PrimaryButton
+                   { false && <PrimaryButton
                         text="Follow Players"
                         onPress={() => navigate('Pselection')}
-                    />
+                    /> }
+                    {(isLoading || isRefetching) && <ActivityIndicator />}
+                    {isError && <ErrorBox error="Error" />}
                 </>
             }
             ListHeaderComponentStyle={styles.headerContainer}
         />
+        </View>
+
     );
 };
 

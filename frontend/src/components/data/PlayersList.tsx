@@ -7,7 +7,7 @@ type PlayerListProps = {
     /** the title to be displayed above the list */
     title?: string;
     /** the teams within the list */
-    teams: playerIcon[];
+    players: playerIcon[];
     /** method to add teams to the user's selected stats */
     addTeam: (stat: string) => void;
     /** method to remove teams from the user's selected stats */
@@ -20,27 +20,27 @@ const screenWidth = Dimensions.get('window').width - 20;
 const numColumns = 3;
 const tile = screenWidth / numColumns;
 
-export const TeamsList: FC<PlayerListProps> = ({
+export const PlayersList: FC<PlayerListProps> = ({
     title,
-    teams,
+    players,
     addTeam,
     removeTeam,
     selected,
 }) => {
-    return (
+    return ( 
         <View style={styles.container}>
             {title && <Text style={styles.title}>{title}</Text>}
             <View style={styles.stats}>
-                {teams.map((team) => (
+                { players && players.map((player) => (
                     <SelectCircle
-                        initialState={selected.includes(team.id)}
-                        url={team.headshot}
+                        initialState={selected.includes(player.id)}
+                        url={player.headshot}
                         size={tile}
                         onSelectChanged={(newStatus: boolean) => {
-                            if (newStatus) addTeam(team.id);
-                            else removeTeam(team.id);
+                            if (newStatus) addTeam(player.id);
+                            else removeTeam(player.id);
                         }}
-                        key={team.id}
+                        key={player.id}
                     />
                 ))}
             </View>

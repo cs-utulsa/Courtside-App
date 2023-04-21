@@ -133,6 +133,34 @@ def change_stats():
     except OperationFailure:
         return string_response("Cannot add stats to user", 500)
 
+@preferences.route('/users/players', methods=["PATCH"])
+def change_players():
+    token = is_valid_jwt(request)
+
+    if (not token): 
+        return string_response(INVALID_TOKEN_MESSAGE, 403)
+
+    email = request.get_json()["email"]
+    players = request.get_json()["players"]
+
+    if (not email):
+        return string_response(NO_EMAIL_MESSAGE, 400)
+
+    try:
+        db.user_preferences.update_one(
+            { 'email': email },
+            { '$set': { "players": players } }
+        );
+
+        response = make_response()
+        response.status_code = 200
+        response.response = json.dumps(players)
+        response.mimetype = JSON_MIME_TYPE
+
+        return response
+    except OperationFailure:
+        return string_response("Cannot add players to user", 500)
+
 # @preferences.route('/users/settings', methods=["PUT"])
 # def change_settings():
 #     token = is_valid_jwt(request)
@@ -196,7 +224,7 @@ def clear_data():
     try:
         db.user_preferences.update_one(
             { 'email': email },
-            { '$set': { "stats": [], "teams": [] } }
+            { '$set': { "stats": [], "teams": [], "players": [] } }
         )
 
     except OperationFailure:
