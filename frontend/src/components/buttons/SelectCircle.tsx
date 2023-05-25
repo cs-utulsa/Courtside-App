@@ -91,6 +91,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: 'white',
+        marginBottom: 15,
     },
     /** Styles for the containing View when the button is in the not selected state */
     notSelected: {

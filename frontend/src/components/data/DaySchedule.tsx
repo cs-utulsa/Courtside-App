@@ -1,4 +1,4 @@
-import { addDays, startOfToday, format } from 'date-fns';
+import { addDays, format } from 'date-fns';
 import React, { FC, useMemo } from 'react';
 import { View, StyleSheet, ActivityIndicator } from 'react-native';
 import { useDaySchedule } from '@hooks/index';
@@ -22,7 +22,10 @@ type DayScheduleProps = {
  * return <DaySchedule ahead={daysAhead} />
  */
 export const DaySchedule: FC<DayScheduleProps> = ({ ahead }) => {
-    const date = useMemo(() => addDays(startOfToday(), ahead), [ahead]);
+    const date = useMemo(
+        () => addDays(new Date('2022-12-17T03:24:00'), ahead),
+        [ahead]
+    );
     const dateString = format(date, 'yyyy-MM-dd');
     const { colors } = useTheme();
 

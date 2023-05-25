@@ -1,6 +1,6 @@
 //external imports
 import React, { useCallback, useState } from 'react';
-import { StyleSheet, ActivityIndicator, View } from 'react-native';
+import { StyleSheet, ActivityIndicator, ScrollView } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
 //custom components
@@ -12,7 +12,6 @@ import { RosterNavigationProp } from '../types/Navigation';
 import { useAuth } from '@hooks/useAuth';
 import { useAllTeams } from '@hooks/index';
 import { TeamIcon } from '../types/Team';
-import { id } from 'date-fns/locale';
 
 /** This component lets the user choose what teams they want to follow */
 export const TeamSelectionScreen = () => {
@@ -25,7 +24,7 @@ export const TeamSelectionScreen = () => {
     );
 
     const [submitting, setSubmitting] = useState<boolean>(false);
-    
+
     const { data, isSuccess, isLoading, isError } = useAllTeams();
     const [result, setResult] = useState<TeamIcon[]>([]);
 
@@ -61,7 +60,7 @@ export const TeamSelectionScreen = () => {
         [data]
     );
 
-    const addTeam = (id: string) => setSelectedTeams((prev) => prev.concat(id)); 
+    const addTeam = (id: string) => setSelectedTeams((prev) => prev.concat(id));
     const removeTeam = (id: string) =>
         setSelectedTeams((prev) => prev.filter((team) => team !== id));
 
@@ -74,7 +73,7 @@ export const TeamSelectionScreen = () => {
     }
 
     return (
-        <View style={styles.container}>
+        <ScrollView contentContainerStyle={styles.container}>
             {isSuccess && (
                 <>
                     <SearchBox
@@ -106,7 +105,7 @@ export const TeamSelectionScreen = () => {
                     )}
                 </>
             )}
-        </View>
+        </ScrollView>
     );
 };
 

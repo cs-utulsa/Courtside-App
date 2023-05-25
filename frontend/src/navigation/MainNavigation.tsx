@@ -9,12 +9,12 @@ import { StatsStack } from './StatsStack';
 import { RosterStack } from './RosterStack';
 import { ParamListBase, RouteProp, useTheme } from '@react-navigation/native';
 import { ScheduleStack } from './ScheduleStack';
-import { SwitchLeagues } from '@components/index';
+// import { SwitchLeagues } from '@components/index';
 
 const Tab = createBottomTabNavigator();
 
 const screenOptions = (routeName: string | undefined, iconColor: string) => {
-    const hideBar = routeName === 'Selection';
+    const hideBar = routeName === 'Selection' || routeName === 'Tselection';
 
     return ({
         route,
@@ -65,25 +65,25 @@ const screenOptions = (routeName: string | undefined, iconColor: string) => {
     });
 };
 
-const individualScreenOptions = (
-    routeName: string | undefined
-): BottomTabNavigationOptions => {
-    const toggleBlacklist = [
-        'Game',
-        'Team',
-        'Player',
-        'TSelection',
-        'Pselection',
-    ];
+// const individualScreenOptions = (
+//     routeName: string | undefined
+// ): BottomTabNavigationOptions => {
+//     const toggleBlacklist = [
+//         'Game',
+//         'Team',
+//         'Player',
+//         'TSelection',
+//         'Pselection',
+//     ];
 
-    if (routeName && toggleBlacklist.includes(routeName)) {
-        return {};
-    } else {
-        return {
-            headerRight: () => <SwitchLeagues />,
-        };
-    }
-};
+//     if (routeName && toggleBlacklist.includes(routeName)) {
+//         return {};
+//     } else {
+//         return {
+//             headerRight: () => <SwitchLeagues />,
+//         };
+//     }
+// };
 
 type MainNavigationProps = {
     routeName: string | undefined;
@@ -101,17 +101,17 @@ export const MainNavigation: FC<MainNavigationProps> = ({ routeName }) => {
             <Tab.Screen
                 name="Stats"
                 component={StatsStack}
-                options={individualScreenOptions(routeName)}
+                // options={individualScreenOptions(routeName)}
             />
             <Tab.Screen
                 name="Games"
                 component={ScheduleStack}
-                options={individualScreenOptions(routeName)}
+                // options={individualScreenOptions(routeName)}
             />
             <Tab.Screen
                 name="Rosters"
                 component={RosterStack}
-                options={individualScreenOptions(routeName)}
+                // options={individualScreenOptions(routeName)}
             />
             <Tab.Screen name="Settings" component={Settings} />
         </Tab.Navigator>

@@ -20,30 +20,31 @@ export const RostersScreen = () => {
 
     return (
         <View>
-        <FlatList
-            data={data}
-            numColumns={3}
-            showsVerticalScrollIndicator={false}
-            showsHorizontalScrollIndicator={false}
-            renderItem={({ item }) => <RosterSection team={item} />}
-            ListHeaderComponent={
-                <>
-                    <PrimaryButton
-                        text="Follow Teams"
-                        onPress={() => navigate('Tselection')}
-                    />
-                   { false && <PrimaryButton
-                        text="Follow Players"
-                        onPress={() => navigate('Pselection')}
-                    /> }
-                    {(isLoading || isRefetching) && <ActivityIndicator />}
-                    {isError && <ErrorBox error="Error" />}
-                </>
-            }
-            ListHeaderComponentStyle={styles.headerContainer}
-        />
+            <FlatList
+                data={data}
+                numColumns={3}
+                showsVerticalScrollIndicator={false}
+                showsHorizontalScrollIndicator={false}
+                renderItem={({ item }) => <RosterSection team={item} />}
+                ListHeaderComponent={
+                    <>
+                        <PrimaryButton
+                            text="Follow Teams"
+                            onPress={() => navigate('Tselection')}
+                        />
+                        {false && (
+                            <PrimaryButton
+                                text="Follow Players"
+                                onPress={() => navigate('Pselection')}
+                            />
+                        )}
+                        {(isLoading || isRefetching) && <ActivityIndicator />}
+                        {isError && <ErrorBox error="Error" />}
+                    </>
+                }
+                ListHeaderComponentStyle={styles.headerContainer}
+            />
         </View>
-
     );
 };
 

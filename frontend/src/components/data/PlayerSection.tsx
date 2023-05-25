@@ -19,7 +19,6 @@ type PlayerSectionProps = {
  */
 export const PlayerSection: FC<PlayerSectionProps> = ({ player, team }) => {
     const { push } = useNavigation<RosterNavigationProp>();
-   // var isLiked:boolean;
     function navigateToPlayerScreen() {
         push('Player', { player, team });
     }
@@ -53,13 +52,13 @@ const styles = StyleSheet.create({
     container: {
         justifyContent: 'center',
         alignItems: 'center',
-        flex: 1,
-        margin: 10,
+        margin: 3,
     },
     text: {
         fontSize: 16,
         textAlign: 'center',
         margin: 5,
+        width: 100,
     },
     textContainer: {
         height: 50,

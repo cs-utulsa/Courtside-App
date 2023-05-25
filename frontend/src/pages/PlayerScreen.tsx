@@ -1,13 +1,12 @@
 import { PlayerScreenRouteProp } from '../types/Navigation';
 import React, { useState } from 'react';
 import { useRoute, useTheme } from '@react-navigation/native';
-import { View, StyleSheet, ScrollView, Button, LogBox } from 'react-native';
+import { View, StyleSheet, ScrollView, LogBox } from 'react-native';
 import { Player } from './../types/Player';
 import { Team } from './../types/Team';
 import { Card, CircleImage, ThemeText } from '@components/index';
 import { useNavigation } from '@react-navigation/native';
 import { RosterNavigationProp } from './../types/Navigation';
-import { MaterialIcons } from '@expo/vector-icons';
 import { PrimaryButton } from '@components/index';
 import { ButtonHeart } from '../animations/transition';
 import { Toggler } from '../animations/transition';
@@ -19,16 +18,20 @@ LogBox.ignoreAllLogs();
  * The player data is passed through a navigation parameter
  */
 
+const StatNumber = ({ num, title }: { num: number; title: string }) => {
+    return (
+        <View style={styles.statContainer}>
+            <ThemeText style={styles.statNumber}>{num}</ThemeText>
+            <ThemeText style={styles.statsText}>{title}</ThemeText>
+        </View>
+    );
+};
+
 export const PlayerScreen = () => {
-    const { push } = useNavigation<RosterNavigationProp>();
+    const { goBack } = useNavigation<RosterNavigationProp>();
     const route = useRoute<PlayerScreenRouteProp>();
     const player: Player = route.params.player;
     const teamback: Team = route.params.team;
-    function navigateToSelectionScreen() {
-        // const navigation = useNavigation();
-
-        push('Team', { team: teamback });
-    }
 
     const { colors } = useTheme();
     const { authData, updatePlayers } = useAuth();
@@ -56,7 +59,7 @@ export const PlayerScreen = () => {
     //if continuing to work on the app, could continue to do this!
     return (
         <ScrollView contentContainerStyle={styles.container}>
-            <PrimaryButton onPress={navigateToSelectionScreen} text="Back" />
+            <PrimaryButton onPress={() => goBack()} text="Back" />
             <View style={{ flexDirection: 'row', marginLeft: 60 }}>
                 <CircleImage
                     url={player.headshot}
@@ -99,96 +102,98 @@ export const PlayerScreen = () => {
                         </View>
 
                         <View style={styles.statstwo}>
-                            <ThemeText style={styles.text}>
-                                Jersey No. :{' '}
-                            </ThemeText>
+                            <ThemeText style={styles.text}>Jersey: </ThemeText>
                             <ThemeText style={styles.listtext}>
                                 {' '}
                                 {player.number}
                             </ThemeText>
 
-                            {player.experience ?
-                            <View>
-                                <ThemeText style={styles.text}>
-                                    Career:
-                                </ThemeText>
-                            
-                            <ThemeText style={styles.listtext}>
-                                {' '}
-                                {player.experience}
-                            </ThemeText>
-                            </View>
-                            : <></>}
+                            {player.experience ? (
+                                <View>
+                                    <ThemeText style={styles.text}>
+                                        Career:
+                                    </ThemeText>
 
-                            {player.draft ? 
-                            <View>
-                                <ThemeText style={styles.text}>
-                                    Draft Pick:
-                                </ThemeText>
-                            
-                            <ThemeText style={styles.listtext}>
-                                {' '}
-                                {player.draft}
-                            </ThemeText>
-                            </View>
-                            : <></>}
-                            {renderIf(player.country,
-                            <View>
-                                <ThemeText style={styles.text}>
-                                    Draft Pick:
-                                </ThemeText>
-                            
-                            <ThemeText style={styles.listtext}>
-                                {' '}
-                                {player.country}
-                            </ThemeText>
-                            </View>
+                                    <ThemeText style={styles.listtext}>
+                                        {' '}
+                                        {player.experience}
+                                    </ThemeText>
+                                </View>
+                            ) : (
+                                <></>
                             )}
 
-                            {player.nationality ?
+                            {player.draft ? (
                                 <View>
-                                <ThemeText style={styles.text}>
-                                    Country:
-                                </ThemeText>
-                                
-                        
-                            <ThemeText style={styles.listtext}>
-                                {' '}
-                                {player.nationality}
-                            </ThemeText>
-</View>
-: <></>}
+                                    <ThemeText style={styles.text}>
+                                        Draft Pick:
+                                    </ThemeText>
 
+                                    <ThemeText style={styles.listtext}>
+                                        {' '}
+                                        {player.draft}
+                                    </ThemeText>
+                                </View>
+                            ) : (
+                                <></>
+                            )}
+                            {renderIf(
+                                player.country,
+                                <View>
+                                    <ThemeText style={styles.text}>
+                                        Draft Pick:
+                                    </ThemeText>
 
-                            {player.shoots == "L"?
-                            <View>
-                                <ThemeText style={styles.text}>
-                                    Shoots: 
-                                </ThemeText>
-                            
-                            <ThemeText style={styles.listtext}>
-                                {' '}
-                                Left Handed
-                            </ThemeText>
-                            </View>
-                            : <></>}
-                            {player.shoots == "R" ?
-                            <View>
-                                <ThemeText style={styles.text}>
-                                    Shoots: 
-                                </ThemeText>
-                            
-                            <ThemeText style={styles.listtext}>
-                                {' '}
-                                Right Handed
-                            </ThemeText>
-                            </View>
-                            : <></>}
+                                    <ThemeText style={styles.listtext}>
+                                        {' '}
+                                        {player.country}
+                                    </ThemeText>
+                                </View>
+                            )}
 
+                            {player.nationality ? (
+                                <View>
+                                    <ThemeText style={styles.text}>
+                                        Country:
+                                    </ThemeText>
 
-                            
-                            
+                                    <ThemeText style={styles.listtext}>
+                                        {' '}
+                                        {player.nationality}
+                                    </ThemeText>
+                                </View>
+                            ) : (
+                                <></>
+                            )}
 
+                            {player.shoots === 'L' ? (
+                                <View>
+                                    <ThemeText style={styles.text}>
+                                        Shoots:
+                                    </ThemeText>
+
+                                    <ThemeText style={styles.listtext}>
+                                        {' '}
+                                        Left Handed
+                                    </ThemeText>
+                                </View>
+                            ) : (
+                                <></>
+                            )}
+                            {player.shoots === 'R' ? (
+                                <View>
+                                    <ThemeText style={styles.text}>
+                                        Shoots:
+                                    </ThemeText>
+
+                                    <ThemeText style={styles.listtext}>
+                                        {' '}
+                                        Right Handed
+                                    </ThemeText>
+                                </View>
+                            ) : (
+                                <></>
+                            )}
                         </View>
                     </View>
                 )}
@@ -196,92 +201,132 @@ export const PlayerScreen = () => {
                 {!isToggled && (
                     <View style={styles.leaderboardBlock}>
                         <View>
-                            {renderIf(player.pts, <ThemeText style={styles.listtext}>
-                                Points: {player.pts}
-                            </ThemeText>)}
+                            {renderIf(
+                                player.pts,
+                                <StatNumber num={player.pts} title="Points" />
+                            )}
 
-                            {renderIf(player.reb, <ThemeText style={styles.listtext}>
-                                Rebounds: {player.reb}
-                            </ThemeText>)}
-                            {renderIf(player.ast, <ThemeText style={styles.listtext}>
-                                Assists: {player.ast}
-                            </ThemeText>)}
+                            {renderIf(
+                                player.reb,
+                                <StatNumber num={player.reb} title="Rebounds" />
+                            )}
+                            {renderIf(
+                                player.ast,
+                                <StatNumber num={player.ast} title="Assists" />
+                            )}
 
-                            {renderIf(player.stl, <ThemeText style={styles.listtext}>
-                                Steals: {player.stl}
-                            </ThemeText>)}
+                            {renderIf(
+                                player.stl,
+                                <StatNumber num={player.stl} title="Steals" />
+                            )}
 
-                            {renderIf(player.tov, <ThemeText style={styles.listtext}>
-                                Turnovers: {player.tov}
-                            </ThemeText>)}
+                            {renderIf(
+                                player.tov,
+                                <StatNumber
+                                    num={player.tov}
+                                    title="Turnovers"
+                                />
+                            )}
 
-                            {renderIf(player.blk, <ThemeText style={styles.listtext}>
-                                Blocks: {player.blk}
-                            </ThemeText>)}
+                            {renderIf(
+                                player.blk,
+                                <StatNumber num={player.blk} title="Blocks" />
+                            )}
 
-                            {renderIf(player.games, <ThemeText style={styles.listtext}>
-                                Games Played: {player.games}
-                            </ThemeText>)}
+                            {renderIf(
+                                player.games,
+                                <StatNumber num={player.games} title="Games" />
+                            )}
 
-                            {renderIf(player.penaltyMinutes, <ThemeText style={styles.listtext}>
-                                Penalty Minutes: {player.penaltyMinutes}
-                            </ThemeText>)}
+                            {renderIf(
+                                player.penaltyMinutes,
+                                <StatNumber
+                                    num={Number(player.penaltyMinutes)}
+                                    title="Penalty Min"
+                                />
+                            )}
 
-                            {renderIf(player.blocked, <ThemeText style={styles.listtext}>
-                                Blocked Shots: {player.blocked}
-                            </ThemeText>)}
+                            {renderIf(
+                                player.blocked,
+                                <StatNumber
+                                    num={player.blocked}
+                                    title="Blocked Shots"
+                                />
+                            )}
 
-                            {renderIf(player.timeOnIcePerGame, <ThemeText style={styles.listtext}>
-                               time on ice: {player.timeOnIcePerGame}
-                            </ThemeText>)}
-                            {renderIf(player.gameWinningGoals, <ThemeText style={styles.listtext}>
-                                game winners: {player.gameWinningGoals}
-                            </ThemeText>)}
+                            {renderIf(
+                                player.timeOnIcePerGame,
+                                <StatNumber
+                                    num={Number(player.timeOnIcePerGame)}
+                                    title="Time on Ice"
+                                />
+                            )}
+                            {renderIf(
+                                player.gameWinningGoals,
+                                <StatNumber
+                                    num={Number(player.gameWinningGoals)}
+                                    title="Game Winners"
+                                />
+                            )}
                         </View>
 
-                        <View style={styles.statstwo}>
-                        {renderIf(player.games_played, <ThemeText style={styles.listtext}>
-                                Games Played: {player.games_played}
-                            </ThemeText>)}
+                        <View style={styles.secondColumn}>
+                            {renderIf(
+                                player.games_played,
+                                <StatNumber
+                                    num={player.games_played}
+                                    title="Games"
+                                />
+                            )}
 
-                            {renderIf(player.plus_minus, <ThemeText style={styles.listtext}>
-                                Plus Minus: {player.plus_minus}
-                            </ThemeText>)}
-                            {renderIf(player.fg3_pct, <ThemeText style={styles.listtext}>
-                                3 point %: {player.fg3_pct}
-                            </ThemeText>)}
+                            {renderIf(
+                                player.plus_minus,
+                                <StatNumber
+                                    num={player.plus_minus}
+                                    title="Plus Minus"
+                                />
+                            )}
+                            {renderIf(
+                                player.fg3_pct,
+                                <StatNumber
+                                    num={player.fg3_pct}
+                                    title="3 Pt %"
+                                />
+                            )}
 
-                            {renderIf(player.ft_pct, <ThemeText style={styles.listtext}>
-                                Free Throw %: {player.ft_pct}
-                            </ThemeText>)}
+                            {renderIf(
+                                player.ft_pct,
+                                <StatNumber
+                                    num={player.ft_pct}
+                                    title="Free Throw %"
+                                />
+                            )}
 
-                            {renderIf(player.fg_pct, <ThemeText style={styles.listtext}>
-                                Feild Goal %: {player.fg_pct}
-                            </ThemeText>)}
+                            {renderIf(
+                                player.fg_pct,
+                                <StatNumber
+                                    num={player.fg_pct}
+                                    title="Field Goal %"
+                                />
+                            )}
 
+                            {renderIf(
+                                player.goals,
+                                <StatNumber num={player.goals} title="Goals" />
+                            )}
 
-                            {renderIf(player.pts, <ThemeText style={styles.listtext}>
-                                Points: {player.pts}
-                            </ThemeText>)}
+                            {renderIf(
+                                player.shots,
+                                <StatNumber num={player.shots} title="Shots" />
+                            )}
 
-                            {renderIf(player.goals, <ThemeText style={styles.listtext}>
-                                Goals: {player.goals}
-                            </ThemeText>)}
-
-                            {renderIf(player.shots, <ThemeText style={styles.listtext}>
-                                Shots: {player.shots}
-                            </ThemeText>)}
-                            
-
-
-                            
-
-
-                            {renderIf(player.plusMinus, <ThemeText style={styles.listtext}>
-                                Plus Minus: {player.plusMinus}
-                            </ThemeText>)}
-
-                            
+                            {renderIf(
+                                player.plusMinus,
+                                <StatNumber
+                                    num={player.plusMinus}
+                                    title="Plus Minus"
+                                />
+                            )}
                         </View>
                     </View>
                 )}
@@ -298,7 +343,6 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 20,
         // textAlign: '',
-        fontWeight: 'bold',
         margin: 3,
     },
     statstwo: {
@@ -307,14 +351,31 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginLeft: 40,
     },
+    secondColumn: {
+        marginLeft: 40,
+    },
     listtext: {
         fontSize: 18,
-        // textAlign: '',
-        //  fontWeight: 'bold',
-        marginLeft: -10,
-        marginBottom: 15,
+        marginBottom: 10,
+        fontWeight: 'bold',
     },
     leaderboardBlock: {
         flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '100%',
+        padding: 5,
+    },
+    statsText: {
+        fontSize: 16,
+    },
+    statNumber: {
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
+    statContainer: {
+        flexDirection: 'row',
+        alignItems: 'baseline',
+        gap: 5,
+        marginBottom: 10,
     },
 });
