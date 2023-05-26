@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
     gameBlock: {
         flexDirection: 'row',
         justifyContent: 'space-between',
+        marginBottom: -15,
     },
     /** Styles for the column of data between the icons for the two teams */
     gameData: {
